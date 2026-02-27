@@ -58,10 +58,7 @@ export const pricingPlansQuery = `*[_type == "pricingPlan"] | order(order asc) {
   priceMonthly,
   popular,
   buttonVariant,
-  features[] {
-    text,
-    included
-  }
+  features[]
 }`;
 
 /** Packages vidéo triés */

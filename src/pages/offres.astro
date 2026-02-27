@@ -34,7 +34,7 @@ interface PricingPlan {
   priceMonthly: string;
   popular: boolean;
   buttonVariant: 'green' | 'yellow' | 'pink' | 'black';
-  features: { text: string; included: boolean }[];
+  features: string[];
 }
 
 interface VideoPackage {
@@ -85,12 +85,12 @@ if (!plans.length) {
       popular: false,
       buttonVariant: 'yellow',
       features: [
-        { text: 'Mise a jour de videos', included: true },
-        { text: 'Support 72h', included: true },
-        { text: '1 seule boucle par defaut', included: true },
-        { text: 'Sponsors illimites', included: true },
-        { text: 'Rotation aleatoire des partenaires', included: true },
-        { text: 'Rapport de diffusion basique', included: true },
+        'Mise a jour de videos',
+        'Support 72h',
+        '1 seule boucle par defaut',
+        'Sponsors illimites',
+        'Rotation aleatoire des partenaires',
+        'Rapport de diffusion basique',
       ],
     },
     {
@@ -101,13 +101,13 @@ if (!plans.length) {
       popular: true,
       buttonVariant: 'green',
       features: [
-        { text: 'Acces admin club (pour ajouter des visuels/videos de votre cote)', included: true },
-        { text: 'Mise a jour de videos', included: true },
-        { text: 'Support 48h', included: true },
-        { text: '2 boucles par defaut (ex : break / match)', included: true },
-        { text: 'Sponsors illimites', included: true },
-        { text: 'Rotation aleatoire des partenaires', included: true },
-        { text: 'Rapport de diffusion basique', included: true },
+        'Acces admin club (pour ajouter des visuels/videos de votre cote)',
+        'Mise a jour de videos',
+        'Support 48h',
+        '2 boucles par defaut (ex : break / match)',
+        'Sponsors illimites',
+        'Rotation aleatoire des partenaires',
+        'Rapport de diffusion basique',
       ],
     },
     {
@@ -118,14 +118,14 @@ if (!plans.length) {
       popular: false,
       buttonVariant: 'pink',
       features: [
-        { text: 'Acces admin club', included: true },
-        { text: 'Mise a jour de videos', included: true },
-        { text: 'Support 24h', included: true },
-        { text: 'Nombre de boucles par defaut illimite', included: true },
-        { text: 'Integration score', included: true },
-        { text: 'Sponsors illimites', included: true },
-        { text: 'Rotation controlee des partenaires', included: true },
-        { text: 'Rapport de diffusion premium', included: true },
+        'Acces admin club',
+        'Mise a jour de videos',
+        'Support 24h',
+        'Nombre de boucles par defaut illimite',
+        'Integration score',
+        'Sponsors illimites',
+        'Rotation controlee des partenaires',
+        'Rapport de diffusion premium',
       ],
     },
   ];
@@ -235,7 +235,7 @@ const description =
               {offre.features.map((f) => (
                 <li class="flex items-start gap-2 text-[15px] text-neo-gray">
                   <span class="text-neo-green mt-0.5">&#10003;</span>
-                  {f.text}
+                  {f}
                 </li>
               ))}
             </ul>
