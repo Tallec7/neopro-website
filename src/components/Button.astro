@@ -1,0 +1,55 @@
+---
+interface Props {
+  variant?: 'green' | 'black' | 'yellow' | 'pink' | 'outline';
+  href?: string;
+  arrow?: boolean;
+  class?: string;
+  type?: 'button' | 'submit';
+  disabled?: boolean;
+}
+
+const {
+  variant = 'green',
+  href,
+  arrow = false,
+  class: className = '',
+  type = 'button',
+  disabled = false,
+} = Astro.props;
+
+const variants: Record<string, string> = {
+  green: 'bg-neo-green text-neo-dark hover:bg-neo-green-dark',
+  black: 'bg-neo-dark text-white hover:bg-[#1d2939]',
+  yellow: 'bg-neo-yellow text-neo-dark hover:bg-[#ffe566]',
+  pink: 'bg-neo-pink text-neo-dark hover:bg-[#f08db5]',
+  outline: 'border border-neo-dark text-neo-dark hover:bg-neo-dark hover:text-white',
+};
+
+const baseClasses = `inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 ${variants[variant]} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} ${className}`;
+
+const isExternal = href?.startsWith('http');
+---
+
+{href ? (
+  <a
+    href={href}
+    class={baseClasses}
+    {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+  >
+    <slot />
+    {arrow && (
+      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.8 5.46667H10.1333M10.1333 5.46667L5.46667 0.8M10.1333 5.46667L5.46667 10.1333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    )}
+  </a>
+) : (
+  <button type={type} disabled={disabled} class={baseClasses}>
+    <slot />
+    {arrow && (
+      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.8 5.46667H10.1333M10.1333 5.46667L5.46667 0.8M10.1333 5.46667L5.46667 10.1333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    )}
+  </button>
+)}

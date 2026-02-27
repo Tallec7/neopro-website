@@ -1,0 +1,269 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import Button from '@/components/Button.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import { Image } from 'astro:assets';
+
+// ── Images locales ────────────────────────────────────────────────
+import heroImg from '@/assets/images/hero-solution.webp';
+import dscRetouche1 from '@/assets/images/dsc-retouche-1.webp';
+import dscRetouche2 from '@/assets/images/dsc-retouche-2.webp';
+import apercuTelecommande2 from '@/assets/images/apercu-telecommande-2.webp';
+
+// ── Sanity (optionnel) ────────────────────────────────────────────
+import { sanityClient } from '@/lib/sanity';
+import {
+  solutionPanelsQuery,
+  solutionFeaturesQuery,
+  colorPanelsQuery,
+} from '@/lib/queries';
+
+// ── Données : panneaux sticky ─────────────────────────────────────
+interface SolutionPanel {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  imageAlt?: string;
+}
+
+let solutionPanels: SolutionPanel[] = [];
+
+try {
+  if (sanityClient) {
+    const data = await sanityClient.fetch(solutionPanelsQuery);
+    if (data?.length) solutionPanels = data;
+  }
+} catch {}
+
+if (!solutionPanels.length) {
+  solutionPanels = [
+    {
+      title: 'Valorisez vos partenaires',
+      description:
+        "Toute l'annee, vos partenaires beneficieront d'un support de communication pendant vos matchs pour partager leurs actualites. Ils peuvent mettre a jour leurs actualites d'une semaine a l'autre et obtenir des rapports de diffusion.",
+    },
+    {
+      title: 'Celebrez vos joueurs',
+      description:
+        "Vos joueurs aussi ont le droit de faire comme les pros. Nous proposons de venir filmer leurs celebrations en debut d'annee, ainsi que tout type de contenu (video/photo) relatif a votre media day.",
+    },
+    {
+      title: 'Partagez vos actualites',
+      description:
+        "Assurez-vous que vos supporters ne passent pas a cote de vos prochains matchs, les soirees du club et vos produits a vendre sur votre boutique.",
+    },
+  ];
+}
+
+// Images locales pour les panneaux (fallback quand Sanity n'a pas d'image)
+const panelImages = [dscRetouche1, dscRetouche2, apercuTelecommande2];
+
+// ── Données : features ────────────────────────────────────────────
+interface Feature {
+  title: string;
+  description: string;
+}
+
+let features: Feature[] = [];
+
+try {
+  if (sanityClient) {
+    const data = await sanityClient.fetch(solutionFeaturesQuery);
+    if (data?.length) features = data;
+  }
+} catch {}
+
+if (!features.length) {
+  features = [
+    {
+      title: 'Sans connexion internet',
+      description: 'Pas besoin de wifi dans votre salle.',
+    },
+    {
+      title: 'Sans fil',
+      description:
+        'Commandable a distance grace a votre telephone qui sert de telecommande.',
+    },
+    {
+      title: "Simple d'utilisation",
+      description:
+        "Interface ultra simplifiee, utilisable par n'importe quel benevole les jours de match.",
+    },
+  ];
+}
+
+// ── Données : panneaux colorés ────────────────────────────────────
+interface ColorPanel {
+  title: string;
+  features: string[];
+  bgColor: string;
+}
+
+let colorPanels: ColorPanel[] = [];
+
+try {
+  if (sanityClient) {
+    const data = await sanityClient.fetch(colorPanelsQuery);
+    if (data?.length) colorPanels = data;
+  }
+} catch {}
+
+if (!colorPanels.length) {
+  colorPanels = [
+    {
+      title: 'Accompagnement continu',
+      features: [
+        'Formation initiale complete',
+        'Support technique reactif',
+        'Conseils pour optimiser vos contenus',
+        "Assistance & mise a jour de videos d'une semaine a l'autre",
+        "Possibilite d'autonomie complete : acces admin avec integration visuels/videos",
+      ],
+      bgColor: 'bg-[#3d3036]',
+    },
+    {
+      title: 'Solution cle en main',
+      features: [
+        'Boitier pre-configure livre chez vous',
+        'Installation en moins de 5 minutes',
+        'Application intuitive et simple',
+        'Compatible avec tous les ecrans HDMI',
+      ],
+      bgColor: 'bg-[#423e33]',
+    },
+    {
+      title: 'Production video professionnelle',
+      features: [
+        'Offre de media day complete (photo+video)',
+        'Des templates video de qualite Broadcast, personnalisable aux couleurs de votre club',
+      ],
+      bgColor: 'bg-[#2f3935]',
+    },
+    {
+      title: 'Les retombees pour votre club',
+      features: [
+        'Image professionnelle et moderne',
+        'Support de communication efficace',
+        'Supporters mieux informes et engages',
+        'Visibilite quantifiee pour vos partenaires',
+        'Meilleure fidelisation des partenaires',
+      ],
+      bgColor: 'bg-[#334244]',
+    },
+  ];
+}
+
+// ── SEO ───────────────────────────────────────────────────────────
+const title = 'La solution de regie digitale';
+const description =
+  'Decouvrez la solution Neopro : regie digitale cle en main pour clubs amateurs. Sans wifi, sans fil, pilotable depuis un smartphone.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <Hero
+    title={`La regie digitale de votre <span class="font-playfair italic text-neo-green">club</span>`}
+    imageSrc={heroImg}
+    imageAlt="La solution Neopro en action"
+  />
+
+  <!-- Panneaux solution sticky -->
+  <section class="py-24 px-5">
+    <div class="max-w-[1200px] mx-auto">
+      {solutionPanels.map((panel, i) => (
+        <div
+          class="sticky top-[120px] bg-white rounded-[20px] shadow-lg overflow-hidden mb-8"
+          style={`z-index: ${10 + i}`}
+        >
+          <div class="flex flex-col md:flex-row gap-8 p-8 md:p-12">
+            <div class="flex-1 flex flex-col justify-center">
+              <h3 class="text-[28px] md:text-[36px] font-bold mb-4">{panel.title}</h3>
+              <p class="text-neo-gray text-[16px]">{panel.description}</p>
+            </div>
+            <div class="flex-1">
+              {panel.imageUrl ? (
+                <img
+                  src={panel.imageUrl}
+                  alt={panel.imageAlt || panel.title}
+                  class="w-full rounded-[12px] object-cover"
+                  loading="lazy"
+                />
+              ) : panelImages[i] ? (
+                <Image
+                  src={panelImages[i]}
+                  alt={panel.title}
+                  class="w-full rounded-[12px] object-cover"
+                  loading="lazy"
+                  widths={[600, 1200]}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 3 colonnes features -->
+  <section class="py-24 px-5 bg-[#f8f9fa]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {features.map((feature) => (
+          <div class="bg-white rounded-[20px] p-8">
+            <h3 class="text-[22px] font-bold mb-3">{feature.title}</h3>
+            <p class="text-neo-gray text-[15px]">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Panneaux couleurs sticky -->
+  <section class="py-24 px-5">
+    <div class="max-w-[1200px] mx-auto">
+      {colorPanels.map((panel, i) => (
+        <div
+          class={`sticky top-[120px] ${panel.bgColor} text-white rounded-[20px] p-12 md:p-16 mb-8`}
+          style={`z-index: ${10 + i}`}
+        >
+          <h3 class="text-[32px] md:text-[40px] font-bold mb-6">{panel.title}</h3>
+          <ul class="flex flex-col gap-3 max-w-[500px]">
+            {panel.features.map((f) => (
+              <li class="flex items-start gap-3 text-[16px] text-white/80">
+                <span class="text-neo-green mt-0.5">&#10003;</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA vers offres -->
+  <section class="py-24 px-5">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <SectionHeading
+        title="Des offres adaptees a vos"
+        italicWord="clubs"
+        subtitle="Financable par vos partenaires. Cle en main."
+      />
+      <div class="flex flex-wrap gap-4 justify-center mt-8">
+        <Button href="/offres" variant="black" arrow>
+          Decouvrez les offres
+        </Button>
+        <Button href="/devis" variant="green" arrow>
+          Obtenez un devis
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+</BaseLayout>

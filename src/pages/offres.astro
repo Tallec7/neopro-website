@@ -1,0 +1,328 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import Button from '@/components/Button.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ClubCarousel from '@/components/ClubCarousel.tsx';
+import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
+import ContactForm from '@/components/ContactForm.tsx';
+
+// ── Images locales ────────────────────────────────────────────────
+import heroImg from '@/assets/images/hero-offres.webp';
+
+// ── Logos clubs (fallback) ────────────────────────────────────────
+import logoRacc from '@/assets/images/logo-racc.webp';
+import logoNarh from '@/assets/images/logo-narh.webp';
+import logoNlf from '@/assets/images/logo-nlf-fond-blanc.webp';
+import logoCorsaires from '@/assets/images/logo-corsaires.webp';
+import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
+
+// ── Sanity (optionnel) ────────────────────────────────────────────
+import { sanityClient } from '@/lib/sanity';
+import {
+  pricingPlansQuery,
+  videoPackagesQuery,
+  testimonialsQuery,
+  clubLogosQuery,
+} from '@/lib/queries';
+
+// ── Types ─────────────────────────────────────────────────────────
+interface PricingPlan {
+  name: string;
+  slug: string;
+  priceAnnual: string;
+  priceMonthly: string;
+  popular: boolean;
+  buttonVariant: 'green' | 'yellow' | 'pink' | 'black';
+  features: { text: string; included: boolean }[];
+}
+
+interface VideoPackage {
+  name: string;
+  price: string | null;
+  priceExtra: string | null;
+  description: string;
+  popular: boolean;
+  features: string[];
+}
+
+interface Testimonial {
+  quote: string;
+  clubName: string;
+}
+
+// ── Fetch données ─────────────────────────────────────────────────
+let plans: PricingPlan[] = [];
+let videoPackages: VideoPackage[] = [];
+let testimonials: Testimonial[] = [];
+let clubs: { name: string; logoUrl: string }[] = [];
+
+try {
+  if (sanityClient) {
+    const [p, v, t, c] = await Promise.all([
+      sanityClient.fetch(pricingPlansQuery),
+      sanityClient.fetch(videoPackagesQuery),
+      sanityClient.fetch(testimonialsQuery),
+      sanityClient.fetch(clubLogosQuery),
+    ]);
+    if (p?.length) plans = p;
+    if (v?.length) videoPackages = v;
+    if (t?.length) testimonials = t.map((item: any) => ({ quote: item.quote, clubName: item.clubName }));
+    if (c?.length) clubs = c.map((item: any) => ({ name: item.name, logoUrl: item.logoUrl }));
+  }
+} catch {
+  // Sanity non configuré
+}
+
+// ── Fallback data ─────────────────────────────────────────────────
+if (!plans.length) {
+  plans = [
+    {
+      name: 'Standard',
+      slug: 'standard',
+      priceAnnual: '1 500',
+      priceMonthly: '190',
+      popular: false,
+      buttonVariant: 'yellow',
+      features: [
+        { text: 'Mise a jour de videos', included: true },
+        { text: 'Support 72h', included: true },
+        { text: '1 seule boucle par defaut', included: true },
+        { text: 'Sponsors illimites', included: true },
+        { text: 'Rotation aleatoire des partenaires', included: true },
+        { text: 'Rapport de diffusion basique', included: true },
+      ],
+    },
+    {
+      name: 'Autonomie',
+      slug: 'autonomie',
+      priceAnnual: '2 100',
+      priceMonthly: '250',
+      popular: true,
+      buttonVariant: 'green',
+      features: [
+        { text: 'Acces admin club (pour ajouter des visuels/videos de votre cote)', included: true },
+        { text: 'Mise a jour de videos', included: true },
+        { text: 'Support 48h', included: true },
+        { text: '2 boucles par defaut (ex : break / match)', included: true },
+        { text: 'Sponsors illimites', included: true },
+        { text: 'Rotation aleatoire des partenaires', included: true },
+        { text: 'Rapport de diffusion basique', included: true },
+      ],
+    },
+    {
+      name: 'Premium',
+      slug: 'premium',
+      priceAnnual: '3 000',
+      priceMonthly: '350',
+      popular: false,
+      buttonVariant: 'pink',
+      features: [
+        { text: 'Acces admin club', included: true },
+        { text: 'Mise a jour de videos', included: true },
+        { text: 'Support 24h', included: true },
+        { text: 'Nombre de boucles par defaut illimite', included: true },
+        { text: 'Integration score', included: true },
+        { text: 'Sponsors illimites', included: true },
+        { text: 'Rotation controlee des partenaires', included: true },
+        { text: 'Rapport de diffusion premium', included: true },
+      ],
+    },
+  ];
+}
+
+if (!videoPackages.length) {
+  videoPackages = [
+    {
+      name: 'Classique',
+      price: null,
+      priceExtra: null,
+      description: 'Inclus par defaut dans toutes les offres',
+      popular: false,
+      features: [
+        'Video Boucle partenaires',
+        'Video Message partenaire premium',
+        'Video Annonce message club',
+        'Video Annonce fait de jeu',
+      ],
+    },
+    {
+      name: 'Sans shooting',
+      price: '500',
+      priceExtra: '250',
+      description: "On integre vos photos a nos templates d'annonce de joueurs.",
+      popular: true,
+      features: [
+        'Package Classique',
+        'Videos Annonce de joueurs (avec photo uniquement)',
+      ],
+    },
+    {
+      name: 'Avec shooting',
+      price: '1 000',
+      priceExtra: '500',
+      description: 'On shoote vos joueurs et on les integre a nos templates.',
+      popular: false,
+      features: [
+        'Package Classique',
+        'Videos Annonce de joueurs (avec video et photo)',
+        "1 shooting video et photo d'1h par equipe",
+        'Toutes les photos et videos disponibles en HD a dispo',
+      ],
+    },
+  ];
+}
+
+if (!testimonials.length) {
+  testimonials = [
+    { quote: "Le jour ou on a utilise Neopro pour la premiere fois, ca en a surpris plus d'un.", clubName: 'RACC Handball Nantes (NM3)' },
+    { quote: "Tous les joueurs attendaient que ca : voir leurs celebrations.", clubName: 'NANTES ATLANTIQUE RINK HOCKEY (D2)' },
+    { quote: "C'est vraiment instantane, c'est tres satisfaisant.", clubName: 'CORSAIRES DE NANTES (D1)' },
+    { quote: "C'est un outil qui nous facilite la vie, ca complete vraiment le speaker.", clubName: 'NANTES LOIRE FEMININ (NF3)' },
+  ];
+}
+
+if (!clubs.length) {
+  clubs = [
+    { name: 'RACC Handball Nantes', logoUrl: logoRacc.src },
+    { name: 'NARH', logoUrl: logoNarh.src },
+    { name: 'Nantes Loire Feminin', logoUrl: logoNlf.src },
+    { name: 'Corsaires de Nantes', logoUrl: logoCorsaires.src },
+    { name: 'Nantes Rink Hockey', logoUrl: logoRinkHockey.src },
+  ];
+}
+
+// ── SEO ───────────────────────────────────────────────────────────
+const title = 'Les offres';
+const description =
+  'Decouvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de regie digitale financables par vos partenaires.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <Hero
+    title={`Adaptees a vos <span class="font-playfair italic text-neo-green">besoins</span>`}
+    subtitle="Les offres"
+    imageSrc={heroImg}
+    imageAlt="Les offres Neopro"
+  />
+
+  <!-- 3 offres -->
+  <section class="py-24 px-5">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {plans.map((offre) => (
+          <div
+            class={`relative bg-white rounded-[20px] p-8 flex flex-col border-2 ${
+              offre.popular ? 'border-neo-green' : 'border-gray-100'
+            }`}
+          >
+            {offre.popular && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-neo-green text-neo-dark text-[13px] font-medium px-4 py-1 rounded-full whitespace-nowrap">
+                Le plus avantageux
+              </span>
+            )}
+            <h3 class="text-[28px] font-bold mb-2">{offre.name}</h3>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-[40px] font-bold">{offre.priceAnnual}</span>
+              <span class="text-[16px] text-neo-gray">EUR TTC/an</span>
+            </div>
+            <p class="text-[14px] text-neo-gray mb-6">
+              (ou {offre.priceMonthly}EUR TTC/mois*)
+            </p>
+            <p class="text-[14px] font-medium text-neo-dark mb-3">Inclus :</p>
+            <ul class="flex flex-col gap-3 mb-8 flex-1">
+              {offre.features.map((f) => (
+                <li class="flex items-start gap-2 text-[15px] text-neo-gray">
+                  <span class="text-neo-green mt-0.5">&#10003;</span>
+                  {f.text}
+                </li>
+              ))}
+            </ul>
+            <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+              Choisir cette offre
+            </Button>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-[13px] text-neo-gray mt-6">
+        *Engagement de 9 mois minimum
+      </p>
+    </div>
+  </section>
+
+  <!-- Package videos en option -->
+  <section class="py-24 px-5 bg-[#f8f9fa]">
+    <div class="max-w-[1200px] mx-auto">
+      <SectionHeading
+        title="Package videos"
+        italicWord="en option"
+        subtitle="Nous vous proposons en option de produire les videos d'annonce de joueurs."
+      />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        {videoPackages.map((pkg) => (
+          <div class="relative bg-white rounded-[20px] p-8 flex flex-col">
+            {pkg.popular && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-neo-sky text-neo-dark text-[13px] font-medium px-4 py-1 rounded-full whitespace-nowrap">
+                Le plus apprecie
+              </span>
+            )}
+            <h3 class="text-[22px] font-bold mb-2">{pkg.name}</h3>
+            {pkg.price ? (
+              <>
+                <p class="text-neo-green font-bold text-[18px] mb-1">
+                  {pkg.price}EUR TTC/equipe
+                </p>
+                {pkg.priceExtra && (
+                  <p class="text-[13px] text-neo-gray mb-3">
+                    ({pkg.priceExtra}EUR TTC/extra equipe)
+                  </p>
+                )}
+              </>
+            ) : (
+              <p class="text-neo-green font-bold text-[16px] mb-3">Inclus</p>
+            )}
+            <p class="text-neo-gray text-[15px] mb-4">{pkg.description}</p>
+            <p class="text-[14px] font-medium text-neo-dark mb-3">Inclus :</p>
+            <ul class="flex flex-col gap-2 flex-1">
+              {pkg.features.map((f) => (
+                <li class="flex items-start gap-2 text-[14px] text-neo-gray">
+                  <span class="text-neo-green mt-0.5">&#10003;</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Finance par vos partenaires -->
+  <section class="py-24 px-5">
+    <div class="max-w-[800px] mx-auto text-center">
+      <SectionHeading
+        title="Finance par vos"
+        italicWord="partenaires"
+      />
+      <p class="text-neo-gray text-[16px] mb-8 mt-4">
+        Notre solution a pour but d'etre financee par vos partenaires. Pour cela,
+        nous vous avons prepare un document explicatif pret a leur etre partage.
+      </p>
+      <Button variant="black">
+        Telecharger le document
+      </Button>
+    </div>
+  </section>
+
+  <!-- Club Carousel -->
+  <ClubCarousel clubs={clubs} client:visible />
+
+  <!-- Temoignages -->
+  <TestimonialCarousel testimonials={testimonials} client:visible />
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+</BaseLayout>

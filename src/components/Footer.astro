@@ -1,0 +1,67 @@
+---
+import Logo from '@/components/icons/Logo.astro';
+import SocialIcons from '@/components/icons/SocialIcons.astro';
+import Button from '@/components/Button.astro';
+
+const footerLinks = [
+  { label: 'La solution', href: '/solution' },
+  { label: 'Les offres', href: '/offres' },
+  { label: 'Qui sommes-nous ?', href: '/qui-sommes-nous' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-neo-dark-bg text-white">
+  <div class="max-w-[1400px] mx-auto px-6 py-16">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+      <!-- Logo + social -->
+      <div class="flex flex-col gap-6">
+        <a href="/">
+          <Logo variant="white" class="h-[18px] w-auto" />
+        </a>
+        <div class="flex gap-4">
+          <a href="#" aria-label="Facebook" class="text-white/60 hover:text-neo-green transition-colors">
+            <SocialIcons platform="facebook" size={22} />
+          </a>
+          <a href="#" aria-label="Instagram" class="text-white/60 hover:text-neo-green transition-colors">
+            <SocialIcons platform="instagram" size={22} />
+          </a>
+          <a href="#" aria-label="LinkedIn" class="text-white/60 hover:text-neo-green transition-colors">
+            <SocialIcons platform="linkedin" size={22} />
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav links -->
+      <div class="flex flex-col gap-3">
+        {footerLinks.map((link) => (
+          <a href={link.href} class="text-[14px] text-white/60 hover:text-neo-green transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col gap-3">
+        <Button href="/devis" variant="green" arrow>
+          Obtenez un devis
+        </Button>
+        <Button href="#contact" variant="black">
+          Planifier une demo
+        </Button>
+        <a href="#" class="text-[14px] text-white/60 hover:text-neo-green transition-colors">
+          Espace Club
+        </a>
+      </div>
+    </div>
+
+    <!-- Separator -->
+    <div class="h-px bg-neo-green/20 my-10" />
+
+    <!-- Copyright -->
+    <p class="text-[13px] text-white/40 text-center">
+      &copy; {year} Neopro. Tous droits reserves.
+    </p>
+  </div>
+</footer>

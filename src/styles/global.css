@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Design Tokens */
+@theme {
+  --color-neo-green: #81e3bc;
+  --color-neo-green-dark: #51b28b;
+  --color-neo-dark: #101828;
+  --color-neo-dark-bg: #2f3935;
+  --color-neo-gray: #4a5565;
+  --color-neo-gray-light: #a0a8a3;
+  --color-neo-yellow: #ffec85;
+  --color-neo-pink: #ff9ec6;
+  --color-neo-sky: #79e8fa;
+  --color-neo-white: #ffffff;
+
+  --font-outfit: 'Outfit', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-outfit);
+    font-weight: 400;
+    color: var(--color-neo-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

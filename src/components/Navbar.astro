@@ -1,0 +1,136 @@
+---
+import Logo from '@/components/icons/Logo.astro';
+import Button from '@/components/Button.astro';
+
+const navLinks = [
+  { label: 'La solution', href: '/solution' },
+  { label: 'Les offres', href: '/offres' },
+  { label: 'Qui sommes-nous ?', href: '/qui-sommes-nous' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  id="main-nav"
+  class="fixed top-5 left-5 right-5 z-50 bg-white rounded-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-transform duration-350 ease-in-out"
+>
+  <div class="flex items-center justify-between px-6 py-4 max-w-[1400px] mx-auto">
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0">
+      <Logo class="h-[18px] w-auto" />
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-[15px] font-medium transition-colors hover:text-neo-green-dark',
+            currentPath === link.href ? 'text-neo-green-dark' : 'text-neo-dark',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Desktop CTAs -->
+    <div class="hidden md:flex items-center gap-3">
+      <Button href="/devis" variant="green" arrow>
+        Obtenez un devis
+      </Button>
+      <Button href="#contact" variant="black">
+        Planifier une demo
+      </Button>
+      <Button href="#" variant="outline">
+        Espace Club
+      </Button>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
+      aria-label="Menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-neo-dark transition-transform origin-center" />
+      <span class="block w-6 h-0.5 bg-neo-dark transition-opacity" />
+      <span class="block w-6 h-0.5 bg-neo-dark transition-transform origin-center" />
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 flex-col gap-4 border-t border-gray-100 pt-4">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="text-[15px] font-medium text-neo-dark hover:text-neo-green-dark block py-1"
+      >
+        {link.label}
+      </a>
+    ))}
+    <div class="flex flex-col gap-3 pt-2">
+      <Button href="/devis" variant="green" arrow>
+        Obtenez un devis
+      </Button>
+      <Button href="#contact" variant="black">
+        Planifier une demo
+      </Button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Scroll hide/show navbar — vanilla JS (remplace Framer Motion)
+  const nav = document.getElementById('main-nav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current > 100 && current > lastScroll) {
+      nav?.classList.add('-translate-y-[120px]');
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+      hamburger?.setAttribute('aria-expanded', 'false');
+      updateHamburgerIcon(false);
+    } else {
+      nav?.classList.remove('-translate-y-[120px]');
+    }
+    lastScroll = current;
+  }, { passive: true });
+
+  // Mobile menu toggle
+  let mobileOpen = false;
+
+  hamburger?.addEventListener('click', () => {
+    mobileOpen = !mobileOpen;
+    hamburger.setAttribute('aria-expanded', String(mobileOpen));
+    if (mobileOpen) {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenu?.classList.add('flex');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+    }
+    updateHamburgerIcon(mobileOpen);
+  });
+
+  function updateHamburgerIcon(open: boolean) {
+    const spans = hamburger?.querySelectorAll('span');
+    if (!spans) return;
+    if (open) {
+      spans[0].style.transform = 'rotate(45deg) translateY(4px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translateY(-4px)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
+  }
+</script>

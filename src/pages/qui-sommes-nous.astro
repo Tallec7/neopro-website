@@ -1,0 +1,110 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import { Image } from 'astro:assets';
+
+// ── Images locales ────────────────────────────────────────────────
+import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
+
+// ── SEO ───────────────────────────────────────────────────────────
+const title = 'Qui sommes-nous';
+const description =
+  "Neopro, ne d'un constat terrain : professionnaliser l'experience match du sport amateur pour perenniser son modele economique.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero AMBITION -->
+  <section class="pt-32 pb-24 px-5 bg-neo-dark-bg overflow-hidden">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="flex flex-col md:flex-row gap-12 items-start">
+        <!-- Left: text -->
+        <div class="flex-1">
+          <!-- AMBITION repeated -->
+          <div
+            class="text-[80px] md:text-[138px] font-[900] leading-[0.9] text-neo-green-dark select-none mb-8"
+            aria-hidden="true"
+          >
+            <p>AMBITION</p>
+            <p>AMBITION</p>
+            <p>AMBITION</p>
+          </div>
+          <h1 class="text-[40px] md:text-[60px] leading-[1] mb-8">
+            <span class="font-playfair italic text-white">
+              Affichez<br />votre
+            </span>
+          </h1>
+          <div class="text-white/80 text-[16px] space-y-4 max-w-[550px]">
+            <p>
+              Neopro est ne d'un constat simple, observe directement sur le terrain :
+              l'experience "match" du sport amateur a peu evolue ces trente dernieres annees.
+              Pendant que le sport professionnel adoptait ecrans LED, scoring digital et regies
+              structurees, les clubs amateurs continuaient de fonctionner avec des supports imprimes,
+              des annonces micro et des partenariats peu valorises. Pourtant, ils rassemblent chaque
+              semaine des milliers de spectateurs et font vivre le coeur du sport francais.
+            </p>
+            <p class="font-bold text-white">
+              Notre ambition est claire : professionnaliser le sport amateur pour perenniser son modele
+              economique.
+            </p>
+            <p>
+              Nous ne proposons pas qu'une solution d'affichage. Nous voulons etre un veritable
+              partenaire du club, present au quotidien pour l'accompagner dans sa communication
+              et la structuration de ses revenus.
+            </p>
+            <p>
+              A travers notre solution de regie digitale, nous donnons aux clubs le moyen de valoriser
+              leurs partenaires, de celebrer leurs joueurs et de partager leurs actualites. Nous
+              transformons le match en un veritable media local, moderne et mesurable.
+            </p>
+            <p>
+              Implante a Nantes et engage aupres du tissu sportif local, Neopro a pour but de faire
+              emerger une communaute de Clubs Neopro : des clubs qui structurent leur developpement,
+              modernisent leur image et affichent leur ambition.
+            </p>
+            <p class="text-neo-green font-bold text-[20px] mt-8">
+              Rejoignez le club
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: sticky photo -->
+        <div class="flex-1 md:sticky md:top-[120px]">
+          <Image
+            src={quiSommesNousImg}
+            alt="L'equipe Neopro"
+            class="w-full max-w-[548px] rounded-[20px] object-cover"
+            loading="eager"
+            widths={[548, 1096]}
+            sizes="(max-width: 768px) 100vw, 548px"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finance par vos partenaires -->
+  <section class="py-24 px-5">
+    <div class="max-w-[800px] mx-auto">
+      <div class="bg-neo-green/40 rounded-[20px] p-12 text-center">
+        <SectionHeading
+          title="Finance par vos"
+          italicWord="partenaires"
+        />
+        <p class="text-neo-gray text-[16px] mb-8 mt-4">
+          Notre solution a pour but d'etre financee par vos partenaires. Pour cela,
+          nous vous avons prepare un document explicatif pret a leur etre partage.
+        </p>
+        <Button variant="black">
+          Telecharger le document
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+</BaseLayout>

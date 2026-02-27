@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+  fullHeight?: boolean;
+}
+
+const { title, subtitle, imageSrc, imageAlt, fullHeight = false } = Astro.props;
+---
+
+<section class:list={[
+  'relative flex items-center justify-center overflow-hidden',
+  fullHeight ? 'h-screen min-h-[700px]' : 'h-[70vh] min-h-[500px]',
+]}>
+  <Image
+    src={imageSrc}
+    alt={imageAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+  <div class="relative z-10 text-center text-white px-5 max-w-[900px]">
+    {subtitle && (
+      <p class="text-[16px] font-medium tracking-wider uppercase mb-4">{subtitle}</p>
+    )}
+    <h1 class="text-[48px] md:text-[70px] font-bold leading-[1.1]">
+      <Fragment set:html={title} />
+    </h1>
+    <slot />
+  </div>
+</section>
