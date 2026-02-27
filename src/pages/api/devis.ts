@@ -36,9 +36,9 @@ export const POST: APIRoute = async ({ request }) => {
 
   const { nom, prenom, email, club, formule, wantsVideo, contentType, teamCount, total } = body;
 
-  if (!nom || !prenom || !email || !formule) {
+  if (!email || !formule) {
     return new Response(
-      JSON.stringify({ error: 'Champs requis manquants (nom, prenom, email, formule).' }),
+      JSON.stringify({ error: 'Champs requis manquants (email, formule).' }),
       { status: 400, headers: { 'Content-Type': 'application/json' } },
     );
   }
@@ -113,7 +113,7 @@ export const POST: APIRoute = async ({ request }) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #2f3935; padding: 30px; border-radius: 12px 12px 0 0;">
             <h1 style="color: #81e3bc; margin: 0; font-size: 24px;">Votre devis Neopro</h1>
-            <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">Merci ${prenom} !</p>
+            <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">${prenom ? `Merci ${prenom} !` : 'Merci !'}</p>
           </div>
           <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
             <p style="color: #4a5565; line-height: 1.6; margin-bottom: 20px;">
@@ -137,7 +137,7 @@ export const POST: APIRoute = async ({ request }) => {
       from: 'Neopro <noreply@neopro-communication.fr>',
       to: contactEmail,
       replyTo: email,
-      subject: `Nouveau devis — ${prenom} ${nom} (${formuleName})`,
+      subject: `Nouveau devis — ${nom && prenom ? `${prenom} ${nom}` : email} (${formuleName})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #2f3935; padding: 30px; border-radius: 12px 12px 0 0;">
@@ -147,24 +147,22 @@ export const POST: APIRoute = async ({ request }) => {
           <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
             <h3 style="color: #101828; margin: 0 0 16px;">Coordonnees</h3>
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
-              <tr>
+              ${nom ? `<tr>
                 <td style="padding: 6px 0; color: #6b7280; width: 120px;">Nom</td>
                 <td style="padding: 6px 0; font-weight: bold;">${nom}</td>
-              </tr>
-              <tr>
+              </tr>` : ''}
+              ${prenom ? `<tr>
                 <td style="padding: 6px 0; color: #6b7280;">Prenom</td>
                 <td style="padding: 6px 0; font-weight: bold;">${prenom}</td>
-              </tr>
+              </tr>` : ''}
               <tr>
                 <td style="padding: 6px 0; color: #6b7280;">Email</td>
                 <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #51b28b;">${email}</a></td>
               </tr>
-              ${club ? `
-              <tr>
+              ${club ? `<tr>
                 <td style="padding: 6px 0; color: #6b7280;">Club</td>
                 <td style="padding: 6px 0; font-weight: bold;">${club}</td>
-              </tr>
-              ` : ''}
+              </tr>` : ''}
             </table>
             <h3 style="color: #101828; margin: 0 0 16px;">Recapitulatif</h3>
             ${recapHtml}

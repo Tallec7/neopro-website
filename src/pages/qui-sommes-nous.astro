@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
-import SectionHeading from '@/components/SectionHeading.astro';
 import ContactForm from '@/components/ContactForm.tsx';
 import { Image } from 'astro:assets';
 
@@ -16,26 +15,33 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <!-- Hero AMBITION -->
-  <section class="pt-32 pb-24 px-5 bg-neo-dark-bg overflow-hidden">
-    <div class="max-w-[1200px] mx-auto">
-      <div class="flex flex-col md:flex-row gap-12 items-start">
-        <!-- Left: text -->
-        <div class="flex-1">
-          <!-- AMBITION repeated -->
+  <section class="bg-neo-dark-bg overflow-hidden">
+    <div class="flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-start px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+      <!-- Left: AMBITION + text -->
+      <div class="flex flex-col gap-[60px] items-start">
+        <!-- AMBITION repeated with overlay -->
+        <div class="relative">
           <div
-            class="text-[80px] md:text-[138px] font-[900] leading-[0.9] text-neo-green-dark select-none mb-8"
+            class="text-[48px] md:text-[80px] lg:text-[138px] font-[900] leading-[1] text-[#51b28b] select-none"
             aria-hidden="true"
           >
             <p>AMBITION</p>
             <p>AMBITION</p>
+            <p>AMBITI</p>
+            <p>AMBITION</p>
             <p>AMBITION</p>
           </div>
-          <h1 class="text-[40px] md:text-[60px] leading-[1] mb-8">
+          <h1 class="absolute left-[40%] top-[247px] text-[28px] md:text-[40px] lg:text-[60px] leading-[1.1] whitespace-nowrap">
             <span class="font-playfair italic text-white">
               Affichez<br />votre
             </span>
           </h1>
-          <div class="text-white/80 text-[16px] space-y-4 max-w-[550px]">
+        </div>
+
+        <!-- Text block -->
+        <div class="max-w-[712px]">
+          <h2 class="text-white text-[48px] font-bold mb-[20px]">Qui sommes-nous ?</h2>
+          <div class="text-white text-[18px] space-y-4">
             <p>
               Neopro est ne d'un constat simple, observe directement sur le terrain :
               l'experience "match" du sport amateur a peu evolue ces trente dernieres annees.
@@ -44,7 +50,7 @@ const description =
               des annonces micro et des partenariats peu valorises. Pourtant, ils rassemblent chaque
               semaine des milliers de spectateurs et font vivre le coeur du sport francais.
             </p>
-            <p class="font-bold text-white">
+            <p>
               Notre ambition est claire : professionnaliser le sport amateur pour perenniser son modele
               economique.
             </p>
@@ -63,39 +69,40 @@ const description =
               emerger une communaute de Clubs Neopro : des clubs qui structurent leur developpement,
               modernisent leur image et affichent leur ambition.
             </p>
-            <p class="text-neo-green font-bold text-[20px] mt-8">
-              Rejoignez le club
+            <p>
+              Rejoignez le club &#x1F49A;
             </p>
           </div>
         </div>
+      </div>
 
-        <!-- Right: sticky photo -->
-        <div class="flex-1 md:sticky md:top-[120px]">
-          <Image
-            src={quiSommesNousImg}
-            alt="L'equipe Neopro"
-            class="w-full max-w-[548px] rounded-[20px] object-cover"
-            loading="eager"
-            widths={[548, 1096]}
-            sizes="(max-width: 768px) 100vw, 548px"
-          />
-        </div>
+      <!-- Right: sticky photo -->
+      <div class="flex items-center pb-[40px] lg:pb-[80px] pt-[30px] lg:pt-[60px] lg:sticky lg:top-0">
+        <Image
+          src={quiSommesNousImg}
+          alt="L'equipe Neopro"
+          class="w-full max-w-[548px] aspect-[548/685] rounded-[20px] object-cover"
+          loading="eager"
+          widths={[548, 1096]}
+          sizes="(max-width: 768px) 100vw, 548px"
+        />
       </div>
     </div>
   </section>
 
   <!-- Finance par vos partenaires -->
-  <section class="py-24 px-5">
-    <div class="max-w-[800px] mx-auto">
-      <div class="bg-neo-green/40 rounded-[20px] p-12 text-center">
-        <SectionHeading
-          title="Finance par vos"
-          italicWord="partenaires"
-        />
-        <p class="text-neo-gray text-[16px] mb-8 mt-4">
-          Notre solution a pour but d'etre financee par vos partenaires. Pour cela,
-          nous vous avons prepare un document explicatif pret a leur etre partage.
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between max-w-[1320px]">
+      <div class="max-w-[832px] flex flex-col gap-[30px]">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
+          Finance par vos partenaires
+        </h2>
+        <p class="text-[#4a5565] text-[18px]">
+          Notre solution a pour but d'etre financee par vos partenaires.<br />
+          Pour cela, nous vous avons prepare un document explicatif pret a leur etre partage.
         </p>
+      </div>
+      <div class="shrink-0">
         <Button variant="black">
           Telecharger le document
         </Button>

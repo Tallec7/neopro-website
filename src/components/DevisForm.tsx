@@ -6,26 +6,94 @@ type ContentType = 'shooting' | 'photos' | null;
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const formules = [
-  { id: 'standard' as const, name: 'Standard', price: 1500 },
-  { id: 'autonomie' as const, name: 'Autonomie', price: 2100 },
-  { id: 'premium' as const, name: 'Premium', price: 3000 },
+  {
+    id: 'standard' as const,
+    name: 'Standard',
+    price: 1500,
+    priceAnnual: '1 500',
+    priceMonthly: '190',
+    features: [
+      'Mise a jour de videos',
+      'Support 72h',
+      '1 seule boucle par defaut',
+      'Sponsors illimites',
+      'Rotation aleatoire des partenaires',
+      'Rapport de diffusion basique',
+    ],
+  },
+  {
+    id: 'autonomie' as const,
+    name: 'Autonomie',
+    price: 2100,
+    priceAnnual: '2 100',
+    priceMonthly: '250',
+    features: [
+      'Acces admin club (pour ajouter des visuels/videos de votre cote)',
+      'Mise a jour de videos',
+      'Support 48h',
+      '2 boucles par defaut (ex : break / match)',
+      'Sponsors illimites',
+      'Rotation aleatoire des partenaires',
+      'Rapport de diffusion basique',
+    ],
+  },
+  {
+    id: 'premium' as const,
+    name: 'Premium',
+    price: 3000,
+    priceAnnual: '3 000',
+    priceMonthly: '350',
+    features: [
+      'Acces admin club',
+      'Mise a jour de videos',
+      'Support 24h',
+      'Nombre de boucles par defaut illimite',
+      'Integration score',
+      'Sponsors illimites',
+      'Rotation controlee des partenaires',
+      'Rapport de diffusion premium',
+    ],
+  },
+];
+
+const videoOptions = [
+  {
+    id: 'photos' as const,
+    name: 'Sans shooting',
+    price: 500,
+    priceLabel: '500',
+    priceExtra: 250,
+    priceExtraLabel: '250',
+    description: "On integre vos photos a nos templates d'annonce de joueurs.",
+    features: [
+      'Package Classique',
+      'Videos Annonce de joueurs (avec photo uniquement)',
+    ],
+  },
+  {
+    id: 'shooting' as const,
+    name: 'Avec shooting',
+    price: 1000,
+    priceLabel: '1 000',
+    priceExtra: 500,
+    priceExtraLabel: '500',
+    description: 'On shoote vos joueurs et on les integre a nos templates.',
+    features: [
+      'Package Classique',
+      'Videos Annonce de joueurs (avec video et photo)',
+      "1 shooting video et photo d'1h par equipe",
+      'Toutes les photos et videos disponibles en HD a dispo',
+    ],
+  },
 ];
 
 export default function DevisForm() {
-  const [step, setStep] = useState(1);
   const [formule, setFormule] = useState<Formule>(null);
   const [wantsVideo, setWantsVideo] = useState<VideoChoice>(null);
   const [contentType, setContentType] = useState<ContentType>(null);
   const [teamCount, setTeamCount] = useState<number | null>(null);
+  const [email, setEmail] = useState('');
   const [showQuote, setShowQuote] = useState(false);
-
-  // Infos contact (étape finale)
-  const [contactInfo, setContactInfo] = useState({
-    nom: '',
-    prenom: '',
-    email: '',
-    club: '',
-  });
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
 
   useEffect(() => {
@@ -40,60 +108,34 @@ export default function DevisForm() {
     if (!formule) return 0;
     const formuleObj = formules.find((f) => f.id === formule);
     let total = formuleObj?.price || 0;
-
     if (wantsVideo === 'oui' && contentType && teamCount) {
-      if (contentType === 'shooting') {
-        total += 1000 + (teamCount - 1) * 500;
-      } else {
-        total += 500 + (teamCount - 1) * 250;
+      const opt = videoOptions.find((v) => v.id === contentType);
+      if (opt) {
+        total += opt.price + (teamCount - 1) * opt.priceExtra;
       }
     }
-
     return total;
   };
 
-  const canProceed = () => {
-    switch (step) {
-      case 1: return formule !== null;
-      case 2: return wantsVideo !== null;
-      case 3: return contentType !== null;
-      case 4: return teamCount !== null;
-      default: return false;
-    }
+  const canSubmit = () => {
+    if (!formule || !email.trim()) return false;
+    if (wantsVideo === null) return false;
+    if (wantsVideo === 'oui' && (!contentType || !teamCount)) return false;
+    return true;
   };
 
-  const totalSteps = wantsVideo === 'oui' ? 4 : 2;
-
-  const handleNext = () => {
-    if (step === totalSteps) {
-      setShowQuote(true);
-    } else if (wantsVideo === 'non' && step === 2) {
-      setShowQuote(true);
-    } else {
-      setStep((prev) => prev + 1);
-    }
+  const handleShowQuote = () => {
+    if (canSubmit()) setShowQuote(true);
   };
 
-  const handleBack = () => {
-    if (showQuote) {
-      setShowQuote(false);
-      if (wantsVideo === 'non') setStep(2);
-      else setStep(totalSteps);
-    } else if (step > 1) {
-      setStep((prev) => prev - 1);
-    }
-  };
-
-  const handleSubmitDevis = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmitDevis = async () => {
     setSubmitStatus('sending');
-
     try {
       const res = await fetch('/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...contactInfo,
+          email,
           formule,
           wantsVideo,
           contentType,
@@ -101,7 +143,6 @@ export default function DevisForm() {
           total: calculatePrice(),
         }),
       });
-
       if (res.ok) {
         setSubmitStatus('success');
       } else {
@@ -112,21 +153,21 @@ export default function DevisForm() {
     }
   };
 
-  const selectionClass = (selected: boolean) =>
-    `text-left p-8 md:p-10 rounded-[20px] border-2 transition-colors cursor-pointer min-h-[100px] ${
+  const cardClass = (selected: boolean) =>
+    `text-left p-[30px] rounded-[20px] border-2 transition-colors cursor-pointer ${
       selected
         ? 'border-[#81e3bc] bg-[#81e3bc]/5'
-        : 'border-gray-200 bg-white hover:border-gray-300'
+        : 'border-[#d9d9d9] bg-white hover:border-gray-300'
     }`;
 
-  const inputClasses =
-    'w-full bg-white border border-gray-200 rounded-[10px] px-5 py-3 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors';
+  const selectedBorder = (active: boolean) =>
+    active ? 'border-[#81e3bc] bg-[#81e3bc]/5' : 'border-[#d9d9d9] bg-white hover:border-gray-300';
 
-  // Quote view (récap)
+  // ── Quote view ─────────────────────────────────────────────────
   if (showQuote) {
     if (submitStatus === 'success') {
       return (
-        <section className="min-h-screen pt-32 pb-20 px-5 bg-[#f8f9fa]">
+        <section className="min-h-screen pt-32 pb-20 px-5">
           <div className="max-w-[700px] mx-auto text-center">
             <div className="bg-[#81e3bc]/20 border border-[#81e3bc] rounded-[20px] p-12">
               <p className="text-[#101828] text-[28px] font-bold mb-4">Devis envoye !</p>
@@ -145,8 +186,11 @@ export default function DevisForm() {
       );
     }
 
+    const selectedFormule = formules.find((f) => f.id === formule);
+    const selectedVideo = videoOptions.find((v) => v.id === contentType);
+
     return (
-      <section className="min-h-screen pt-32 pb-20 px-5 bg-[#f8f9fa]">
+      <section className="min-h-screen pt-32 pb-20 px-5">
         <div className="max-w-[700px] mx-auto">
           <h1 className="text-[32px] md:text-[48px] font-bold mb-2">
             <span className="font-['Playfair_Display'] italic">Votre</span> devis
@@ -155,17 +199,16 @@ export default function DevisForm() {
           <div className="bg-[#2f3935] rounded-[20px] p-8 mt-8 text-white">
             <div className="flex justify-between py-3 border-b border-white/10">
               <span className="text-white/70">Formule</span>
-              <span className="font-bold capitalize">
-                {formule} — {formules.find((f) => f.id === formule)?.price} EUR
+              <span className="font-bold">
+                {selectedFormule?.name} — {selectedFormule?.priceAnnual} EUR
               </span>
             </div>
-            {wantsVideo === 'oui' && (
+            {wantsVideo === 'oui' && selectedVideo && (
               <>
                 <div className="flex justify-between py-3 border-b border-white/10">
                   <span className="text-white/70">Production videos</span>
                   <span className="font-bold">
-                    {contentType === 'shooting' ? 'Avec shooting' : 'Sans shooting'} —{' '}
-                    {contentType === 'shooting' ? '1 000' : '500'} EUR
+                    {selectedVideo.name} — {selectedVideo.priceLabel} EUR
                   </span>
                 </div>
                 {teamCount && teamCount > 1 && (
@@ -174,8 +217,7 @@ export default function DevisForm() {
                       Equipes supplementaires ({teamCount - 1})
                     </span>
                     <span className="font-bold">
-                      +{contentType === 'shooting' ? (teamCount - 1) * 500 : (teamCount - 1) * 250}{' '}
-                      EUR
+                      +{(teamCount - 1) * selectedVideo.priceExtra} EUR
                     </span>
                   </div>
                 )}
@@ -193,114 +235,131 @@ export default function DevisForm() {
             </p>
           </div>
 
-          {/* Formulaire contact */}
-          <form className="mt-8 flex flex-col gap-4" onSubmit={handleSubmitDevis}>
-            <h3 className="text-[20px] font-bold">Vos coordonnees</h3>
-            <div className="flex gap-4">
-              <input
-                type="text"
-                placeholder="Nom"
-                required
-                value={contactInfo.nom}
-                onChange={(e) => setContactInfo((p) => ({ ...p, nom: e.target.value }))}
-                className={inputClasses}
-              />
-              <input
-                type="text"
-                placeholder="Prenom"
-                required
-                value={contactInfo.prenom}
-                onChange={(e) => setContactInfo((p) => ({ ...p, prenom: e.target.value }))}
-                className={inputClasses}
-              />
-            </div>
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={contactInfo.email}
-              onChange={(e) => setContactInfo((p) => ({ ...p, email: e.target.value }))}
-              className={inputClasses}
-            />
-            <input
-              type="text"
-              placeholder="Nom du club"
-              value={contactInfo.club}
-              onChange={(e) => setContactInfo((p) => ({ ...p, club: e.target.value }))}
-              className={inputClasses}
-            />
-
-            <div className="flex justify-between mt-6">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="text-[#4a5565] font-medium hover:text-[#101828] transition-colors cursor-pointer"
-              >
-                &#8592; Retour
-              </button>
-              <button
-                type="submit"
-                disabled={submitStatus === 'sending'}
-                className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] transition-colors ${
-                  submitStatus === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-                }`}
-              >
-                {submitStatus === 'sending' ? 'Envoi...' : 'Envoyer mon devis'}
-                <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <path d="M0.8 5.46667H10.1333M10.1333 5.46667L5.46667 0.8M10.1333 5.46667L5.46667 10.1333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </div>
-            {submitStatus === 'error' && (
-              <p className="text-red-500 text-[14px] text-center">
-                Une erreur est survenue. Veuillez reessayer.
-              </p>
-            )}
-          </form>
+          <div className="flex justify-between mt-10">
+            <button
+              type="button"
+              onClick={() => setShowQuote(false)}
+              className="text-[#4a5565] font-medium hover:text-[#101828] transition-colors cursor-pointer"
+            >
+              &#8592; Modifier
+            </button>
+            <button
+              onClick={handleSubmitDevis}
+              disabled={submitStatus === 'sending'}
+              className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] transition-colors ${
+                submitStatus === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              }`}
+            >
+              {submitStatus === 'sending' ? 'Envoi...' : 'Envoyer mon devis'}
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path d="M0.8 5.46667H10.1333M10.1333 5.46667L5.46667 0.8M10.1333 5.46667L5.46667 10.1333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+          {submitStatus === 'error' && (
+            <p className="text-red-500 text-[14px] text-center mt-4">
+              Une erreur est survenue. Veuillez reessayer.
+            </p>
+          )}
         </div>
       </section>
     );
   }
 
-  // Steps view
+  // ── Main form (all sections visible) ───────────────────────────
   return (
-    <section className="min-h-screen pt-32 pb-20 px-5 bg-[#f8f9fa]">
-      <div className="max-w-[700px] mx-auto">
-        <h1 className="text-[32px] md:text-[60px] font-bold mb-2">
-          <span className="font-['Playfair_Display'] italic">Obtenez</span> votre devis
-        </h1>
-        <p className="text-[#4a5565] mb-12">
-          Repondez a quelques questions pour obtenir une estimation personnalisee
-        </p>
-
-        {/* Progress */}
-        <div className="flex gap-2 mb-12">
-          {Array.from({ length: totalSteps }).map((_, i) => (
-            <div
-              key={i}
-              className={`h-1 flex-1 rounded-full transition-colors ${
-                i < step ? 'bg-[#81e3bc]' : 'bg-gray-200'
-              }`}
-            />
-          ))}
+    <section className="min-h-screen pt-32 pb-20 px-5">
+      <div className="max-w-[1320px] mx-auto flex flex-col gap-[60px]">
+        {/* Title */}
+        <div>
+          <h1 className="text-[32px] md:text-[60px] font-bold mb-2">
+            <span className="font-['Playfair_Display'] italic">Obtenez</span> votre devis
+          </h1>
+          <p className="text-[#4a5565] text-[18px]">
+            Repondez a quelques questions pour obtenir une estimation personnalisee
+          </p>
         </div>
 
-        {/* Step 1: Formule */}
-        {step === 1 && (
-          <div>
-            <h2 className="text-[24px] md:text-[32px] font-bold mb-8">
-              Sur quelle formule voulez-vous partir ?
+        {/* Q1: Formule */}
+        <div className="flex flex-col gap-[30px]">
+          <h2 className="text-[28px] font-bold text-[#101828]">
+            Sur quelle formule voulez-vous partir ?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {formules.map((f) => (
+              <button key={f.id} onClick={() => setFormule(f.id)} className={cardClass(formule === f.id)}>
+                <div className="flex flex-col gap-5">
+                  <div className="flex gap-5 items-start">
+                    <h3 className="text-[28px] font-bold shrink-0">{f.name}</h3>
+                    <div className="flex-1 text-right">
+                      <p className="text-[20px] font-bold">{f.priceAnnual}EUR TTC/an</p>
+                      <p className="text-[14px] text-black/80">(ou {f.priceMonthly}EUR TTC/mois*)</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-[18px] font-bold mb-[5px]">Inclus :</p>
+                    <ul className="list-disc pl-6 flex flex-col gap-[3px]">
+                      {f.features.map((feat, i) => (
+                        <li key={i} className="text-[16px] text-black/80">{feat}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Q2: Video */}
+        <div className="flex flex-col gap-[30px]">
+          <h2 className="text-[28px] font-bold text-[#101828]">
+            Voulez-vous que l'on produise le package de videos ? (en option)
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <button onClick={() => setWantsVideo('oui')} className={cardClass(wantsVideo === 'oui')}>
+              <h3 className="text-[28px] font-bold">Oui</h3>
+            </button>
+            <button
+              onClick={() => { setWantsVideo('non'); setContentType(null); setTeamCount(null); }}
+              className={cardClass(wantsVideo === 'non')}
+            >
+              <h3 className="text-[28px] font-bold">Non</h3>
+            </button>
+          </div>
+        </div>
+
+        {/* Q3: Content type (shown when video = oui) */}
+        {wantsVideo === 'oui' && (
+          <div className="flex flex-col gap-[30px]">
+            <h2 className="text-[28px] font-bold text-[#101828]">
+              Avec quel contenu de joueurs voulez-vous que l'on produise votre package de videos ?
             </h2>
-            <div className="flex flex-col gap-4">
-              {formules.map((f) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {videoOptions.map((opt) => (
                 <button
-                  key={f.id}
-                  onClick={() => setFormule(f.id)}
-                  className={selectionClass(formule === f.id)}
+                  key={opt.id}
+                  onClick={() => setContentType(opt.id)}
+                  className={cardClass(contentType === opt.id)}
                 >
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-[20px] font-bold">{f.name}</h3>
-                    <span className="text-[24px] font-bold">{f.price} EUR</span>
+                  <div className="flex flex-col gap-5">
+                    <h3 className="text-[28px] font-bold">{opt.name}</h3>
+                    <div>
+                      <p className="text-[#51b28b] font-bold text-[18px]">
+                        {opt.priceLabel}EUR TTC/equipe
+                      </p>
+                      <p className="text-[13px] text-black/60 mt-1">
+                        ({opt.priceExtraLabel}EUR TTC/extra equipe)
+                      </p>
+                    </div>
+                    <p className="text-black/80 text-[15px]">{opt.description}</p>
+                    <div>
+                      <p className="text-[18px] font-bold mb-[5px]">Inclus :</p>
+                      <ul className="list-disc pl-6 flex flex-col gap-[3px]">
+                        {opt.features.map((feat, i) => (
+                          <li key={i} className="text-[16px] text-black/80">{feat}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </button>
               ))}
@@ -308,86 +367,53 @@ export default function DevisForm() {
           </div>
         )}
 
-        {/* Step 2: Video */}
-        {step === 2 && (
-          <div>
-            <h2 className="text-[24px] md:text-[32px] font-bold mb-8">
-              Voulez-vous que l'on produise le package de videos ? (en option)
-            </h2>
-            <div className="flex flex-col gap-4">
-              <button onClick={() => setWantsVideo('oui')} className={selectionClass(wantsVideo === 'oui')}>
-                <h3 className="text-[20px] font-bold">Oui</h3>
-              </button>
-              <button
-                onClick={() => { setWantsVideo('non'); setContentType(null); setTeamCount(null); }}
-                className={selectionClass(wantsVideo === 'non')}
-              >
-                <h3 className="text-[20px] font-bold">Non</h3>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Step 3: Content type */}
-        {step === 3 && (
-          <div>
-            <h2 className="text-[24px] md:text-[32px] font-bold mb-8">
-              Avec quel contenu de joueurs voulez-vous que l'on produise votre package de videos ?
-            </h2>
-            <div className="flex flex-col gap-4">
-              <button onClick={() => setContentType('shooting')} className={selectionClass(contentType === 'shooting')}>
-                <h3 className="text-[20px] font-bold">Shooting Neopro (photo + video)</h3>
-              </button>
-              <button onClick={() => setContentType('photos')} className={selectionClass(contentType === 'photos')}>
-                <h3 className="text-[20px] font-bold">Photos du club</h3>
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Step 4: Number of teams */}
-        {step === 4 && (
-          <div>
-            <h2 className="text-[24px] md:text-[32px] font-bold mb-8">
+        {/* Q4: Team count (shown when video = oui) */}
+        {wantsVideo === 'oui' && (
+          <div className="flex flex-col gap-[30px]">
+            <h2 className="text-[28px] font-bold text-[#101828]">
               Pour combien d'equipes voulez-vous produire ces videos ?
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {[1, 2, 3, 4].map((n) => (
                 <button
                   key={n}
                   onClick={() => setTeamCount(n)}
-                  className={`p-8 rounded-[20px] border-2 transition-colors cursor-pointer text-center ${
-                    teamCount === n ? 'border-[#81e3bc] bg-[#81e3bc]/5' : 'border-gray-200 bg-white hover:border-gray-300'
-                  }`}
+                  className={`rounded-[20px] border-2 transition-colors cursor-pointer flex flex-col items-center justify-center h-[100px] ${selectedBorder(teamCount === n)}`}
                 >
-                  <span className="text-[24px] font-bold">{n}</span>
-                  <p className="text-[14px] text-[#4a5565]">equipe{n > 1 ? 's' : ''}</p>
+                  <span className="text-[28px] font-bold">{n}</span>
+                  <p className="text-[14px] text-black/60">equipe{n > 1 ? 's' : ''}</p>
                 </button>
               ))}
             </div>
           </div>
         )}
 
-        {/* Navigation */}
-        <div className="flex justify-between mt-10">
-          {step > 1 ? (
-            <button
-              onClick={handleBack}
-              className="text-[#4a5565] font-medium hover:text-[#101828] transition-colors cursor-pointer"
-            >
-              &#8592; Retour
-            </button>
-          ) : (
-            <div />
-          )}
+        {/* Email */}
+        <div className="flex flex-col gap-[30px]">
+          <h2 className="text-[28px] font-bold text-[#101828]">
+            Renseignez votre adresse e-mail pour voir et recevoir votre devis
+          </h2>
+          <div>
+            <label className="text-[16px] font-medium text-black block mb-2">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full max-w-[656px] h-[50px] bg-white border border-[#d1d5dc] rounded-[10px] px-5 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors"
+            />
+          </div>
+        </div>
+
+        {/* Submit */}
+        <div>
           <button
-            onClick={handleNext}
-            disabled={!canProceed()}
-            className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] transition-colors ${
-              !canProceed() ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+            onClick={handleShowQuote}
+            disabled={!canSubmit()}
+            className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#81e3bc] text-black hover:bg-[#6dd4a8] transition-colors ${
+              !canSubmit() ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
             }`}
           >
-            {step === totalSteps || (wantsVideo === 'non' && step === 2) ? 'Voir mon devis' : 'Suivant'}
+            Voir le devis
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
               <path d="M0.8 5.46667H10.1333M10.1333 5.46667L5.46667 0.8M10.1333 5.46667L5.46667 10.1333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
