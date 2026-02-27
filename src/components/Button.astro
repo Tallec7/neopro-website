@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'green' | 'black' | 'yellow' | 'pink' | 'outline';
+  variant?: 'green' | 'black' | 'white' | 'yellow' | 'pink' | 'outline';
   href?: string;
   arrow?: boolean;
   class?: string;
@@ -20,6 +20,7 @@ const {
 const variants: Record<string, string> = {
   green: 'bg-neo-green text-neo-dark hover:bg-neo-green-dark',
   black: 'bg-neo-dark text-white hover:bg-[#1d2939]',
+  white: 'bg-white text-black hover:bg-gray-100',
   yellow: 'bg-neo-yellow text-neo-dark hover:bg-[#ffe566]',
   pink: 'bg-neo-pink text-neo-dark hover:bg-[#f08db5]',
   outline: 'border border-neo-dark text-neo-dark hover:bg-neo-dark hover:text-white',
