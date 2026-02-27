@@ -68,7 +68,13 @@ try {
     if (p?.length) plans = p;
     if (v?.length) videoPackages = v;
     if (t?.length) testimonials = t.map((item: any) => ({ quote: item.quote, clubName: item.clubName }));
-    if (c?.length) clubs = c.map((item: any) => ({ name: item.name, logoUrl: item.logoUrl }));
+    if (c?.length) {
+      // Ne garder que les clubs ayant une image uploadée dans Sanity
+      const withLogos = c.filter((item: any) => item.logoUrl);
+      if (withLogos.length) {
+        clubs = withLogos.map((item: any) => ({ name: item.name, logoUrl: item.logoUrl }));
+      }
+    }
   }
 } catch {
   // Sanity non configuré

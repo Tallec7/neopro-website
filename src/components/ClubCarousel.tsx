@@ -12,9 +12,12 @@ interface Props {
 export default function ClubCarousel({ clubs }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Filtrer les clubs sans logo (protection défensive)
+  const validClubs = clubs.filter((c) => c.logoUrl);
+
   useEffect(() => {
     const el = scrollRef.current;
-    if (!el) return;
+    if (!el || validClubs.length === 0) return;
 
     let animId: number;
     let pos = 0;
@@ -29,7 +32,9 @@ export default function ClubCarousel({ clubs }: Props) {
 
     animId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animId);
-  }, []);
+  }, [validClubs.length]);
+
+  if (validClubs.length === 0) return null;
 
   return (
     <section className="py-16 overflow-hidden bg-white">
@@ -42,7 +47,7 @@ export default function ClubCarousel({ clubs }: Props) {
         className="flex gap-12 items-center overflow-hidden whitespace-nowrap"
         style={{ scrollBehavior: 'auto' }}
       >
-        {[...clubs, ...clubs].map((club, i) => (
+        {[...validClubs, ...validClubs].map((club, i) => (
           <img
             key={i}
             src={club.logoUrl}

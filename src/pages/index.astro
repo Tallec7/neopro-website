@@ -30,10 +30,14 @@ try {
   if (sanityClient) {
     const sanityClubs = await sanityClient.fetch(clubLogosQuery);
     if (sanityClubs?.length) {
-      clubs = sanityClubs.map((c: any) => ({
-        name: c.name,
-        logoUrl: c.logoUrl,
-      }));
+      // Ne garder que les clubs ayant une image uploadée dans Sanity
+      const withLogos = sanityClubs.filter((c: any) => c.logoUrl);
+      if (withLogos.length) {
+        clubs = withLogos.map((c: any) => ({
+          name: c.name,
+          logoUrl: c.logoUrl,
+        }));
+      }
     }
   }
 } catch {
