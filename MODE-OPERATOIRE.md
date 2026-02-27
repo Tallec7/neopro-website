@@ -20,8 +20,9 @@ Tu (Figma/contenu)
 |-------|------|-----|
 | **Sanity Studio** | Gerer le contenu (textes, prix, logos, temoignages) | https://neopro.sanity.studio |
 | **GitHub** | Stocker le code source | https://github.com/Tallec7/neopro-website |
-| **Vercel** | Heberger le site en ligne | https://neopro-website.vercel.app |
+| **Vercel** | Heberger le site en ligne | https://www.neopro-communication.fr |
 | **Dev local** | Developper + tester avant de deployer | http://localhost:4321 |
+| **Figma (reference)** | Maquettes de reference (export dans `Neopro2/`) | Dossier local du projet |
 
 ---
 
@@ -57,6 +58,11 @@ Tu (Figma/contenu)
 ## Scenario 2 — Integrer un export Figma (nouveau design)
 
 C'est le cas le plus courant quand tu recois des maquettes.
+
+> **Le Figma est la reference absolue.** L'export Figma Make est stocke dans le dossier
+> `Neopro2/` a la racine du projet. Ce dossier contient du React/Vite (non deployable tel quel)
+> mais sert de **reference visuelle** : layout, textes, couleurs, espacements.
+> On adapte ensuite le code Astro dans `src/` pour coller au Figma.
 
 ### Etape 1 : Preparer les images
 
@@ -116,7 +122,7 @@ Compare la maquette Figma avec le site actuel. Ca se classe en 3 categories :
    | `src/components/Navbar.astro` | Barre de navigation |
    | `src/components/Footer.astro` | Pied de page |
    | `src/components/Hero.astro` | Composant hero reutilisable |
-   | `src/components/Button.astro` | Boutons (5 variantes) |
+   | `src/components/Button.astro` | Boutons (6 variantes : green, black, white, yellow, pink, outline) |
    | `src/components/ContactForm.tsx` | Formulaire de contact (React) |
    | `src/components/DevisForm.tsx` | Formulaire devis multi-etapes (React) |
    | `src/components/ClubCarousel.tsx` | Carrousel logos clubs (React) |
@@ -256,6 +262,41 @@ Exemple : tu veux ajouter une section "FAQ" gerable depuis Sanity.
 
 ---
 
+## Scenario 5 — Utiliser Claude pour aligner le site sur Figma
+
+C'est la methode la plus simple quand tu as un export Figma Make.
+
+1. **Exporte depuis Figma** via le plugin "Figma to Code (Make)" → tu obtiens un dossier React/Vite
+2. **Place le dossier** dans `Neopro2/` a la racine du projet (remplace l'ancien si besoin)
+3. **Ouvre Claude Code** dans le terminal du projet :
+   ```bash
+   cd /Users/gletallec/Documents/NEOPRO/neopro-astro
+   claude
+   ```
+4. **Demande a Claude** de comparer et aligner :
+   > "Compare ma page d'accueil (`src/pages/index.astro`) avec le Figma (`Neopro2/src/imports/PageDaccueil.tsx`) et aligne le site sur le Figma"
+5. Claude va :
+   - Lire les deux fichiers
+   - Identifier les differences
+   - Modifier le code Astro
+   - Lancer `npm run build` pour verifier
+   - Committer et pusher → Vercel deploie automatiquement
+
+> **Important :** Le dossier `Neopro2/` n'est **jamais deploye**. C'est juste une reference.
+> Le vrai site vient uniquement des fichiers dans `src/`.
+
+### Correspondance pages Figma ↔ Astro
+
+| Fichier Figma (Neopro2/src/imports/) | Page Astro (src/pages/) |
+|--------------------------------------|------------------------|
+| `PageDaccueil.tsx` | `index.astro` |
+| `LaSolution.tsx` | `solution.astro` |
+| `LesOffres.tsx` | `offres.astro` |
+| `ObtenirDevis.tsx` | `devis.astro` |
+| `QuiSommesNous.tsx` | `qui-sommes-nous.astro` |
+
+---
+
 ## Workflow quotidien resume
 
 ```
@@ -336,10 +377,10 @@ neopro-astro/
 │   │   ├── Navbar.astro         Navigation (vanilla JS)
 │   │   ├── Footer.astro         Pied de page
 │   │   ├── Hero.astro           Section hero
-│   │   ├── Button.astro         Boutons (5 variantes)
+│   │   ├── Button.astro         Boutons (6 variantes : green/black/white/yellow/pink/outline)
 │   │   ├── ContactForm.tsx      Formulaire contact (React)
 │   │   ├── DevisForm.tsx        Formulaire devis (React)
-│   │   ├── ClubCarousel.tsx     Carrousel logos (React)
+│   │   ├── ClubCarousel.tsx     Carrousel logos hexagones colores (React)
 │   │   └── TestimonialCarousel.tsx  Temoignages (React)
 │   ├── layouts/
 │   │   └── BaseLayout.astro     Layout global (SEO, meta, fonts)
@@ -354,6 +395,7 @@ neopro-astro/
 │   ├── schemaTypes/             Schemas du contenu
 │   ├── seed.mjs                 Script pour remplir le contenu initial
 │   └── sanity.config.ts         Config Studio
+├── Neopro2/               ← Export Figma Make (reference visuelle, NE PAS DEPLOYER)
 ├── .env                    ← Variables d'environnement (NE PAS COMMITTER)
 └── tailwind.config.mjs     ← Design tokens (couleurs, fonts)
 ```
@@ -369,10 +411,19 @@ neopro-astro/
 → Vercel Dashboard → Deployments → "..." sur le dernier → Redeploy.
 
 **Q: Je recois un export Figma, par ou je commence ?**
-→ Etape 1 : Exporter les images en WebP. Etape 2 : `npm run dev`. Etape 3 : Modifier les fichiers .astro correspondants. Etape 4 : `npm run build`. Etape 5 : `git push`.
+→ Le plus simple : place l'export dans `Neopro2/`, ouvre Claude Code, et demande-lui de comparer et aligner (voir Scenario 5). Sinon manuellement : exporter les images en WebP, `npm run dev`, modifier les fichiers .astro, `npm run build`, `git push`.
 
 **Q: Comment ajouter une image de hero ?**
 → Place-la dans `src/assets/images/` en WebP (max 1920px large). Importe-la dans la page : `import monImage from '@/assets/images/mon-image.webp'`. Passe-la au composant Hero : `<Hero imageSrc={monImage} />`.
 
 **Q: Difference entre fichier .astro et .tsx ?**
 → `.astro` = HTML statique genere au build (0 JS envoye au navigateur). `.tsx` = React, utilise quand il faut de l'interactivite (formulaires, carrousels). On minimise le React pour la performance.
+
+**Q: Le site est a quelle adresse ?**
+→ Production : https://www.neopro-communication.fr (domaine personnalise). Preview Vercel : https://neopro-website.vercel.app
+
+**Q: Sanity gere quoi exactement ?**
+→ Sanity gere le **contenu modifiable** (textes des offres, logos des clubs, temoignages, etc.). Le **design/layout** (couleurs, espacements, structure des pages) vient du **code** dans `src/`. Les deux sont independants : changer le design dans le code ne touche pas le contenu Sanity, et vice versa.
+
+**Q: C'est quoi le dossier Neopro2/ ?**
+→ C'est l'export Figma Make. Il contient du React/Vite qu'on ne deploie **jamais**. C'est juste une **reference visuelle** pour savoir a quoi doit ressembler le site. Claude Code l'utilise pour comparer et aligner le vrai code (dans `src/`).
