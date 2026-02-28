@@ -41,17 +41,17 @@ try {
 if (!solutionPanels.length) {
   solutionPanels = [
     {
-      title: 'Valorisez vos partenaires',
+      title: 'Valorisez vos partenaires.',
       description:
         "Toute l'année, vos partenaires bénéficieront d'un support de communication pendant vos matchs pour partager leurs actualités. Ils peuvent mettre à jour leurs actualités d'une semaine à l'autre et obtenir des rapports de diffusion.",
     },
     {
-      title: 'Célébrez vos joueurs',
+      title: 'Célébrez vos joueurs.',
       description:
         "Vos joueurs aussi ont le droit de faire comme les pros. Nous proposons de venir filmer leurs célébrations en début d'année, ainsi que tout type de contenu (vidéo/photo) relatif à votre média day.",
     },
     {
-      title: 'Partagez vos actualités',
+      title: 'Partagez vos actualités.',
       description:
         "Assurez-vous que vos supporters ne passent pas à côté de vos prochains matchs, les soirées du club et vos produits à vendre sur votre boutique.",
     },
@@ -159,6 +159,15 @@ if (!colorPanels.length) {
   ];
 }
 
+// ── Helper : format panel title (Figma : italic 1er mot + black le reste) ─
+const formatPanelTitle = (title: string) => {
+  const spaceIdx = title.indexOf(' ');
+  if (spaceIdx === -1) return `<span class="font-bold">${title}</span>`;
+  const first = title.substring(0, spaceIdx);
+  const rest = title.substring(spaceIdx + 1);
+  return `<span class="font-playfair italic font-normal">${first}</span> <span class="font-black">${rest}</span>`;
+};
+
 // ── SEO ───────────────────────────────────────────────────────────
 const title = 'La solution de régie digitale';
 const description =
@@ -168,7 +177,8 @@ const description =
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <Hero
-    title={`La régie digitale de votre <span class="font-playfair italic text-neo-green">club</span>`}
+    title={`<span class="font-playfair italic font-normal">La régie de</span> votre club`}
+    subtitle="La solution"
     imageSrc={heroImg}
     imageAlt="La solution Neopro en action"
   />
@@ -176,6 +186,7 @@ const description =
   <!-- Panneaux solution sticky -->
   <section class="py-24 px-5">
     <div class="max-w-[1200px] mx-auto">
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">NEOPRO QU'EST-CE QUE C'EST ?</p>
       {solutionPanels.map((panel, i) => (
         <div
           class="sticky top-[120px] bg-white rounded-[20px] shadow-lg overflow-hidden mb-8"
@@ -183,7 +194,7 @@ const description =
         >
           <div class="flex flex-col md:flex-row gap-8 p-8 md:p-12">
             <div class="flex-1 flex flex-col justify-center">
-              <h3 class="text-[28px] md:text-[36px] font-bold mb-4">{panel.title}</h3>
+              <h3 class="text-[28px] md:text-[36px] lg:text-[48px] mb-4" set:html={formatPanelTitle(panel.title)} />
               <p class="text-neo-gray text-[16px]">{panel.description}</p>
             </div>
             <div class="flex-1">
