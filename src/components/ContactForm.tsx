@@ -44,17 +44,17 @@ export default function ContactForm() {
     <section className="bg-[#2f3935] py-20 px-5">
       <div className="max-w-[600px] mx-auto">
         <h2 className="text-white text-[40px] md:text-[48px] font-bold leading-tight mb-2">
-          Interesse ?{' '}
-          <span className="font-['Playfair_Display'] italic text-[#81e3bc]">Ecrivez-nous !</span>
+          Intéressé ?{' '}
+          <span className="font-['Playfair_Display'] italic text-[#81e3bc]">Écrivez-nous !</span>
         </h2>
         <p className="text-[#a0a8a3] mb-10 text-[16px]">
-          On peut organiser une demo ou se rencontrer...
+          On peut organiser une démo ou se rencontrer...
         </p>
 
         {status === 'success' ? (
           <div className="bg-[#81e3bc]/20 border border-[#81e3bc] rounded-[12px] p-6 text-center">
-            <p className="text-[#81e3bc] text-[18px] font-bold mb-2">Message envoye !</p>
-            <p className="text-white/70">Nous vous repondrons dans les plus brefs delais.</p>
+            <p className="text-[#81e3bc] text-[18px] font-bold mb-2">Message envoyé !</p>
+            <p className="text-white/70">Nous vous répondrons dans les plus brefs délais.</p>
           </div>
         ) : (
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>

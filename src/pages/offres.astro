@@ -91,11 +91,11 @@ if (!plans.length) {
       popular: false,
       buttonVariant: 'yellow',
       features: [
-        'Mise a jour de videos',
+        'Mise à jour de vidéos',
         'Support 72h',
-        '1 seule boucle par defaut',
-        'Sponsors illimites',
-        'Rotation aleatoire des partenaires',
+        '1 seule boucle par défaut',
+        'Sponsors illimités',
+        'Rotation aléatoire des partenaires',
         'Rapport de diffusion basique',
       ],
     },
@@ -107,12 +107,12 @@ if (!plans.length) {
       popular: true,
       buttonVariant: 'green',
       features: [
-        'Acces admin club (pour ajouter des visuels/videos de votre cote)',
-        'Mise a jour de videos',
+        'Accès admin club (pour ajouter des visuels/vidéos de votre côté)',
+        'Mise à jour de vidéos',
         'Support 48h',
-        '2 boucles par defaut (ex : break / match)',
-        'Sponsors illimites',
-        'Rotation aleatoire des partenaires',
+        '2 boucles par défaut (ex : break / match)',
+        'Sponsors illimités',
+        'Rotation aléatoire des partenaires',
         'Rapport de diffusion basique',
       ],
     },
@@ -124,13 +124,13 @@ if (!plans.length) {
       popular: false,
       buttonVariant: 'pink',
       features: [
-        'Acces admin club',
-        'Mise a jour de videos',
+        'Accès admin club',
+        'Mise à jour de vidéos',
         'Support 24h',
-        'Nombre de boucles par defaut illimite',
-        'Integration score',
-        'Sponsors illimites',
-        'Rotation controlee des partenaires',
+        'Nombre de boucles par défaut illimité',
+        'Intégration score',
+        'Sponsors illimités',
+        'Rotation contrôlée des partenaires',
         'Rapport de diffusion premium',
       ],
     },
@@ -143,37 +143,37 @@ if (!videoPackages.length) {
       name: 'Classique',
       price: null,
       priceExtra: null,
-      description: 'Inclus par defaut dans toutes les offres',
+      description: 'Inclus par défaut dans toutes les offres',
       popular: false,
       features: [
-        'Video Boucle partenaires',
-        'Video Message partenaire premium',
-        'Video Annonce message club',
-        'Video Annonce fait de jeu',
+        'Vidéo Boucle partenaires',
+        'Vidéo Message partenaire premium',
+        'Vidéo Annonce message club',
+        'Vidéo Annonce fait de jeu',
       ],
     },
     {
       name: 'Sans shooting',
       price: '500',
       priceExtra: '250',
-      description: "On integre vos photos a nos templates d'annonce de joueurs.",
+      description: "On intègre vos photos à nos templates d'annonce de joueurs.",
       popular: true,
       features: [
         'Package Classique',
-        'Videos Annonce de joueurs (avec photo uniquement)',
+        'Vidéos Annonce de joueurs (avec photo uniquement)',
       ],
     },
     {
       name: 'Avec shooting',
       price: '1 000',
       priceExtra: '500',
-      description: 'On shoote vos joueurs et on les integre a nos templates.',
+      description: 'On shoote vos joueurs et on les intègre à nos templates.',
       popular: false,
       features: [
         'Package Classique',
-        'Videos Annonce de joueurs (avec video et photo)',
-        "1 shooting video et photo d'1h par equipe",
-        'Toutes les photos et videos disponibles en HD a dispo',
+        'Vidéos Annonce de joueurs (avec vidéo et photo)',
+        "1 shooting vidéo et photo d'1h par équipe",
+        'Toutes les photos et vidéos disponibles en HD à dispo',
       ],
     },
   ];
@@ -181,10 +181,10 @@ if (!videoPackages.length) {
 
 if (!testimonials.length) {
   testimonials = [
-    { quote: "Le jour ou on a utilise Neopro pour la premiere fois, ca en a surpris plus d'un.", clubName: 'RACC Handball Nantes (NM3)' },
-    { quote: "Tous les joueurs attendaient que ca : voir leurs celebrations.", clubName: 'NANTES ATLANTIQUE RINK HOCKEY (D2)' },
-    { quote: "C'est vraiment instantane, c'est tres satisfaisant.", clubName: 'CORSAIRES DE NANTES (D1)' },
-    { quote: "C'est un outil qui nous facilite la vie, ca complete vraiment le speaker.", clubName: 'NANTES LOIRE FEMININ (NF3)' },
+    { quote: "Le jour où on a utilisé Neopro pour la première fois, ça en a surpris plus d'un.", clubName: 'RACC Handball Nantes (NM3)' },
+    { quote: "Tous les joueurs attendaient que ça : voir leurs célébrations.", clubName: 'NANTES ATLANTIQUE RINK HOCKEY (D2)' },
+    { quote: "C'est vraiment instantané, c'est très satisfaisant.", clubName: 'CORSAIRES DE NANTES (D1)' },
+    { quote: "C'est un outil qui nous facilite la vie, ça complète vraiment le speaker.", clubName: 'NANTES LOIRE FEMININ (NF3)' },
   ];
 }
 
@@ -209,13 +209,13 @@ const borderColorMap: Record<string, string> = {
 // ── SEO ───────────────────────────────────────────────────────────
 const title = 'Les offres';
 const description =
-  'Decouvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de regie digitale financables par vos partenaires.';
+  'Découvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de régie digitale finançables par vos partenaires.';
 ---
 
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <Hero
-    title={`Adaptees a vos <span class="font-playfair italic text-neo-green">besoins</span>`}
+    title={`Adaptées à vos <span class="font-playfair italic text-neo-green">besoins</span>`}
     subtitle="Les offres"
     imageSrc={heroImg}
     imageAlt="Les offres Neopro"
@@ -237,10 +237,10 @@ const description =
             <h3 class="text-[28px] font-bold mb-2">{offre.name}</h3>
             <div class="flex items-baseline gap-1 mb-1">
               <span class="text-[40px] font-bold">{offre.priceAnnual}</span>
-              <span class="text-[16px] text-neo-gray">EUR TTC/an</span>
+              <span class="text-[16px] text-neo-gray">€ TTC/an</span>
             </div>
             <p class="text-[14px] text-neo-gray mb-6">
-              (ou {offre.priceMonthly}EUR TTC/mois*)
+              (ou {offre.priceMonthly}€ TTC/mois*)
             </p>
             <p class="text-[14px] font-medium text-neo-dark mb-3">Inclus :</p>
             <ul class="flex flex-col gap-3 mb-8 flex-1">
@@ -267,9 +267,9 @@ const description =
   <section class="py-24 px-5">
     <div class="max-w-[1200px] mx-auto">
       <SectionHeading
-        title="Package videos"
+        title="Package vidéos"
         italicWord="en option"
-        subtitle="Nous vous proposons en option de produire les videos d'annonce de joueurs."
+        subtitle="Nous vous proposons en option de produire les vidéos d'annonce de joueurs."
       />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
         {videoPackages.map((pkg) => (
@@ -278,18 +278,18 @@ const description =
           }`}>
             {pkg.popular && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                Le plus apprecie
+                Le plus apprécié
               </span>
             )}
             <h3 class="text-[22px] font-bold">{pkg.name}</h3>
             {pkg.price ? (
               <div>
                 <p class="text-neo-green font-bold text-[18px]">
-                  {pkg.price}EUR TTC/equipe
+                  {pkg.price}€ TTC/équipe
                 </p>
                 {pkg.priceExtra && (
                   <p class="text-[13px] text-neo-gray mt-1">
-                    ({pkg.priceExtra}EUR TTC/extra equipe)
+                    ({pkg.priceExtra}€ TTC/extra équipe)
                   </p>
                 )}
               </div>
@@ -320,16 +320,16 @@ const description =
       <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-5 md:px-10 lg:px-[60px] py-10 md:py-[74px] flex flex-col md:flex-row items-center gap-8 justify-between">
         <div class="flex-1">
           <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-neo-dark mb-4">
-            Finance par vos <span class="font-playfair italic">partenaires</span>
+            Financé par vos <span class="font-playfair italic">partenaires</span>
           </h2>
           <p class="text-[18px] text-neo-gray">
-            Notre solution a pour but d'etre financee par vos partenaires. Pour cela,
-            nous vous avons prepare un document explicatif pret a leur etre partage.
+            Notre solution a pour but d'être financée par vos partenaires. Pour cela,
+            nous vous avons préparé un document explicatif prêt à leur être partagé.
           </p>
         </div>
         <div class="shrink-0">
           <Button variant="black">
-            Telecharger le document
+            Télécharger le document
           </Button>
         </div>
       </div>

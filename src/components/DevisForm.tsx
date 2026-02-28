@@ -13,11 +13,11 @@ const formules = [
     priceAnnual: '1 500',
     priceMonthly: '190',
     features: [
-      'Mise a jour de videos',
+      'Mise à jour de vidéos',
       'Support 72h',
-      '1 seule boucle par defaut',
-      'Sponsors illimites',
-      'Rotation aleatoire des partenaires',
+      '1 seule boucle par défaut',
+      'Sponsors illimités',
+      'Rotation aléatoire des partenaires',
       'Rapport de diffusion basique',
     ],
   },
@@ -28,12 +28,12 @@ const formules = [
     priceAnnual: '2 100',
     priceMonthly: '250',
     features: [
-      'Acces admin club (pour ajouter des visuels/videos de votre cote)',
-      'Mise a jour de videos',
+      'Accès admin club (pour ajouter des visuels/vidéos de votre côté)',
+      'Mise à jour de vidéos',
       'Support 48h',
-      '2 boucles par defaut (ex : break / match)',
-      'Sponsors illimites',
-      'Rotation aleatoire des partenaires',
+      '2 boucles par défaut (ex : break / match)',
+      'Sponsors illimités',
+      'Rotation aléatoire des partenaires',
       'Rapport de diffusion basique',
     ],
   },
@@ -44,13 +44,13 @@ const formules = [
     priceAnnual: '3 000',
     priceMonthly: '350',
     features: [
-      'Acces admin club',
-      'Mise a jour de videos',
+      'Accès admin club',
+      'Mise à jour de vidéos',
       'Support 24h',
-      'Nombre de boucles par defaut illimite',
-      'Integration score',
-      'Sponsors illimites',
-      'Rotation controlee des partenaires',
+      'Nombre de boucles par défaut illimité',
+      'Intégration score',
+      'Sponsors illimités',
+      'Rotation contrôlée des partenaires',
       'Rapport de diffusion premium',
     ],
   },
@@ -64,10 +64,10 @@ const videoOptions = [
     priceLabel: '500',
     priceExtra: 250,
     priceExtraLabel: '250',
-    description: "On integre vos photos a nos templates d'annonce de joueurs.",
+    description: "On intègre vos photos à nos templates d'annonce de joueurs.",
     features: [
       'Package Classique',
-      'Videos Annonce de joueurs (avec photo uniquement)',
+      'Vidéos Annonce de joueurs (avec photo uniquement)',
     ],
   },
   {
@@ -77,12 +77,12 @@ const videoOptions = [
     priceLabel: '1 000',
     priceExtra: 500,
     priceExtraLabel: '500',
-    description: 'On shoote vos joueurs et on les integre a nos templates.',
+    description: 'On shoote vos joueurs et on les intègre à nos templates.',
     features: [
       'Package Classique',
-      'Videos Annonce de joueurs (avec video et photo)',
-      "1 shooting video et photo d'1h par equipe",
-      'Toutes les photos et videos disponibles en HD a dispo',
+      'Vidéos Annonce de joueurs (avec vidéo et photo)',
+      "1 shooting vidéo et photo d'1h par équipe",
+      'Toutes les photos et vidéos disponibles en HD à dispo',
     ],
   },
 ];
@@ -170,15 +170,15 @@ export default function DevisForm() {
         <section className="min-h-screen pt-32 pb-20 px-5">
           <div className="max-w-[700px] mx-auto text-center">
             <div className="bg-[#81e3bc]/20 border border-[#81e3bc] rounded-[20px] p-12">
-              <p className="text-[#101828] text-[28px] font-bold mb-4">Devis envoye !</p>
+              <p className="text-[#101828] text-[28px] font-bold mb-4">Devis envoyé !</p>
               <p className="text-[#4a5565] text-[16px] mb-8">
-                Vous recevrez un recapitulatif par email. Notre equipe vous contactera dans les plus brefs delais.
+                Vous recevrez un récapitulatif par email. Notre équipe vous contactera dans les plus brefs délais.
               </p>
               <a
                 href="/"
                 className="inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#101828] text-white hover:bg-[#1d2939] transition-colors"
               >
-                Retour a l'accueil
+                Retour à l'accueil
               </a>
             </div>
           </div>
@@ -200,24 +200,24 @@ export default function DevisForm() {
             <div className="flex justify-between py-3 border-b border-white/10">
               <span className="text-white/70">Formule</span>
               <span className="font-bold">
-                {selectedFormule?.name} — {selectedFormule?.priceAnnual} EUR
+                {selectedFormule?.name} — {selectedFormule?.priceAnnual} €
               </span>
             </div>
             {wantsVideo === 'oui' && selectedVideo && (
               <>
                 <div className="flex justify-between py-3 border-b border-white/10">
-                  <span className="text-white/70">Production videos</span>
+                  <span className="text-white/70">Production vidéos</span>
                   <span className="font-bold">
-                    {selectedVideo.name} — {selectedVideo.priceLabel} EUR
+                    {selectedVideo.name} — {selectedVideo.priceLabel} €
                   </span>
                 </div>
                 {teamCount && teamCount > 1 && (
                   <div className="flex justify-between py-3 border-b border-white/10">
                     <span className="text-white/70">
-                      Equipes supplementaires ({teamCount - 1})
+                      Équipes supplémentaires ({teamCount - 1})
                     </span>
                     <span className="font-bold">
-                      +{(teamCount - 1) * selectedVideo.priceExtra} EUR
+                      +{(teamCount - 1) * selectedVideo.priceExtra} €
                     </span>
                   </div>
                 )}
@@ -225,13 +225,13 @@ export default function DevisForm() {
             )}
             <div className="flex justify-between py-4 pt-6">
               <span className="text-[20px] font-bold">Total TTC</span>
-              <span className="text-[28px] font-bold text-[#81e3bc]">{calculatePrice()} EUR</span>
+              <span className="text-[28px] font-bold text-[#81e3bc]">{calculatePrice()} €</span>
             </div>
           </div>
 
           <div className="bg-[#fff4a3] rounded-[12px] p-5 mt-6">
             <p className="text-[14px] text-[#101828]">
-              Ce devis n'est pas definitif. Quelqu'un de notre equipe vous contactera dans les plus brefs delais.
+              Ce devis n'est pas définitif. Quelqu'un de notre équipe vous contactera dans les plus brefs délais.
             </p>
           </div>
 
@@ -258,7 +258,7 @@ export default function DevisForm() {
           </div>
           {submitStatus === 'error' && (
             <p className="text-red-500 text-[14px] text-center mt-4">
-              Une erreur est survenue. Veuillez reessayer.
+              Une erreur est survenue. Veuillez réessayer.
             </p>
           )}
         </div>
@@ -276,7 +276,7 @@ export default function DevisForm() {
             <span className="font-['Playfair_Display'] italic">Obtenez</span> votre devis
           </h1>
           <p className="text-[#4a5565] text-[18px]">
-            Repondez a quelques questions pour obtenir une estimation personnalisee
+            Répondez à quelques questions pour obtenir une estimation personnalisée
           </p>
         </div>
 
@@ -292,8 +292,8 @@ export default function DevisForm() {
                   <div className="flex gap-5 items-start">
                     <h3 className="text-[28px] font-bold shrink-0">{f.name}</h3>
                     <div className="flex-1 text-right">
-                      <p className="text-[20px] font-bold">{f.priceAnnual}EUR TTC/an</p>
-                      <p className="text-[14px] text-black/80">(ou {f.priceMonthly}EUR TTC/mois*)</p>
+                      <p className="text-[20px] font-bold">{f.priceAnnual}€ TTC/an</p>
+                      <p className="text-[14px] text-black/80">(ou {f.priceMonthly}€ TTC/mois*)</p>
                     </div>
                   </div>
                   <div>
@@ -313,7 +313,7 @@ export default function DevisForm() {
         {/* Q2: Video */}
         <div className="flex flex-col gap-[30px]">
           <h2 className="text-[28px] font-bold text-[#101828]">
-            Voulez-vous que l'on produise le package de videos ? (en option)
+            Voulez-vous que l'on produise le package de vidéos ? (en option)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <button onClick={() => setWantsVideo('oui')} className={cardClass(wantsVideo === 'oui')}>
@@ -332,7 +332,7 @@ export default function DevisForm() {
         {wantsVideo === 'oui' && (
           <div className="flex flex-col gap-[30px]">
             <h2 className="text-[28px] font-bold text-[#101828]">
-              Avec quel contenu de joueurs voulez-vous que l'on produise votre package de videos ?
+              Avec quel contenu de joueurs voulez-vous que l'on produise votre package de vidéos ?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {videoOptions.map((opt) => (
@@ -345,10 +345,10 @@ export default function DevisForm() {
                     <h3 className="text-[28px] font-bold">{opt.name}</h3>
                     <div>
                       <p className="text-[#51b28b] font-bold text-[18px]">
-                        {opt.priceLabel}EUR TTC/equipe
+                        {opt.priceLabel}€ TTC/équipe
                       </p>
                       <p className="text-[13px] text-black/60 mt-1">
-                        ({opt.priceExtraLabel}EUR TTC/extra equipe)
+                        ({opt.priceExtraLabel}€ TTC/extra équipe)
                       </p>
                     </div>
                     <p className="text-black/80 text-[15px]">{opt.description}</p>
@@ -371,7 +371,7 @@ export default function DevisForm() {
         {wantsVideo === 'oui' && (
           <div className="flex flex-col gap-[30px]">
             <h2 className="text-[28px] font-bold text-[#101828]">
-              Pour combien d'equipes voulez-vous produire ces videos ?
+              Pour combien d'équipes voulez-vous produire ces vidéos ?
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {[1, 2, 3, 4].map((n) => (
@@ -381,7 +381,7 @@ export default function DevisForm() {
                   className={`rounded-[20px] border-2 transition-colors cursor-pointer flex flex-col items-center justify-center h-[100px] ${selectedBorder(teamCount === n)}`}
                 >
                   <span className="text-[28px] font-bold">{n}</span>
-                  <p className="text-[14px] text-black/60">equipe{n > 1 ? 's' : ''}</p>
+                  <p className="text-[14px] text-black/60">équipe{n > 1 ? 's' : ''}</p>
                 </button>
               ))}
             </div>
