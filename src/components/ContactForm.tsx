@@ -38,79 +38,95 @@ export default function ContactForm() {
   };
 
   const inputClasses =
-    'bg-transparent border border-[#4a5565] rounded-[10px] px-5 py-3 text-white placeholder:text-[#6b7280] outline-none focus:border-[#81e3bc] transition-colors';
+    'w-full h-[50px] border border-[#d1d5dc] px-4 text-black outline-none focus:border-[#81e3bc] transition-colors text-[16px]';
 
   return (
-    <section className="bg-[#2f3935] py-20 px-5">
-      <div className="max-w-[600px] mx-auto">
-        <h2 className="text-white text-[40px] md:text-[48px] font-bold leading-tight mb-2">
-          Intéressé ?{' '}
-          <span className="font-['Playfair_Display'] italic text-[#81e3bc]">Écrivez-nous !</span>
-        </h2>
-        <p className="text-[#a0a8a3] mb-10 text-[16px]">
-          On peut organiser une démo ou se rencontrer...
-        </p>
+    <section className="bg-[#2f3935] py-16 md:py-[96px] px-5">
+      <div className="max-w-[896px] mx-auto flex flex-col items-center gap-[45px] px-4 md:px-[32px]">
+        {/* Title */}
+        <div className="text-center text-white">
+          <h2 className="text-[36px] md:text-[48px] font-bold leading-tight mb-[15px]">
+            Intéressé ?{' '}
+            <span className="font-['Playfair_Display'] italic font-normal">Écrivez-nous !</span>
+          </h2>
+          <p className="text-[16px] leading-[24px]">
+            On peut organiser une démo ou se rencontrer...
+          </p>
+        </div>
 
+        {/* White form card */}
         {status === 'success' ? (
-          <div className="bg-[#81e3bc]/20 border border-[#81e3bc] rounded-[12px] p-6 text-center">
-            <p className="text-[#81e3bc] text-[18px] font-bold mb-2">Message envoyé !</p>
-            <p className="text-white/70">Nous vous répondrons dans les plus brefs délais.</p>
+          <div className="bg-white rounded-[10px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_1px_2px_0px_rgba(0,0,0,0.1)] w-full p-[30px]">
+            <div className="text-center py-8">
+              <p className="text-[#81e3bc] text-[18px] font-bold mb-2">Message envoyé !</p>
+              <p className="text-[#4a5565]">Nous vous répondrons dans les plus brefs délais.</p>
+            </div>
           </div>
         ) : (
-          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            <div className="flex gap-5">
-              <input
-                type="text"
-                name="nom"
-                placeholder="Nom"
-                required
-                value={formData.nom}
-                onChange={handleChange}
-                className={`flex-1 ${inputClasses}`}
-              />
-              <input
-                type="text"
-                name="prenom"
-                placeholder="Prenom"
-                required
-                value={formData.prenom}
-                onChange={handleChange}
-                className={`flex-1 ${inputClasses}`}
-              />
-            </div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className={inputClasses}
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows={5}
-              required
-              value={formData.message}
-              onChange={handleChange}
-              className={`${inputClasses} resize-none`}
-            />
-            <button
-              type="submit"
-              disabled={status === 'sending'}
-              className={`self-start inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] ${
-                status === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-              }`}
-            >
-              {status === 'sending' ? 'Envoi...' : 'Envoyer'}
-            </button>
-            {status === 'error' && (
-              <p className="text-red-400 text-[14px]">
-                Une erreur est survenue. Veuillez reessayer.
-              </p>
-            )}
-          </form>
+          <div className="bg-white rounded-[10px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_1px_2px_0px_rgba(0,0,0,0.1)] w-full">
+            <form className="flex flex-col gap-[24px] items-end p-[30px]" onSubmit={handleSubmit}>
+              <div className="flex flex-col md:flex-row gap-[24px] w-full">
+                <div className="flex-1 flex flex-col gap-[8px]">
+                  <label className="font-medium text-[16px] text-black leading-[24px]">Nom</label>
+                  <input
+                    type="text"
+                    name="nom"
+                    required
+                    value={formData.nom}
+                    onChange={handleChange}
+                    className={inputClasses}
+                  />
+                </div>
+                <div className="flex-1 flex flex-col gap-[8px]">
+                  <label className="font-medium text-[16px] text-black leading-[24px]">Prénom</label>
+                  <input
+                    type="text"
+                    name="prenom"
+                    required
+                    value={formData.prenom}
+                    onChange={handleChange}
+                    className={inputClasses}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-[8px] w-full">
+                <label className="font-medium text-[16px] text-black leading-[24px]">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={inputClasses}
+                />
+              </div>
+              <div className="flex flex-col gap-[8px] w-full">
+                <label className="font-medium text-[16px] text-black leading-[24px]">Message</label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full h-[146px] border border-[#d1d5dc] px-4 py-3 text-black outline-none focus:border-[#81e3bc] transition-colors text-[16px] resize-none"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] ${
+                  status === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                }`}
+              >
+                {status === 'sending' ? 'Envoi...' : 'Envoyer'}
+              </button>
+              {status === 'error' && (
+                <p className="text-red-400 text-[14px] w-full text-right">
+                  Une erreur est survenue. Veuillez réessayer.
+                </p>
+              )}
+            </form>
+          </div>
         )}
       </div>
     </section>

@@ -60,22 +60,24 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <!-- ═══════ Hero ═══════ -->
-  <section class="relative h-[500px] md:h-[631px] bg-[#2f3935] overflow-hidden">
+  <section class="relative h-[500px] md:h-[743px] bg-[#2f3935] overflow-hidden">
     <Image
       src={heroImg}
       alt="Écran digital Neopro dans un gymnase"
-      class="absolute inset-0 w-full h-full object-cover opacity-20"
+      class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
       widths={[768, 1280, 1920]}
       sizes="100vw"
     />
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-5 max-w-[873px] mx-auto gap-8 md:gap-[43px]">
-      <h1 class="text-[36px] md:text-[70px] font-black leading-[1]">
-        <span class="font-playfair italic font-normal">On fait de </span>votre écran,
-        <br />un média <span class="font-playfair italic font-normal">interactif.</span>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#2f3935] to-[80%] to-[rgba(47,57,53,0.3)]"></div>
+    <div class="relative z-10 flex flex-col justify-end h-full text-white p-8 md:p-[60px] gap-8 md:gap-[40px]">
+      <h1 class="text-[36px] md:text-[70px] leading-[1]">
+        <span class="font-playfair italic font-normal">On fait de votre écran,</span>
+        <br /><span class="font-black">un média interactif.</span>
+        <br /><span class="font-playfair italic font-normal">Tel un club pro.</span>
       </h1>
-      <div class="flex flex-wrap gap-6 md:gap-[43px] justify-center">
-        <Button href="/solution" variant="white">
+      <div class="flex flex-wrap gap-6 md:gap-[43px]">
+        <Button href="/solution" variant="white" arrow>
           Découvrez la solution
         </Button>
         <Button href="/devis" variant="green">
@@ -88,8 +90,8 @@ const description =
   <!-- ═══════ Bienvenue au club ═══════ -->
   <section class="bg-[#2f3935] py-24 px-5 overflow-hidden">
     <div class="max-w-[1320px] mx-auto flex flex-col items-center gap-[40px] md:gap-[60px]">
-      <h2 class="text-[#81e3bc] text-[48px] md:text-[128px] leading-[1] text-center">
-        <span class="font-playfair italic font-normal">Bienvenue </span><span class="font-bold">au club.</span>
+      <h2 class="text-[#51b28b] text-[48px] md:text-[128px] leading-[1] text-center">
+        <span class="font-playfair italic font-normal">Bienvenue </span><span class="font-black">au club.</span>
       </h2>
 
       <div class="relative rounded-[20px] overflow-hidden w-full aspect-[2116/1184] bg-[#1a1f1c]">
@@ -103,21 +105,21 @@ const description =
         />
       </div>
 
-      <p class="text-white text-[18px] md:text-[30px] text-center max-w-[967px] leading-normal">
-        Neopro propose une <strong class="font-black">solution de régie</strong> adaptée aux contraintes des clubs amateurs,
-        dans le but de <strong class="font-black">professionnaliser l'expérience spectateur</strong> et de
-        <strong class="font-black">créer un nouvel espace publicitaire pour vos partenaires</strong>.
+      <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal">
+        Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs,
+        dans le but de professionnaliser l'expérience spectateur et de
+        créer un nouvel espace publicitaire pour vos partenaires.
       </p>
     </div>
   </section>
 
-  <!-- ═══════ La régie de votre club sportif ═══════ -->
-  <section class="py-24 px-5">
-    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[100px] lg:gap-[151px] items-start">
-      <div class="w-full md:w-[550px] flex flex-col gap-[40px]">
+  <!-- ═══════ La régie digitale de votre club ═══════ -->
+  <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
+    <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
+      <div class="w-full md:flex-1 flex flex-col gap-[40px]">
         <div>
           <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
-            La régie<br />de votre club sportif
+            La régie digitale de votre club
           </h2>
           <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">
             On transforme l'écran de votre club en un outil professionnel — spots partenaires,
@@ -125,57 +127,55 @@ const description =
             par n'importe quel bénévole.
           </p>
         </div>
-        <Button href="/solution" variant="black">
+        <Button href="/solution" variant="black" arrow>
           Découvrez la solution
         </Button>
       </div>
-      <div class="flex-1">
+      <div class="w-full md:w-[550px] md:h-[550px] flex-shrink-0">
         <Image
           src={apercuTelecommandeImg}
           alt="Aperçu télécommande Neopro"
-          class="w-full rounded-[20px] object-cover"
+          class="w-full h-full rounded-[20px] object-cover"
           loading="lazy"
           widths={[600, 1200]}
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, 550px"
         />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Des offres adaptées à vos clubs ═══════ -->
+  <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
+    <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
+      <div class="relative w-full md:w-[550px] md:h-[550px] flex-shrink-0 rounded-[20px] overflow-hidden">
+        <Image
+          src={nanoBananaImg}
+          alt="Offres Neopro"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          widths={[600, 1200]}
+          sizes="(max-width: 768px) 100vw, 550px"
+        />
+        <div class="absolute inset-0 bg-[rgba(47,57,53,0.3)] rounded-[20px]"></div>
+      </div>
+      <div class="w-full md:flex-1 flex flex-col gap-[40px]">
+        <div>
+          <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
+            Des offres adaptées à vos clubs
+          </h2>
+          <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">
+            Finançable par vos partenaires. Clé en main.
+          </p>
+        </div>
+        <Button href="/offres" variant="black" arrow>
+          Découvrez les offres
+        </Button>
       </div>
     </div>
   </section>
 
   <!-- ═══════ Les clubs Neopro (carousel) ═══════ -->
   <ClubCarousel clubs={clubs} client:visible />
-
-  <!-- ═══════ Des offres adaptées à vos clubs ═══════ -->
-  <section class="py-24 px-5">
-    <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[90px] items-start">
-      <div class="w-full md:w-[550px] flex flex-col gap-[40px]">
-        <div>
-          <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
-            Des offres adaptées à vos clubs
-          </h2>
-          <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">
-            Tout compris, clé en main.
-          </p>
-        </div>
-        <Button href="/offres" variant="black">
-          Découvrez les offres
-        </Button>
-      </div>
-      <div class="flex-1 flex gap-5">
-        <div class="flex-1 h-[350px] md:h-[491px] rounded-[20px] overflow-hidden">
-          <Image
-            src={nanoBananaImg}
-            alt="Offres Neopro"
-            class="w-full h-full object-cover"
-            loading="lazy"
-            widths={[600, 1200]}
-            sizes="(max-width: 768px) 50vw, 25vw"
-          />
-        </div>
-        <div class="flex-1 h-[350px] md:h-[491px] bg-[#d9d9d9] rounded-[20px]"></div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════ Contact ═══════ -->
   <div id="contact">

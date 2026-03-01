@@ -262,38 +262,187 @@ Exemple : tu veux ajouter une section "FAQ" gerable depuis Sanity.
 
 ---
 
-## Scenario 5 — Utiliser Claude pour aligner le site sur Figma
+## Scenario 5 — Integrer un export Figma Make (workflow detaille)
 
-C'est la methode la plus simple quand tu as un export Figma Make.
+### Pourquoi on ne copie pas le code Figma tel quel
 
-1. **Exporte depuis Figma** via le plugin "Figma to Code (Make)" → tu obtiens un dossier React/Vite
-2. **Place le dossier** dans `Neopro2/` a la racine du projet (remplace l'ancien si besoin)
-3. **Ouvre Claude Code** dans le terminal du projet :
-   ```bash
-   cd /Users/gletallec/Documents/NEOPRO/neopro-astro
-   claude
-   ```
-4. **Demande a Claude** de comparer et aligner :
-   > "Compare ma page d'accueil (`src/pages/index.astro`) avec le Figma (`Neopro2/src/imports/PageDaccueil.tsx`) et aligne le site sur le Figma"
-5. Claude va :
-   - Lire les deux fichiers
-   - Identifier les differences
-   - Modifier le code Astro
-   - Lancer `npm run build` pour verifier
-   - Committer et pusher → Vercel deploie automatiquement
+L'export Figma Make genere un **projet React/Vite complet** (fichiers `.tsx`). Ce code :
+- Utilise React (JSX, useState, useEffect) — notre projet est en **Astro** (HTML statique)
+- A des **positions/tailles en dur** en pixels — pas responsive
+- Importe **60+ dependances** (Radix, MUI, shadcn) — qu'on n'utilise pas
+- Contient du code genere **non maintenable** et non accessible
 
-> **Important :** Le dossier `Neopro2/` n'est **jamais deploye**. C'est juste une reference.
-> Le vrai site vient uniquement des fichiers dans `src/`.
+On utilise donc l'export comme **source de verite visuelle** : on en extrait les specs exactes (couleurs, tailles, espacements, polices, structure) et on les traduit en code Astro propre.
+
+### Structure de l'export Figma
+
+```
+Neopro2/                           ← Export Figma Make (REFERENCE UNIQUEMENT)
+├── src/
+│   ├── imports/                   ← CODE GENERE par Figma (les specs sont LA)
+│   │   ├── PageDaccueil.tsx            Code genere de la page d'accueil
+│   │   ├── PageDaccueil-45-196.tsx     Variante avec numeros de frame
+│   │   ├── LaSolution.tsx              Code genere /solution
+│   │   ├── LesOffres.tsx               Code genere /offres
+│   │   ├── QuiSommesNous.tsx           Code genere /qui-sommes-nous
+│   │   ├── Devis21.tsx                 Code genere /devis
+│   │   └── svg-*.ts                    SVG inlines generes
+│   ├── app/components/            ← Composants "propres" (moins fiables)
+│   │   ├── Hero.tsx                    Version simplifiee du hero
+│   │   ├── Welcome.tsx                 Version simplifiee bienvenue
+│   │   └── ui/                         Composants shadcn (ignorer)
+│   └── assets/                    ← IMAGES extraites du Figma
+│       └── *.png                       Images avec noms de hash
+├── package.json                   ← Montre les dependances (React, Radix, etc.)
+└── README.md                      ← Lien vers le projet Figma original
+```
+
+**Fichiers cles a lire :** Les fichiers dans `src/imports/` contiennent le code le plus fidele au Figma. Les fichiers dans `src/app/components/` sont des versions simplifiees mais parfois inexactes.
 
 ### Correspondance pages Figma ↔ Astro
 
 | Fichier Figma (Neopro2/src/imports/) | Page Astro (src/pages/) |
 |--------------------------------------|------------------------|
-| `PageDaccueil.tsx` | `index.astro` |
-| `LaSolution.tsx` | `solution.astro` |
-| `LesOffres.tsx` | `offres.astro` |
-| `ObtenirDevis.tsx` | `devis.astro` |
+| `PageDaccueil.tsx` ou `PageDaccueil-*.tsx` | `index.astro` |
+| `LaSolution.tsx` ou `LaSolution-*.tsx` | `solution.astro` |
+| `LesOffres.tsx` ou `LesOffres-*.tsx` | `offres.astro` |
+| `Devis21.tsx` | `devis.astro` |
 | `QuiSommesNous.tsx` | `qui-sommes-nous.astro` |
+
+> S'il y a plusieurs variantes (ex: `PageDaccueil.tsx` et `PageDaccueil-45-196.tsx`),
+> la version avec numeros (`-45-196`) est generalement la plus complete et fidele.
+
+### Etape 1 : Extraire les specs du code Figma
+
+Ouvre le fichier TSX dans `Neopro2/src/imports/` et lis les classes Tailwind. Ce sont les **specs exactes** du design.
+
+**Grille de lecture — comment traduire les classes Tailwind :**
+
+| Classe dans le TSX Figma | Ce que ca veut dire | Comment l'utiliser |
+|--------------------------|--------------------|--------------------|
+| `text-[70px]` | Taille du texte : 70px | Mettre `font-size: 70px` ou `text-[70px]` |
+| `leading-[70px]` | Hauteur de ligne : 70px | `line-height: 70px` |
+| `font-['Playfair_Display:Italic']` | Police Playfair Display Italic | `font-playfair italic` (deja configuree) |
+| `font-['Outfit:Medium']` | Police Outfit Medium | `font-outfit font-medium` |
+| `bg-[#81e3bc]` | Couleur de fond : vert Neopro | `bg-neo-green` (token du design system) |
+| `bg-[#2f3935]` | Fond sombre | `bg-neo-dark-bg` |
+| `text-[#F4E96D]` | Texte jaune accent | `text-neo-yellow` |
+| `rounded-[65px]` | Border-radius : 65px | `rounded-full` ou `rounded-[65px]` |
+| `p-[60px]` | Padding : 60px | `p-[60px]` ou `p-15` |
+| `gap-[43px]` | Espacement flex : 43px | `gap-[43px]` ou `gap-11` |
+| `h-[743px]` | Hauteur fixe : 743px | Adapter en responsive (`min-h-[600px]` etc.) |
+| `w-full` | Largeur 100% | `w-full` |
+| `max-w-7xl` | Largeur max container | `max-w-7xl` |
+| `px-[30px] py-[10px]` | Padding bouton | `px-8 py-2.5` |
+
+**Correspondance couleurs Figma → tokens du projet :**
+
+| Couleur hex dans Figma | Token Tailwind | Usage |
+|------------------------|----------------|-------|
+| `#81e3bc` | `neo-green` | Vert principal (boutons, accents) |
+| `#51b28b` | `neo-green-dark` | Vert fonce (hover) |
+| `#101828` | `neo-dark` | Texte sombre |
+| `#2f3935` | `neo-dark-bg` | Fond sections sombres |
+| `#4a5565` | `neo-gray` | Texte secondaire |
+| `#ffec85` | `neo-yellow` | Accent jaune |
+| `#ff9ec6` | `neo-pink` | Accent rose |
+| `#79e8fa` | `neo-sky` | Accent bleu |
+| `#F4E96D` | (proche neo-yellow) | Jaune Figma, utiliser `neo-yellow` |
+
+### Etape 2 : Extraire les images
+
+Les images du Figma sont dans `Neopro2/src/assets/` avec des noms de hash (ex: `031a4c7d...png`).
+
+1. Identifie quelle image correspond a quoi en lisant les imports dans les TSX :
+   ```tsx
+   // Dans le TSX, on voit :
+   import imgHero from "figma:asset/031a4c7d...png";
+   // → C'est l'image du hero
+   ```
+
+2. Copie les images utiles dans `src/assets/images/` avec des noms explicites :
+   ```bash
+   cp Neopro2/src/assets/031a4c7d...png src/assets/images/hero-homepage.png
+   ```
+
+3. Convertis en WebP pour la performance :
+   ```bash
+   cwebp -q 80 src/assets/images/hero-homepage.png -o src/assets/images/hero-homepage.webp
+   ```
+
+### Etape 3 : Traduire en Astro
+
+Pour chaque section, la methode est toujours la meme :
+
+1. **Lire** le TSX Figma → noter la structure HTML (ignorer la syntaxe React)
+2. **Extraire** les valeurs (couleurs, tailles, polices, espacements)
+3. **Mapper** les couleurs hex vers les tokens du design system (tableau ci-dessus)
+4. **Ecrire** en Astro avec ces valeurs exactes
+5. **Adapter** pour le responsive (les tailles Figma sont desktop uniquement)
+
+**Exemple concret — traduire le Hero :**
+
+```tsx
+// CE QU'ON LIT dans Neopro2/src/imports/PageDaccueil-45-196.tsx :
+<div className="h-[743px] relative w-full" data-name="Hero">
+  <img src={imgHero} className="absolute h-full w-full object-cover" />
+  <div className="bg-gradient-to-r from-[#2f3935] to-[rgba(47,57,53,0.3)]" />
+  <p className="font-['Playfair_Display:Italic'] text-[70px] leading-[70px] text-white">
+    On fait de votre ecran,
+  </p>
+</div>
+```
+
+```astro
+<!-- CE QU'ON ECRIT dans src/pages/index.astro : -->
+<section class="relative min-h-[600px] lg:min-h-[743px] w-full">
+  <img src={heroImage} class="absolute inset-0 h-full w-full object-cover" alt="..." />
+  <div class="absolute inset-0 bg-gradient-to-r from-neo-dark-bg to-neo-dark-bg/30" />
+  <h1 class="font-playfair italic text-4xl md:text-5xl lg:text-[70px] lg:leading-[70px] text-white">
+    On fait de votre ecran,
+  </h1>
+</section>
+```
+
+**Ce qui change :** la hauteur fixe devient responsive (`min-h`), les tailles de texte ont des breakpoints (`text-4xl md:text-5xl lg:text-[70px]`), les couleurs hex deviennent des tokens (`neo-dark-bg`), et la syntaxe React (`className`) devient du HTML standard (`class`).
+
+### Etape 4 : Utiliser Claude Code pour automatiser
+
+C'est la methode la plus rapide. Claude lit l'export et fait la traduction.
+
+1. **Place l'export** dans `Neopro2/` (remplace l'ancien si besoin)
+2. **Ouvre Claude Code** :
+   ```bash
+   cd /Users/gletallec/Documents/NEOPRO/neopro-astro
+   claude
+   ```
+3. **Demande a Claude** en etant precis :
+   > "Compare le hero de `Neopro2/src/imports/PageDaccueil-45-196.tsx` avec `src/pages/index.astro` et aligne le code Astro sur les specs du Figma (couleurs exactes, tailles, espacements, polices). Utilise les tokens du design system."
+
+4. **Claude va :**
+   - Lire le TSX Figma pour extraire les specs exactes
+   - Lire le code Astro actuel
+   - Modifier le code Astro pour correspondre au Figma
+   - Utiliser les tokens du design system (pas les hex en dur)
+   - Adapter pour le responsive (mobile/tablet/desktop)
+   - Verifier avec `npm run build`
+
+> **Conseil :** Proceder **section par section** (hero, welcome, offres...) plutot que page entiere.
+> Ca donne de meilleurs resultats et c'est plus facile a verifier.
+
+### Checklist de verification apres alignement
+
+- [ ] Les couleurs correspondent au Figma (utiliser l'inspecteur navigateur)
+- [ ] Les tailles de texte sont correctes sur desktop
+- [ ] Les espacements (padding, margin, gap) sont fideles
+- [ ] Les polices sont les bonnes (Outfit pour le texte, Playfair Display pour les titres italiques)
+- [ ] Les border-radius sont corrects (boutons arrondis, cartes, etc.)
+- [ ] Le site reste responsive (tester mobile/tablette)
+- [ ] `npm run build` passe sans erreur
+- [ ] Les images sont en WebP et < 200 KB
+
+> **Important :** Le dossier `Neopro2/` n'est **jamais deploye** ni committe dans git.
+> C'est juste une reference locale. Le vrai site vient uniquement des fichiers dans `src/`.
 
 ---
 
@@ -426,4 +575,13 @@ neopro-astro/
 → Sanity gere le **contenu modifiable** (textes des offres, logos des clubs, temoignages, etc.). Le **design/layout** (couleurs, espacements, structure des pages) vient du **code** dans `src/`. Les deux sont independants : changer le design dans le code ne touche pas le contenu Sanity, et vice versa.
 
 **Q: C'est quoi le dossier Neopro2/ ?**
-→ C'est l'export Figma Make. Il contient du React/Vite qu'on ne deploie **jamais**. C'est juste une **reference visuelle** pour savoir a quoi doit ressembler le site. Claude Code l'utilise pour comparer et aligner le vrai code (dans `src/`).
+→ C'est l'export Figma Make. Il contient du React/Vite qu'on ne deploie **jamais**. C'est juste une **reference visuelle** pour savoir a quoi doit ressembler le site. Claude Code l'utilise pour comparer et aligner le vrai code (dans `src/`). Voir le Scenario 5 pour le workflow complet d'extraction des specs.
+
+**Q: Pourquoi l'export Figma est en React (.tsx) et pas en HTML ?**
+→ Figma Make genere du React par defaut (c'est le framework le plus repandu). Ce code n'est pas fait pour etre utilise tel quel — meme dans un projet React, on le reecrirait. On l'utilise uniquement pour **lire les specs** (couleurs, tailles, polices, espacements) et les reproduire dans notre code Astro.
+
+**Q: Quel fichier Figma lire en priorite ?**
+→ Les fichiers dans `Neopro2/src/imports/` (ex: `PageDaccueil-45-196.tsx`). Ils contiennent le code le plus fidele au design Figma avec toutes les valeurs exactes dans les classes Tailwind. Les fichiers dans `src/app/components/` sont des versions simplifiees et parfois inexactes.
+
+**Q: Comment lire les specs dans le code Figma ?**
+→ Les classes Tailwind dans les fichiers TSX contiennent les valeurs exactes : `text-[70px]` = taille 70px, `bg-[#81e3bc]` = couleur verte, `gap-[43px]` = espacement 43px, etc. Voir le tableau complet dans le Scenario 5.

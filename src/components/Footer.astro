@@ -13,55 +13,48 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="bg-neo-dark-bg text-white">
-  <div class="max-w-[1400px] mx-auto px-6 py-16">
-    <div class="flex flex-col md:flex-row justify-between items-start gap-10">
-      <!-- Logo + social -->
-      <div class="flex flex-col gap-6">
-        <a href="/">
-          <Logo variant="white" class="h-[18px] w-auto" />
+  <div class="max-w-[1200px] mx-auto px-6 md:px-[120px] pt-[60px] md:pt-[80px] pb-[60px] md:pb-[96px]">
+    <!-- Row 1: Logo + Social icons -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+      <a href="/">
+        <Logo variant="white" class="h-[34px] w-auto" />
+      </a>
+      <div class="flex gap-[10px]">
+        <a href="#" aria-label="Facebook" class="text-neo-green hover:text-neo-green-dark transition-colors">
+          <SocialIcons platform="facebook" size={25} />
         </a>
-        <div class="flex gap-4">
-          <a href="#" aria-label="Facebook" class="text-white/60 hover:text-neo-green transition-colors">
-            <SocialIcons platform="facebook" size={22} />
-          </a>
-          <a href="#" aria-label="Instagram" class="text-white/60 hover:text-neo-green transition-colors">
-            <SocialIcons platform="instagram" size={22} />
-          </a>
-          <a href="#" aria-label="LinkedIn" class="text-white/60 hover:text-neo-green transition-colors">
-            <SocialIcons platform="linkedin" size={22} />
-          </a>
-        </div>
-      </div>
-
-      <!-- Nav links -->
-      <div class="flex flex-col gap-3">
-        {footerLinks.map((link) => (
-          <a href={link.href} class="text-[14px] text-white/60 hover:text-neo-green transition-colors">
-            {link.label}
-          </a>
-        ))}
-      </div>
-
-      <!-- CTAs -->
-      <div class="flex flex-col gap-3">
-        <Button href="/devis" variant="green" arrow>
-          Obtenez un devis
-        </Button>
-        <Button href="#contact" variant="black">
-          Planifier une demo
-        </Button>
-        <a href="#" class="text-[14px] text-white/60 hover:text-neo-green transition-colors">
-          Espace CLUB
+        <a href="#" aria-label="Instagram" class="text-neo-green hover:text-neo-green-dark transition-colors">
+          <SocialIcons platform="instagram" size={25} />
+        </a>
+        <a href="#" aria-label="LinkedIn" class="text-neo-green hover:text-neo-green-dark transition-colors">
+          <SocialIcons platform="linkedin" size={22} />
         </a>
       </div>
     </div>
 
-    <!-- Separator -->
-    <div class="h-px bg-neo-green/20 my-10" />
+    <!-- Divider — green line -->
+    <div class="h-[2px] bg-neo-green my-8" />
 
-    <!-- Copyright -->
-    <p class="text-[13px] text-white/40 text-center">
-      &copy; {year} Neopro. Tous droits reserves.
-    </p>
+    <!-- Row 2: Nav links + CTAs -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <div class="flex flex-wrap gap-[28px] items-center text-[16px] text-white">
+        {footerLinks.map((link) => (
+          <a href={link.href} class="hover:text-neo-green transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-[16px] items-center">
+        <Button href="/devis" variant="green">
+          Obtenez un devis
+        </Button>
+        <Button href="#contact" variant="black">
+          Planifier une démo
+        </Button>
+        <a href="#" class="text-[16px] font-medium text-white hover:text-neo-green transition-colors">
+          Espace Club
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
