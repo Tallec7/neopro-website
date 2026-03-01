@@ -1,11 +1,10 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero.astro';
 import Button from '@/components/Button.astro';
-import SectionHeading from '@/components/SectionHeading.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
+import { Image } from 'astro:assets';
 
 // ── Images locales ────────────────────────────────────────────────
 import heroImg from '@/assets/images/hero-offres.webp';
@@ -69,7 +68,6 @@ try {
     if (v?.length) videoPackages = v;
     if (t?.length) testimonials = t.map((item: any) => ({ quote: item.quote, clubName: item.clubName }));
     if (c?.length) {
-      // Ne garder que les clubs ayant une image uploadée dans Sanity
       const withLogos = c.filter((item: any) => item.logoUrl);
       if (withLogos.length) {
         clubs = withLogos.map((item: any) => ({ name: item.name, logoUrl: item.logoUrl }));
@@ -94,8 +92,9 @@ if (!plans.length) {
         'Mise à jour de vidéos',
         'Support 72h',
         '1 seule boucle par défaut',
-        '10 partenaires max (dans la boucle par défaut)',
-        "Pas d'analytics",
+        'Sponsors illimités',
+        'Rotation aléatoire des partenaires',
+        'Rapport de diffusion basique',
       ],
     },
     {
@@ -106,12 +105,13 @@ if (!plans.length) {
       popular: true,
       buttonVariant: 'green',
       features: [
-        'Accès admin club',
+        'Accès admin club (pour ajouter des visuels/vidéos de votre côté)',
         'Mise à jour de vidéos',
         'Support 48h',
         '2 boucles par défaut (ex : break / match)',
         'Sponsors illimités',
-        'Analytics basique',
+        'Rotation aléatoire des partenaires',
+        'Rapport de diffusion basique',
       ],
     },
     {
@@ -122,11 +122,14 @@ if (!plans.length) {
       popular: false,
       buttonVariant: 'pink',
       features: [
+        'Accès admin club',
+        'Mise à jour de vidéos',
         'Support 24h',
-        'Nombre de boucles par défaut illimité (ex : avant-match/match/temp-mort/mi-temps/après-match)',
+        'Nombre de boucles par défaut illimité',
         'Intégration score',
         'Sponsors illimités',
-        'Analytics premium',
+        'Rotation contrôlée des partenaires',
+        'Rapport de diffusion premium',
       ],
     },
   ];
@@ -209,18 +212,33 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
-  <Hero
-    title={`Adaptées à vos <span class="font-playfair italic text-neo-green">besoins</span>`}
-    subtitle="Les offres"
-    imageSrc={heroImg}
-    imageAlt="Les offres Neopro"
-  />
+  <section class="relative h-[743px] overflow-hidden">
+    <Image
+      src={heroImg}
+      alt="Les offres Neopro"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      widths={[640, 1024, 1440, 1920]}
+      sizes="100vw"
+    />
+    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
+    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LES OFFRES</p>
+      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
+        <span class="font-playfair italic">Adaptées à</span><br />
+        <span class="font-black">vos besoins</span>
+      </h1>
+      <div>
+        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
+      </div>
+    </div>
+  </section>
 
   <!-- 3 offres -->
-  <section class="py-24 px-5">
-    <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-16">3 offres pour s'adapter à vous</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">3 offres disponibles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div
             class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'}`}
@@ -230,44 +248,38 @@ const description =
                 Le plus avantageux
               </span>
             )}
-            <h3 class="text-[28px] font-bold mb-2">{offre.name}</h3>
-            <div class="flex items-baseline gap-1 mb-1">
-              <span class="text-[40px] font-bold">{offre.priceAnnual}</span>
-              <span class="text-[16px] text-neo-gray">€ TTC</span>
+            <div class="flex items-center justify-between gap-[20px] mb-[20px]">
+              <h3 class="text-[28px] font-bold">{offre.name}</h3>
+              <div class="text-right shrink-0">
+                <p class="text-[20px] font-bold">{offre.priceAnnual}€ TTC/an</p>
+                <p class="text-[14px] text-neo-gray">(ou {offre.priceMonthly}€ TTC/mois*)</p>
+              </div>
             </div>
-            <p class="text-[14px] text-neo-gray mb-6">
-              (ou {offre.priceMonthly}€ TTC/mois*)
-            </p>
-            <p class="text-[14px] font-medium text-neo-dark mb-3">Inclus :</p>
-            <ul class="flex flex-col gap-3 mb-8 flex-1">
+            <ul class="list-disc pl-5 flex flex-col gap-[10px] mb-[30px] flex-1">
               {offre.features.map((f) => (
-                <li class="flex items-start gap-2 text-[15px] text-neo-gray">
-                  <span class="text-neo-green mt-0.5">&#10003;</span>
-                  {f}
-                </li>
+                <li class="text-[16px] text-[rgba(0,0,0,0.8)]">{f}</li>
               ))}
             </ul>
             <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
-              Obtenez un devis
+              Choisir cette offre
             </Button>
           </div>
         ))}
       </div>
-      <p class="text-center text-[13px] text-neo-gray mt-6">
+      <p class="text-center text-[18px] text-neo-gray mt-[30px]">
         *Engagement de 9 mois minimum
       </p>
     </div>
   </section>
 
   <!-- Package videos en option -->
-  <section class="py-24 px-5">
-    <div class="max-w-[1200px] mx-auto">
-      <SectionHeading
-        title="Package vidéos"
-        italicWord="en option"
-        subtitle="Nous vous proposons en option de produire les vidéos d'annonce de joueurs."
-      />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="mb-[60px]">
+        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">PACKAGE VIDÉOS EN OPTION</h2>
+        <p class="text-[18px] text-neo-gray max-w-[700px]">Nous vous proposons en option de produire les vidéos d'annonce de joueurs.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {videoPackages.map((pkg) => (
           <div class={`relative rounded-[20px] p-[30px] flex flex-col gap-5 ${
             pkg.price ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
@@ -277,30 +289,29 @@ const description =
                 Le plus apprécié
               </span>
             )}
-            <h3 class="text-[22px] font-bold">{pkg.name}</h3>
-            {pkg.price ? (
-              <div>
-                <p class="text-neo-green font-bold text-[18px]">
-                  {pkg.price}€ TTC/équipe
-                </p>
-                {pkg.priceExtra && (
-                  <p class="text-[13px] text-neo-gray mt-1">
-                    ({pkg.priceExtra}€ TTC/extra équipe)
+            <div class="flex items-center justify-between gap-[20px]">
+              <h3 class="text-[22px] font-bold">{pkg.name}</h3>
+              {pkg.price ? (
+                <div class="text-right shrink-0">
+                  <p class="text-neo-green font-bold text-[18px]">
+                    {pkg.price}€ TTC/équipe
                   </p>
-                )}
-              </div>
-            ) : (
-              <p class="text-neo-green font-bold text-[16px]">Inclus</p>
-            )}
+                  {pkg.priceExtra && (
+                    <p class="text-[13px] text-neo-gray mt-1">
+                      ({pkg.priceExtra}€ TTC/extra équipe)
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <p class="text-neo-green font-bold text-[16px]">Inclus</p>
+              )}
+            </div>
             <p class="text-neo-gray text-[15px]">{pkg.description}</p>
             <div>
               <p class="text-[14px] font-medium text-neo-dark mb-3">Inclus :</p>
-              <ul class="flex flex-col gap-2 flex-1">
+              <ul class="list-disc pl-5 flex flex-col gap-[10px] flex-1">
                 {pkg.features.map((f) => (
-                  <li class="flex items-start gap-2 text-[14px] text-neo-gray">
-                    <span class="text-neo-green mt-0.5">&#10003;</span>
-                    {f}
-                  </li>
+                  <li class="text-[14px] text-[rgba(0,0,0,0.8)]">{f}</li>
                 ))}
               </ul>
             </div>
@@ -311,16 +322,16 @@ const description =
   </section>
 
   <!-- Finance par vos partenaires -->
-  <section class="py-24 px-5">
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
-      <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-5 md:px-10 lg:px-[60px] py-10 md:py-[74px] flex flex-col md:flex-row items-center gap-8 justify-between">
+      <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
         <div class="flex-1">
-          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-neo-dark mb-4">
-            Financé par vos <span class="font-playfair italic">partenaires</span>
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
+            Financé par vos partenaires
           </h2>
-          <p class="text-[18px] text-neo-gray">
-            Notre solution a pour but d'être financée par vos partenaires. Pour cela,
-            nous vous avons préparé un document explicatif prêt à leur être partagé.
+          <p class="text-[18px] text-[#4a5565]">
+            Notre solution a pour but d'être financée par vos partenaires.<br />
+            Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.
           </p>
         </div>
         <div class="shrink-0">
@@ -333,14 +344,13 @@ const description =
   </section>
 
   <!-- Club Carousel -->
-  <section class="py-24 px-5">
-    <div class="max-w-[1200px] mx-auto">
-      <SectionHeading
-        title="Les clubs"
-        italicWord="Neopro"
-      />
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
+        Les clubs <span class="font-playfair italic text-neo-green">Neopro</span>
+      </h2>
     </div>
-    <div class="mt-16">
+    <div class="mt-[60px]">
       <ClubCarousel clubs={clubs} client:visible />
     </div>
   </section>
