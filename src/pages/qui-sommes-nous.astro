@@ -76,16 +76,19 @@ const description =
         </div>
       </div>
 
-      <!-- Right: sticky photo -->
+      <!-- Right: sticky photo with green decorative frame -->
       <div class="flex items-center pb-[40px] lg:pb-[80px] pt-[30px] lg:pt-[60px] lg:sticky lg:top-0">
-        <Image
-          src={quiSommesNousImg}
-          alt="L'équipe Neopro"
-          class="w-full max-w-[548px] aspect-[548/685] rounded-[20px] object-cover"
-          loading="eager"
-          widths={[548, 1096]}
-          sizes="(max-width: 768px) 100vw, 548px"
-        />
+        <div class="relative w-full max-w-[548px]">
+          <div class="absolute -top-[15px] -right-[15px] w-[80%] h-[70%] rounded-[20px] border-[3px] border-[#81e3bc]"></div>
+          <Image
+            src={quiSommesNousImg}
+            alt="L'équipe Neopro"
+            class="relative z-10 w-full aspect-[548/685] rounded-[20px] object-cover"
+            loading="eager"
+            widths={[548, 1096]}
+            sizes="(max-width: 768px) 100vw, 548px"
+          />
+        </div>
       </div>
     </div>
   </section>
