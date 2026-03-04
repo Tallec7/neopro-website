@@ -199,7 +199,7 @@ const description =
   <!-- Panneaux solution sticky -->
   <section class="pb-[60px] md:pb-[100px] pt-[40px] px-[20px] md:px-[40px] lg:px-[60px]">
     <div class="max-w-[1200px] mx-auto">
-      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">NEOPRO QU'EST-CE QUE C'EST ?</p>
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">A QUOI ÇA SERT ?</p>
       {solutionPanels.map((panel, i) => (
         <div
           class="sticky top-[120px] bg-white rounded-[20px] shadow-lg overflow-hidden mb-8"
@@ -210,24 +210,17 @@ const description =
               <h3 class="text-[28px] md:text-[36px] lg:text-[48px]" set:html={formatPanelTitle(panel.title)} />
               <p class="text-neo-gray text-[18px]">{panel.description}</p>
             </div>
-            <div class="flex-1">
-              {panel.imageUrl ? (
-                <img
-                  src={panel.imageUrl}
-                  alt={panel.imageAlt || panel.title}
-                  class="w-full rounded-[20px] object-cover"
-                  loading="lazy"
-                />
-              ) : panelImages[i] ? (
-                <Image
-                  src={panelImages[i]}
-                  alt={panel.title}
-                  class="w-full rounded-[20px] object-cover"
-                  loading="lazy"
-                  widths={[600, 1200]}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              ) : null}
+            <div class="flex-1 rounded-[20px] overflow-hidden bg-[#1a1f1c] aspect-video">
+              {/* TODO: Remplacer par les vraies vidéos dans public/videos/ */}
+              <video
+                class="w-full h-full object-cover"
+                autoplay
+                muted
+                loop
+                playsinline
+              >
+                <source src={`/videos/solution-panel-${i + 1}.mp4`} type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
@@ -235,20 +228,57 @@ const description =
     </div>
   </section>
 
-  <!-- 3 colonnes features -->
+  <!-- Comment ça marche ? — 3 colonnes -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[120px] pt-[60px] md:pt-[100px]">
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">Adapté à vos clubs</h2>
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[40px]">COMMENT ÇA MARCHE ?</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
-        {features.map((feature) => (
-          <div class="bg-[rgba(217,217,217,0.6)] rounded-[20px] p-[30px]">
-            <h3 class="text-[28px] font-bold mb-[10px]">{feature.title}</h3>
-            <p class="text-[18px] text-[rgba(0,0,0,0.8)]">{feature.description}</p>
-          </div>
-        ))}
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style="--step: 0">
+          <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">1</span>
+          <h3 class="text-[20px] md:text-[24px] font-bold">On branche le boîtier à l'écran</h3>
+          <p class="text-[16px] text-[#4a5565]">Compatible avec n'importe quel écran</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style="--step: 1">
+          <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">2</span>
+          <h3 class="text-[20px] md:text-[24px] font-bold">On se connecte à l'écran</h3>
+          <p class="text-[16px] text-[#4a5565]">Sans connexion internet</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style="--step: 2">
+          <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">3</span>
+          <h3 class="text-[20px] md:text-[24px] font-bold">Notre téléphone devient la télécommande</h3>
+          <p class="text-[16px] text-[#4a5565]">Utilisable par n'importe quel bénévole</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <style>
+    .fade-in-step {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition-delay: calc(var(--step) * 0.15s);
+    }
+    .fade-in-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    const steps = document.querySelectorAll('.fade-in-step');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    steps.forEach((el) => observer.observe(el));
+  </script>
 
   <!-- Panneaux couleurs sticky -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
@@ -281,7 +311,16 @@ const description =
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
       <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-[120px]">
-        <div class="flex-1 flex flex-col gap-[20px]">
+        <!-- TODO: Remplacer par la vraie image dans src/assets/images/lien-offres.webp -->
+        <div class="w-full lg:w-[550px] flex-shrink-0 aspect-square rounded-[20px] overflow-hidden bg-[#f5f5f5]">
+          <img
+            src="/images/lien-offres-placeholder.webp"
+            alt="Découvrez les offres Neopro"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="flex-1 flex flex-col gap-[20px] items-start">
           <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
             Des offres adaptées à vos clubs
           </h2>

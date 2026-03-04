@@ -80,9 +80,6 @@ const description =
         <Button href="/solution" variant="white" arrow>
           Découvrez la solution
         </Button>
-        <Button href="/devis" variant="green">
-          Obtenez un devis
-        </Button>
       </div>
     </div>
   </section>
@@ -94,21 +91,24 @@ const description =
         <span class="font-playfair italic font-normal">Bienvenue </span><span class="font-black">au club.</span>
       </h2>
 
-      <div class="relative rounded-[20px] overflow-hidden w-full aspect-[2116/1184] bg-[#1a1f1c]">
-        <Image
-          src={captureEcranImg}
-          alt="Aperçu de la solution Neopro"
+      <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#1a1f1c]">
+        <!-- TODO: Remplacer par la vraie vidéo dans public/videos/accueil-demo.mp4 -->
+        <video
           class="w-full h-full object-cover"
-          loading="lazy"
-          widths={[768, 1280]}
-          sizes="(max-width: 768px) 100vw, 1200px"
-        />
+          autoplay
+          muted
+          loop
+          playsinline
+          poster=""
+        >
+          <source src="/videos/accueil-demo.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal">
         Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs,
-        dans le but de professionnaliser l'expérience spectateur et de
-        créer un nouvel espace publicitaire pour vos partenaires.
+        dans le but de professionnaliser leur expérience match et de
+        créer un nouvel espace publicitaire pour leurs partenaires.
       </p>
     </div>
   </section>
@@ -116,15 +116,13 @@ const description =
   <!-- ═══════ La régie digitale de votre club ═══════ -->
   <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
-      <div class="w-full md:flex-1 flex flex-col gap-[40px]">
+      <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
         <div>
           <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
             La régie digitale de votre club
           </h2>
           <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">
-            On transforme l'écran de votre club en un outil professionnel — spots partenaires,
-            animations de match — piloté en quelques clics depuis un smartphone,
-            par n'importe quel bénévole.
+            Comment ça marche ? A quoi ça sert ?
           </p>
         </div>
         <Button href="/solution" variant="black" arrow>
@@ -158,7 +156,7 @@ const description =
         />
         <div class="absolute inset-0 bg-[rgba(47,57,53,0.3)] rounded-[20px]"></div>
       </div>
-      <div class="w-full md:flex-1 flex flex-col gap-[40px]">
+      <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
         <div>
           <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
             Des offres adaptées à vos clubs

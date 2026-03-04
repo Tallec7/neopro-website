@@ -9,30 +9,14 @@ interface Props {
   clubs: Club[];
 }
 
-const HEXAGON_COLORS = ['#51B28B', '#1EC5E0'];
-
-/** Hexagone SVG coloré avec logo centré */
-function HexagonLogo({ club, colorIndex }: { club: Club; colorIndex: number }) {
-  const color = HEXAGON_COLORS[colorIndex % HEXAGON_COLORS.length];
-
+/** Logo dans un conteneur arrondi avec outline grise */
+function ClubLogo({ club }: { club: Club }) {
   return (
-    <div className="relative flex-shrink-0 w-[140px] h-[140px] md:w-[200px] md:h-[200px]">
-      {/* Hexagone coloré */}
-      <svg
-        className="absolute inset-[2.3%_6.7%] w-[86.6%] h-[95.4%]"
-        viewBox="0 0 173.205 190.718"
-        fill="none"
-      >
-        <path
-          d="M86.6025 0L173.205 47.6795V143.039L86.6025 190.718L0 143.039V47.6795L86.6025 0Z"
-          fill={color}
-        />
-      </svg>
-      {/* Logo centré dans l'hexagone */}
+    <div className="flex-shrink-0 w-[120px] h-[120px] md:w-[160px] md:h-[160px] rounded-[16px] border border-gray-300 bg-white flex items-center justify-center p-4">
       <img
         src={club.logoUrl}
         alt={club.name}
-        className="absolute inset-0 w-[70%] h-[70%] m-auto object-contain"
+        className="w-full h-full object-contain"
         loading="lazy"
       />
     </div>
@@ -73,11 +57,11 @@ export default function ClubCarousel({ clubs }: Props) {
       </h2>
       <div
         ref={scrollRef}
-        className="flex gap-[40px] md:gap-[70px] items-center overflow-hidden whitespace-nowrap"
+        className="flex gap-[30px] md:gap-[50px] items-center overflow-hidden whitespace-nowrap"
         style={{ scrollBehavior: 'auto' }}
       >
         {[...validClubs, ...validClubs].map((club, i) => (
-          <HexagonLogo key={i} club={club} colorIndex={i} />
+          <ClubLogo key={i} club={club} />
         ))}
       </div>
     </section>
