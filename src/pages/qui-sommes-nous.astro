@@ -7,6 +7,18 @@ import { Image } from 'astro:assets';
 // ── Images locales ────────────────────────────────────────────────
 import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
 
+// ── Sanity (optionnel) ────────────────────────────────────────────
+import { sanityClient } from '@/lib/sanity';
+import { pageMediaQuery } from '@/lib/queries';
+
+let mainImageUrl = '';
+try {
+  if (sanityClient) {
+    const media = await sanityClient.fetch(pageMediaQuery, { slug: 'qui-sommes-nous' });
+    if (media?.mainImageUrl) mainImageUrl = media.mainImageUrl;
+  }
+} catch {}
+
 // ── SEO ───────────────────────────────────────────────────────────
 const title = 'Qui sommes-nous';
 const description =
@@ -79,14 +91,23 @@ const description =
       <!-- Right: sticky photo -->
       <div class="lg:sticky lg:top-[120px] self-start pt-[30px] lg:pt-[60px]">
         <div class="w-full max-w-[548px]">
-          <Image
-            src={quiSommesNousImg}
-            alt="L'équipe Neopro"
-            class="w-full aspect-[548/685] rounded-[20px] object-cover"
-            loading="eager"
-            widths={[548, 1096]}
-            sizes="(max-width: 768px) 100vw, 548px"
-          />
+          {mainImageUrl ? (
+            <img
+              src={mainImageUrl}
+              alt="L'équipe Neopro"
+              class="w-full aspect-[548/685] rounded-[20px] object-cover"
+              loading="eager"
+            />
+          ) : (
+            <Image
+              src={quiSommesNousImg}
+              alt="L'équipe Neopro"
+              class="w-full aspect-[548/685] rounded-[20px] object-cover"
+              loading="eager"
+              widths={[548, 1096]}
+              sizes="(max-width: 768px) 100vw, 548px"
+            />
+          )}
         </div>
       </div>
     </div>

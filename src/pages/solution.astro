@@ -23,6 +23,7 @@ import {
 interface SolutionPanel {
   title: string;
   description: string;
+  videoUrl?: string;
   imageUrl?: string;
   imageAlt?: string;
 }
@@ -211,7 +212,6 @@ const description =
               <p class="text-neo-gray text-[18px]">{panel.description}</p>
             </div>
             <div class="flex-1 rounded-[20px] overflow-hidden bg-[#1a1f1c] aspect-video">
-              {/* TODO: Remplacer par les vraies vidéos dans public/videos/ */}
               <video
                 class="w-full h-full object-cover"
                 autoplay
@@ -219,7 +219,7 @@ const description =
                 loop
                 playsinline
               >
-                <source src={`/videos/solution-panel-${i + 1}.mp4`} type="video/mp4" />
+                <source src={panel.videoUrl || `/videos/solution-panel-${i + 1}.mp4`} type="video/mp4" />
               </video>
             </div>
           </div>

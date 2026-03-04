@@ -93,6 +93,7 @@ export const solutionPanelsQuery = `*[_type == "solutionPanel"] | order(order as
   _id,
   title,
   description,
+  "videoUrl": video.asset->url,
   "imageUrl": image.asset->url,
   "imageAlt": image.alt
 }`;
@@ -102,6 +103,15 @@ export const solutionFeaturesQuery = `*[_type == "solutionFeature"] | order(orde
   _id,
   title,
   description
+}`;
+
+/** Médias d'une page (vidéos, images) par slug */
+export const pageMediaQuery = `*[_type == "pageMedia" && pageSlug == $slug][0]{
+  "heroVideoUrl": heroVideo.asset->url,
+  "heroImageUrl": heroImage.asset->url,
+  "heroImageAlt": heroImage.alt,
+  "mainImageUrl": mainImage.asset->url,
+  "mainImageAlt": mainImage.alt
 }`;
 
 /** Panneaux colorés de la page Solution */

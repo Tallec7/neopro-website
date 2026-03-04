@@ -7,6 +7,7 @@ import clubLogo from './clubLogo';
 import solutionPanel from './solutionPanel';
 import solutionFeature from './solutionFeature';
 import colorPanel from './colorPanel';
+import pageMedia from './pageMedia';
 
 export const schemaTypes = [
   siteSettings,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   solutionPanel,
   solutionFeature,
   colorPanel,
+  pageMedia,
 ];

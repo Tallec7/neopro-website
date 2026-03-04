@@ -20,7 +20,19 @@ import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
 
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
-import { clubLogosQuery } from '@/lib/queries';
+import { clubLogosQuery, pageMediaQuery } from '@/lib/queries';
+
+// ── Médias de page (Sanity → fallback local) ─────────────────────
+let accueilVideoUrl = '/videos/accueil-demo.mp4';
+let mainImageUrl = '';
+
+try {
+  if (sanityClient) {
+    const media = await sanityClient.fetch(pageMediaQuery, { slug: 'accueil' });
+    if (media?.heroVideoUrl) accueilVideoUrl = media.heroVideoUrl;
+    if (media?.mainImageUrl) mainImageUrl = media.mainImageUrl;
+  }
+} catch {}
 
 let clubs: { name: string; logoUrl: string }[] = [];
 
@@ -92,16 +104,14 @@ const description =
       </h2>
 
       <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#1a1f1c]">
-        <!-- TODO: Remplacer par la vraie vidéo dans public/videos/accueil-demo.mp4 -->
         <video
           class="w-full h-full object-cover"
           autoplay
           muted
           loop
           playsinline
-          poster=""
         >
-          <source src="/videos/accueil-demo.mp4" type="video/mp4" />
+          <source src={accueilVideoUrl} type="video/mp4" />
         </video>
       </div>
 
@@ -130,14 +140,23 @@ const description =
         </Button>
       </div>
       <div class="w-full md:w-[550px] md:h-[550px] flex-shrink-0">
-        <Image
-          src={apercuTelecommandeImg}
-          alt="Aperçu télécommande Neopro"
-          class="w-full h-full rounded-[20px] object-cover"
-          loading="lazy"
-          widths={[600, 1200]}
-          sizes="(max-width: 768px) 100vw, 550px"
-        />
+        {mainImageUrl ? (
+          <img
+            src={mainImageUrl}
+            alt="Aperçu télécommande Neopro"
+            class="w-full h-full rounded-[20px] object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            src={apercuTelecommandeImg}
+            alt="Aperçu télécommande Neopro"
+            class="w-full h-full rounded-[20px] object-cover"
+            loading="lazy"
+            widths={[600, 1200]}
+            sizes="(max-width: 768px) 100vw, 550px"
+          />
+        )}
       </div>
     </div>
   </section>
