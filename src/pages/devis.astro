@@ -2,9 +2,20 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import DevisForm from '@/components/DevisForm.tsx';
 
+// ── Sanity (optionnel) ────────────────────────────────────────────
+import { sanityClient } from '@/lib/sanity';
+import { devisPageQuery } from '@/lib/queries';
+
+let pageData: any = null;
+try {
+  if (sanityClient) {
+    pageData = await sanityClient.fetch(devisPageQuery);
+  }
+} catch {}
+
 // ── SEO ───────────────────────────────────────────────────────────
-const title = 'Obtenez votre devis';
-const description =
+const title = pageData?.seoTitle || 'Obtenez votre devis';
+const description = pageData?.seoDescription ||
   'Obtenez une estimation personnalisée pour votre solution de régie digitale Neopro. Standard, Autonomie ou Premium.';
 ---
 

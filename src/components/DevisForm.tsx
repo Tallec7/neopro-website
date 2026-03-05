@@ -224,7 +224,7 @@ export default function DevisForm() {
               </>
             )}
             <div className="flex justify-between py-4 pt-6">
-              <span className="text-[20px] font-bold">Total TTC</span>
+              <span className="text-[20px] font-bold">Total HT</span>
               <span className="text-[28px] font-bold text-[#81e3bc]">{calculatePrice()} €</span>
             </div>
           </div>
@@ -292,8 +292,8 @@ export default function DevisForm() {
                   <div className="flex gap-5 items-start">
                     <h3 className="text-[28px] font-bold shrink-0">{f.name}</h3>
                     <div className="flex-1 text-right">
-                      <p className="text-[20px] font-bold">{f.priceAnnual}€ TTC/an</p>
-                      <p className="text-[14px] text-black/80">(ou {f.priceMonthly}€ TTC/mois*)</p>
+                      <p className="text-[20px] font-bold">{f.priceAnnual}€ HT/an</p>
+                      <p className="text-[14px] text-black/80">(ou {f.priceMonthly}€ HT/mois*)</p>
                     </div>
                   </div>
                   <div>
@@ -345,10 +345,10 @@ export default function DevisForm() {
                     <h3 className="text-[28px] font-bold">{opt.name}</h3>
                     <div>
                       <p className="text-[#51b28b] font-bold text-[18px]">
-                        {opt.priceLabel}€ TTC/équipe
+                        {opt.priceLabel}€ HT/équipe
                       </p>
                       <p className="text-[13px] text-black/60 mt-1">
-                        ({opt.priceExtraLabel}€ TTC/extra équipe)
+                        ({opt.priceExtraLabel}€ HT/extra équipe)
                       </p>
                     </div>
                     <p className="text-black/80 text-[15px]">{opt.description}</p>

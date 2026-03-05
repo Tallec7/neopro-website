@@ -7,8 +7,20 @@ export default defineType({
   fields: [
     defineField({ name: 'name', title: 'Nom', type: 'string' }),
     defineField({ name: 'slug', title: 'Slug', type: 'string' }),
-    defineField({ name: 'priceAnnual', title: 'Prix annuel (EUR TTC)', type: 'string' }),
-    defineField({ name: 'priceMonthly', title: 'Prix mensuel (EUR TTC)', type: 'string' }),
+    defineField({
+      name: 'taxType',
+      title: 'Type de prix affiché',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'HT (hors taxes)', value: 'HT' },
+          { title: 'TTC (toutes taxes comprises)', value: 'TTC' },
+        ],
+      },
+      initialValue: 'HT',
+    }),
+    defineField({ name: 'priceAnnual', title: 'Prix annuel (EUR)', type: 'string' }),
+    defineField({ name: 'priceMonthly', title: 'Prix mensuel (EUR)', type: 'string' }),
     defineField({ name: 'popular', title: 'Populaire ?', type: 'boolean' }),
     defineField({
       name: 'buttonVariant',

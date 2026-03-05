@@ -17,6 +17,7 @@ import {
   solutionPanelsQuery,
   solutionFeaturesQuery,
   colorPanelsQuery,
+  solutionPageQuery,
 } from '@/lib/queries';
 
 // ── Données : panneaux sticky ─────────────────────────────────────
@@ -158,6 +159,22 @@ if (!colorPanels.length) {
   ];
 }
 
+// ── Données page (Sanity → fallback) ─────────────────────────────
+let pageData: any = null;
+
+try {
+  if (sanityClient) {
+    pageData = await sanityClient.fetch(solutionPageQuery);
+  }
+} catch {}
+
+const defaultSteps = [
+  { number: '1', title: "On branche le boîtier à l'écran", description: "Compatible avec n'importe quel écran" },
+  { number: '2', title: "On se connecte à l'écran", description: 'Sans connexion internet' },
+  { number: '3', title: 'Notre téléphone devient la télécommande', description: "Utilisable par n'importe quel bénévole" },
+];
+const steps = pageData?.howItWorks?.steps?.length ? pageData.howItWorks.steps : defaultSteps;
+
 // ── Helper : format panel title (Figma : italic 1er mot + black le reste) ─
 const formatPanelTitle = (title: string) => {
   const spaceIdx = title.indexOf(' ');
@@ -168,8 +185,8 @@ const formatPanelTitle = (title: string) => {
 };
 
 // ── SEO ───────────────────────────────────────────────────────────
-const title = 'La solution de régie digitale';
-const description =
+const title = pageData?.seoTitle || 'La solution de régie digitale';
+const description = pageData?.seoDescription ||
   'Découvrez la solution Neopro : régie digitale clé en main pour clubs amateurs. Sans wifi, sans fil, pilotable depuis un smartphone.';
 ---
 
@@ -186,13 +203,13 @@ const description =
     />
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.5)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LA SOLUTION</p>
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LA SOLUTION'}</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">La régie digitale de</span><br />
-        <span class="font-black">votre club</span>
+        <span class="font-playfair italic">{pageData?.hero?.titleItalic || 'La régie digitale de'}</span><br />
+        <span class="font-black">{pageData?.hero?.titleBold || 'votre club'}</span>
       </h1>
       <div>
-        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
+        <Button href={pageData?.hero?.ctaHref || '#contact'} variant="green" arrow>{pageData?.hero?.ctaLabel || 'Obtenez un devis'}</Button>
       </div>
     </div>
   </section>
@@ -200,7 +217,7 @@ const description =
   <!-- Panneaux solution sticky -->
   <section class="pb-[60px] md:pb-[100px] pt-[40px] px-[20px] md:px-[40px] lg:px-[60px]">
     <div class="max-w-[1200px] mx-auto">
-      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">A QUOI ÇA SERT ?</p>
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">{pageData?.panelsLabel || 'A QUOI ÇA SERT ?'}</p>
       {solutionPanels.map((panel, i) => (
         <div
           class="sticky top-[120px] bg-white rounded-[20px] shadow-lg overflow-hidden mb-8"
@@ -231,23 +248,15 @@ const description =
   <!-- Comment ça marche ? — 3 colonnes -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[120px] pt-[60px] md:pt-[100px]">
     <div class="max-w-[1200px] mx-auto">
-      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[40px]">COMMENT ÇA MARCHE ?</p>
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[40px]">{pageData?.howItWorks?.label || 'COMMENT ÇA MARCHE ?'}</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
-        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style="--step: 0">
-          <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">1</span>
-          <h3 class="text-[20px] md:text-[24px] font-bold">On branche le boîtier à l'écran</h3>
-          <p class="text-[16px] text-[#4a5565]">Compatible avec n'importe quel écran</p>
-        </div>
-        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style="--step: 1">
-          <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">2</span>
-          <h3 class="text-[20px] md:text-[24px] font-bold">On se connecte à l'écran</h3>
-          <p class="text-[16px] text-[#4a5565]">Sans connexion internet</p>
-        </div>
-        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style="--step: 2">
-          <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">3</span>
-          <h3 class="text-[20px] md:text-[24px] font-bold">Notre téléphone devient la télécommande</h3>
-          <p class="text-[16px] text-[#4a5565]">Utilisable par n'importe quel bénévole</p>
-        </div>
+        {steps.map((step: any, i: number) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style={`--step: ${i}`}>
+            <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">{step.number}</span>
+            <h3 class="text-[20px] md:text-[24px] font-bold">{step.title}</h3>
+            <p class="text-[16px] text-[#4a5565]">{step.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -283,7 +292,7 @@ const description =
   <!-- Panneaux couleurs sticky -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">Plus qu'une solution d'affichage</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{pageData?.colorPanelsTitle || "Plus qu'une solution d'affichage"}</h2>
       <div class="flex flex-col gap-[20px]">
         {colorPanels.map((panel, i) => (
           <div
@@ -322,14 +331,14 @@ const description =
         </div>
         <div class="flex-1 flex flex-col gap-[20px] items-start">
           <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
-            Des offres adaptées à vos besoins
+            {pageData?.ctaOffres?.title || 'Des offres adaptées à vos besoins'}
           </h2>
           <p class="text-[18px] text-[#4a5565]">
-            Finançable par vos partenaires. Clé en main.
+            {pageData?.ctaOffres?.subtitle || 'Finançable par vos partenaires. Clé en main.'}
           </p>
           <div class="mt-[20px]">
-            <Button href="/offres" variant="black" arrow>
-              Découvrez les offres
+            <Button href={pageData?.ctaOffres?.ctaHref || '/offres'} variant="black" arrow>
+              {pageData?.ctaOffres?.ctaLabel || 'Découvrez les offres'}
             </Button>
           </div>
         </div>

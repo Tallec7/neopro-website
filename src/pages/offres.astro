@@ -23,12 +23,15 @@ import {
   videoPackagesQuery,
   testimonialsQuery,
   clubLogosQuery,
+  offresPageQuery,
+  financableQuery,
 } from '@/lib/queries';
 
 // ── Types ─────────────────────────────────────────────────────────
 interface PricingPlan {
   name: string;
   slug: string;
+  taxType: string;
   priceAnnual: string;
   priceMonthly: string;
   popular: boolean;
@@ -55,14 +58,18 @@ let plans: PricingPlan[] = [];
 let videoPackages: VideoPackage[] = [];
 let testimonials: Testimonial[] = [];
 let clubs: { name: string; logoUrl: string }[] = [];
+let pageData: any = null;
+let financableData: any = null;
 
 try {
   if (sanityClient) {
-    const [p, v, t, c] = await Promise.all([
+    const [p, v, t, c, pd, fin] = await Promise.all([
       sanityClient.fetch(pricingPlansQuery),
       sanityClient.fetch(videoPackagesQuery),
       sanityClient.fetch(testimonialsQuery),
       sanityClient.fetch(clubLogosQuery),
+      sanityClient.fetch(offresPageQuery),
+      sanityClient.fetch(financableQuery),
     ]);
     if (p?.length) plans = p;
     if (v?.length) videoPackages = v;
@@ -73,6 +80,8 @@ try {
         clubs = withLogos.map((item: any) => ({ name: item.name, logoUrl: item.logoUrl }));
       }
     }
+    pageData = pd;
+    financableData = fin?.financable;
   }
 } catch {
   // Sanity non configuré
@@ -84,6 +93,7 @@ if (!plans.length) {
     {
       name: 'Standard',
       slug: 'standard',
+      taxType: 'HT',
       priceAnnual: '1500',
       priceMonthly: '190',
       popular: false,
@@ -100,6 +110,7 @@ if (!plans.length) {
     {
       name: 'Autonomie',
       slug: 'autonomie',
+      taxType: 'HT',
       priceAnnual: '2100',
       priceMonthly: '250',
       popular: true,
@@ -117,6 +128,7 @@ if (!plans.length) {
     {
       name: 'Premium',
       slug: 'premium',
+      taxType: 'HT',
       priceAnnual: '3000',
       priceMonthly: '350',
       popular: false,
@@ -205,8 +217,8 @@ const borderColorMap: Record<string, string> = {
 };
 
 // ── SEO ───────────────────────────────────────────────────────────
-const title = 'Les offres';
-const description =
+const title = pageData?.seoTitle || 'Les offres';
+const description = pageData?.seoDescription ||
   'Découvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de régie digitale finançables par vos partenaires.';
 ---
 
@@ -221,13 +233,13 @@ const description =
     />
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LES OFFRES</p>
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LES OFFRES'}</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">Adaptées à</span><br />
-        <span class="font-black">vos besoins</span>
+        <span class="font-playfair italic">{pageData?.hero?.titleItalic || 'Adaptées à'}</span><br />
+        <span class="font-black">{pageData?.hero?.titleBold || 'vos besoins'}</span>
       </h1>
       <div>
-        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
+        <Button href={pageData?.hero?.ctaHref || '#contact'} variant="green" arrow>{pageData?.hero?.ctaLabel || 'Obtenez un devis'}</Button>
       </div>
     </div>
   </section>
@@ -235,7 +247,7 @@ const description =
   <!-- 3 offres -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">3 offres disponibles</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{pageData?.plansTitle || '3 offres disponibles'}</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div
@@ -243,15 +255,15 @@ const description =
           >
             {offre.popular && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                Le plus avantageux
+                {pageData?.popularBadge || 'Le plus avantageux'}
               </span>
             )}
             <div class="mb-[20px]">
               <div class="flex items-baseline justify-between">
                 <h3 class="text-[28px] font-bold">{offre.name}</h3>
-                <span class="text-[28px] font-bold text-[#101828]">{offre.priceAnnual}€/an HT</span>
+                <span class="text-[28px] font-bold text-[#101828]">{offre.priceAnnual}€/an {offre.taxType || 'HT'}</span>
               </div>
-              <p class="text-[14px] text-neo-gray text-right mt-[4px]">ou {offre.priceMonthly}€/mois HT</p>
+              <p class="text-[14px] text-neo-gray text-right mt-[4px]">ou {offre.priceMonthly}€/mois {offre.taxType || 'HT'}</p>
             </div>
             <ul class="list-disc pl-5 flex flex-col gap-[10px] mb-[30px] flex-1">
               {offre.features.map((f) => (
@@ -259,13 +271,13 @@ const description =
               ))}
             </ul>
             <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
-              Choisir cette offre
+              {pageData?.chooseCta || 'Choisir cette offre'}
             </Button>
           </div>
         ))}
       </div>
       <p class="text-center text-[18px] text-neo-gray mt-[30px]">
-        *Engagement de 9 mois minimum
+        {pageData?.engagementNote || '*Engagement de 9 mois minimum'}
       </p>
     </div>
   </section>
@@ -274,8 +286,8 @@ const description =
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[60px]">
-        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">PACKAGE VIDÉOS EN OPTION</h2>
-        <p class="text-[18px] text-neo-gray max-w-[700px]">Nous proposons en option de produire et de mettre à jour vos vidéos toute l'année.</p>
+        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">{pageData?.videoSection?.title || 'PACKAGE VIDÉOS EN OPTION'}</h2>
+        <p class="text-[18px] text-neo-gray max-w-[700px]">{pageData?.videoSection?.description || 'Nous proposons en option de produire et de mettre à jour vos vidéos toute l\'année.'}</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {videoPackages.map((pkg) => (
@@ -284,7 +296,7 @@ const description =
           }`}>
             {pkg.name === 'Avec shooting' && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                Le plus apprécié
+                {pageData?.videoSection?.popularBadge || 'Le plus apprécié'}
               </span>
             )}
             <h3 class="text-[22px] font-bold">{pkg.name}</h3>
@@ -308,18 +320,15 @@ const description =
       <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
         <div class="flex-1">
           <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
-            Finançable par vos partenaires
+            {financableData?.title || 'Finançable par vos partenaires'}
           </h2>
-          <p class="text-[18px] text-[#4a5565]">
-            Notre solution a pour but d'être financée par vos partenaires.<br />
-            Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.
-          </p>
+          <p class="text-[18px] text-[#4a5565]" set:html={financableData?.description || "Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé."} />
         </div>
         <div class="shrink-0 w-full md:w-auto">
           <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form>
             <input
               type="email"
-              placeholder="Votre email"
+              placeholder={financableData?.emailPlaceholder || "Votre email"}
               required
               class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
             />
@@ -327,7 +336,7 @@ const description =
               type="submit"
               class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
             >
-              Recevoir le document
+              {financableData?.buttonLabel || 'Recevoir le document'}
             </button>
           </form>
         </div>

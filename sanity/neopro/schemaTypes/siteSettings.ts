@@ -51,6 +51,17 @@ export default defineType({
         defineField({ name: 'href', title: 'URL', type: 'string' }),
       ],
     }),
+    defineField({
+      name: 'financable',
+      title: 'Section Finançable (partagée)',
+      type: 'object',
+      fields: [
+        defineField({ name: 'title', title: 'Titre', type: 'string' }),
+        defineField({ name: 'description', title: 'Description', type: 'text' }),
+        defineField({ name: 'emailPlaceholder', title: 'Placeholder email', type: 'string' }),
+        defineField({ name: 'buttonLabel', title: 'Libellé bouton', type: 'string' }),
+      ],
+    }),
     defineField({ name: 'footerDescription', title: 'Description footer', type: 'text' }),
     defineField({
       name: 'footerLinks',
