@@ -250,6 +250,10 @@ const description =
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
+              <p class="text-[16px] text-neo-gray mt-[8px]">
+                <span class="text-[28px] font-bold text-[#101828]">{offre.priceMonthly}€</span> /mois HT
+              </p>
+              <p class="text-[14px] text-neo-gray">soit {offre.priceAnnual}€/an HT</p>
             </div>
             <ul class="list-disc pl-5 flex flex-col gap-[10px] mb-[30px] flex-1">
               {offre.features.map((f) => (

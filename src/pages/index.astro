@@ -97,29 +97,35 @@ const description =
   </section>
 
   <!-- ═══════ Bienvenue au club ═══════ -->
-  <section class="bg-[#2f3935] py-24 px-5 overflow-hidden">
-    <div class="max-w-[1320px] mx-auto flex flex-col items-center gap-[40px] md:gap-[60px]">
+  <section class="relative bg-[#2f3935] overflow-hidden">
+    <!-- Texte fixe (sticky) — reste en place pendant le scroll -->
+    <div class="sticky top-0 z-0 flex flex-col items-center justify-center min-h-[60vh] md:min-h-[80vh] px-5">
       <h2 class="text-[#51b28b] text-[48px] md:text-[128px] leading-[1] text-center">
         <span class="font-playfair italic font-normal">Bienvenue </span><span class="font-black">au club.</span>
       </h2>
+    </div>
 
-      <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#1a1f1c]">
-        <video
-          class="w-full h-full object-cover"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <source src={accueilVideoUrl} type="video/mp4" />
-        </video>
+    <!-- Vidéo qui passe par dessus le texte au scroll -->
+    <div class="relative z-10 px-5 pb-16 md:pb-24 -mt-[30vh] md:-mt-[40vh]">
+      <div class="max-w-[1320px] mx-auto flex flex-col items-center gap-[40px] md:gap-[60px]">
+        <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#1a1f1c] shadow-2xl">
+          <video
+            class="w-full h-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+          >
+            <source src={accueilVideoUrl} type="video/mp4" />
+          </video>
+        </div>
+
+        <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal">
+          Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs,
+          dans le but de professionnaliser leur expérience match et de
+          créer un nouvel espace publicitaire pour leurs partenaires.
+        </p>
       </div>
-
-      <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal">
-        Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs,
-        dans le but de professionnaliser leur expérience match et de
-        créer un nouvel espace publicitaire pour leurs partenaires.
-      </p>
     </div>
   </section>
 
