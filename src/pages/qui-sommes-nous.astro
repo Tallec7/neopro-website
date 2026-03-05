@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 
 // ── Images locales ────────────────────────────────────────────────
 import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
+import ambitionImg from '@/assets/images/ambition-image.png';
 
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
@@ -100,7 +101,7 @@ const description =
             />
           ) : (
             <Image
-              src={quiSommesNousImg}
+              src={ambitionImg}
               alt="L'équipe Neopro"
               class="w-full aspect-[548/685] rounded-[20px] object-cover"
               loading="eager"

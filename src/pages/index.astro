@@ -8,13 +8,13 @@ import { Image } from 'astro:assets';
 // ── Images locales ────────────────────────────────────────────────
 import heroImg from '@/assets/images/hero-accueil-v2.webp';
 import captureEcranImg from '@/assets/images/capture-ecran.webp';
-import apercuTelecommandeImg from '@/assets/images/apercu-telecommande.webp';
+import imageTelephoneImg from '@/assets/images/image-telephone.png';
 import nanoBananaImg from '@/assets/images/nano-banana.webp';
 
 // ── Logos clubs (fallback — remplacés par Sanity quand configuré) ─
-import logoRacc from '@/assets/images/logo-racc.webp';
-import logoNarh from '@/assets/images/logo-narh.webp';
-import logoNlf from '@/assets/images/logo-nlf-fond-blanc.webp';
+import logoRacc from '@/assets/images/logo-racc.png';
+import logoNarh from '@/assets/images/logo-narh.png';
+import logoNlf from '@/assets/images/logo-nlf.png';
 import logoCorsaires from '@/assets/images/logo-corsaires.webp';
 import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
 
@@ -155,7 +155,7 @@ const description =
           />
         ) : (
           <Image
-            src={apercuTelecommandeImg}
+            src={imageTelephoneImg}
             alt="Aperçu télécommande Neopro"
             class="w-full h-full rounded-[20px] object-cover"
             loading="lazy"
