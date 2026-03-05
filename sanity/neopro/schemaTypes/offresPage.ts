@@ -18,6 +18,13 @@ export default defineType({
         defineField({ name: 'titleBold', title: 'Titre partie grasse', type: 'string' }),
         defineField({ name: 'ctaLabel', title: 'Libellé CTA', type: 'string' }),
         defineField({ name: 'ctaHref', title: 'URL CTA', type: 'string' }),
+        defineField({
+          name: 'image',
+          title: 'Image hero (fond)',
+          type: 'image',
+          options: { hotspot: true },
+          fields: [defineField({ name: 'alt', title: 'Texte alternatif', type: 'string' })],
+        }),
       ],
     }),
 

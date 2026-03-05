@@ -10,14 +10,12 @@ import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
 import {
-  pageMediaQuery,
   aboutPageQuery,
   faqItemsQuery,
   financableQuery,
   teamMembersQuery,
 } from '@/lib/queries';
 
-let mainImageUrl = '';
 let pageData: any = null;
 let faqItems: any[] = [];
 let financableData: any = null;
@@ -25,14 +23,12 @@ let teamMembers: any[] = [];
 
 try {
   if (sanityClient) {
-    const [media, pd, faq, fin, team] = await Promise.all([
-      sanityClient.fetch(pageMediaQuery, { slug: 'qui-sommes-nous' }),
+    const [pd, faq, fin, team] = await Promise.all([
       sanityClient.fetch(aboutPageQuery),
       sanityClient.fetch(faqItemsQuery),
       sanityClient.fetch(financableQuery),
       sanityClient.fetch(teamMembersQuery),
     ]);
-    if (media?.mainImageUrl) mainImageUrl = media.mainImageUrl;
     pageData = pd;
     if (faq?.length) faqItems = faq;
     financableData = fin?.financable;
@@ -138,10 +134,10 @@ const description = pageData?.seoDescription ||
       <!-- Right: sticky photo -->
       <div class="pt-[30px] lg:pt-[60px] lg:self-stretch">
         <div class="w-full max-w-[548px] lg:sticky lg:top-[120px]">
-          {mainImageUrl ? (
+          {pageData?.mainImageUrl ? (
             <img
-              src={mainImageUrl}
-              alt="L'équipe Neopro"
+              src={pageData.mainImageUrl}
+              alt={pageData.mainImageAlt || "L'équipe Neopro"}
               class="w-full aspect-[548/685] rounded-[20px] object-cover"
               loading="eager"
             />

@@ -18,6 +18,13 @@ export default defineType({
         defineField({ name: 'line3', title: 'Ligne 3 (italique)', type: 'string' }),
         defineField({ name: 'ctaLabel', title: 'Libellé CTA', type: 'string' }),
         defineField({ name: 'ctaHref', title: 'URL CTA', type: 'string' }),
+        defineField({
+          name: 'image',
+          title: 'Image hero (fond)',
+          type: 'image',
+          options: { hotspot: true },
+          fields: [defineField({ name: 'alt', title: 'Texte alternatif', type: 'string' })],
+        }),
       ],
     }),
 
@@ -29,6 +36,13 @@ export default defineType({
         defineField({ name: 'titleItalic', title: 'Titre partie italique', type: 'string' }),
         defineField({ name: 'titleBold', title: 'Titre partie grasse', type: 'string' }),
         defineField({ name: 'description', title: 'Description', type: 'text' }),
+        defineField({
+          name: 'video',
+          title: 'Vidéo de démonstration',
+          type: 'file',
+          options: { accept: 'video/*' },
+          description: 'Vidéo MP4 affichée dans la section bienvenue.',
+        }),
       ],
     }),
 
@@ -41,6 +55,13 @@ export default defineType({
         defineField({ name: 'subtitle', title: 'Sous-titre', type: 'string' }),
         defineField({ name: 'ctaLabel', title: 'Libellé CTA', type: 'string' }),
         defineField({ name: 'ctaHref', title: 'URL CTA', type: 'string' }),
+        defineField({
+          name: 'image',
+          title: 'Image (visuel téléphone)',
+          type: 'image',
+          options: { hotspot: true },
+          fields: [defineField({ name: 'alt', title: 'Texte alternatif', type: 'string' })],
+        }),
       ],
     }),
 
@@ -53,6 +74,13 @@ export default defineType({
         defineField({ name: 'subtitle', title: 'Sous-titre', type: 'string' }),
         defineField({ name: 'ctaLabel', title: 'Libellé CTA', type: 'string' }),
         defineField({ name: 'ctaHref', title: 'URL CTA', type: 'string' }),
+        defineField({
+          name: 'image',
+          title: 'Image section offres',
+          type: 'image',
+          options: { hotspot: true },
+          fields: [defineField({ name: 'alt', title: 'Texte alternatif', type: 'string' })],
+        }),
       ],
     }),
   ],

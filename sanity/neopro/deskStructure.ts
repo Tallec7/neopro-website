@@ -56,7 +56,6 @@ export const deskStructure = (S: StructureBuilder) =>
               S.documentTypeListItem('solutionFeature').title('Features'),
               S.documentTypeListItem('colorPanel').title('Panneaux colorés'),
               S.documentTypeListItem('clubLogo').title('Logos clubs'),
-              S.documentTypeListItem('pageMedia').title('Médias'),
             ]),
         ),
 

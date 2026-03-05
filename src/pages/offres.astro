@@ -225,12 +225,23 @@ const description = pageData?.seoDescription ||
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
-    <img
-      src="/images/image_offre.jpg"
-      alt="Les offres Neopro"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-    />
+    {pageData?.hero?.imageUrl ? (
+      <img
+        src={pageData.hero.imageUrl}
+        alt={pageData.hero.imageAlt || 'Les offres Neopro'}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
+    ) : (
+      <Image
+        src={heroImg}
+        alt="Les offres Neopro"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        widths={[640, 1024, 1440, 1920]}
+        sizes="100vw"
+      />
+    )}
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LES OFFRES'}</p>

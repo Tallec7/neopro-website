@@ -105,15 +105,6 @@ export const solutionFeaturesQuery = `*[_type == "solutionFeature"] | order(orde
   description
 }`;
 
-/** Médias d'une page (vidéos, images) par slug */
-export const pageMediaQuery = `*[_type == "pageMedia" && pageSlug == $slug][0]{
-  "heroVideoUrl": heroVideo.asset->url,
-  "heroImageUrl": heroImage.asset->url,
-  "heroImageAlt": heroImage.alt,
-  "mainImageUrl": mainImage.asset->url,
-  "mainImageAlt": mainImage.alt
-}`;
-
 /** Panneaux colorés de la page Solution */
 export const colorPanelsQuery = `*[_type == "colorPanel"] | order(order asc) {
   _id,
@@ -128,28 +119,28 @@ export const colorPanelsQuery = `*[_type == "colorPanel"] | order(order asc) {
 export const homePageQuery = `*[_type == "homePage"][0]{
   seoTitle,
   seoDescription,
-  hero { line1, line2, line3, ctaLabel, ctaHref },
-  welcome { titleItalic, titleBold, description },
-  regie { title, subtitle, ctaLabel, ctaHref },
-  offres { title, subtitle, ctaLabel, ctaHref }
+  hero { line1, line2, line3, ctaLabel, ctaHref, "imageUrl": image.asset->url, "imageAlt": image.alt },
+  welcome { titleItalic, titleBold, description, "videoUrl": video.asset->url },
+  regie { title, subtitle, ctaLabel, ctaHref, "imageUrl": image.asset->url, "imageAlt": image.alt },
+  offres { title, subtitle, ctaLabel, ctaHref, "imageUrl": image.asset->url, "imageAlt": image.alt }
 }`;
 
 /** Page Solution (singleton) */
 export const solutionPageQuery = `*[_type == "solutionPage"][0]{
   seoTitle,
   seoDescription,
-  hero { label, titleItalic, titleBold, ctaLabel, ctaHref },
+  hero { label, titleItalic, titleBold, ctaLabel, ctaHref, "imageUrl": image.asset->url, "imageAlt": image.alt },
   panelsLabel,
   howItWorks { label, steps[] { number, title, description } },
   colorPanelsTitle,
-  ctaOffres { title, subtitle, ctaLabel, ctaHref }
+  ctaOffres { title, subtitle, ctaLabel, ctaHref, "imageUrl": image.asset->url, "imageAlt": image.alt }
 }`;
 
 /** Page Offres (singleton) */
 export const offresPageQuery = `*[_type == "offresPage"][0]{
   seoTitle,
   seoDescription,
-  hero { label, titleItalic, titleBold, ctaLabel, ctaHref },
+  hero { label, titleItalic, titleBold, ctaLabel, ctaHref, "imageUrl": image.asset->url, "imageAlt": image.alt },
   plansTitle,
   popularBadge,
   chooseCta,
@@ -164,7 +155,9 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
   hero { repeatedWord, overlayLine1, overlayLine2 },
   aboutTitle,
   aboutParagraphs,
-  faqTitle
+  faqTitle,
+  "mainImageUrl": mainImage.asset->url,
+  "mainImageAlt": mainImage.alt
 }`;
 
 /** Page Devis (singleton) */

@@ -29,6 +29,14 @@ export default defineType({
     }),
 
     defineField({ name: 'faqTitle', title: 'Titre FAQ', type: 'string' }),
+
+    defineField({
+      name: 'mainImage',
+      title: 'Photo principale (équipe)',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [defineField({ name: 'alt', title: 'Texte alternatif', type: 'string' })],
+    }),
   ],
   preview: {
     prepare() {

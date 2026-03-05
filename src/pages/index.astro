@@ -5,11 +5,9 @@ import ClubCarousel from '@/components/ClubCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
 import { Image } from 'astro:assets';
 
-// ── Images locales ────────────────────────────────────────────────
+// ── Images locales (fallback) ─────────────────────────────────────
 import heroImg from '@/assets/images/hero-accueil-v2.webp';
-import captureEcranImg from '@/assets/images/capture-ecran.webp';
 import imageTelephoneImg from '@/assets/images/image-telephone.png';
-import nanoBananaImg from '@/assets/images/nano-banana.webp';
 
 // ── Logos clubs (fallback — remplacés par Sanity quand configuré) ─
 import logoRacc from '@/assets/images/logo-racc.png';
@@ -20,22 +18,14 @@ import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
 
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
-import { clubLogosQuery, pageMediaQuery, homePageQuery } from '@/lib/queries';
+import { clubLogosQuery, homePageQuery } from '@/lib/queries';
 
 // ── Données page (Sanity → fallback local) ───────────────────────
-let accueilVideoUrl = '/videos/accueil-demo.mp4';
-let mainImageUrl = '';
 let pageData: any = null;
 
 try {
   if (sanityClient) {
-    const [media, pd] = await Promise.all([
-      sanityClient.fetch(pageMediaQuery, { slug: 'accueil' }),
-      sanityClient.fetch(homePageQuery),
-    ]);
-    if (media?.heroVideoUrl) accueilVideoUrl = media.heroVideoUrl;
-    if (media?.mainImageUrl) mainImageUrl = media.mainImageUrl;
-    pageData = pd;
+    pageData = await sanityClient.fetch(homePageQuery);
   }
 } catch {}
 
@@ -78,14 +68,23 @@ const description = pageData?.seoDescription ||
 <BaseLayout title={title} description={description}>
   <!-- ═══════ Hero ═══════ -->
   <section class="relative h-[500px] md:h-[743px] bg-[#2f3935] overflow-hidden">
-    <Image
-      src={heroImg}
-      alt="Écran digital Neopro dans un gymnase"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      widths={[768, 1280, 1920]}
-      sizes="100vw"
-    />
+    {pageData?.hero?.imageUrl ? (
+      <img
+        src={pageData.hero.imageUrl}
+        alt={pageData.hero.imageAlt || 'Écran digital Neopro dans un gymnase'}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
+    ) : (
+      <Image
+        src={heroImg}
+        alt="Écran digital Neopro dans un gymnase"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+      />
+    )}
     <div class="absolute inset-0 bg-gradient-to-r from-[#2f3935] to-[80%] to-[rgba(47,57,53,0.3)]"></div>
     <div class="relative z-10 flex flex-col justify-end h-full text-white p-8 md:p-[60px] gap-8 md:gap-[40px]">
       <h1 class="text-[36px] md:text-[70px] leading-[1]">
@@ -124,7 +123,7 @@ const description = pageData?.seoDescription ||
             loop
             playsinline
           >
-            <source src={accueilVideoUrl} type="video/mp4" />
+            <source src={pageData?.welcome?.videoUrl || '/videos/accueil-demo.mp4'} type="video/mp4" />
           </video>
         </div>
       </div>
@@ -148,10 +147,10 @@ const description = pageData?.seoDescription ||
         </Button>
       </div>
       <div class="w-full md:w-[550px] md:h-[550px] flex-shrink-0">
-        {mainImageUrl ? (
+        {pageData?.regie?.imageUrl ? (
           <img
-            src={mainImageUrl}
-            alt="Aperçu télécommande Neopro"
+            src={pageData.regie.imageUrl}
+            alt={pageData.regie.imageAlt || 'Aperçu télécommande Neopro'}
             class="w-full h-full rounded-[20px] object-cover"
             loading="lazy"
           />
@@ -174,8 +173,8 @@ const description = pageData?.seoDescription ||
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
       <div class="relative w-full md:w-[550px] md:h-[550px] flex-shrink-0 rounded-[20px] overflow-hidden">
         <img
-          src="/images/image_offre_accueil.jpg"
-          alt="Offres Neopro"
+          src={pageData?.offres?.imageUrl || '/images/image_offre_accueil.jpg'}
+          alt={pageData?.offres?.imageAlt || 'Offres Neopro'}
           class="w-full h-full object-cover"
           loading="lazy"
         />
