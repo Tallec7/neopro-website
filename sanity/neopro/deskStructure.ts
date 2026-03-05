@@ -1,11 +1,15 @@
 import type { StructureBuilder } from 'sanity/structure';
 
-// Helper : affiche un singleton (un seul document, pas de liste)
+// Helper : affiche un singleton en ouvrant directement le 1er document du type
 const singletonItem = (S: StructureBuilder, typeName: string, title: string) =>
   S.listItem()
     .title(title)
     .id(typeName)
-    .child(S.document().schemaType(typeName).documentId(typeName));
+    .child(
+      S.documentTypeList(typeName)
+        .title(title)
+        .menuItems([])
+    );
 
 export const deskStructure = (S: StructureBuilder) =>
   S.list()
