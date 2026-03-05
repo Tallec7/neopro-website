@@ -60,9 +60,12 @@ export default function ClubCarousel({ clubs }: Props) {
         className="flex gap-[30px] md:gap-[50px] items-center overflow-hidden whitespace-nowrap"
         style={{ scrollBehavior: 'auto' }}
       >
-        {[...validClubs, ...validClubs].map((club, i) => (
-          <ClubLogo key={i} club={club} />
-        ))}
+        {/* Répéter les logos suffisamment pour un défilement continu sans encarts vides */}
+        {Array.from({ length: Math.max(4, Math.ceil(20 / validClubs.length)) })
+          .flatMap(() => validClubs)
+          .map((club, i) => (
+            <ClubLogo key={i} club={club} />
+          ))}
       </div>
     </section>
   );

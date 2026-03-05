@@ -98,16 +98,21 @@ const description =
 
   <!-- ═══════ Bienvenue au club ═══════ -->
   <section class="relative bg-[#2f3935] overflow-hidden">
-    <!-- Texte fixe (sticky) — reste en place pendant le scroll -->
-    <div class="sticky top-0 z-0 flex flex-col items-center justify-center min-h-[60vh] md:min-h-[80vh] px-5">
-      <h2 class="text-[#51b28b] text-[48px] md:text-[128px] leading-[1] text-center">
+    <!-- Titre + description au-dessus de la vidéo -->
+    <div class="flex flex-col items-center justify-center px-5 pt-16 md:pt-24">
+      <h2 class="text-[#51b28b] text-[48px] md:text-[128px] leading-[1] text-center mb-6 md:mb-10">
         <span class="font-playfair italic font-normal">Bienvenue </span><span class="font-black">au club.</span>
       </h2>
+      <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal mb-10 md:mb-16">
+        Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs,
+        dans le but de professionnaliser leur expérience match et de
+        créer un nouvel espace publicitaire pour leurs partenaires.
+      </p>
     </div>
 
-    <!-- Vidéo qui passe par dessus le texte au scroll -->
-    <div class="relative z-10 px-5 pb-16 md:pb-24 -mt-[30vh] md:-mt-[40vh]">
-      <div class="max-w-[1320px] mx-auto flex flex-col items-center gap-[40px] md:gap-[60px]">
+    <!-- Vidéo -->
+    <div class="px-5 pb-16 md:pb-24">
+      <div class="max-w-[1320px] mx-auto">
         <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#1a1f1c] shadow-2xl">
           <video
             class="w-full h-full object-cover"
@@ -119,12 +124,6 @@ const description =
             <source src={accueilVideoUrl} type="video/mp4" />
           </video>
         </div>
-
-        <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal">
-          Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs,
-          dans le but de professionnaliser leur expérience match et de
-          créer un nouvel espace publicitaire pour leurs partenaires.
-        </p>
       </div>
     </div>
   </section>
@@ -171,20 +170,17 @@ const description =
   <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
       <div class="relative w-full md:w-[550px] md:h-[550px] flex-shrink-0 rounded-[20px] overflow-hidden">
-        <Image
-          src={nanoBananaImg}
+        <img
+          src="/images/image_offre_accueil.jpg"
           alt="Offres Neopro"
           class="w-full h-full object-cover"
           loading="lazy"
-          widths={[600, 1200]}
-          sizes="(max-width: 768px) 100vw, 550px"
         />
-        <div class="absolute inset-0 bg-[rgba(47,57,53,0.3)] rounded-[20px]"></div>
       </div>
       <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
         <div>
           <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
-            Des offres adaptées à vos clubs
+            Des offres adaptées à vos besoins
           </h2>
           <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">
             Finançable par vos partenaires. Clé en main.

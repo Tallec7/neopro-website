@@ -29,7 +29,7 @@ export default function TestimonialCarousel({ testimonials }: Props) {
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <div className="text-center">
-                  <p className="text-[#81e3bc] font-medium text-[14px]">{t.clubName}</p>
+                  <p className="text-[#81e3bc] font-medium text-[14px] uppercase">{t.clubName}</p>
                 </div>
               </div>
             ))}

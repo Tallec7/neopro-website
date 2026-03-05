@@ -213,13 +213,11 @@ const description =
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
-    <Image
-      src={heroImg}
+    <img
+      src="/images/image_offre.jpg"
       alt="Les offres Neopro"
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
-      widths={[640, 1024, 1440, 1920]}
-      sizes="100vw"
     />
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
@@ -249,11 +247,11 @@ const description =
               </span>
             )}
             <div class="mb-[20px]">
-              <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class="text-[16px] text-neo-gray mt-[8px]">
-                <span class="text-[28px] font-bold text-[#101828]">{offre.priceMonthly}€</span> /mois HT
-              </p>
-              <p class="text-[14px] text-neo-gray">soit {offre.priceAnnual}€/an HT</p>
+              <div class="flex items-baseline justify-between">
+                <h3 class="text-[28px] font-bold">{offre.name}</h3>
+                <span class="text-[28px] font-bold text-[#101828]">{offre.priceAnnual}€/an HT</span>
+              </div>
+              <p class="text-[14px] text-neo-gray text-right mt-[4px]">ou {offre.priceMonthly}€/mois HT</p>
             </div>
             <ul class="list-disc pl-5 flex flex-col gap-[10px] mb-[30px] flex-1">
               {offre.features.map((f) => (
@@ -277,14 +275,14 @@ const description =
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[60px]">
         <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">PACKAGE VIDÉOS EN OPTION</h2>
-        <p class="text-[18px] text-neo-gray max-w-[700px]">Nous vous proposons en option de produire et de mettre à jour toute l'année vos vidéos.</p>
+        <p class="text-[18px] text-neo-gray max-w-[700px]">Nous proposons en option de produire et de mettre à jour vos vidéos toute l'année.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {videoPackages.map((pkg) => (
           <div class={`relative rounded-[20px] p-[30px] flex flex-col gap-5 ${
-            pkg.popular ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
+            pkg.name === 'Avec shooting' ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
           }`}>
-            {pkg.popular && (
+            {pkg.name === 'Avec shooting' && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
                 Le plus apprécié
               </span>
