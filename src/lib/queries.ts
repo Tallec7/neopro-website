@@ -121,3 +121,83 @@ export const colorPanelsQuery = `*[_type == "colorPanel"] | order(order asc) {
   features[],
   bgColor
 }`;
+
+// ── Requêtes pages éditables ────────────────────────────────────────
+
+/** Page d'accueil (singleton) */
+export const homePageQuery = `*[_type == "homePage"][0]{
+  seoTitle,
+  seoDescription,
+  hero { line1, line2, line3, ctaLabel, ctaHref },
+  welcome { titleItalic, titleBold, description },
+  regie { title, subtitle, ctaLabel, ctaHref },
+  offres { title, subtitle, ctaLabel, ctaHref }
+}`;
+
+/** Page Solution (singleton) */
+export const solutionPageQuery = `*[_type == "solutionPage"][0]{
+  seoTitle,
+  seoDescription,
+  hero { label, titleItalic, titleBold, ctaLabel, ctaHref },
+  panelsLabel,
+  howItWorks { label, steps[] { number, title, description } },
+  colorPanelsTitle,
+  ctaOffres { title, subtitle, ctaLabel, ctaHref }
+}`;
+
+/** Page Offres (singleton) */
+export const offresPageQuery = `*[_type == "offresPage"][0]{
+  seoTitle,
+  seoDescription,
+  hero { label, titleItalic, titleBold, ctaLabel, ctaHref },
+  plansTitle,
+  popularBadge,
+  chooseCta,
+  engagementNote,
+  videoSection { title, description, popularBadge }
+}`;
+
+/** Page Qui sommes-nous (singleton) */
+export const aboutPageQuery = `*[_type == "aboutPage"][0]{
+  seoTitle,
+  seoDescription,
+  hero { repeatedWord, overlayLine1, overlayLine2 },
+  aboutTitle,
+  aboutParagraphs,
+  faqTitle
+}`;
+
+/** Page Devis (singleton) */
+export const devisPageQuery = `*[_type == "devisPage"][0]{
+  seoTitle,
+  seoDescription
+}`;
+
+/** Questions FAQ triées par ordre */
+export const faqItemsQuery = `*[_type == "faqItem"] | order(order asc) {
+  _id,
+  question,
+  answer,
+  bullets,
+  answerAfterBullets
+}`;
+
+/** Section Finançable depuis siteSettings */
+export const financableQuery = `*[_type == "siteSettings"][0]{
+  financable {
+    title,
+    description,
+    emailPlaceholder,
+    buttonLabel
+  }
+}`;
+
+/** Membres de l'équipe triés par ordre */
+export const teamMembersQuery = `*[_type == "teamMember"] | order(order asc) {
+  _id,
+  name,
+  role,
+  "photoUrl": photo.asset->url,
+  "photoAlt": photo.alt,
+  bio
+}`;

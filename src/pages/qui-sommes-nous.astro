@@ -9,19 +9,95 @@ import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
 
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
-import { pageMediaQuery } from '@/lib/queries';
+import {
+  pageMediaQuery,
+  aboutPageQuery,
+  faqItemsQuery,
+  financableQuery,
+  teamMembersQuery,
+} from '@/lib/queries';
 
 let mainImageUrl = '';
+let pageData: any = null;
+let faqItems: any[] = [];
+let financableData: any = null;
+let teamMembers: any[] = [];
+
 try {
   if (sanityClient) {
-    const media = await sanityClient.fetch(pageMediaQuery, { slug: 'qui-sommes-nous' });
+    const [media, pd, faq, fin, team] = await Promise.all([
+      sanityClient.fetch(pageMediaQuery, { slug: 'qui-sommes-nous' }),
+      sanityClient.fetch(aboutPageQuery),
+      sanityClient.fetch(faqItemsQuery),
+      sanityClient.fetch(financableQuery),
+      sanityClient.fetch(teamMembersQuery),
+    ]);
     if (media?.mainImageUrl) mainImageUrl = media.mainImageUrl;
+    pageData = pd;
+    if (faq?.length) faqItems = faq;
+    financableData = fin?.financable;
+    if (team?.length) teamMembers = team;
   }
 } catch {}
 
+// ── FAQ fallback ─────────────────────────────────────────────────
+const defaultFaqItems = [
+  {
+    question: "L'écran est-il inclus dans l'abonnement ?",
+    answer: "Non, l'écran n'est pas inclus dans l'abonnement.",
+    answerAfterBullets: "En revanche, nous travaillons avec des partenaires qui proposent des tarifs préférentiels. Nous pouvons également vous accompagner dans les démarches afin d'obtenir un financement auprès de votre mairie.",
+  },
+  {
+    question: "Peut-on diffuser sur deux écrans en simultané ?",
+    answer: "Oui, il est tout à fait possible de dupliquer le contenu sur deux écrans au sein du gymnase.",
+  },
+  {
+    question: "Peut-on être plusieurs connectés en même temps à la télécommande ?",
+    answer: "Oui. La télécommande peut être utilisée simultanément depuis plusieurs téléphones, ce qui facilite la gestion pendant les matchs.",
+  },
+  {
+    question: "Est-il possible d'afficher le score ?",
+    answer: "Oui, le score peut être affiché directement via la télécommande. Il fonctionne de manière indépendante et n'est pas relié à la table de marque.",
+  },
+  {
+    question: "Peut-on programmer du contenu à l'avance ?",
+    answer: "Oui, absolument. Il est possible de créer plusieurs boucles de diffusion automatiques et de programmer différents contenus selon les moments du match :",
+    bullets: ["Avant-match", "Temps-mort", "Mi-temps", "Après-match"],
+    answerAfterBullets: "Tout est entièrement personnalisable.",
+  },
+  {
+    question: "Si nous avons déjà des photos d'équipe, pouvons-nous les utiliser ?",
+    answer: "Oui, bien sûr. Vous pouvez nous transmettre vos photos et nous les intégrerons dans nos templates vidéo.",
+    answerAfterBullets: "Cela fait partie des options de package vidéos proposées (voir la section « Les offres »).",
+  },
+  {
+    question: "Est-il possible d'utiliser votre solution pour un évènement en particulier (ex : tournoi) ?",
+    answer: "Oui, dans ce cas-là, nous vous faisons un devis sur mesure.",
+    answerAfterBullets: "Et comme pour l'abonnement annuel, la production de vidéos est en option.",
+  },
+  {
+    question: "Est-il possible de contrôler également les panneaux LEDs bord terrain avec votre solution ?",
+    answer: "Oui, cela fait partie des options que l'on propose dans la forme Premium. N'hésitez pas à nous contacter par message pour plus d'informations.",
+  },
+];
+
+const displayFaq = faqItems.length ? faqItems : defaultFaqItems;
+
+// ── Paragraphes fallback ─────────────────────────────────────────
+const defaultParagraphs = [
+  "Neopro est né d'un constat simple, observé directement sur le terrain : l'expérience \"match\" du sport amateur a peu évolué ces trente dernières années. Pendant que le sport professionnel adoptait écrans LED, scoring digital et régies structurées, les clubs amateurs continuaient de fonctionner avec des supports imprimés, des annonces micro et des partenariats peu valorisés. Pourtant, ils rassemblent chaque semaine des milliers de spectateurs et font vivre le cœur du sport français.",
+  "Notre ambition est claire : professionnaliser le sport amateur pour pérenniser son modèle économique.",
+  "Nous ne proposons pas qu'une solution d'affichage. Nous voulons être un véritable partenaire du club, présent au quotidien pour l'accompagner dans sa communication et la structuration de ses revenus.",
+  "À travers notre solution de régie digitale, nous donnons aux clubs le moyen de valoriser leurs partenaires, de célébrer leurs joueurs et de partager leurs actualités. Nous transformons le match en un véritable média local, moderne et mesurable.",
+  "Implanté à Nantes et engagé auprès du tissu sportif local, Neopro a pour but de faire émerger une communauté de Clubs Neopro : des clubs qui structurent leur développement, modernisent leur image et affichent leur ambition.",
+  "Rejoignez le club 💚",
+];
+
+const displayParagraphs = pageData?.aboutParagraphs?.length ? pageData.aboutParagraphs : defaultParagraphs;
+
 // ── SEO ───────────────────────────────────────────────────────────
-const title = 'Qui sommes-nous';
-const description =
+const title = pageData?.seoTitle || 'Qui sommes-nous';
+const description = pageData?.seoDescription ||
   "Neopro, né d'un constat terrain : professionnaliser l'expérience match du sport amateur pour pérenniser son modèle économique.";
 ---
 
@@ -37,53 +113,24 @@ const description =
             class="text-[48px] md:text-[80px] lg:text-[138px] font-[900] leading-[1] text-[#51b28b] select-none"
             aria-hidden="true"
           >
-            <p>AMBITION</p>
-            <p>AMBITION</p>
-            <p>AMBITI</p>
-            <p>AMBITION</p>
-            <p>AMBITION</p>
+            <p>{pageData?.hero?.repeatedWord || 'AMBITION'}</p>
+            <p>{pageData?.hero?.repeatedWord || 'AMBITION'}</p>
+            <p>{(pageData?.hero?.repeatedWord || 'AMBITION').slice(0, 6)}</p>
+            <p>{pageData?.hero?.repeatedWord || 'AMBITION'}</p>
+            <p>{pageData?.hero?.repeatedWord || 'AMBITION'}</p>
           </div>
           <h1 class="absolute left-[70%] top-[96px] md:top-[160px] lg:top-[280px] text-[28px] md:text-[40px] lg:text-[60px] leading-[1.1] whitespace-nowrap">
-            <span class="font-playfair italic text-white">
-              Affichez<br />votre
-            </span>
+            <span class="font-playfair italic text-white" set:html={(pageData?.hero?.overlayLine1 || 'Affichez<br />votre')} />
           </h1>
         </div>
 
         <!-- Text block -->
         <div class="max-w-[712px]">
-          <h2 class="text-white text-[48px] font-bold mb-[20px]">Qui sommes-nous ?</h2>
+          <h2 class="text-white text-[48px] font-bold mb-[20px]">{pageData?.aboutTitle || 'Qui sommes-nous ?'}</h2>
           <div class="text-white text-[18px] space-y-4">
-            <p>
-              Neopro est né d'un constat simple, observé directement sur le terrain :
-              l'expérience "match" du sport amateur a peu évolué ces trente dernières années.
-              Pendant que le sport professionnel adoptait écrans LED, scoring digital et régies
-              structurées, les clubs amateurs continuaient de fonctionner avec des supports imprimés,
-              des annonces micro et des partenariats peu valorisés. Pourtant, ils rassemblent chaque
-              semaine des milliers de spectateurs et font vivre le cœur du sport français.
-            </p>
-            <p>
-              Notre ambition est claire : professionnaliser le sport amateur pour pérenniser son modèle
-              économique.
-            </p>
-            <p>
-              Nous ne proposons pas qu'une solution d'affichage. Nous voulons être un véritable
-              partenaire du club, présent au quotidien pour l'accompagner dans sa communication
-              et la structuration de ses revenus.
-            </p>
-            <p>
-              À travers notre solution de régie digitale, nous donnons aux clubs le moyen de valoriser
-              leurs partenaires, de célébrer leurs joueurs et de partager leurs actualités. Nous
-              transformons le match en un véritable média local, moderne et mesurable.
-            </p>
-            <p>
-              Implanté à Nantes et engagé auprès du tissu sportif local, Neopro a pour but de faire
-              émerger une communauté de Clubs Neopro : des clubs qui structurent leur développement,
-              modernisent leur image et affichent leur ambition.
-            </p>
-            <p>
-              Rejoignez le club 💚
-            </p>
+            {displayParagraphs.map((p: string) => (
+              <p>{p}</p>
+            ))}
           </div>
         </div>
       </div>
@@ -118,18 +165,15 @@ const description =
     <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between max-w-[1320px]">
       <div class="max-w-[832px] flex flex-col gap-[30px]">
         <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
-          Finançable par vos partenaires
+          {financableData?.title || 'Finançable par vos partenaires'}
         </h2>
-        <p class="text-[#4a5565] text-[18px]">
-          Notre solution a pour but d'être financée par vos partenaires.<br />
-          Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.
-        </p>
+        <p class="text-[#4a5565] text-[18px]" set:html={financableData?.description || "Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé."} />
       </div>
       <div class="shrink-0 w-full md:w-auto">
         <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form>
           <input
             type="email"
-            placeholder="Votre email"
+            placeholder={financableData?.emailPlaceholder || "Votre email"}
             required
             class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
           />
@@ -137,7 +181,7 @@ const description =
             type="submit"
             class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
           >
-            Recevoir le document
+            {financableData?.buttonLabel || 'Recevoir le document'}
           </button>
         </form>
       </div>
@@ -147,97 +191,25 @@ const description =
   <!-- FAQ -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[900px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[40px]">Questions fréquentes</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[40px]">{pageData?.faqTitle || 'Questions fréquentes'}</h2>
       <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200">
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            L'écran est-il inclus dans l'abonnement ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2">
-            <p>Non, l'écran n'est pas inclus dans l'abonnement.</p>
-            <p>En revanche, nous travaillons avec des partenaires qui proposent des tarifs préférentiels. Nous pouvons également vous accompagner dans les démarches afin d'obtenir un financement auprès de votre mairie.</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Peut-on diffuser sur deux écrans en simultané ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565]">
-            <p>Oui, il est tout à fait possible de dupliquer le contenu sur deux écrans au sein du gymnase.</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Peut-on être plusieurs connectés en même temps à la télécommande ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565]">
-            <p>Oui. La télécommande peut être utilisée simultanément depuis plusieurs téléphones, ce qui facilite la gestion pendant les matchs.</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Est-il possible d'afficher le score ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565]">
-            <p>Oui, le score peut être affiché directement via la télécommande. Il fonctionne de manière indépendante et n'est pas relié à la table de marque.</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Peut-on programmer du contenu à l'avance ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2">
-            <p>Oui, absolument. Il est possible de créer plusieurs boucles de diffusion automatiques et de programmer différents contenus selon les moments du match :</p>
-            <ul class="list-disc pl-5 space-y-1">
-              <li>Avant-match</li>
-              <li>Temps-mort</li>
-              <li>Mi-temps</li>
-              <li>Après-match</li>
-            </ul>
-            <p>Tout est entièrement personnalisable.</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Si nous avons déjà des photos d'équipe, pouvons-nous les utiliser ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2">
-            <p>Oui, bien sûr. Vous pouvez nous transmettre vos photos et nous les intégrerons dans nos templates vidéo.</p>
-            <p>Cela fait partie des options de package vidéos proposées (voir la section « Les offres »).</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Est-il possible d'utiliser votre solution pour un évènement en particulier (ex : tournoi) ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2">
-            <p>Oui, dans ce cas-là, nous vous faisons un devis sur mesure.</p>
-            <p>Et comme pour l'abonnement annuel, la production de vidéos est en option.</p>
-          </div>
-        </details>
-
-        <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
-            Est-il possible de contrôler également les panneaux LEDs bord terrain avec votre solution ?
-            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="pb-[24px] text-[16px] text-[#4a5565]">
-            <p>Oui, cela fait partie des options que l'on propose dans la forme Premium. N'hésitez pas à nous contacter par message pour plus d'informations.</p>
-          </div>
-        </details>
+        {displayFaq.map((item: any) => (
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+              {item.question}
+              <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2">
+              <p>{item.answer}</p>
+              {item.bullets?.length && (
+                <ul class="list-disc pl-5 space-y-1">
+                  {item.bullets.map((b: string) => <li>{b}</li>)}
+                </ul>
+              )}
+              {item.answerAfterBullets && <p>{item.answerAfterBullets}</p>}
+            </div>
+          </details>
+        ))}
       </div>
     </div>
   </section>
