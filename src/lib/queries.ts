@@ -30,30 +30,12 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
   }
 }`;
 
-/** Contenu d'une page par slug (hero + SEO) */
-export const pageQuery = `*[_type == "page" && slug.current == $slug][0]{
-  title,
-  slug,
-  hero {
-    title,
-    subtitle,
-    "imageUrl": image.asset->url,
-    "imageAlt": image.alt,
-    ctaLabel,
-    ctaHref
-  },
-  seo {
-    metaTitle,
-    metaDescription,
-    "ogImageUrl": ogImage.asset->url
-  }
-}`;
-
 /** Offres de pricing triées par ordre */
 export const pricingPlansQuery = `*[_type == "pricingPlan"] | order(order asc) {
   _id,
   name,
-  slug,
+  "slug": slug.current,
+  taxType,
   priceAnnual,
   priceMonthly,
   popular,
@@ -154,7 +136,7 @@ export const aboutPageQuery = `*[_type == "aboutPage"][0]{
   seoDescription,
   hero { repeatedWord, overlayLine1, overlayLine2 },
   aboutTitle,
-  aboutParagraphs,
+  aboutBody,
   faqTitle,
   "mainImageUrl": mainImage.asset->url,
   "mainImageAlt": mainImage.alt
@@ -170,9 +152,7 @@ export const devisPageQuery = `*[_type == "devisPage"][0]{
 export const faqItemsQuery = `*[_type == "faqItem"] | order(order asc) {
   _id,
   question,
-  answer,
-  bullets,
-  answerAfterBullets
+  body
 }`;
 
 /** Section Finançable depuis siteSettings */
@@ -181,7 +161,8 @@ export const financableQuery = `*[_type == "siteSettings"][0]{
     title,
     description,
     emailPlaceholder,
-    buttonLabel
+    buttonLabel,
+    "documentPdfUrl": documentPdf.asset->url
   }
 }`;
 

@@ -32,8 +32,8 @@ interface PricingPlan {
   name: string;
   slug: string;
   taxType: string;
-  priceAnnual: string;
-  priceMonthly: string;
+  priceAnnual: number;
+  priceMonthly?: number;
   popular: boolean;
   buttonVariant: 'green' | 'yellow' | 'pink' | 'black';
   features: string[];
@@ -94,8 +94,8 @@ if (!plans.length) {
       name: 'Standard',
       slug: 'standard',
       taxType: 'HT',
-      priceAnnual: '1500',
-      priceMonthly: '190',
+      priceAnnual: 1500,
+      priceMonthly: 190,
       popular: false,
       buttonVariant: 'yellow',
       features: [
@@ -111,8 +111,8 @@ if (!plans.length) {
       name: 'Autonomie',
       slug: 'autonomie',
       taxType: 'HT',
-      priceAnnual: '2100',
-      priceMonthly: '250',
+      priceAnnual: 2100,
+      priceMonthly: 250,
       popular: true,
       buttonVariant: 'green',
       features: [
@@ -129,8 +129,8 @@ if (!plans.length) {
       name: 'Premium',
       slug: 'premium',
       taxType: 'HT',
-      priceAnnual: '3000',
-      priceMonthly: '350',
+      priceAnnual: 3000,
+      priceMonthly: 350,
       popular: false,
       buttonVariant: 'pink',
       features: [
@@ -225,23 +225,12 @@ const description = pageData?.seoDescription ||
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
-    {pageData?.hero?.imageUrl ? (
-      <img
-        src={pageData.hero.imageUrl}
-        alt={pageData.hero.imageAlt || 'Les offres Neopro'}
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-      />
-    ) : (
-      <Image
-        src={heroImg}
-        alt="Les offres Neopro"
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        widths={[640, 1024, 1440, 1920]}
-        sizes="100vw"
-      />
-    )}
+    <img
+      src={pageData?.hero?.imageUrl || '/images/image_offre_accueil.jpg'}
+      alt={pageData?.hero?.imageAlt || 'Les offres Neopro'}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LES OFFRES'}</p>
@@ -303,7 +292,7 @@ const description = pageData?.seoDescription ||
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {videoPackages.map((pkg) => (
           <div class={`relative rounded-[20px] p-[30px] flex flex-col gap-5 ${
-            pkg.name === 'Avec shooting' ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
+            pkg.name === 'Sans shooting' || pkg.name === 'Avec shooting' ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
           }`}>
             {pkg.name === 'Avec shooting' && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
@@ -336,9 +325,10 @@ const description = pageData?.seoDescription ||
           <p class="text-[18px] text-[#4a5565]" set:html={financableData?.description || "Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé."} />
         </div>
         <div class="shrink-0 w-full md:w-auto">
-          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form>
+          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url={financableData?.documentPdfUrl || ''}>
             <input
               type="email"
+              name="email"
               placeholder={financableData?.emailPlaceholder || "Votre email"}
               required
               class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
@@ -349,6 +339,7 @@ const description = pageData?.seoDescription ||
             >
               {financableData?.buttonLabel || 'Recevoir le document'}
             </button>
+            <p class="hidden text-[14px] mt-2 w-full" data-form-message></p>
           </form>
         </div>
       </div>
@@ -366,3 +357,46 @@ const description = pageData?.seoDescription ||
     <ContactForm client:visible />
   </div>
 </BaseLayout>
+
+<script>
+  const form = document.querySelector('[data-financable-form]') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const msg = form.querySelector('[data-form-message]') as HTMLParagraphElement;
+      const pdfUrl = form.dataset.pdfUrl;
+
+      if (!emailInput?.value) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+      msg.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/document', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailInput.value, documentUrl: pdfUrl }),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          msg.textContent = 'Document envoyé ! Vérifiez votre boîte mail.';
+          msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
+          emailInput.value = '';
+        } else {
+          msg.textContent = data.error || 'Une erreur est survenue.';
+          msg.className = 'text-[14px] mt-2 w-full text-red-600';
+        }
+      } catch {
+        msg.textContent = 'Erreur de connexion. Réessayez plus tard.';
+        msg.className = 'text-[14px] mt-2 w-full text-red-600';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = form.dataset.buttonLabel || 'Recevoir le document';
+      }
+    });
+  }
+</script>

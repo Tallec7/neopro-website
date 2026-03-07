@@ -1,27 +1,45 @@
 import { defineType, defineField } from 'sanity';
+import { imageWithAlt } from './helpers/imageWithAlt';
 
 export default defineType({
   name: 'solutionPanel',
   title: 'Panneau Solution (sticky)',
   type: 'document',
   fields: [
-    defineField({ name: 'title', title: 'Titre', type: 'string' }),
-    defineField({ name: 'description', title: 'Description', type: 'text' }),
+    defineField({
+      name: 'title',
+      title: 'Titre',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 4,
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: 'video',
       title: 'Vidéo',
       type: 'file',
       options: { accept: 'video/*' },
-      description: 'Vidéo affichée dans le panneau (MP4 recommandé)',
+      description: 'Vidéo affichée dans le panneau (MP4 recommandé).',
+    }),
+    imageWithAlt('image', 'Image (fallback)', {
+      description: "Utilisée si aucune vidéo n'est uploadée.",
     }),
     defineField({
-      name: 'image',
-      title: 'Image (fallback)',
-      type: 'image',
-      options: { hotspot: true },
-      fields: [defineField({ name: 'alt', title: 'Texte alternatif', type: 'string' })],
-      description: 'Utilisée si aucune vidéo n\'est uploadée',
+      name: 'order',
+      title: "Ordre d'affichage",
+      type: 'number',
+      initialValue: 0,
     }),
-    defineField({ name: 'order', title: 'Ordre d\'affichage', type: 'number' }),
   ],
+  orderings: [
+    { title: 'Ordre', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] },
+  ],
+  preview: {
+    select: { title: 'title', media: 'image' },
+  },
 });

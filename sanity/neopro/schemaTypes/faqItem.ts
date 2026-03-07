@@ -1,30 +1,34 @@
 import { defineType, defineField } from 'sanity';
+import { portableTextBody } from './helpers/portableTextBody';
 
 export default defineType({
   name: 'faqItem',
   title: 'Question FAQ',
   type: 'document',
   fields: [
-    defineField({ name: 'question', title: 'Question', type: 'string' }),
     defineField({
-      name: 'answer',
-      title: 'Réponse',
-      type: 'text',
-      description: 'Texte principal de la réponse.',
+      name: 'question',
+      title: 'Question',
+      type: 'string',
+      validation: (rule) => rule.required(),
     }),
+
+    // ── Portable Text : remplace answer + bullets + answerAfterBullets ──
+    portableTextBody('body', 'Réponse', {
+      required: true,
+      description:
+        'Réponse complète avec mise en forme. Utilisez les listes à puces pour les énumérations.',
+    }),
+
     defineField({
-      name: 'bullets',
-      title: 'Liste à puces (optionnel)',
-      type: 'array',
-      of: [{ type: 'string' }],
-      description: 'Si la réponse contient une liste, saisir les items ici.',
+      name: 'order',
+      title: "Ordre d'affichage",
+      type: 'number',
+      initialValue: 0,
     }),
-    defineField({
-      name: 'answerAfterBullets',
-      title: 'Texte après la liste (optionnel)',
-      type: 'text',
-    }),
-    defineField({ name: 'order', title: "Ordre d'affichage", type: 'number' }),
+  ],
+  orderings: [
+    { title: 'Ordre', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] },
   ],
   preview: {
     select: { title: 'question' },

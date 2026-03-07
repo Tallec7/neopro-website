@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import ContactForm from '@/components/ContactForm.tsx';
+import { PortableText } from 'astro-portabletext';
 import { Image } from 'astro:assets';
 
 // ── Images locales ────────────────────────────────────────────────
@@ -79,7 +80,7 @@ const defaultFaqItems = [
 
 const displayFaq = faqItems.length ? faqItems : defaultFaqItems;
 
-// ── Paragraphes fallback ─────────────────────────────────────────
+// ── About body fallback ──────────────────────────────────────────
 const defaultParagraphs = [
   "Neopro est né d'un constat simple, observé directement sur le terrain : l'expérience \"match\" du sport amateur a peu évolué ces trente dernières années. Pendant que le sport professionnel adoptait écrans LED, scoring digital et régies structurées, les clubs amateurs continuaient de fonctionner avec des supports imprimés, des annonces micro et des partenariats peu valorisés. Pourtant, ils rassemblent chaque semaine des milliers de spectateurs et font vivre le cœur du sport français.",
   "Notre ambition est claire : professionnaliser le sport amateur pour pérenniser son modèle économique.",
@@ -89,7 +90,7 @@ const defaultParagraphs = [
   "Rejoignez le club 💚",
 ];
 
-const displayParagraphs = pageData?.aboutParagraphs?.length ? pageData.aboutParagraphs : defaultParagraphs;
+const hasPortableTextAbout = pageData?.aboutBody?.length;
 
 // ── SEO ───────────────────────────────────────────────────────────
 const title = pageData?.seoTitle || 'Qui sommes-nous';
@@ -123,10 +124,14 @@ const description = pageData?.seoDescription ||
         <!-- Text block -->
         <div class="max-w-[712px]">
           <h2 class="text-white text-[48px] font-bold mb-[20px]">{pageData?.aboutTitle || 'Qui sommes-nous ?'}</h2>
-          <div class="text-white text-[18px] space-y-4">
-            {displayParagraphs.map((p: string) => (
-              <p>{p}</p>
-            ))}
+          <div class="text-white text-[18px] space-y-4 prose prose-invert prose-p:my-2 prose-ul:my-2 prose-li:my-0 max-w-none">
+            {hasPortableTextAbout ? (
+              <PortableText value={pageData.aboutBody} />
+            ) : (
+              defaultParagraphs.map((p: string) => (
+                <p>{p}</p>
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -195,14 +200,20 @@ const description = pageData?.seoDescription ||
               {item.question}
               <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </summary>
-            <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2">
-              <p>{item.answer}</p>
-              {item.bullets?.length && (
-                <ul class="list-disc pl-5 space-y-1">
-                  {item.bullets.map((b: string) => <li>{b}</li>)}
-                </ul>
+            <div class="pb-[24px] text-[16px] text-[#4a5565] space-y-2 prose prose-p:my-2 prose-ul:my-2 prose-li:my-0 max-w-none">
+              {item.body ? (
+                <PortableText value={item.body} />
+              ) : (
+                <>
+                  <p>{item.answer}</p>
+                  {item.bullets?.length && (
+                    <ul class="list-disc pl-5 space-y-1">
+                      {item.bullets.map((b: string) => <li>{b}</li>)}
+                    </ul>
+                  )}
+                  {item.answerAfterBullets && <p>{item.answerAfterBullets}</p>}
+                </>
               )}
-              {item.answerAfterBullets && <p>{item.answerAfterBullets}</p>}
             </div>
           </details>
         ))}

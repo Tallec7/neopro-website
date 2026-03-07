@@ -1,13 +1,11 @@
-import { defineType, defineField } from 'sanity';
+import { defineType } from 'sanity';
+import { seoFields } from './helpers/seoFields';
 
 export default defineType({
   name: 'devisPage',
   title: 'Page Devis',
   type: 'document',
-  fields: [
-    defineField({ name: 'seoTitle', title: 'SEO — Titre', type: 'string' }),
-    defineField({ name: 'seoDescription', title: 'SEO — Description', type: 'text' }),
-  ],
+  fields: [...seoFields],
   preview: {
     prepare() {
       return { title: 'Page Devis' };

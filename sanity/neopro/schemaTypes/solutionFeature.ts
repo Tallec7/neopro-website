@@ -5,8 +5,30 @@ export default defineType({
   title: 'Feature Solution',
   type: 'document',
   fields: [
-    defineField({ name: 'title', title: 'Titre', type: 'string' }),
-    defineField({ name: 'description', title: 'Description', type: 'text' }),
-    defineField({ name: 'order', title: 'Ordre d\'affichage', type: 'number' }),
+    defineField({
+      name: 'title',
+      title: 'Titre',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 3,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'order',
+      title: "Ordre d'affichage",
+      type: 'number',
+      initialValue: 0,
+    }),
   ],
+  orderings: [
+    { title: 'Ordre', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] },
+  ],
+  preview: {
+    select: { title: 'title' },
+  },
 });
