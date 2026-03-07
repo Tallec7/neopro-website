@@ -5,11 +5,8 @@ import SportBullet from '@/components/SportBullet.astro';
 import ContactForm from '@/components/ContactForm.tsx';
 import { Image } from 'astro:assets';
 
-// ── Images locales ────────────────────────────────────────────────
+// ── Images locales (fallback) ─────────────────────────────────────
 import heroImg from '@/assets/images/hero-solution.webp';
-import dscRetouche1 from '@/assets/images/dsc-retouche-1.webp';
-import dscRetouche2 from '@/assets/images/dsc-retouche-2.webp';
-import apercuTelecommande2 from '@/assets/images/apercu-telecommande-2.webp';
 
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
@@ -57,9 +54,6 @@ if (!solutionPanels.length) {
     },
   ];
 }
-
-// Images locales pour les panneaux (fallback quand Sanity n'a pas d'image)
-const panelImages = [dscRetouche1, dscRetouche2, apercuTelecommande2];
 
 // Couleurs des icônes sport pour chaque panneau coloré
 const panelIconVariants = ['pink', 'yellow', 'green', 'blue'] as const;
@@ -193,14 +187,23 @@ const description = pageData?.seoDescription ||
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
-    <Image
-      src={heroImg}
-      alt="La solution Neopro en action"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      widths={[640, 1024, 1440, 1920]}
-      sizes="100vw"
-    />
+    {pageData?.hero?.imageUrl ? (
+      <img
+        src={pageData.hero.imageUrl}
+        alt={pageData.hero.imageAlt || 'La solution Neopro en action'}
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
+    ) : (
+      <Image
+        src={heroImg}
+        alt="La solution Neopro en action"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        widths={[640, 1024, 1440, 1920]}
+        sizes="100vw"
+      />
+    )}
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.5)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LA SOLUTION'}</p>
@@ -320,11 +323,10 @@ const description = pageData?.seoDescription ||
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
       <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-[120px]">
-        <!-- TODO: Remplacer par la vraie image dans src/assets/images/lien-offres.webp -->
         <div class="w-full lg:w-[550px] flex-shrink-0 aspect-square rounded-[20px] overflow-hidden bg-[#f5f5f5]">
           <img
-            src="/images/image_offre.jpg"
-            alt="Découvrez les offres Neopro"
+            src={pageData?.ctaOffres?.imageUrl || '/images/image_offre.jpg'}
+            alt={pageData?.ctaOffres?.imageAlt || 'Découvrez les offres Neopro'}
             class="w-full h-full object-cover"
             loading="lazy"
           />
