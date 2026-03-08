@@ -10,6 +10,11 @@ const footerLinks = [
 ];
 
 const year = new Date().getFullYear();
+
+const legalLinks = [
+  { label: 'Mentions légales', href: '/mentions-legales' },
+  { label: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
+];
 ---
 
 <footer class="bg-neo-dark-bg text-white">
@@ -52,6 +57,21 @@ const year = new Date().getFullYear();
           Espace Club
         </a>
       </div>
+    </div>
+
+    <!-- Row 3: Legal links + Copyright -->
+    <div class="h-[1px] bg-[rgba(255,255,255,0.15)] mt-8 mb-6" />
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div class="flex flex-wrap gap-[20px] text-[13px] text-[rgba(255,255,255,0.5)]">
+        {legalLinks.map((link) => (
+          <a href={link.href} class="hover:text-white transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <p class="text-[13px] text-[rgba(255,255,255,0.4)]">
+        &copy; {year} Neopro. Tous droits réservés.
+      </p>
     </div>
   </div>
 </footer>

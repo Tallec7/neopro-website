@@ -65,3 +65,83 @@ export function buildWebPageJsonLd(options: WebPageOptions): string {
     url: options.url,
   });
 }
+
+// ── FAQPage Schema ────────────────────────────────────────────────
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Génère le JSON-LD FAQPage pour les questions fréquentes.
+ * Permet d'obtenir des rich snippets FAQ dans les SERP Google.
+ */
+export function buildFAQPageJsonLd(items: FAQItem[]): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  });
+}
+
+// ── Offer Schema ──────────────────────────────────────────────────
+
+interface OfferOptions {
+  name: string;
+  description: string;
+  price: number;
+  priceCurrency?: string;
+  url: string;
+}
+
+/**
+ * Génère le JSON-LD AggregateOffer pour la page offres.
+ * Permet d'afficher les prix dans les SERP Google.
+ */
+export function buildAggregateOfferJsonLd(
+  offers: OfferOptions[],
+  businessName: string,
+  url: string,
+): string {
+  const prices = offers.map((o) => o.price);
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${businessName} — Régie digitale`,
+    description:
+      'Solution de régie digitale pour clubs de sport amateurs. Écrans LED, scoring digital, valorisation partenaires.',
+    brand: {
+      '@type': 'Brand',
+      name: businessName,
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      lowPrice: Math.min(...prices),
+      highPrice: Math.max(...prices),
+      priceCurrency: 'EUR',
+      offerCount: offers.length,
+      offers: offers.map((o) => ({
+        '@type': 'Offer',
+        name: o.name,
+        description: o.description,
+        price: o.price,
+        priceCurrency: o.priceCurrency || 'EUR',
+        url: o.url,
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: o.price,
+          priceCurrency: o.priceCurrency || 'EUR',
+          unitText: 'YEAR',
+        },
+      })),
+    },
+  });
+}

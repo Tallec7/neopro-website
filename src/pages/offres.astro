@@ -5,6 +5,7 @@ import ClubCarousel from '@/components/ClubCarousel.tsx';
 import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
 import { Image } from 'astro:assets';
+import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
 
 // ── Images locales ────────────────────────────────────────────────
 import heroImg from '@/assets/images/hero-offres.webp';
@@ -217,12 +218,26 @@ const borderColorMap: Record<string, string> = {
 };
 
 // ── SEO ───────────────────────────────────────────────────────────
-const title = pageData?.seoTitle || 'Les offres';
+const title = pageData?.seoTitle || 'Offres régie digitale clubs amateurs';
 const description = pageData?.seoDescription ||
   'Découvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de régie digitale finançables par vos partenaires.';
+
+// ── Offer JSON-LD pour rich snippets prix ─────────────────────────
+const siteUrl = 'https://www.neopro-communication.fr';
+const offerJsonLd = buildAggregateOfferJsonLd(
+  plans.map((plan) => ({
+    name: `Neopro ${plan.name}`,
+    description: plan.features.join('. '),
+    price: plan.priceAnnual,
+    priceCurrency: 'EUR',
+    url: `${siteUrl}/devis?offre=${plan.slug}`,
+  })),
+  'Neopro',
+  siteUrl,
+);
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} extraJsonLd={offerJsonLd}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
     <img
