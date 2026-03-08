@@ -4,6 +4,7 @@ import Button from '@/components/Button.astro';
 import ContactForm from '@/components/ContactForm.tsx';
 import { PortableText } from 'astro-portabletext';
 import { Image } from 'astro:assets';
+import { buildFAQPageJsonLd } from '@/lib/jsonLd';
 
 // ── Images locales ────────────────────────────────────────────────
 import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
@@ -93,12 +94,29 @@ const defaultParagraphs = [
 const hasPortableTextAbout = pageData?.aboutBody?.length;
 
 // ── SEO ───────────────────────────────────────────────────────────
-const title = pageData?.seoTitle || 'Qui sommes-nous';
+const title = pageData?.seoTitle || 'Qui est Neopro — Régie digitale sport amateur';
 const description = pageData?.seoDescription ||
   "Neopro, né d'un constat terrain : professionnaliser l'expérience match du sport amateur pour pérenniser son modèle économique.";
+
+// ── FAQ JSON-LD pour rich snippets Google ─────────────────────────
+const faqJsonLd = buildFAQPageJsonLd(
+  displayFaq.map((item: any) => {
+    let fullAnswer = item.answer || '';
+    if (item.bullets?.length) {
+      fullAnswer += ' ' + item.bullets.join(', ') + '.';
+    }
+    if (item.answerAfterBullets) {
+      fullAnswer += ' ' + item.answerAfterBullets;
+    }
+    return {
+      question: item.question,
+      answer: fullAnswer.trim(),
+    };
+  })
+);
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} extraJsonLd={faqJsonLd}>
   <!-- Hero AMBITION -->
   <section class="bg-neo-dark-bg">
     <div class="flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-start px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">

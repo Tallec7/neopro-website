@@ -9,13 +9,14 @@ interface Props {
   description: string;
   ogImage?: string;
   canonicalUrl?: string;
+  extraJsonLd?: string;
 }
 
-const { title, description, ogImage, canonicalUrl } = Astro.props;
+const { title, description, ogImage, canonicalUrl, extraJsonLd } = Astro.props;
 
 const siteUrl = 'https://www.neopro-communication.fr';
 const fullTitle = `${title} | Neopro`;
-const ogImageUrl = ogImage || `${siteUrl}/og-default.png`;
+const ogImageUrl = ogImage || `${siteUrl}/og-default.jpg`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
 const gaId = import.meta.env.PUBLIC_GA_ID;
 
@@ -24,7 +25,13 @@ const jsonLd = buildLocalBusinessJsonLd({
   description: 'Solution de régie digitale pour clubs de sport amateurs. Écrans LED, scoring digital, valorisation partenaires.',
   email: 'contact@neopro-communication.fr',
   url: siteUrl,
-  sameAs: [],
+  phone: '+33 6 XX XX XX XX',
+  address: 'Nantes, France',
+  image: `${siteUrl}/og-default.jpg`,
+  sameAs: [
+    'https://www.instagram.com/neopro_fr/',
+    'https://www.linkedin.com/company/neopro-communication/',
+  ],
 });
 ---
 
@@ -62,6 +69,9 @@ const jsonLd = buildLocalBusinessJsonLd({
 
     <!-- JSON-LD -->
     <script is:inline type="application/ld+json" set:html={jsonLd} />
+    {extraJsonLd && (
+      <script is:inline type="application/ld+json" set:html={extraJsonLd} />
+    )}
 
     <!-- Google Analytics -->
     {gaId && (
