@@ -402,7 +402,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
           emailInput.value = '';
         } else {
-          msg.textContent = data.error || 'Une erreur est survenue.';
+          msg.textContent = 'Une erreur est survenue.';
           msg.className = 'text-[14px] mt-2 w-full text-red-600';
         }
       } catch {
