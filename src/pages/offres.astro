@@ -29,15 +29,21 @@ import {
 } from '@/lib/queries';
 
 // ── Types ─────────────────────────────────────────────────────────
+interface PlanFeature {
+  label: string;
+  included: boolean;
+}
+
 interface PricingPlan {
   name: string;
   slug: string;
+  subtitle: string;
   taxType: string;
   priceAnnual: number;
   priceMonthly?: number;
   popular: boolean;
   buttonVariant: 'green' | 'yellow' | 'pink' | 'black';
-  features: string[];
+  features: PlanFeature[];
 }
 
 interface VideoPackage {
@@ -72,7 +78,8 @@ try {
       sanityClient.fetch(offresPageQuery),
       sanityClient.fetch(financableQuery),
     ]);
-    if (p?.length) plans = p;
+    // Plans hardcodés — ne pas utiliser Sanity pour l'instant (refonte offres)
+    // if (p?.length) plans = p;
     if (v?.length) videoPackages = v;
     if (t?.length) testimonials = t.map((item: any) => ({ quote: item.quote, clubName: item.clubName }));
     if (c?.length) {
@@ -92,57 +99,66 @@ try {
 if (!plans.length) {
   plans = [
     {
-      name: 'Standard',
-      slug: 'standard',
+      name: 'Essentiel',
+      slug: 'essentiel',
+      subtitle: "On s'occupe de tout.",
       taxType: 'HT',
       priceAnnual: 1500,
       priceMonthly: 190,
       popular: false,
       buttonVariant: 'yellow',
       features: [
-        'Mise à jour de vidéos',
-        'Support 72h',
-        '1 seule boucle par défaut',
-        'Sponsors illimités',
-        'Rotation aléatoire des partenaires',
-        'Rapport de diffusion basique',
+        { label: '10 sponsors max', included: true },
+        { label: 'Poids sponsors', included: false },
+        { label: 'App télécommande', included: true },
+        { label: 'Mode hors-ligne', included: true },
+        { label: 'Backoffice temps réel', included: false },
+        { label: 'Analytics', included: false },
+        { label: 'Dashboard accès sponsor', included: false },
+        { label: 'Shooting photo/vidéo + production vidéo', included: false },
+        { label: 'Email 72h', included: true },
       ],
     },
     {
       name: 'Autonomie',
       slug: 'autonomie',
+      subtitle: 'Pilotez vous-même.',
       taxType: 'HT',
       priceAnnual: 2100,
       priceMonthly: 250,
       popular: true,
       buttonVariant: 'green',
       features: [
-        'Accès admin club (pour ajouter des visuels/vidéos de votre côté)',
-        'Mise à jour de vidéos',
-        'Support 48h',
-        '2 boucles par défaut (ex : break / match)',
-        'Sponsors illimités',
-        'Rotation aléatoire des partenaires',
-        'Rapport de diffusion basique',
+        { label: 'Sponsors illimités', included: true },
+        { label: 'Poids sponsors', included: false },
+        { label: 'App télécommande', included: true },
+        { label: 'Mode hors-ligne', included: true },
+        { label: 'Backoffice temps réel', included: true },
+        { label: 'Analytics simples', included: true },
+        { label: 'Dashboard accès sponsor', included: false },
+        { label: 'Shooting photo/vidéo + production vidéo', included: false },
+        { label: 'Email 48h', included: true },
       ],
     },
     {
       name: 'Premium',
       slug: 'premium',
+      subtitle: 'Accompagnement de A à Z.',
       taxType: 'HT',
       priceAnnual: 3000,
       priceMonthly: 350,
       popular: false,
       buttonVariant: 'pink',
       features: [
-        'Accès admin club',
-        'Mise à jour de vidéos',
-        'Support 24h',
-        'Nombre de boucles par défaut illimité',
-        'Intégration score',
-        'Sponsors illimités',
-        'Rotation contrôlée des partenaires',
-        'Rapport de diffusion premium',
+        { label: 'Sponsors illimités', included: true },
+        { label: 'Poids sponsors', included: true },
+        { label: 'App télécommande', included: true },
+        { label: 'Mode hors-ligne', included: true },
+        { label: 'Backoffice temps réel', included: true },
+        { label: 'Analytics avancés', included: true },
+        { label: 'Dashboard accès sponsor', included: true },
+        { label: 'Shooting photo/vidéos + production vidéo **', included: true },
+        { label: 'Email 24h + joignable par tél jour de match', included: true },
       ],
     },
   ];
@@ -227,7 +243,7 @@ const siteUrl = 'https://www.neopro-communication.fr';
 const offerJsonLd = buildAggregateOfferJsonLd(
   plans.map((plan) => ({
     name: `Neopro ${plan.name}`,
-    description: plan.features.join('. '),
+    description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
     url: `${siteUrl}/devis?offre=${plan.slug}`,
@@ -274,15 +290,23 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               </span>
             )}
             <div class="mb-[20px]">
-              <div class="flex items-baseline justify-between">
-                <h3 class="text-[28px] font-bold">{offre.name}</h3>
-                <span class="text-[28px] font-bold text-[#101828]">{offre.priceAnnual}€/an {offre.taxType || 'HT'}</span>
-              </div>
-              <p class="text-[14px] text-neo-gray text-right mt-[4px]">ou {offre.priceMonthly}€/mois {offre.taxType || 'HT'}</p>
+              <h3 class="text-[28px] font-bold">{offre.name}</h3>
+              <p class="text-[28px] font-bold text-neo-green-dark mt-[4px]">{offre.priceAnnual.toLocaleString('fr-FR')}€/an</p>
+              {offre.priceMonthly && (
+                <p class="text-[14px] text-neo-gray mt-[2px]">ou {offre.priceMonthly}€/mois HT*</p>
+              )}
+              <p class="text-[14px] text-neo-gray italic mt-[4px]">{offre.subtitle}</p>
             </div>
-            <ul class="list-disc pl-5 flex flex-col gap-[10px] mb-[30px] flex-1">
+            <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
-                <li class="text-[16px] text-[rgba(0,0,0,0.8)]">{f}</li>
+                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                  {f.included ? (
+                    <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                  ) : (
+                    <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
+                  )}
+                  {f.label}
+                </li>
               ))}
             </ul>
             <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
@@ -291,8 +315,11 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           </div>
         ))}
       </div>
-      <p class="text-center text-[18px] text-neo-gray mt-[30px]">
+      <p class="text-center text-[14px] text-neo-gray mt-[30px]">
         {pageData?.engagementNote || '*Engagement de 9 mois minimum'}
+      </p>
+      <p class="text-center text-[14px] text-neo-gray mt-[8px]">
+        **1 équipe, avec le template Neopro Communication, valable jusqu'au 31 mai 2026
       </p>
     </div>
   </section>
@@ -340,7 +367,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           <p class="text-[18px] text-[#4a5565]" set:html={financableData?.description || "Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé."} />
         </div>
         <div class="shrink-0 w-full md:w-auto">
-          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url={financableData?.documentPdfUrl || ''}>
+          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url={financableData?.documentPdfUrl || '/documents/financable-partenaires.pdf'}>
             <input
               type="email"
               name="email"
