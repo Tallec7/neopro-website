@@ -14,8 +14,7 @@ import heroImg from '@/assets/images/hero-offres.webp';
 import logoRacc from '@/assets/images/logo-racc.png';
 import logoNarh from '@/assets/images/logo-narh.png';
 import logoNlf from '@/assets/images/logo-nlf.png';
-import logoCorsaires from '@/assets/images/logo-corsaires.webp';
-import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
+import logoCorsaires from '@/assets/images/logo-corsaires.png';
 
 // ── Sanity (optionnel) ────────────────────────────────────────────
 import { sanityClient } from '@/lib/sanity';
@@ -221,7 +220,6 @@ if (!clubs.length) {
     { name: 'NARH', logoUrl: logoNarh.src },
     { name: 'Nantes Loire Feminin', logoUrl: logoNlf.src },
     { name: 'Corsaires de Nantes', logoUrl: logoCorsaires.src },
-    { name: 'Nantes Rink Hockey', logoUrl: logoRinkHockey.src },
   ];
 }
 
@@ -231,6 +229,13 @@ const borderColorMap: Record<string, string> = {
   green: 'border-[#51b28b]',
   pink: 'border-[#fe6aa6]',
   black: 'border-gray-200',
+};
+
+const priceColorMap: Record<string, string> = {
+  yellow: 'text-[#c49800]',
+  green: 'text-[#51b28b]',
+  pink: 'text-[#fe6aa6]',
+  black: 'text-[#101828]',
 };
 
 // ── SEO ───────────────────────────────────────────────────────────
@@ -291,7 +296,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class="text-[28px] font-bold text-neo-green-dark mt-[4px]">{offre.priceAnnual.toLocaleString('fr-FR')}€/an</p>
+              <p class={`text-[28px] font-bold mt-[4px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}>{offre.priceAnnual.toLocaleString('fr-FR')}€/an</p>
               {offre.priceMonthly && (
                 <p class="text-[14px] text-neo-gray mt-[2px]">ou {offre.priceMonthly}€/mois HT*</p>
               )}
