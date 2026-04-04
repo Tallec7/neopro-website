@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DevisForm from '@/components/DevisForm.tsx';
+import { useTranslations } from '@/i18n/utils';
+
+const locale = 'es';
+const t = useTranslations(locale);
+---
+
+<BaseLayout title={t('devis.title')} description={t('devis.description')} locale={locale}>
+  <DevisForm locale="es" client:load />
+</BaseLayout>

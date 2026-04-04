@@ -1,0 +1,233 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ClubCarousel from '@/components/ClubCarousel.tsx';
+import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
+import ContactForm from '@/components/ContactForm.tsx';
+import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
+import { useTranslations } from '@/i18n/utils';
+
+// ── ES Data ─────────────────────────────────────────────────────
+import { plans, videoPackages } from '@/data/es/offres';
+import { testimonials } from '@/data/es/temoignages';
+import { clubs } from '@/data/clubs';
+
+const locale = 'es';
+const t = useTranslations(locale);
+
+const borderColorMap: Record<string, string> = {
+  yellow: 'border-[#fdbe00]',
+  green: 'border-[#51b28b]',
+  pink: 'border-[#fe6aa6]',
+  black: 'border-gray-200',
+};
+
+const priceColorMap: Record<string, string> = {
+  yellow: 'text-[#c49800]',
+  green: 'text-[#51b28b]',
+  pink: 'text-[#fe6aa6]',
+  black: 'text-[#101828]',
+};
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const offerJsonLd = buildAggregateOfferJsonLd(
+  plans.map((plan) => ({
+    name: `Neopro ${plan.name}`,
+    description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
+    price: plan.priceAnnual,
+    priceCurrency: 'EUR',
+    url: `${siteUrl}/es/devis?offre=${plan.slug}`,
+  })),
+  'Neopro',
+  siteUrl,
+);
+---
+
+<BaseLayout title={t('offres.title')} description={t('offres.description')} extraJsonLd={offerJsonLd} locale={locale}>
+  <!-- Hero -->
+  <section class="relative h-[743px] overflow-hidden">
+    <img
+      src="/images/image_offre_accueil.jpg"
+      alt="Gimnasio equipado con pantalla digital Neopro mostrando ofertas de patrocinadores"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
+    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{t('offres.hero.label')}</p>
+      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
+        <span class="font-playfair italic">{t('offres.hero.line1')}</span><br />
+        <span class="font-black">{t('offres.hero.line2')}</span>
+      </h1>
+      <div>
+        <Button href="#contact" variant="green" arrow>{t('offres.hero.cta')}</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 plans -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{t('offres.plans.title')}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        {plans.map((offre) => (
+          <div
+            class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'}`}
+          >
+            {offre.popular && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+                {t('offres.plans.popular')}
+              </span>
+            )}
+            <div class="mb-[20px]">
+              <h3 class="text-[28px] font-bold">{offre.name}</h3>
+              <p class={`text-[28px] font-bold mt-[4px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}>{offre.priceAnnual.toLocaleString('es-ES')}€/año</p>
+              {offre.priceMonthly && (
+                <p class="text-[14px] text-neo-gray mt-[2px]">o {offre.priceMonthly}€/mes {offre.taxType}*</p>
+              )}
+              <p class="text-[14px] text-neo-gray italic mt-[4px]">{offre.subtitle}</p>
+            </div>
+            <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
+              {offre.features.map((f) => (
+                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                  {f.included ? (
+                    <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                  ) : (
+                    <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
+                  )}
+                  {f.label}
+                </li>
+              ))}
+            </ul>
+            <Button href={`/es/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+              {t('offres.plans.cta')}
+            </Button>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-[14px] text-neo-gray mt-[30px]">
+        {t('offres.plans.note1')}
+      </p>
+      <p class="text-center text-[14px] text-neo-gray mt-[8px]">
+        {t('offres.plans.note2')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Video packages -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="mb-[60px]">
+        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">{t('offres.video.label')}</h2>
+        <p class="text-[18px] text-neo-gray max-w-[700px]">{t('offres.video.text')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        {videoPackages.map((pkg) => (
+          <div class={`relative rounded-[20px] p-[30px] flex flex-col gap-5 ${
+            pkg.name === 'Sin sesión de fotos' || pkg.name === 'Con sesión de fotos' ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
+          }`}>
+            {pkg.name === 'Con sesión de fotos' && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+                {t('offres.video.popular')}
+              </span>
+            )}
+            <h3 class="text-[22px] font-bold">{pkg.name}</h3>
+            <p class="text-neo-gray text-[15px]">{pkg.description}</p>
+            <div>
+              <ul class="list-disc pl-5 flex flex-col gap-[10px] flex-1">
+                {pkg.features.map((f) => (
+                  <li class="text-[14px] text-[rgba(0,0,0,0.8)]">{f}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Funded by your sponsors -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
+        <div class="flex-1">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
+            {t('offres.financable.title')}
+          </h2>
+          <p class="text-[18px] text-[#4a5565]">{t('offres.financable.text')}</p>
+        </div>
+        <div class="shrink-0 w-full md:w-auto">
+          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url="/documents/financable-partenaires.pdf">
+            <input
+              type="email"
+              name="email"
+              placeholder={t('offres.financable.placeholder')}
+              required
+              class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
+            />
+            <button
+              type="submit"
+              class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
+            >
+              {t('offres.financable.cta')}
+            </button>
+            <p class="hidden text-[14px] mt-2 w-full" data-form-message></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Club Carousel -->
+  <ClubCarousel clubs={clubs} client:visible />
+
+  <!-- Testimonials -->
+  <TestimonialCarousel testimonials={testimonials} client:visible />
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm locale="es" client:visible />
+  </div>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector('[data-financable-form]') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const msg = form.querySelector('[data-form-message]') as HTMLParagraphElement;
+      const pdfUrl = form.dataset.pdfUrl;
+
+      if (!emailInput?.value) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      msg.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/document', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailInput.value, documentUrl: pdfUrl }),
+        });
+
+        if (res.ok) {
+          msg.textContent = '¡Documento enviado! Revisa tu bandeja de entrada.';
+          msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
+          emailInput.value = '';
+        } else {
+          msg.textContent = 'Se ha producido un error.';
+          msg.className = 'text-[14px] mt-2 w-full text-red-600';
+        }
+      } catch {
+        msg.textContent = 'Error de conexión. Inténtalo de nuevo más tarde.';
+        msg.className = 'text-[14px] mt-2 w-full text-red-600';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Recibir el documento';
+      }
+    });
+  }
+</script>

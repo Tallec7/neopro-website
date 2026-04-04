@@ -1,20 +1,21 @@
 ---
 import Logo from '@/components/icons/Logo.astro';
 import Button from '@/components/Button.astro';
-import { useTranslations, localePath, getAlternateLocale, getSwitchUrl } from '@/i18n/utils';
+import { useTranslations, localePath, getOtherLocales, getLocaleUrl } from '@/i18n/utils';
 import { languages, type Locale } from '@/i18n/ui';
 
 interface Props { locale?: Locale; }
 const locale = Astro.props.locale ?? 'fr';
 const t = useTranslations(locale);
-const altLocale = getAlternateLocale(locale);
-const switchUrl = getSwitchUrl(Astro.url.pathname, locale);
+const otherLocales = getOtherLocales(locale);
+
+const aboutSlug: Record<Locale, string> = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' };
 
 const navLinks = [
   { label: t('nav.solution'), href: localePath('/solution', locale) },
   { label: t('nav.offres'), href: localePath('/offres', locale) },
   { label: t('nav.blog'), href: localePath('/blog', locale) },
-  { label: t('nav.about'), href: localePath(locale === 'fr' ? '/qui-sommes-nous' : '/about', locale) },
+  { label: t('nav.about'), href: localePath(aboutSlug[locale], locale) },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -53,9 +54,13 @@ const currentPath = Astro.url.pathname;
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors">
         {t('nav.club')}
       </a>
-      <a href={switchUrl} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark transition-colors uppercase">
-        {altLocale.toUpperCase()}
-      </a>
+      <div class="flex items-center gap-[8px]">
+        {otherLocales.map((l) => (
+          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark transition-colors uppercase">
+            {l.toUpperCase()}
+          </a>
+        ))}
+      </div>
     </div>
 
     <!-- Mobile hamburger -->
@@ -88,9 +93,13 @@ const currentPath = Astro.url.pathname;
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark">
         {t('nav.club')}
       </a>
-      <a href={switchUrl} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark uppercase">
-        {languages[altLocale]}
-      </a>
+      <div class="flex gap-[12px]">
+        {otherLocales.map((l) => (
+          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark uppercase">
+            {languages[l]}
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </nav>

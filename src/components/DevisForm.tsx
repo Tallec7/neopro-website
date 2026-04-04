@@ -16,19 +16,22 @@ const sports = [
   'Futsal',
 ];
 
-const sportsByLocale = {
+const sportsByLocale: Record<Locale, string[]> = {
   fr: [...sports, 'Rink Hockey', 'Hockey sur glace', 'Badminton', 'Tennis de table', 'Autre'],
   en: [...sports, 'Rink Hockey', 'Ice Hockey', 'Badminton', 'Table Tennis', 'Other'],
+  es: [...sports, 'Rink Hockey', 'Hockey sobre hielo', 'Bádminton', 'Tenis de mesa', 'Otro'],
 };
 
-const offresByLocale = {
+const offresByLocale: Record<Locale, string[]> = {
   fr: ['Essentiel', 'Autonomie', 'Premium', 'Je ne sais pas encore'],
   en: ['Essential', 'Autonomy', 'Premium', "I don't know yet"],
+  es: ['Esencial', 'Autonomía', 'Premium', 'Aún no lo sé'],
 };
 
-const packagesByLocale = {
+const packagesByLocale: Record<Locale, string[]> = {
   fr: ['Classique (inclus)', 'Sans shooting', 'Avec shooting', 'Je ne sais pas encore'],
   en: ['Standard (included)', 'Without shoot', 'With shoot', "I don't know yet"],
+  es: ['Estándar (incluido)', 'Sin sesión de fotos', 'Con sesión de fotos', 'Aún no lo sé'],
 };
 
 const nbEquipes = ['1', '2', '3', '4', '5+'];
@@ -58,7 +61,7 @@ export default function DevisForm({ locale = 'fr' }: Props) {
   const offres = offresByLocale[locale];
   const packagesVideo = packagesByLocale[locale];
   const localSports = sportsByLocale[locale];
-  const homeUrl = locale === 'fr' ? '/' : '/en/';
+  const homeUrl = locale === 'fr' ? '/' : `/${locale}/`;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

@@ -1,8 +1,9 @@
-import { ui, defaultLocale, type Locale, type TranslationKey } from './ui';
+import { ui, defaultLocale, languages, type Locale, type TranslationKey } from './ui';
 
 /**
  * Get the locale from a URL pathname.
  * /en/solution → 'en'
+ * /es/solution → 'es'
  * /solution    → 'fr'
  */
 export function getLocaleFromUrl(url: URL): Locale {
@@ -31,10 +32,10 @@ export function localePath(path: string, locale: Locale): string {
 }
 
 /**
- * Get the alternate locale.
+ * Get all other locales (excluding the current one).
  */
-export function getAlternateLocale(locale: Locale): Locale {
-  return locale === 'fr' ? 'en' : 'fr';
+export function getOtherLocales(locale: Locale): Locale[] {
+  return (Object.keys(languages) as Locale[]).filter((l) => l !== locale);
 }
 
 /**
@@ -50,24 +51,30 @@ export function getPathWithoutLocale(pathname: string): string {
  * Route mapping for pages with different slugs between locales.
  */
 const routeMap: Record<string, Record<Locale, string>> = {
-  'qui-sommes-nous': { fr: '/qui-sommes-nous', en: '/about' },
-  'about': { fr: '/qui-sommes-nous', en: '/about' },
+  'qui-sommes-nous': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' },
+  'about': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' },
+  'sobre-nosotros': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' },
 };
 
 /**
- * Get the switch URL for alternating between locales,
- * handling pages with different slugs.
+ * Get the URL for a specific locale, handling slug translation.
  */
-export function getSwitchUrl(pathname: string, currentLocale: Locale): string {
-  const altLocale = getAlternateLocale(currentLocale);
+export function getLocaleUrl(pathname: string, currentLocale: Locale, targetLocale: Locale): string {
   const pathWithoutLocale = getPathWithoutLocale(pathname);
-
-  // Check if this path needs slug translation
   const cleanSlug = pathWithoutLocale.replace(/^\/|\/$/g, '').split('/')[0];
   const mapped = routeMap[cleanSlug];
   if (mapped) {
-    return localePath(mapped[altLocale], altLocale);
+    return localePath(mapped[targetLocale], targetLocale);
   }
+  return localePath(pathWithoutLocale, targetLocale);
+}
 
-  return localePath(pathWithoutLocale, altLocale);
+/**
+ * Get all alternate URLs for hreflang tags.
+ */
+export function getAlternateUrls(pathname: string, currentLocale: Locale, siteUrl: string): { locale: Locale; url: string }[] {
+  return (Object.keys(languages) as Locale[]).map((locale) => ({
+    locale,
+    url: new URL(getLocaleUrl(pathname, currentLocale, locale), siteUrl).href,
+  }));
 }
