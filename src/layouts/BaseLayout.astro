@@ -9,12 +9,20 @@ interface Props {
   description: string;
   ogImage?: string;
   canonicalUrl?: string;
-  extraJsonLd?: string;
+  extraJsonLd?: string | string[];
+  ogType?: string;
+  articleMeta?: {
+    publishedTime: string;
+    author: string;
+  };
 }
 
-const { title, description, ogImage, canonicalUrl, extraJsonLd } = Astro.props;
+const { title, description, ogImage, canonicalUrl, extraJsonLd: rawExtraJsonLd, ogType, articleMeta } = Astro.props;
 
 const siteUrl = 'https://www.neopro-communication.fr';
+const extraJsonLdList = rawExtraJsonLd
+  ? Array.isArray(rawExtraJsonLd) ? rawExtraJsonLd : [rawExtraJsonLd]
+  : [];
 const fullTitle = `${title} | Neopro`;
 const ogImageUrl = ogImage || `${siteUrl}/og-default.jpg`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
@@ -51,6 +59,8 @@ const jsonLd = buildLocalBusinessJsonLd({
     <!-- SEO -->
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Neopro" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="fr" href={canonical} />
     <link rel="alternate" hreflang="x-default" href={canonical} />
@@ -60,9 +70,16 @@ const jsonLd = buildLocalBusinessJsonLd({
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType || 'website'} />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Neopro" />
+
+    {articleMeta && (
+      <>
+        <meta property="article:published_time" content={articleMeta.publishedTime} />
+        <meta property="article:author" content={articleMeta.author} />
+      </>
+    )}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -72,9 +89,9 @@ const jsonLd = buildLocalBusinessJsonLd({
 
     <!-- JSON-LD -->
     <script is:inline type="application/ld+json" set:html={jsonLd} />
-    {extraJsonLd && (
-      <script is:inline type="application/ld+json" set:html={extraJsonLd} />
-    )}
+    {extraJsonLdList.map((jsonLdBlock) => (
+      <script is:inline type="application/ld+json" set:html={jsonLdBlock} />
+    ))}
 
     <!-- Google Tag Manager -->
     <script is:inline>

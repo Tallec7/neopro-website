@@ -6,21 +6,20 @@
 Tu (Figma/contenu)
     |
     v
-+------------------+       +------------------+       +------------------+
-|  Sanity Studio   |  -->  |  GitHub (code)   |  -->  |  Vercel (site)   |
-|  neopro.sanity.  |       |  Tallec7/        |       |  neopro-website  |
-|  studio          |       |  neopro-website   |       |  .vercel.app     |
-+------------------+       +------------------+       +------------------+
-   CMS (contenu)              Code source              Site en ligne
++------------------+       +------------------+       +-------------------+
+|  Contenu local   |  -->  |  GitHub (code)   |  -->  | Hostinger (site)  |
+|  (fichiers .ts)  |       |  Tallec7/        |       | neopro-           |
+|                  |       |  neopro-website   |       | communication.fr  |
++------------------+       +------------------+       +-------------------+
+   Donnees statiques          Code source              Site en ligne
 ```
 
 ### Qui fait quoi ?
 
 | Outil | Role | URL |
 |-------|------|-----|
-| **Sanity Studio** | Gerer le contenu (textes, prix, logos, temoignages) | https://neopro.sanity.studio |
 | **GitHub** | Stocker le code source | https://github.com/Tallec7/neopro-website |
-| **Vercel** | Heberger le site en ligne | https://www.neopro-communication.fr |
+| **Hostinger** | Heberger le site en ligne | https://www.neopro-communication.fr |
 | **Dev local** | Developper + tester avant de deployer | http://localhost:4321 |
 | **Figma (reference)** | Maquettes de reference (export dans `Neopro2/`) | Dossier local du projet |
 
@@ -28,30 +27,12 @@ Tu (Figma/contenu)
 
 ## Scenario 1 — Modifier du contenu (texte, prix, logo)
 
-**Pas besoin de toucher au code.**
+Le contenu est gere directement dans les fichiers de donnees du projet (`src/data/`).
 
-1. Ouvre https://neopro.sanity.studio
-2. Clique sur le type de contenu a modifier (ex: "Offre de pricing")
-3. Fais ta modification
-4. Clique **Publish**
-5. **Attends ~2 min** → Vercel rebuild automatiquement (si webhook configure)
-
-> Si le site ne se met pas a jour apres 5 min :
-> Va sur https://vercel.com/dashboard → ton projet → **Deployments** → **Redeploy**
-
-### Ce qui est modifiable dans Sanity
-
-| Schema Sanity | Ce que ca controle sur le site |
-|---------------|-------------------------------|
-| Site Settings | Email, reseaux sociaux, liens nav, footer |
-| Page | Titres hero, sous-titres, SEO (meta title/description) |
-| Offre de pricing | Noms des offres, prix, features, badge "populaire" |
-| Package video | Packages video en option (prix, features) |
-| Temoignage | Citations des clubs |
-| Logo club partenaire | Logos dans le carrousel "Les clubs Neopro" |
-| Panneau solution | Sections sticky sur /solution (titre, texte, image) |
-| Feature solution | 3 cartes (Sans wifi, Sans fil, Simple) |
-| Panneau couleur | Panneaux colores sur /solution |
+1. Ouvre le fichier de donnees correspondant (ex: `src/data/offres.ts` pour les prix)
+2. Fais ta modification
+3. Verifie en local avec `npm run dev`
+4. Commit + push → deploie sur Hostinger
 
 ---
 
@@ -163,7 +144,7 @@ git commit -m "description du changement"
 git push origin main
 ```
 
-Vercel detecte le push et deploie automatiquement (~2 min).
+Le site est deploye sur Hostinger.
 
 ---
 
@@ -451,14 +432,15 @@ C'est la methode la plus rapide. Claude lit l'export et fait la traduction.
 ```
 ┌─────────────────────────────────────────────────────┐
 │  CHANGEMENT DE CONTENU (texte, prix, image)         │
-│  → Sanity Studio → Publish → Attendre rebuild       │
+│  → Modifier src/data/ → npm run dev → tester →      │
+│    git push → deployer sur Hostinger                 │
 └─────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────┐
 │  CHANGEMENT DE DESIGN (layout, couleurs, nouveau    │
 │  composant, export Figma)                           │
 │  → Code local → npm run dev → tester → build →     │
-│    git add/commit/push → Vercel deploie auto        │
+│    git add/commit/push → deployer sur Hostinger     │
 └─────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────┐
@@ -476,7 +458,7 @@ C'est la methode la plus rapide. Claude lit l'export et fait la traduction.
 - [ ] `npm run build` — le build passe
 - [ ] Verifier les pages modifiees sur localhost:4321
 - [ ] `git add` + `git commit` + `git push`
-- [ ] Verifier sur neopro-website.vercel.app apres 2 min
+- [ ] Verifier sur https://www.neopro-communication.fr
 
 ---
 
@@ -494,7 +476,7 @@ npm run build                        # Genere le site statique
 git status                           # Voir les fichiers modifies
 git add .                            # Stager tous les fichiers
 git commit -m "description"          # Committer
-git push origin main                 # Pousser → declenche Vercel
+git push origin main                 # Pousser sur GitHub
 
 # Sanity
 cd sanity/neopro
@@ -553,11 +535,8 @@ neopro-astro/
 
 ## FAQ
 
-**Q: J'ai modifie du contenu dans Sanity mais le site ne change pas ?**
-→ Le site est statique. Il faut un rebuild. Soit le webhook Sanity→Vercel le fait auto, soit va sur Vercel Dashboard → Redeploy.
-
-**Q: Comment forcer un redeploy sans changer de code ?**
-→ Vercel Dashboard → Deployments → "..." sur le dernier → Redeploy.
+**Q: J'ai modifie du contenu mais le site ne change pas ?**
+→ Le site est statique. Il faut rebuilder (`npm run build`) et redeployer sur Hostinger.
 
 **Q: Je recois un export Figma, par ou je commence ?**
 → Le plus simple : place l'export dans `Neopro2/`, ouvre Claude Code, et demande-lui de comparer et aligner (voir Scenario 5). Sinon manuellement : exporter les images en WebP, `npm run dev`, modifier les fichiers .astro, `npm run build`, `git push`.
@@ -569,7 +548,7 @@ neopro-astro/
 → `.astro` = HTML statique genere au build (0 JS envoye au navigateur). `.tsx` = React, utilise quand il faut de l'interactivite (formulaires, carrousels). On minimise le React pour la performance.
 
 **Q: Le site est a quelle adresse ?**
-→ Production : https://www.neopro-communication.fr (domaine personnalise). Preview Vercel : https://neopro-website.vercel.app
+→ Production : https://www.neopro-communication.fr (heberge sur Hostinger)
 
 **Q: Sanity gere quoi exactement ?**
 → Sanity gere le **contenu modifiable** (textes des offres, logos des clubs, temoignages, etc.). Le **design/layout** (couleurs, espacements, structure des pages) vient du **code** dans `src/`. Les deux sont independants : changer le design dans le code ne touche pas le contenu Sanity, et vice versa.

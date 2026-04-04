@@ -32,9 +32,23 @@ export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string 
   if (options.address) {
     schema.address = {
       '@type': 'PostalAddress',
-      streetAddress: options.address,
+      addressLocality: 'Nantes',
+      addressRegion: 'Pays de la Loire',
+      postalCode: '44000',
+      addressCountry: 'FR',
     };
   }
+
+  schema.geo = {
+    '@type': 'GeoCoordinates',
+    latitude: 47.2184,
+    longitude: -1.5536,
+  };
+
+  schema.areaServed = {
+    '@type': 'Country',
+    name: 'France',
+  };
 
   if (options.sameAs && options.sameAs.length > 0) {
     schema.sameAs = options.sameAs;
@@ -88,6 +102,58 @@ export function buildFAQPageJsonLd(items: FAQItem[]): string {
         '@type': 'Answer',
         text: item.answer,
       },
+    })),
+  });
+}
+
+// ── Article Schema ───────────────────────────────────────────────
+
+interface ArticleOptions {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  author: string;
+  image?: string;
+}
+
+export function buildArticleJsonLd(options: ArticleOptions): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: options.title,
+    description: options.description,
+    url: options.url,
+    datePublished: options.datePublished,
+    author: {
+      '@type': 'Organization',
+      name: options.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Neopro',
+      url: 'https://www.neopro-communication.fr',
+    },
+    ...(options.image && { image: options.image }),
+  });
+}
+
+// ── BreadcrumbList Schema ────────────────────────────────────────
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
     })),
   });
 }
