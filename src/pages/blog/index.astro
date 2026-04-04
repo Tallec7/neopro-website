@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const title = 'Blog — Régie digitale, sponsors et sport amateur';
+const description = "Conseils pratiques pour les clubs de sport amateurs : écrans LED, valorisation des sponsors, régie digitale et animation de matchs.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="bg-neo-dark-bg px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[900px]">
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">BLOG</p>
+      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[20px]">
+        <span class="font-playfair italic">Ressources pour</span><br />
+        <span class="font-black">votre club</span>
+      </h1>
+      <p class="text-[18px] text-[rgba(255,255,255,0.7)] max-w-[600px]">
+        Guides pratiques, retours d'expérience et conseils pour professionnaliser votre club de sport amateur.
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[900px] mx-auto">
+      <div class="flex flex-col gap-[40px]">
+        {posts.map((post) => (
+          <article class="group">
+            <a href={`/blog/${post.id}`} class="block">
+              <div class="flex flex-col gap-[12px]">
+                <div class="flex items-center gap-[12px] text-[14px] text-neo-gray">
+                  <time datetime={post.data.date.toISOString().slice(0, 10)}>
+                    {post.data.date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  {post.data.tags.length > 0 && (
+                    <>
+                      <span>·</span>
+                      <span>{post.data.tags[0]}</span>
+                    </>
+                  )}
+                </div>
+                <h2 class="text-[24px] md:text-[28px] font-bold text-[#101828] group-hover:text-neo-green-dark transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-[16px] text-neo-gray leading-relaxed">
+                  {post.data.description}
+                </p>
+                <span class="text-neo-green-dark font-medium text-[16px] group-hover:underline">
+                  Lire l'article →
+                </span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

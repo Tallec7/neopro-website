@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const title = post.data.title;
+const description = post.data.description;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[760px] mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="text-[14px] text-neo-gray mb-[40px]">
+        <a href="/blog" class="hover:text-neo-green-dark transition-colors">Blog</a>
+        <span class="mx-2">›</span>
+        <span class="text-[#101828]">{post.data.title}</span>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-[40px]">
+        <div class="flex items-center gap-[12px] text-[14px] text-neo-gray mb-[16px]">
+          <time datetime={post.data.date.toISOString().slice(0, 10)}>
+            {post.data.date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <span>·</span>
+          <span>{post.data.author}</span>
+        </div>
+        <h1 class="text-[32px] md:text-[42px] lg:text-[48px] font-bold text-[#101828] leading-[1.2]">
+          {post.data.title}
+        </h1>
+        {post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-[8px] mt-[20px]">
+            {post.data.tags.map((tag) => (
+              <span class="text-[13px] bg-[rgba(129,227,188,0.3)] text-[#2f3935] px-3 py-1 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none prose-headings:text-[#101828] prose-headings:font-bold prose-p:text-[#4a5565] prose-a:text-neo-green-dark prose-a:no-underline hover:prose-a:underline prose-strong:text-[#101828] prose-li:text-[#4a5565] prose-table:text-[15px] prose-th:bg-[#f5f5f5] prose-th:text-[#101828] prose-td:border-gray-200">
+        <Content />
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-[60px] bg-[rgba(129,227,188,0.2)] rounded-[20px] p-[30px] md:p-[40px] flex flex-col md:flex-row items-center gap-[20px] justify-between">
+        <div>
+          <p class="text-[20px] font-bold text-[#101828]">Prêt à équiper votre club ?</p>
+          <p class="text-[16px] text-neo-gray mt-1">Découvrez nos offres de régie digitale dès 1 500 €/an.</p>
+        </div>
+        <Button href="/devis" variant="green" arrow>Demander un devis</Button>
+      </div>
+
+      <!-- Back -->
+      <div class="mt-[40px]">
+        <a href="/blog" class="text-neo-green-dark font-medium hover:underline">← Retour au blog</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
