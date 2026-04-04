@@ -18,7 +18,6 @@ const siteUrl = 'https://www.neopro-communication.fr';
 const fullTitle = `${title} | Neopro`;
 const ogImageUrl = ogImage || `${siteUrl}/og-default.jpg`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
-const gaId = import.meta.env.PUBLIC_GA_ID;
 
 const jsonLd = buildLocalBusinessJsonLd({
   name: 'Neopro',
@@ -77,20 +76,18 @@ const jsonLd = buildLocalBusinessJsonLd({
       <script is:inline type="application/ld+json" set:html={extraJsonLd} />
     )}
 
-    <!-- Google Analytics -->
-    {gaId && (
-      <>
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-        <script is:inline define:vars={{ gaId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', gaId);
-        </script>
-      </>
-    )}
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-N3FNDT3J');
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3FNDT3J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <Navbar />
     <main class="flex-1">
       <slot />
