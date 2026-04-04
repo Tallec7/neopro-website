@@ -10,6 +10,7 @@ const t = useTranslations(locale);
 const otherLocales = getOtherLocales(locale);
 
 const aboutSlug: Record<Locale, string> = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' };
+const flags: Record<Locale, string> = { fr: '🇫🇷', en: '🇬🇧', es: '🇪🇸' };
 
 const navLinks = [
   { label: t('nav.solution'), href: localePath('/solution', locale) },
@@ -54,12 +55,25 @@ const currentPath = Astro.url.pathname;
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors">
         {t('nav.club')}
       </a>
-      <div class="flex items-center gap-[8px]">
-        {otherLocales.map((l) => (
-          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark transition-colors uppercase">
-            {l.toUpperCase()}
-          </a>
-        ))}
+      <div class="relative" data-lang-switcher>
+        <button
+          type="button"
+          class="flex items-center gap-1.5 text-[14px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors cursor-pointer"
+          aria-expanded="false"
+          aria-label="Langue"
+        >
+          <span class="text-[16px] leading-none">{flags[locale]}</span>
+          <span>{locale.toUpperCase()}</span>
+          <svg class="w-3 h-3 transition-transform" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="hidden absolute right-0 top-full mt-2 bg-white rounded-[8px] shadow-lg border border-gray-100 py-1 min-w-[80px]" data-lang-dropdown>
+          {otherLocales.map((l) => (
+            <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="flex items-center gap-2 px-3 py-1.5 text-[14px] font-medium text-neo-gray hover:text-neo-green-dark hover:bg-gray-50 transition-colors">
+              <span class="text-[16px] leading-none">{flags[l]}</span>
+              <span>{l.toUpperCase()}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
 
@@ -93,10 +107,11 @@ const currentPath = Astro.url.pathname;
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark">
         {t('nav.club')}
       </a>
-      <div class="flex gap-[12px]">
+      <div class="flex flex-wrap gap-2">
         {otherLocales.map((l) => (
-          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark uppercase">
-            {languages[l]}
+          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="flex items-center gap-1.5 text-[14px] font-medium text-neo-gray hover:text-neo-green-dark transition-colors px-3 py-1 border border-gray-200 rounded-full">
+            <span class="text-[16px] leading-none">{flags[l]}</span>
+            <span>{l.toUpperCase()}</span>
           </a>
         ))}
       </div>
@@ -139,6 +154,24 @@ const currentPath = Astro.url.pathname;
       mobileMenu?.classList.remove('flex');
     }
     updateHamburgerIcon(mobileOpen);
+  });
+
+  // Language switcher dropdown
+  const langSwitcher = document.querySelector('[data-lang-switcher]');
+  const langBtn = langSwitcher?.querySelector('button');
+  const langDropdown = langSwitcher?.querySelector('[data-lang-dropdown]') as HTMLElement | null;
+
+  langBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = langDropdown?.classList.toggle('hidden') === false;
+    langBtn.setAttribute('aria-expanded', String(open));
+    langBtn.querySelector('svg')?.classList.toggle('rotate-180', open);
+  });
+
+  document.addEventListener('click', () => {
+    langDropdown?.classList.add('hidden');
+    langBtn?.setAttribute('aria-expanded', 'false');
+    langBtn?.querySelector('svg')?.classList.remove('rotate-180');
   });
 
   function updateHamburgerIcon(open: boolean) {
