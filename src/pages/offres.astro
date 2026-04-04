@@ -4,224 +4,15 @@ import Button from '@/components/Button.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
 import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
 
-// ── Images locales ────────────────────────────────────────────────
+// ── Images ───────────────────────────────────────────────────────
 import heroImg from '@/assets/images/hero-offres.webp';
 
-// ── Logos clubs (fallback) ────────────────────────────────────────
-import logoRacc from '@/assets/images/logo-racc.png';
-import logoNarh from '@/assets/images/logo-narh.png';
-import logoNlf from '@/assets/images/logo-nlf.png';
-import logoCorsaires from '@/assets/images/logo-corsaires.png';
-
-// ── Sanity (optionnel) ────────────────────────────────────────────
-import { sanityClient } from '@/lib/sanity';
-import {
-  pricingPlansQuery,
-  videoPackagesQuery,
-  testimonialsQuery,
-  clubLogosQuery,
-  offresPageQuery,
-  financableQuery,
-} from '@/lib/queries';
-
-// ── Types ─────────────────────────────────────────────────────────
-interface PlanFeature {
-  label: string;
-  included: boolean;
-}
-
-interface PricingPlan {
-  name: string;
-  slug: string;
-  subtitle: string;
-  taxType: string;
-  priceAnnual: number;
-  priceMonthly?: number;
-  popular: boolean;
-  buttonVariant: 'green' | 'yellow' | 'pink' | 'black';
-  features: PlanFeature[];
-}
-
-interface VideoPackage {
-  name: string;
-  price: string | null;
-  priceExtra: string | null;
-  description: string;
-  popular: boolean;
-  features: string[];
-}
-
-interface Testimonial {
-  quote: string;
-  clubName: string;
-}
-
-// ── Fetch données ─────────────────────────────────────────────────
-let plans: PricingPlan[] = [];
-let videoPackages: VideoPackage[] = [];
-let testimonials: Testimonial[] = [];
-let clubs: { name: string; logoUrl: string }[] = [];
-let pageData: any = null;
-let financableData: any = null;
-
-try {
-  if (sanityClient) {
-    const [p, v, t, c, pd, fin] = await Promise.all([
-      sanityClient.fetch(pricingPlansQuery),
-      sanityClient.fetch(videoPackagesQuery),
-      sanityClient.fetch(testimonialsQuery),
-      sanityClient.fetch(clubLogosQuery),
-      sanityClient.fetch(offresPageQuery),
-      sanityClient.fetch(financableQuery),
-    ]);
-    // Plans hardcodés — ne pas utiliser Sanity pour l'instant (refonte offres)
-    // if (p?.length) plans = p;
-    if (v?.length) videoPackages = v;
-    if (t?.length) testimonials = t.map((item: any) => ({ quote: item.quote, clubName: item.clubName }));
-    if (c?.length) {
-      const withLogos = c.filter((item: any) => item.logoUrl);
-      if (withLogos.length) {
-        clubs = withLogos.map((item: any) => ({ name: item.name, logoUrl: item.logoUrl }));
-      }
-    }
-    pageData = pd;
-    financableData = fin?.financable;
-  }
-} catch {
-  // Sanity non configuré
-}
-
-// ── Fallback data ─────────────────────────────────────────────────
-if (!plans.length) {
-  plans = [
-    {
-      name: 'Essentiel',
-      slug: 'essentiel',
-      subtitle: "On s'occupe de tout.",
-      taxType: 'HT',
-      priceAnnual: 1500,
-      priceMonthly: 190,
-      popular: false,
-      buttonVariant: 'yellow',
-      features: [
-        { label: '10 sponsors max', included: true },
-        { label: 'Poids sponsors', included: false },
-        { label: 'App télécommande', included: true },
-        { label: 'Mode hors-ligne', included: true },
-        { label: 'Backoffice temps réel', included: false },
-        { label: 'Analytics', included: false },
-        { label: 'Dashboard accès sponsor', included: false },
-        { label: 'Shooting photo/vidéo + production vidéo', included: false },
-        { label: 'Email 72h', included: true },
-      ],
-    },
-    {
-      name: 'Autonomie',
-      slug: 'autonomie',
-      subtitle: 'Pilotez vous-même.',
-      taxType: 'HT',
-      priceAnnual: 2100,
-      priceMonthly: 250,
-      popular: true,
-      buttonVariant: 'green',
-      features: [
-        { label: 'Sponsors illimités', included: true },
-        { label: 'Poids sponsors', included: false },
-        { label: 'App télécommande', included: true },
-        { label: 'Mode hors-ligne', included: true },
-        { label: 'Backoffice temps réel', included: true },
-        { label: 'Analytics simples', included: true },
-        { label: 'Dashboard accès sponsor', included: false },
-        { label: 'Shooting photo/vidéo + production vidéo', included: false },
-        { label: 'Email 48h', included: true },
-      ],
-    },
-    {
-      name: 'Premium',
-      slug: 'premium',
-      subtitle: 'Accompagnement de A à Z.',
-      taxType: 'HT',
-      priceAnnual: 3000,
-      priceMonthly: 350,
-      popular: false,
-      buttonVariant: 'pink',
-      features: [
-        { label: 'Sponsors illimités', included: true },
-        { label: 'Poids sponsors', included: true },
-        { label: 'App télécommande', included: true },
-        { label: 'Mode hors-ligne', included: true },
-        { label: 'Backoffice temps réel', included: true },
-        { label: 'Analytics avancés', included: true },
-        { label: 'Dashboard accès sponsor', included: true },
-        { label: 'Shooting photo/vidéos + production vidéo **', included: true },
-        { label: 'Email 24h + joignable par tél jour de match', included: true },
-      ],
-    },
-  ];
-}
-
-if (!videoPackages.length) {
-  videoPackages = [
-    {
-      name: 'Classique',
-      price: null,
-      priceExtra: null,
-      description: 'Inclus par défaut dans toutes les offres',
-      popular: false,
-      features: [
-        'Vidéo Boucle partenaires',
-        'Vidéo Message partenaire premium',
-        'Vidéo Annonce message club',
-        'Vidéo Annonce fait de jeu',
-      ],
-    },
-    {
-      name: 'Sans shooting',
-      price: null,
-      priceExtra: null,
-      description: "On intègre vos photos à nos templates d'annonce de joueurs.",
-      popular: false,
-      features: [
-        'Package Classique',
-        'Vidéos Annonce de joueurs (avec photo uniquement)',
-      ],
-    },
-    {
-      name: 'Avec shooting',
-      price: null,
-      priceExtra: null,
-      description: 'On shoote vos joueurs et on les intègre à nos templates.',
-      popular: true,
-      features: [
-        'Package Classique',
-        'Vidéos Annonce de joueurs (avec vidéo et photo)',
-        "1 shooting vidéo et photo d'1h par équipe",
-        'Toutes les photos et vidéos disponibles en HD à dispo',
-      ],
-    },
-  ];
-}
-
-if (!testimonials.length) {
-  testimonials = [
-    { quote: "Le jour où on a utilisé Neopro pour la première fois, ça en a surpris plus d'un.", clubName: 'RACC Handball Nantes (NM3)' },
-    { quote: "Tous les joueurs attendaient que ça : voir leurs célébrations.", clubName: 'NANTES ATLANTIQUE RINK HOCKEY (D2)' },
-    { quote: "C'est vraiment instantané, c'est très satisfaisant.", clubName: 'CORSAIRES DE NANTES (D1)' },
-    { quote: "C'est un outil qui nous facilite la vie, ça complète vraiment le speaker.", clubName: 'NANTES LOIRE FEMININ (NF3)' },
-  ];
-}
-
-if (!clubs.length) {
-  clubs = [
-    { name: 'RACC Handball Nantes', logoUrl: logoRacc.src },
-    { name: 'NARH', logoUrl: logoNarh.src },
-    { name: 'Nantes Loire Feminin', logoUrl: logoNlf.src },
-    { name: 'Corsaires de Nantes', logoUrl: logoCorsaires.src },
-  ];
-}
+// ── Données ──────────────────────────────────────────────────────
+import { plans, videoPackages } from '@/data/offres';
+import { testimonials } from '@/data/temoignages';
+import { clubs } from '@/data/clubs';
 
 // ── Helpers ──────────────────────────────────────────────────────
 const borderColorMap: Record<string, string> = {
@@ -238,12 +29,10 @@ const priceColorMap: Record<string, string> = {
   black: 'text-[#101828]',
 };
 
-// ── SEO ───────────────────────────────────────────────────────────
-const title = pageData?.seoTitle || 'Offres régie digitale clubs amateurs';
-const description = pageData?.seoDescription ||
-  'Découvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de régie digitale finançables par vos partenaires.';
+// ── SEO ──────────────────────────────────────────────────────────
+const title = 'Offres régie digitale sport amateur — Dès 1 500 €/an';
+const description = "Comparez les 3 offres Neopro : Essentiel (1 500 €), Autonomie (2 100 €), Premium (3 000 €). Régie digitale clé en main, finançable par vos partenaires. Packages vidéo en option.";
 
-// ── Offer JSON-LD pour rich snippets prix ─────────────────────────
 const siteUrl = 'https://www.neopro-communication.fr';
 const offerJsonLd = buildAggregateOfferJsonLd(
   plans.map((plan) => ({
@@ -262,20 +51,20 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
     <img
-      src={pageData?.hero?.imageUrl || '/images/image_offre_accueil.jpg'}
-      alt={pageData?.hero?.imageAlt || 'Les offres Neopro'}
+      src="/images/image_offre_accueil.jpg"
+      alt="Vue d'un gymnase équipé d'un écran digital Neopro avec les offres partenaires affichées"
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
     />
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LES OFFRES'}</p>
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LES OFFRES</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">{pageData?.hero?.titleItalic || 'Adaptées à'}</span><br />
-        <span class="font-black">{pageData?.hero?.titleBold || 'vos besoins'}</span>
+        <span class="font-playfair italic">Adaptées à</span><br />
+        <span class="font-black">vos besoins</span>
       </h1>
       <div>
-        <Button href={pageData?.hero?.ctaHref || '#contact'} variant="green" arrow>{pageData?.hero?.ctaLabel || 'Obtenez un devis'}</Button>
+        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
       </div>
     </div>
   </section>
@@ -283,7 +72,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- 3 offres -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{pageData?.plansTitle || '3 offres disponibles'}</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">3 offres disponibles</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div
@@ -291,7 +80,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           >
             {offre.popular && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                {pageData?.popularBadge || 'Le plus avantageux'}
+                Le plus avantageux
               </span>
             )}
             <div class="mb-[20px]">
@@ -315,13 +104,13 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               ))}
             </ul>
             <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
-              {pageData?.chooseCta || 'Choisir cette offre'}
+              Choisir cette offre
             </Button>
           </div>
         ))}
       </div>
       <p class="text-center text-[14px] text-neo-gray mt-[30px]">
-        {pageData?.engagementNote || '*Engagement de 9 mois minimum'}
+        *Engagement de 9 mois minimum
       </p>
       <p class="text-center text-[14px] text-neo-gray mt-[8px]">
         **1 équipe, avec le template Neopro Communication, valable jusqu'au 31 mai 2026
@@ -329,12 +118,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
-  <!-- Package videos en option -->
+  <!-- Package vidéos en option -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[60px]">
-        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">{pageData?.videoSection?.title || 'PACKAGE VIDÉOS EN OPTION'}</h2>
-        <p class="text-[18px] text-neo-gray max-w-[700px]">{pageData?.videoSection?.description || 'Nous proposons en option de produire et de mettre à jour vos vidéos toute l\'année.'}</p>
+        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">PACKAGE VIDÉOS EN OPTION</h2>
+        <p class="text-[18px] text-neo-gray max-w-[700px]">Nous proposons en option de produire et de mettre à jour vos vidéos toute l'année.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {videoPackages.map((pkg) => (
@@ -343,7 +132,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           }`}>
             {pkg.name === 'Avec shooting' && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                {pageData?.videoSection?.popularBadge || 'Le plus apprécié'}
+                Le plus apprécié
               </span>
             )}
             <h3 class="text-[22px] font-bold">{pkg.name}</h3>
@@ -361,22 +150,22 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
-  <!-- Finance par vos partenaires -->
+  <!-- Finançable par vos partenaires -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
         <div class="flex-1">
           <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
-            {financableData?.title || 'Finançable par vos partenaires'}
+            Finançable par vos partenaires
           </h2>
-          <p class="text-[18px] text-[#4a5565]" set:html={financableData?.description || "Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé."} />
+          <p class="text-[18px] text-[#4a5565]">Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.</p>
         </div>
         <div class="shrink-0 w-full md:w-auto">
-          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url={financableData?.documentPdfUrl || '/documents/financable-partenaires.pdf'}>
+          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url="/documents/financable-partenaires.pdf">
             <input
               type="email"
               name="email"
-              placeholder={financableData?.emailPlaceholder || "Votre email"}
+              placeholder="Votre email"
               required
               class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
             />
@@ -384,7 +173,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               type="submit"
               class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
             >
-              {financableData?.buttonLabel || 'Recevoir le document'}
+              Recevoir le document
             </button>
             <p class="hidden text-[14px] mt-2 w-full" data-form-message></p>
           </form>
@@ -396,7 +185,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Club Carousel -->
   <ClubCarousel clubs={clubs} client:visible />
 
-  <!-- Temoignages -->
+  <!-- Témoignages -->
   <TestimonialCarousel testimonials={testimonials} client:visible />
 
   <!-- Contact -->
@@ -442,7 +231,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         msg.className = 'text-[14px] mt-2 w-full text-red-600';
       } finally {
         btn.disabled = false;
-        btn.textContent = form.dataset.buttonLabel || 'Recevoir le document';
+        btn.textContent = 'Recevoir le document';
       }
     });
   }

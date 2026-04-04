@@ -5,171 +5,16 @@ import SportBullet from '@/components/SportBullet.astro';
 import ContactForm from '@/components/ContactForm.tsx';
 import { Image } from 'astro:assets';
 
-// ── Images locales (fallback) ─────────────────────────────────────
+// ── Images ───────────────────────────────────────────────────────
 import heroImg from '@/assets/images/hero-solution.webp';
 
-// ── Sanity (optionnel) ────────────────────────────────────────────
-import { sanityClient } from '@/lib/sanity';
-import {
-  solutionPanelsQuery,
-  solutionFeaturesQuery,
-  colorPanelsQuery,
-  solutionPageQuery,
-} from '@/lib/queries';
-
-// ── Données : panneaux sticky ─────────────────────────────────────
-interface SolutionPanel {
-  title: string;
-  description: string;
-  videoUrl?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-}
-
-let solutionPanels: SolutionPanel[] = [];
-
-try {
-  if (sanityClient) {
-    const data = await sanityClient.fetch(solutionPanelsQuery);
-    if (data?.length) solutionPanels = data;
-  }
-} catch {}
-
-if (!solutionPanels.length) {
-  solutionPanels = [
-    {
-      title: 'Valorisez vos partenaires.',
-      description:
-        "Toute l'année, vos partenaires bénéficieront d'un support de communication pendant vos matchs pour partager leurs actualités. Ils peuvent mettre à jour leurs actualités d'une semaine à l'autre et obtenir des rapports de diffusion.",
-    },
-    {
-      title: 'Célébrez vos joueurs.',
-      description:
-        "Vos joueurs aussi ont le droit de faire comme les pros. Nous proposons de venir filmer leurs célébrations en début d'année, ainsi que tout type de contenu (vidéo/photo) relatif à votre média day.",
-    },
-    {
-      title: 'Partagez vos actualités.',
-      description:
-        "Assurez-vous que vos supporters ne passent pas à côté de vos prochains matchs, les soirées du club et vos produits à vendre sur votre boutique.",
-    },
-  ];
-}
+// ── Données ��───────────────────────────��─────────────────────────
+import { solutionPanels, features, colorPanels, steps } from '@/data/solution';
 
 // Couleurs des icônes sport pour chaque panneau coloré
 const panelIconVariants = ['pink', 'yellow', 'green', 'blue'] as const;
 
-// ── Données : features ────────────────────────────────────────────
-interface Feature {
-  title: string;
-  description: string;
-}
-
-let features: Feature[] = [];
-
-try {
-  if (sanityClient) {
-    const data = await sanityClient.fetch(solutionFeaturesQuery);
-    if (data?.length) features = data;
-  }
-} catch {}
-
-if (!features.length) {
-  features = [
-    {
-      title: 'Sans connexion internet',
-      description: 'Pas besoin de wifi dans votre salle.',
-    },
-    {
-      title: 'Sans fil',
-      description:
-        'Commandable à distance grâce à votre téléphone qui sert de télécommande.',
-    },
-    {
-      title: "Simple d'utilisation",
-      description:
-        "Interface ultra simplifiée, utilisable par n'importe quel bénévole les jours de match.",
-    },
-  ];
-}
-
-// ── Données : panneaux colorés ────────────────────────────────────
-interface ColorPanel {
-  title: string;
-  features: string[];
-  bgColor: string;
-}
-
-let colorPanels: ColorPanel[] = [];
-
-try {
-  if (sanityClient) {
-    const data = await sanityClient.fetch(colorPanelsQuery);
-    if (data?.length) colorPanels = data;
-  }
-} catch {}
-
-if (!colorPanels.length) {
-  colorPanels = [
-    {
-      title: 'Accompagnement continu',
-      features: [
-        'Formation initiale complète',
-        'Support technique réactif',
-        'Conseils pour optimiser vos contenus',
-        "Assistance & mise à jour de vidéos d'une semaine à l'autre",
-        "Possibilité d'autonomie complète : accès admin avec intégration visuels/vidéos",
-      ],
-      bgColor: 'bg-[#3d3036]',
-    },
-    {
-      title: 'Solution clé en main',
-      features: [
-        'Boîtier pré-configuré livré chez vous',
-        'Installation en moins de 5 minutes',
-        'Application intuitive et simple',
-        'Compatible avec tous les écrans HDMI',
-      ],
-      bgColor: 'bg-[#423e33]',
-    },
-    {
-      title: 'Production vidéo professionnelle',
-      features: [
-        'Offre de média day complète (photo+vidéo)',
-        'Des templates vidéo de qualité Broadcast, personnalisable aux couleurs de votre club',
-      ],
-      bgColor: 'bg-[#2f3935]',
-    },
-    {
-      title: 'Les retombées pour votre club',
-      features: [
-        'Image professionnelle et moderne',
-        'Support de communication efficace',
-        'Supporters mieux informés et engagés',
-        'Visibilité quantifiée pour vos partenaires',
-        'Meilleure fidélisation des partenaires',
-      ],
-      bgColor: 'bg-[#334244]',
-    },
-  ];
-}
-
-// ── Données page (Sanity → fallback) ─────────────────────────────
-let pageData: any = null;
-
-try {
-  if (sanityClient) {
-    pageData = await sanityClient.fetch(solutionPageQuery);
-  }
-} catch {}
-
-const defaultSteps = [
-  { number: '1', title: "On branche le boîtier à l'écran", description: "Compatible avec n'importe quel écran" },
-  { number: '2', title: "On se connecte à l'écran", description: 'Sans connexion internet' },
-  { number: '3', title: 'Notre téléphone devient la télécommande', description: "Utilisable par n'importe quel bénévole" },
-];
-const steps = pageData?.howItWorks?.steps?.length ? pageData.howItWorks.steps : defaultSteps;
-
-// ── Helper : format panel title (Figma : italic 1er mot + black le reste) ─
+// ── Helper : format panel title (italic 1er mot + black le reste) ─
 const formatPanelTitle = (title: string) => {
   const spaceIdx = title.indexOf(' ');
   if (spaceIdx === -1) return `<span class="font-bold">${title}</span>`;
@@ -178,41 +23,31 @@ const formatPanelTitle = (title: string) => {
   return `<span class="font-playfair italic font-normal">${first}</span> <span class="font-black">${rest}</span>`;
 };
 
-// ── SEO ───────────────────────────────────────────────────────────
-const title = pageData?.seoTitle || 'La solution de régie digitale';
-const description = pageData?.seoDescription ||
-  'Découvrez la solution Neopro : régie digitale clé en main pour clubs amateurs. Sans wifi, sans fil, pilotable depuis un smartphone.';
+// ── SEO ��──────────────────────────────────────────────────────���──
+const title = 'Solution régie digitale clé en main — Écran, appli et vidéos';
+const description = "Découvrez la solution Neopro : un boîtier plug & play, une appli télécommande et des vidéos pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.";
 ---
 
 <BaseLayout title={title} description={description}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
-    {pageData?.hero?.imageUrl ? (
-      <img
-        src={pageData.hero.imageUrl}
-        alt={pageData.hero.imageAlt || 'La solution Neopro en action'}
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-      />
-    ) : (
-      <Image
-        src={heroImg}
-        alt="La solution Neopro en action"
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        widths={[640, 1024, 1440, 1920]}
-        sizes="100vw"
-      />
-    )}
+    <Image
+      src={heroImg}
+      alt="Joueurs de handball devant un écran digital Neopro affichant les célébrations d'avant-match"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      widths={[640, 1024, 1440, 1920]}
+      sizes="100vw"
+    />
     <div class="absolute inset-0 bg-[rgba(47,57,53,0.5)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{pageData?.hero?.label || 'LA SOLUTION'}</p>
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LA SOLUTION</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">{pageData?.hero?.titleItalic || 'La régie digitale de'}</span><br />
-        <span class="font-black">{pageData?.hero?.titleBold || 'votre club'}</span>
+        <span class="font-playfair italic">La régie digitale de</span><br />
+        <span class="font-black">votre club</span>
       </h1>
       <div>
-        <Button href={pageData?.hero?.ctaHref || '#contact'} variant="green" arrow>{pageData?.hero?.ctaLabel || 'Obtenez un devis'}</Button>
+        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
       </div>
     </div>
   </section>
@@ -220,7 +55,7 @@ const description = pageData?.seoDescription ||
   <!-- Panneaux solution sticky -->
   <section class="pb-[60px] md:pb-[100px] pt-[40px] px-[20px] md:px-[40px] lg:px-[60px]">
     <div class="max-w-[1200px] mx-auto">
-      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">{pageData?.panelsLabel || 'A QUOI ÇA SERT ?'}</p>
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[30px]">A QUOI ÇA SERT ?</p>
       {solutionPanels.map((panel, i) => (
         <div
           class="sticky top-[120px] bg-white rounded-[20px] shadow-lg overflow-hidden mb-8"
@@ -228,7 +63,7 @@ const description = pageData?.seoDescription ||
         >
           <div class="flex flex-col md:flex-row gap-[60px] py-[60px] md:py-[120px] px-[30px] md:px-[60px]">
             <div class="flex-1 flex flex-col justify-center gap-[30px]">
-              <h3 class="text-[28px] md:text-[36px] lg:text-[48px]" set:html={formatPanelTitle(panel.title)} />
+              <h2 class="text-[28px] md:text-[36px] lg:text-[48px]" set:html={formatPanelTitle(panel.title)} />
               <p class="text-neo-gray text-[18px]">{panel.description}</p>
             </div>
             <div class="flex-1 rounded-[20px] overflow-hidden bg-[#1a1f1c] aspect-video">
@@ -251,9 +86,9 @@ const description = pageData?.seoDescription ||
   <!-- Comment ça marche ? — 3 colonnes -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[120px] pt-[60px] md:pt-[100px]">
     <div class="max-w-[1200px] mx-auto">
-      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[40px]">{pageData?.howItWorks?.label || 'COMMENT ÇA MARCHE ?'}</p>
+      <p class="text-[16px] font-bold opacity-60 tracking-[2px] uppercase mb-[40px]">COMMENT ÇA MARCHE ?</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
-        {steps.map((step: any, i: number) => (
+        {steps.map((step, i) => (
           <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style={`--step: ${i}`}>
             <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">{step.number}</span>
             <h3 class="text-[20px] md:text-[24px] font-bold">{step.title}</h3>
@@ -295,7 +130,7 @@ const description = pageData?.seoDescription ||
   <!-- Panneaux couleurs sticky -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{pageData?.colorPanelsTitle || "Plus qu'une solution d'affichage"}</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">Plus qu'une solution d'affichage</h2>
       <div class="flex flex-col gap-[20px]">
         {colorPanels.map((panel, i) => (
           <div
@@ -325,22 +160,22 @@ const description = pageData?.seoDescription ||
       <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-[120px]">
         <div class="w-full lg:w-[550px] flex-shrink-0 aspect-square rounded-[20px] overflow-hidden bg-[#f5f5f5]">
           <img
-            src={pageData?.ctaOffres?.imageUrl || '/images/image_offre.jpg'}
-            alt={pageData?.ctaOffres?.imageAlt || 'Découvrez les offres Neopro'}
+            src="/images/image_offre.jpg"
+            alt="Écran Neopro en situation dans un gymnase — découvrez les offres"
             class="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
         <div class="flex-1 flex flex-col gap-[20px] items-start">
           <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
-            {pageData?.ctaOffres?.title || 'Des offres adaptées à vos besoins'}
+            Des offres adaptées à vos besoins
           </h2>
           <p class="text-[18px] text-[#4a5565]">
-            {pageData?.ctaOffres?.subtitle || 'Finançable par vos partenaires. Clé en main.'}
+            Finançable par vos partenaires. Clé en main.
           </p>
           <div class="mt-[20px]">
-            <Button href={pageData?.ctaOffres?.ctaHref || '/offres'} variant="black" arrow>
-              {pageData?.ctaOffres?.ctaLabel || 'Découvrez les offres'}
+            <Button href="/offres" variant="black" arrow>
+              Découvrez les offres
             </Button>
           </div>
         </div>
