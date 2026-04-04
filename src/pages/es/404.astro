@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  description="Esta página no existe."
+  locale="es"
+  noAlternates
+>
+  <section class="min-h-[70vh] flex flex-col items-center justify-center px-6 py-24 text-center">
+    <p class="text-[120px] md:text-[180px] font-black text-[#e8f5f0] leading-none select-none">404</p>
+    <h1 class="text-[28px] md:text-[40px] font-bold text-[#101828] mt-[-20px] mb-4">
+      Página no encontrada
+    </h1>
+    <p class="text-[#4a5565] text-[18px] max-w-[480px] mb-10">
+      La página que buscas no existe o ha sido movida.
+    </p>
+    <Button href="/es/" variant="black" arrow>Volver al inicio</Button>
+  </section>
+</BaseLayout>
