@@ -4,6 +4,7 @@ export interface City {
   at: string; // "à Lyon", "au Havre", "à La Rochelle"
   country: 'FR' | 'BE' | 'CH';
   region: string;
+  localInfo?: string; // Paragraph unique à la ville pour enrichir le contenu SEO
 }
 
 export interface Sport {
@@ -16,16 +17,96 @@ export interface Sport {
 
 export const cities: City[] = [
   // ── France ──────────────────────────────────────────────────────
-  { slug: 'paris', name: 'Paris', at: 'à Paris', country: 'FR', region: 'Île-de-France' },
-  { slug: 'marseille', name: 'Marseille', at: 'à Marseille', country: 'FR', region: 'Provence-Alpes-Côte d\'Azur' },
-  { slug: 'lyon', name: 'Lyon', at: 'à Lyon', country: 'FR', region: 'Auvergne-Rhône-Alpes' },
-  { slug: 'toulouse', name: 'Toulouse', at: 'à Toulouse', country: 'FR', region: 'Occitanie' },
-  { slug: 'nice', name: 'Nice', at: 'à Nice', country: 'FR', region: 'Provence-Alpes-Côte d\'Azur' },
-  { slug: 'nantes', name: 'Nantes', at: 'à Nantes', country: 'FR', region: 'Pays de la Loire' },
-  { slug: 'montpellier', name: 'Montpellier', at: 'à Montpellier', country: 'FR', region: 'Occitanie' },
-  { slug: 'strasbourg', name: 'Strasbourg', at: 'à Strasbourg', country: 'FR', region: 'Grand Est' },
-  { slug: 'bordeaux', name: 'Bordeaux', at: 'à Bordeaux', country: 'FR', region: 'Nouvelle-Aquitaine' },
-  { slug: 'lille', name: 'Lille', at: 'à Lille', country: 'FR', region: 'Hauts-de-France' },
+  {
+    slug: 'paris',
+    name: 'Paris',
+    at: 'à Paris',
+    country: 'FR',
+    region: 'Île-de-France',
+    localInfo:
+      'Paris concentre le réseau de clubs sportifs amateurs le plus dense de France, avec plusieurs centaines de gymnases municipaux répartis dans les 20 arrondissements. L\'Île-de-France représente à elle seule près de 20 % des licenciés sportifs nationaux — une opportunité unique pour valoriser vos partenaires locaux auprès d\'une audience large et régulière.',
+  },
+  {
+    slug: 'marseille',
+    name: 'Marseille',
+    at: 'à Marseille',
+    country: 'FR',
+    region: 'Provence-Alpes-Côte d\'Azur',
+    localInfo:
+      'Marseille est une ville à la culture sportive intense, portée par ses quartiers et ses clubs de proximité. Le sport amateur y est particulièrement vivace, avec un tissu dense de clubs de handball, football et basketball dans les arrondissements nord comme sud. La métropole Aix-Marseille-Provence compte parmi les plus actives de France pour la pratique sportive associative.',
+  },
+  {
+    slug: 'lyon',
+    name: 'Lyon',
+    at: 'à Lyon',
+    country: 'FR',
+    region: 'Auvergne-Rhône-Alpes',
+    localInfo:
+      'Lyon et sa métropole accueillent plus de 600 clubs sportifs amateurs toutes disciplines confondues. L\'Auvergne-Rhône-Alpes est l\'une des régions les plus dynamiques de France pour le handball et le basketball, avec plusieurs clubs évoluant en ligues nationales. Le tissu associatif sportif lyonnais est reconnu pour son professionnalisme et son engagement partenaires.',
+  },
+  {
+    slug: 'toulouse',
+    name: 'Toulouse',
+    at: 'à Toulouse',
+    country: 'FR',
+    region: 'Occitanie',
+    localInfo:
+      'Toulouse est la capitale incontestée du rugby français, mais la ville est aussi un vivier majeur pour le handball — l\'Occitanie héberge plusieurs clubs de haut niveau régional. Le tissu amateur toulousain est dense, engagé, et les matchs à domicile drainent des supporters fidèles et des partenaires locaux impliqués. Un terrain idéal pour la régie digitale.',
+  },
+  {
+    slug: 'nice',
+    name: 'Nice',
+    at: 'à Nice',
+    country: 'FR',
+    region: 'Provence-Alpes-Côte d\'Azur',
+    localInfo:
+      'Nice et la Côte d\'Azur bénéficient d\'une pratique sportive intense grâce à leur climat et à leur densité de population. La métropole niçoise concentre une forte activité amateur dans le football, le volleyball et les sports collectifs en salle. La présence de nombreuses entreprises locales en fait un territoire particulièrement favorable à la valorisation de partenaires sportifs.',
+  },
+  {
+    slug: 'nantes',
+    name: 'Nantes',
+    at: 'à Nantes',
+    country: 'FR',
+    region: 'Pays de la Loire',
+    localInfo:
+      'Nantes est l\'une des capitales du handball français — la Loire-Atlantique figure régulièrement parmi les départements les plus actifs pour ce sport. Plus largement, les Pays de la Loire affichent un taux de licenciés sportifs parmi les plus élevés de France. Les clubs nantais bénéficient d\'un tissu économique local fort, propice à la recherche de partenaires et au développement de la régie digitale.',
+  },
+  {
+    slug: 'montpellier',
+    name: 'Montpellier',
+    at: 'à Montpellier',
+    country: 'FR',
+    region: 'Occitanie',
+    localInfo:
+      'Ville universitaire et sportive, Montpellier affiche une forte densité de clubs amateurs portée par sa population jeune et dynamique. Le handball y est une tradition ancrée depuis des décennies. La présence d\'un écosystème d\'entreprises tech et de PME régionales en fait un terrain fertile pour la valorisation de partenaires via des écrans digitaux en salle.',
+  },
+  {
+    slug: 'strasbourg',
+    name: 'Strasbourg',
+    at: 'à Strasbourg',
+    country: 'FR',
+    region: 'Grand Est',
+    localInfo:
+      'Strasbourg et l\'Alsace ont une forte tradition sportive, notamment en handball et en football. La région Grand Est se distingue par un tissu associatif sportif particulièrement organisé, héritage d\'une culture germanique de l\'engagement associatif. Les clubs strasbourgeois sont reconnus pour leur sérieux dans la gestion partenaires — un atout pour rentabiliser rapidement une solution de régie digitale.',
+  },
+  {
+    slug: 'bordeaux',
+    name: 'Bordeaux',
+    at: 'à Bordeaux',
+    country: 'FR',
+    region: 'Nouvelle-Aquitaine',
+    localInfo:
+      'Bordeaux et la Nouvelle-Aquitaine représentent l\'une des premières régions de France pour le rugby amateur, mais aussi un bassin solide pour le football, le basketball et le handball. Le dynamisme économique bordelais attire des entreprises locales prêtes à s\'engager comme partenaires de clubs sportifs — un contexte idéal pour maximiser la valeur de votre régie digitale.',
+  },
+  {
+    slug: 'lille',
+    name: 'Lille',
+    at: 'à Lille',
+    country: 'FR',
+    region: 'Hauts-de-France',
+    localInfo:
+      'Lille et sa métropole abritent l\'un des bassins les plus denses de clubs amateurs du nord de la France. Les Hauts-de-France ont une culture sportive profondément ancrée dans les territoires, avec une forte pratique du football, du handball et du volleyball. Le tissu industriel et commercial local offre de nombreuses opportunités de partenariats pour les clubs qui se dotent d\'une solution de communication digitale.',
+  },
   { slug: 'rennes', name: 'Rennes', at: 'à Rennes', country: 'FR', region: 'Bretagne' },
   { slug: 'reims', name: 'Reims', at: 'à Reims', country: 'FR', region: 'Grand Est' },
   { slug: 'le-havre', name: 'Le Havre', at: 'au Havre', country: 'FR', region: 'Normandie' },

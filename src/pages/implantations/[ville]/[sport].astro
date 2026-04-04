@@ -138,6 +138,9 @@ const faq = buildFAQPageJsonLd([
       <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-6">
         Neopro {city.at} et en {city.region}
       </h2>
+      {city.localInfo ? (
+        <p class="text-neo-gray text-lg leading-relaxed mb-4">{city.localInfo}</p>
+      ) : null}
       <p class="text-neo-gray text-lg leading-relaxed mb-4">
         Neopro accompagne des clubs de {sport.name} {city.at} et dans toute la région {city.region}.
         Que vous soyez dans le centre-ville ou dans les communes alentour, notre équipe se déplace
