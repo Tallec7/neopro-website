@@ -12,7 +12,10 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } },
+      i18n: {
+        defaultLocale: 'fr',
+        locales: { fr: 'fr-FR', en: 'en-US' },
+      },
     }),
   ],
   vite: {

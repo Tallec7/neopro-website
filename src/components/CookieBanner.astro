@@ -1,6 +1,10 @@
 ---
-// Bannière de consentement cookies RGPD
-// Bloque GTM tant que l'utilisateur n'a pas accepté
+import { useTranslations, localePath } from '@/i18n/utils';
+import type { Locale } from '@/i18n/ui';
+
+interface Props { locale?: Locale; }
+const locale = Astro.props.locale ?? 'fr';
+const t = useTranslations(locale);
 ---
 
 <div
@@ -12,22 +16,21 @@
   <div class="bg-[#101828] border-t border-[rgba(255,255,255,0.1)] px-5 py-4 md:px-10 md:py-5">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
       <p class="text-[14px] md:text-[15px] text-[rgba(255,255,255,0.8)] leading-relaxed flex-1">
-        Nous utilisons des cookies pour analyser le trafic du site via Google Analytics.
-        Aucune donnée personnelle n'est vendue.
-        <a href="/politique-de-confidentialite" class="text-[#81e3bc] underline hover:no-underline">En savoir plus</a>
+        {t('cookie.text')}
+        <a href={localePath('/politique-de-confidentialite', locale)} class="text-[#81e3bc] underline hover:no-underline">{t('cookie.learn')}</a>
       </p>
       <div class="flex gap-3 shrink-0">
         <button
           id="cookie-reject"
           class="px-5 py-2 text-[14px] font-medium text-white border border-[rgba(255,255,255,0.3)] rounded-full hover:border-white transition-colors cursor-pointer"
         >
-          Refuser
+          {t('cookie.reject')}
         </button>
         <button
           id="cookie-accept"
           class="px-5 py-2 text-[14px] font-medium text-[#101828] bg-[#81e3bc] rounded-full hover:bg-[#51b28b] transition-colors cursor-pointer"
         >
-          Accepter
+          {t('cookie.accept')}
         </button>
       </div>
     </div>

@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { ui, defaultLocale, type Locale, type TranslationKey } from '@/i18n/ui';
+
+function t(locale: Locale, key: TranslationKey): string {
+  return ui[locale][key] ?? ui[defaultLocale][key] ?? key;
+}
 
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
@@ -9,15 +14,23 @@ const sports = [
   'Basketball',
   'Volleyball',
   'Futsal',
-  'Rink Hockey',
-  'Hockey sur glace',
-  'Badminton',
-  'Tennis de table',
-  'Autre',
 ];
 
-const offres = ['Essentiel', 'Autonomie', 'Premium', 'Je ne sais pas encore'];
-const packagesVideo = ['Classique (inclus)', 'Sans shooting', 'Avec shooting', 'Je ne sais pas encore'];
+const sportsByLocale = {
+  fr: [...sports, 'Rink Hockey', 'Hockey sur glace', 'Badminton', 'Tennis de table', 'Autre'],
+  en: [...sports, 'Rink Hockey', 'Ice Hockey', 'Badminton', 'Table Tennis', 'Other'],
+};
+
+const offresByLocale = {
+  fr: ['Essentiel', 'Autonomie', 'Premium', 'Je ne sais pas encore'],
+  en: ['Essential', 'Autonomy', 'Premium', "I don't know yet"],
+};
+
+const packagesByLocale = {
+  fr: ['Classique (inclus)', 'Sans shooting', 'Avec shooting', 'Je ne sais pas encore'],
+  en: ['Standard (included)', 'Without shoot', 'With shoot', "I don't know yet"],
+};
+
 const nbEquipes = ['1', '2', '3', '4', '5+'];
 
 const inputClass =
@@ -26,7 +39,11 @@ const selectClass =
   'w-full h-[50px] bg-white border border-[#d1d5dc] rounded-[10px] px-4 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M1%201.5L6%206.5L11%201.5%22%20stroke%3D%22%234a5565%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E")] bg-no-repeat bg-[right_1rem_center]';
 const labelClass = 'text-[16px] font-medium text-[#101828] block mb-2';
 
-export default function DevisForm() {
+interface Props {
+  locale?: Locale;
+}
+
+export default function DevisForm({ locale = 'fr' }: Props) {
   const [clubName, setClubName] = useState('');
   const [sport, setSport] = useState('');
   const [contactName, setContactName] = useState('');
@@ -37,6 +54,11 @@ export default function DevisForm() {
   const [nbEquipe, setNbEquipe] = useState('');
   const [message, setMessage] = useState('');
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
+
+  const offres = offresByLocale[locale];
+  const packagesVideo = packagesByLocale[locale];
+  const localSports = sportsByLocale[locale];
+  const homeUrl = locale === 'fr' ? '/' : '/en/';
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -89,17 +111,16 @@ export default function DevisForm() {
         <div className="max-w-[700px] mx-auto text-center">
           <div className="bg-[#81e3bc]/20 border border-[#81e3bc] rounded-[20px] p-12">
             <p className="text-[#101828] text-[28px] font-bold mb-4">
-              Demande envoyée !
+              {t(locale, 'devisForm.success.title')}
             </p>
             <p className="text-[#4a5565] text-[16px] mb-8">
-              Merci pour votre intérêt. Notre équipe vous contactera dans les
-              plus brefs délais.
+              {t(locale, 'devisForm.success.text')}
             </p>
             <a
-              href="/"
+              href={homeUrl}
               className="inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#101828] text-white hover:bg-[#1d2939] transition-colors"
             >
-              Retour à l'accueil
+              {t(locale, 'devisForm.success.cta')}
             </a>
           </div>
         </div>
@@ -107,17 +128,21 @@ export default function DevisForm() {
     );
   }
 
+  const teamLabel = (n: string) => {
+    const word = n !== '1' ? t(locale, 'devisForm.equipes') : t(locale, 'devisForm.equipe');
+    return `${n} ${word}`;
+  };
+
   return (
     <section className="min-h-screen pt-32 pb-20 px-5">
       <div className="max-w-[800px] mx-auto">
         {/* Title */}
         <div className="mb-[50px]">
           <h1 className="text-[32px] md:text-[60px] font-bold mb-2">
-            <span className="font-['Playfair_Display'] italic">Parlez-nous</span> de
-            votre club
+            <span className="font-['Playfair_Display'] italic">{t(locale, 'devisForm.heading')}</span> {t(locale, 'devisForm.headingSuffix')}
           </h1>
           <p className="text-[#4a5565] text-[18px]">
-            Remplissez ce formulaire et notre équipe vous recontactera rapidement.
+            {t(locale, 'devisForm.subtitle')}
           </p>
         </div>
 
@@ -126,20 +151,20 @@ export default function DevisForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
             <div>
               <label className={labelClass}>
-                Nom du club <span className="text-red-500">*</span>
+                {t(locale, 'devisForm.clubName')} <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={clubName}
                 onChange={(e) => setClubName(e.target.value)}
-                placeholder="Nom de votre club"
+                placeholder={t(locale, 'devisForm.clubPlaceholder')}
                 required
                 className={inputClass}
               />
             </div>
             <div>
               <label className={labelClass}>
-                Sport <span className="text-red-500">*</span>
+                {t(locale, 'devisForm.sport')} <span className="text-red-500">*</span>
               </label>
               <select
                 value={sport}
@@ -148,9 +173,9 @@ export default function DevisForm() {
                 className={selectClass}
               >
                 <option value="" disabled>
-                  Sélectionnez un sport
+                  {t(locale, 'devisForm.sportPlaceholder')}
                 </option>
-                {sports.map((s) => (
+                {localSports.map((s) => (
                   <option key={s} value={s}>
                     {s}
                   </option>
@@ -163,57 +188,57 @@ export default function DevisForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
             <div>
               <label className={labelClass}>
-                Nom et prénom du contact <span className="text-red-500">*</span>
+                {t(locale, 'devisForm.contactName')} <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
-                placeholder="Jean Dupont"
+                placeholder={t(locale, 'devisForm.contactPlaceholder')}
                 required
                 className={inputClass}
               />
             </div>
             <div>
               <label className={labelClass}>
-                Email <span className="text-red-500">*</span>
+                {t(locale, 'devisForm.email')} <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="contact@monclub.fr"
+                placeholder={t(locale, 'devisForm.emailPlaceholder')}
                 required
                 className={inputClass}
               />
             </div>
           </div>
 
-          {/* Row 3: Téléphone */}
+          {/* Row 3: Téléphone + Nb équipes */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
             <div>
-              <label className={labelClass}>Téléphone</label>
+              <label className={labelClass}>{t(locale, 'devisForm.phone')}</label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="06 12 34 56 78"
+                placeholder={t(locale, 'devisForm.phonePlaceholder')}
                 className={inputClass}
               />
             </div>
             <div>
-              <label className={labelClass}>Nombre d'équipes</label>
+              <label className={labelClass}>{t(locale, 'devisForm.nbEquipes')}</label>
               <select
                 value={nbEquipe}
                 onChange={(e) => setNbEquipe(e.target.value)}
                 className={selectClass}
               >
                 <option value="" disabled>
-                  Sélectionnez
+                  {t(locale, 'devisForm.nbEquipesPlaceholder')}
                 </option>
                 {nbEquipes.map((n) => (
                   <option key={n} value={n}>
-                    {n} équipe{n !== '1' ? 's' : ''}
+                    {teamLabel(n)}
                   </option>
                 ))}
               </select>
@@ -223,14 +248,14 @@ export default function DevisForm() {
           {/* Row 4: Offre + Package */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
             <div>
-              <label className={labelClass}>Offre qui vous intéresse</label>
+              <label className={labelClass}>{t(locale, 'devisForm.offre')}</label>
               <select
                 value={offre}
                 onChange={(e) => setOffre(e.target.value)}
                 className={selectClass}
               >
                 <option value="" disabled>
-                  Sélectionnez une offre
+                  {t(locale, 'devisForm.offrePlaceholder')}
                 </option>
                 {offres.map((o) => (
                   <option key={o} value={o}>
@@ -240,14 +265,14 @@ export default function DevisForm() {
               </select>
             </div>
             <div>
-              <label className={labelClass}>Package vidéo</label>
+              <label className={labelClass}>{t(locale, 'devisForm.package')}</label>
               <select
                 value={packageVideo}
                 onChange={(e) => setPackageVideo(e.target.value)}
                 className={selectClass}
               >
                 <option value="" disabled>
-                  Sélectionnez un package
+                  {t(locale, 'devisForm.packagePlaceholder')}
                 </option>
                 {packagesVideo.map((p) => (
                   <option key={p} value={p}>
@@ -260,11 +285,11 @@ export default function DevisForm() {
 
           {/* Message */}
           <div>
-            <label className={labelClass}>Message (optionnel)</label>
+            <label className={labelClass}>{t(locale, 'devisForm.message')}</label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Précisez vos besoins, vos questions..."
+              placeholder={t(locale, 'devisForm.messagePlaceholder')}
               rows={4}
               className="w-full bg-white border border-[#d1d5dc] rounded-[10px] px-5 py-4 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors resize-y"
             />
@@ -281,7 +306,7 @@ export default function DevisForm() {
                   : 'cursor-pointer'
               }`}
             >
-              {submitStatus === 'sending' ? 'Envoi en cours...' : 'Envoyer ma demande'}
+              {submitStatus === 'sending' ? t(locale, 'devisForm.submitting') : t(locale, 'devisForm.submit')}
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
                 <path
                   d="M0.8 5.46667H10.1333M10.1333 5.46667L5.46667 0.8M10.1333 5.46667L5.46667 10.1333"
@@ -296,7 +321,7 @@ export default function DevisForm() {
 
           {submitStatus === 'error' && (
             <p className="text-red-500 text-[14px]">
-              Une erreur est survenue. Veuillez réessayer.
+              {t(locale, 'devisForm.error')}
             </p>
           )}
         </form>

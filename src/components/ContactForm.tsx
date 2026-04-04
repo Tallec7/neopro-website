@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { ui, defaultLocale, type Locale, type TranslationKey } from '@/i18n/ui';
+
+function t(locale: Locale, key: TranslationKey): string {
+  return ui[locale][key] ?? ui[defaultLocale][key] ?? key;
+}
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
-export default function ContactForm() {
+interface Props {
+  locale?: Locale;
+}
+
+export default function ContactForm({ locale = 'fr' }: Props) {
   const [formData, setFormData] = useState({
     nom: '',
     prenom: '',
@@ -46,11 +55,11 @@ export default function ContactForm() {
         {/* Title */}
         <div className="text-center text-white">
           <h2 className="text-[36px] md:text-[48px] font-bold leading-tight mb-[15px]">
-            Intéressé ?{' '}
-            <span className="font-['Playfair_Display'] italic font-normal">Écrivez-nous !</span>
+            {t(locale, 'contact.title')}{' '}
+            <span className="font-['Playfair_Display'] italic font-normal">{t(locale, 'contact.titleItalic')}</span>
           </h2>
           <p className="text-[16px] leading-[24px]">
-            On peut organiser une démo ou se rencontrer...
+            {t(locale, 'contact.subtitle')}
           </p>
         </div>
 
@@ -58,8 +67,8 @@ export default function ContactForm() {
         {status === 'success' ? (
           <div className="bg-white rounded-[10px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_1px_2px_0px_rgba(0,0,0,0.1)] w-full p-[30px]">
             <div className="text-center py-8">
-              <p className="text-[#81e3bc] text-[18px] font-bold mb-2">Message envoyé !</p>
-              <p className="text-[#4a5565]">Nous vous répondrons dans les plus brefs délais.</p>
+              <p className="text-[#81e3bc] text-[18px] font-bold mb-2">{t(locale, 'contact.success.title')}</p>
+              <p className="text-[#4a5565]">{t(locale, 'contact.success.text')}</p>
             </div>
           </div>
         ) : (
@@ -67,7 +76,7 @@ export default function ContactForm() {
             <form className="flex flex-col gap-[24px] items-end p-[30px]" onSubmit={handleSubmit}>
               <div className="flex flex-col md:flex-row gap-[24px] w-full">
                 <div className="flex-1 flex flex-col gap-[8px]">
-                  <label className="font-medium text-[16px] text-black leading-[24px]">Nom</label>
+                  <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.nom')}</label>
                   <input
                     type="text"
                     name="nom"
@@ -78,7 +87,7 @@ export default function ContactForm() {
                   />
                 </div>
                 <div className="flex-1 flex flex-col gap-[8px]">
-                  <label className="font-medium text-[16px] text-black leading-[24px]">Prénom</label>
+                  <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.prenom')}</label>
                   <input
                     type="text"
                     name="prenom"
@@ -90,7 +99,7 @@ export default function ContactForm() {
                 </div>
               </div>
               <div className="flex flex-col gap-[8px] w-full">
-                <label className="font-medium text-[16px] text-black leading-[24px]">Email</label>
+                <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.email')}</label>
                 <input
                   type="email"
                   name="email"
@@ -101,7 +110,7 @@ export default function ContactForm() {
                 />
               </div>
               <div className="flex flex-col gap-[8px] w-full">
-                <label className="font-medium text-[16px] text-black leading-[24px]">Message</label>
+                <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.message')}</label>
                 <textarea
                   name="message"
                   rows={5}
@@ -118,11 +127,11 @@ export default function ContactForm() {
                   status === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
                 }`}
               >
-                {status === 'sending' ? 'Envoi...' : 'Envoyer'}
+                {status === 'sending' ? t(locale, 'contact.sending') : t(locale, 'contact.send')}
               </button>
               {status === 'error' && (
                 <p className="text-red-400 text-[14px] w-full text-right">
-                  Une erreur est survenue. Veuillez réessayer.
+                  {t(locale, 'contact.error')}
                 </p>
               )}
             </form>

@@ -2,20 +2,26 @@
 import Logo from '@/components/icons/Logo.astro';
 import SocialIcons from '@/components/icons/SocialIcons.astro';
 import Button from '@/components/Button.astro';
+import { useTranslations, localePath } from '@/i18n/utils';
+import type { Locale } from '@/i18n/ui';
+
+interface Props { locale?: Locale; }
+const locale = Astro.props.locale ?? 'fr';
+const t = useTranslations(locale);
 
 const footerLinks = [
-  { label: 'La solution', href: '/solution' },
-  { label: 'Les offres', href: '/offres' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Implantations', href: '/implantations' },
-  { label: 'Qui sommes-nous ?', href: '/qui-sommes-nous' },
+  { label: t('nav.solution'), href: localePath('/solution', locale) },
+  { label: t('nav.offres'), href: localePath('/offres', locale) },
+  { label: t('nav.blog'), href: localePath('/blog', locale) },
+  { label: t('footer.implantations'), href: localePath('/implantations', locale) },
+  { label: t('nav.about'), href: localePath(locale === 'fr' ? '/qui-sommes-nous' : '/about', locale) },
 ];
 
 const year = new Date().getFullYear();
 
 const legalLinks = [
-  { label: 'Mentions légales', href: '/mentions-legales' },
-  { label: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
+  { label: t('footer.mentions'), href: localePath('/mentions-legales', locale) },
+  { label: t('footer.privacy'), href: localePath('/politique-de-confidentialite', locale) },
 ];
 ---
 
@@ -23,7 +29,7 @@ const legalLinks = [
   <div class="max-w-[1200px] mx-auto px-6 md:px-[120px] pt-[60px] md:pt-[80px] pb-[60px] md:pb-[96px]">
     <!-- Row 1: Logo + Social icons -->
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-      <a href="/">
+      <a href={localePath('/', locale)}>
         <Logo variant="white" class="h-[34px] w-auto" />
       </a>
       <div class="flex gap-[10px]">
@@ -49,14 +55,14 @@ const legalLinks = [
         ))}
       </div>
       <div class="flex flex-wrap gap-[16px] items-center">
-        <Button href="/devis" variant="green">
-          Obtenez un devis
+        <Button href={localePath('/devis', locale)} variant="green">
+          {t('footer.devis')}
         </Button>
         <Button href="#contact" variant="black">
-          Planifier une démo
+          {t('nav.demo')}
         </Button>
         <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-white hover:text-neo-green transition-colors">
-          Espace Club
+          {t('nav.club')}
         </a>
       </div>
     </div>
@@ -72,7 +78,7 @@ const legalLinks = [
         ))}
       </div>
       <p class="text-[13px] text-[rgba(255,255,255,0.4)]">
-        &copy; {year} Neopro Communication. Tous droits réservés.
+        &copy; {year} {t('footer.copyright')}
       </p>
     </div>
   </div>

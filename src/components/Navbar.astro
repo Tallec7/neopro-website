@@ -1,12 +1,20 @@
 ---
 import Logo from '@/components/icons/Logo.astro';
 import Button from '@/components/Button.astro';
+import { useTranslations, localePath, getAlternateLocale, getSwitchUrl } from '@/i18n/utils';
+import { languages, type Locale } from '@/i18n/ui';
+
+interface Props { locale?: Locale; }
+const locale = Astro.props.locale ?? 'fr';
+const t = useTranslations(locale);
+const altLocale = getAlternateLocale(locale);
+const switchUrl = getSwitchUrl(Astro.url.pathname, locale);
 
 const navLinks = [
-  { label: 'La solution', href: '/solution' },
-  { label: 'Les offres', href: '/offres' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Qui sommes-nous ?', href: '/qui-sommes-nous' },
+  { label: t('nav.solution'), href: localePath('/solution', locale) },
+  { label: t('nav.offres'), href: localePath('/offres', locale) },
+  { label: t('nav.blog'), href: localePath('/blog', locale) },
+  { label: t('nav.about'), href: localePath(locale === 'fr' ? '/qui-sommes-nous' : '/about', locale) },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -19,7 +27,7 @@ const currentPath = Astro.url.pathname;
   <div class="flex items-center justify-between h-[80px] px-6 md:px-[60px] max-w-[1400px] mx-auto">
     <!-- Logo + Nav links -->
     <div class="flex items-center gap-[40px]">
-      <a href="/" class="flex-shrink-0">
+      <a href={localePath('/', locale)} class="flex-shrink-0">
         <Logo class="h-[24px] w-auto" />
       </a>
       <div class="hidden md:flex items-center gap-[32px]">
@@ -40,10 +48,13 @@ const currentPath = Astro.url.pathname;
     <!-- Desktop CTAs -->
     <div class="hidden md:flex items-center gap-[16px] h-[44px]">
       <Button href="#contact" variant="black">
-        Planifier une démo
+        {t('nav.demo')}
       </Button>
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors">
-        Espace Club
+        {t('nav.club')}
+      </a>
+      <a href={switchUrl} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark transition-colors uppercase">
+        {altLocale.toUpperCase()}
       </a>
     </div>
 
@@ -72,10 +83,13 @@ const currentPath = Astro.url.pathname;
     ))}
     <div class="flex flex-col gap-3 pt-2">
       <Button href="#contact" variant="black">
-        Planifier une démo
+        {t('nav.demo')}
       </Button>
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark">
-        Espace Club
+        {t('nav.club')}
+      </a>
+      <a href={switchUrl} class="text-[14px] font-medium text-neo-gray hover:text-neo-green-dark uppercase">
+        {languages[altLocale]}
       </a>
     </div>
   </div>

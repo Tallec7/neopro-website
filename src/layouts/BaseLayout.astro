@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
 import { buildLocalBusinessJsonLd } from '@/lib/jsonLd';
+import { getLocaleFromUrl, localePath, getAlternateLocale, getSwitchUrl } from '@/i18n/utils';
+import type { Locale } from '@/i18n/ui';
 
 interface Props {
   title: string;
@@ -12,6 +14,7 @@ interface Props {
   canonicalUrl?: string;
   extraJsonLd?: string | string[];
   ogType?: string;
+  locale?: Locale;
   articleMeta?: {
     publishedTime: string;
     author: string;
@@ -20,6 +23,9 @@ interface Props {
 
 const { title, description, ogImage, canonicalUrl, extraJsonLd: rawExtraJsonLd, ogType, articleMeta } = Astro.props;
 
+const locale = Astro.props.locale ?? getLocaleFromUrl(Astro.url);
+const altLocale = getAlternateLocale(locale);
+
 const siteUrl = 'https://www.neopro-communication.fr';
 const extraJsonLdList = rawExtraJsonLd
   ? Array.isArray(rawExtraJsonLd) ? rawExtraJsonLd : [rawExtraJsonLd]
@@ -27,6 +33,7 @@ const extraJsonLdList = rawExtraJsonLd
 const fullTitle = `${title} | Neopro`;
 const ogImageUrl = ogImage || `${siteUrl}/og-default.jpg`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+const altUrl = new URL(getSwitchUrl(Astro.url.pathname, locale), siteUrl).href;
 
 const jsonLd = buildLocalBusinessJsonLd({
   name: 'Neopro',
@@ -44,7 +51,7 @@ const jsonLd = buildLocalBusinessJsonLd({
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,8 +72,9 @@ const jsonLd = buildLocalBusinessJsonLd({
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Neopro" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="fr" href={canonical} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={locale === 'fr' ? canonical : altUrl} />
+    <link rel="alternate" hreflang="en" href={locale === 'en' ? canonical : altUrl} />
+    <link rel="alternate" hreflang="x-default" href={locale === 'fr' ? canonical : altUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={fullTitle} />
@@ -74,7 +82,7 @@ const jsonLd = buildLocalBusinessJsonLd({
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={ogType || 'website'} />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={locale === 'fr' ? 'fr_FR' : 'en_US'} />
     <meta property="og:site_name" content="Neopro" />
 
     {articleMeta && (
@@ -99,11 +107,11 @@ const jsonLd = buildLocalBusinessJsonLd({
     <!-- GTM chargé conditionnellement via CookieBanner (consentement RGPD) -->
   </head>
   <body class="min-h-screen flex flex-col">
-    <Navbar />
+    <Navbar locale={locale} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
-    <CookieBanner />
+    <Footer locale={locale} />
+    <CookieBanner locale={locale} />
   </body>
 </html>
