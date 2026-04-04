@@ -1,0 +1,119 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cities, sports } from '@/data/implantations';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { ville: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/implantations/${city.slug}`;
+
+const countryLabel = city.country === 'FR' ? 'France' : city.country === 'BE' ? 'Belgique' : 'Suisse';
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Implantations', url: `${siteUrl}/implantations` },
+  { name: city.name, url: canonicalUrl },
+]);
+---
+
+<BaseLayout
+  title={`Régie digitale clubs sportifs ${city.at} — Neopro`}
+  description={`Neopro équipe les clubs sportifs amateurs ${city.at} avec des écrans LED et solutions digitales. Handball, football, basketball et plus. Devis gratuit.`}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={breadcrumb}
+>
+  <!-- Hero -->
+  <section class="bg-neo-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neo-green text-sm font-semibold uppercase tracking-widest mb-3">
+        {countryLabel} — {city.region}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-black mb-6">
+        Régie digitale pour clubs sportifs<br />
+        <span class="text-neo-green">{city.at}</span>
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        Neopro équipe les clubs sportifs amateurs {city.at} avec des écrans LED et des outils
+        digitaux pour valoriser leurs partenaires et moderniser l'expérience en salle ou sur
+        terrain.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sports -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-4 text-center">
+        Choisissez votre sport
+      </h2>
+      <p class="text-neo-gray text-center mb-10">
+        Neopro propose des solutions adaptées à chaque discipline sportive pratiquée {city.at}.
+      </p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {
+          sports.map((sport) => (
+            <a
+              href={`/implantations/${city.slug}/${sport.slug}`}
+              class="group block p-6 bg-gray-50 rounded-xl hover:bg-neo-green transition-all"
+            >
+              <h3 class="font-black text-neo-dark text-lg capitalize mb-2">
+                {sport.name.charAt(0).toUpperCase() + sport.name.slice(1)}
+              </h3>
+              <p class="text-sm text-neo-gray group-hover:text-neo-dark transition-colors">
+                Solutions pour {sport.venue}s de {sport.name} {city.at}
+              </p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Local pitch -->
+  <section class="py-16 px-6 bg-neo-dark-bg text-white">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl font-black mb-4">
+          Pourquoi choisir Neopro {city.at} ?
+        </h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Installation sur site {city.at} et dans toute la région {city.region}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Suivi et mises à jour de contenu à distance, sans intervention technique</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Solution clé en main pensée pour les clubs amateurs</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Retour sur investissement rapide grâce à la valorisation partenaires</span>
+          </li>
+        </ul>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-black text-neo-green mb-2">+{sports.length} sports</p>
+        <p class="text-gray-300">couverts {city.at}</p>
+        <a
+          href="/devis"
+          class="mt-6 inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        >
+          Obtenir un devis gratuit
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

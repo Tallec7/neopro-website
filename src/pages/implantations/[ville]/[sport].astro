@@ -1,0 +1,232 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cities, sports } from '@/data/implantations';
+import { buildBreadcrumbJsonLd, buildFAQPageJsonLd } from '@/lib/jsonLd';
+
+export function getStaticPaths() {
+  return cities.flatMap((city) =>
+    sports.map((sport) => ({
+      params: { ville: city.slug, sport: sport.slug },
+      props: { city, sport },
+    })),
+  );
+}
+
+const { city, sport } = Astro.props;
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/implantations/${city.slug}/${sport.slug}`;
+const sportCap = sport.name.charAt(0).toUpperCase() + sport.name.slice(1);
+const countryLabel = city.country === 'FR' ? 'France' : city.country === 'BE' ? 'Belgique' : 'Suisse';
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Implantations', url: `${siteUrl}/implantations` },
+  { name: city.name, url: `${siteUrl}/implantations/${city.slug}` },
+  { name: sportCap, url: canonicalUrl },
+]);
+
+const faq = buildFAQPageJsonLd([
+  {
+    question: `Combien coûte Neopro pour un club de ${sport.name} ${city.at} ?`,
+    answer: `Le tarif Neopro dépend de votre configuration (nombre d'écrans, taille du ${sport.venue}, services choisis). Nous proposons des formules adaptées aux clubs amateurs dès quelques centaines d'euros par mois. Demandez un devis gratuit pour obtenir une estimation précise pour votre club ${city.at}.`,
+  },
+  {
+    question: `Comment Neopro fonctionne dans un ${sport.venue} de ${sport.name} ?`,
+    answer: `Neopro installe des écrans LED dans votre ${sport.venue} et gère l'affichage à distance depuis notre plateforme. Vous choisissez les contenus (partenaires, scores, actualités club) et nous nous occupons de la diffusion. L'installation prend généralement moins d'une journée.`,
+  },
+  {
+    question: `Neopro est-il disponible pour les clubs de ${sport.name} en ${city.region} ?`,
+    answer: `Oui, Neopro intervient dans toute la France, en Belgique et en Suisse. Notre équipe se déplace ${city.at} et dans toute la région ${city.region} pour l'installation et la mise en service. Le suivi et les mises à jour de contenu se font ensuite à distance.`,
+  },
+]);
+---
+
+<BaseLayout
+  title={`Régie digitale ${sport.name} ${city.at} — Neopro`}
+  description={`Neopro équipe les clubs de ${sport.name} ${city.at} avec des écrans LED et solutions digitales. Valorisez vos partenaires, modernisez votre ${sport.venue}. Devis gratuit.`}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, faq]}
+>
+  <!-- Hero -->
+  <section class="bg-neo-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neo-green text-sm font-semibold uppercase tracking-widest mb-3">
+        {countryLabel} — {city.region}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-black mb-6">
+        Régie digitale pour les clubs de {sport.name}<br />
+        <span class="text-neo-green">{city.at}</span>
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        {sport.description}
+      </p>
+      <a
+        href="/devis"
+        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+      >
+        Devis gratuit pour votre club
+      </a>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8 text-center">
+        Ce que Neopro apporte à votre club de {sport.name}
+      </h2>
+      <ul class="grid md:grid-cols-2 gap-4">
+        {
+          sport.useCases.map((useCase) => (
+            <li class="flex items-start gap-3 p-5 bg-gray-50 rounded-xl">
+              <span class="text-neo-green text-xl mt-0.5 flex-shrink-0">✓</span>
+              <span class="text-neo-dark">{useCase}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 px-6 bg-neo-dark-bg text-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black mb-10 text-center">Comment ça fonctionne ?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div
+            class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4"
+          >
+            1
+          </div>
+          <h3 class="font-bold mb-2">Diagnostic gratuit</h3>
+          <p class="text-gray-300 text-sm">
+            On analyse votre {sport.venue} et vos besoins pour proposer la solution adaptée.
+          </p>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4"
+          >
+            2
+          </div>
+          <h3 class="font-bold mb-2">Installation rapide</h3>
+          <p class="text-gray-300 text-sm">
+            Nos techniciens installent les écrans en une journée, sans perturber votre activité.
+          </p>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4"
+          >
+            3
+          </div>
+          <h3 class="font-bold mb-2">Gestion à distance</h3>
+          <p class="text-gray-300 text-sm">
+            Pilotez vos contenus depuis notre plateforme. On s'occupe du reste.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local section -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-6">
+        Neopro {city.at} et en {city.region}
+      </h2>
+      <p class="text-neo-gray text-lg leading-relaxed mb-4">
+        Neopro accompagne des clubs de {sport.name} {city.at} et dans toute la région {city.region}.
+        Que vous soyez dans le centre-ville ou dans les communes alentour, notre équipe se déplace
+        pour l'installation et assure le suivi technique à distance.
+      </p>
+      <p class="text-neo-gray text-lg leading-relaxed">
+        Notre solution est pensée pour les clubs amateurs : pas besoin de compétences techniques,
+        une interface simple, et un support réactif. Rejoignez les clubs qui ont déjà modernisé
+        leur {sport.venue} avec Neopro.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-10 text-center">
+        Questions fréquentes
+      </h2>
+      <div class="space-y-4">
+        <details class="bg-white rounded-xl p-6 shadow-sm group">
+          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
+            Combien coûte Neopro pour un club de {sport.name} {city.at} ?
+            <span class="text-neo-green ml-4">+</span>
+          </summary>
+          <p class="mt-4 text-neo-gray leading-relaxed">
+            Le tarif dépend de votre configuration (nombre d'écrans, taille du {sport.venue},
+            services choisis). Nous proposons des formules adaptées aux clubs amateurs dès quelques
+            centaines d'euros par mois.
+            <a href="/devis" class="text-neo-green font-semibold hover:underline"
+              >Demandez un devis gratuit</a
+            > pour obtenir une estimation précise.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl p-6 shadow-sm">
+          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
+            Comment Neopro fonctionne dans un {sport.venue} de {sport.name} ?
+            <span class="text-neo-green ml-4">+</span>
+          </summary>
+          <p class="mt-4 text-neo-gray leading-relaxed">
+            Neopro installe des écrans LED dans votre {sport.venue} et gère l'affichage à distance
+            depuis notre plateforme. Vous choisissez les contenus (partenaires, scores, actualités
+            club) et nous nous occupons de la diffusion. L'installation prend généralement moins
+            d'une journée.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl p-6 shadow-sm">
+          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
+            Neopro est-il disponible pour les clubs de {sport.name} en {city.region} ?
+            <span class="text-neo-green ml-4">+</span>
+          </summary>
+          <p class="mt-4 text-neo-gray leading-relaxed">
+            Oui, Neopro intervient dans toute la France, en Belgique et en Suisse. Notre équipe se
+            déplace {city.at} et dans toute la région {city.region} pour l'installation. Le suivi
+            et les mises à jour se font ensuite à distance.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black mb-4">
+        Prêt à moderniser votre club de {sport.name} {city.at} ?
+      </h2>
+      <p class="text-gray-300 mb-8">
+        Obtenez un devis personnalisé en quelques minutes. Réponse sous 48h.
+      </p>
+      <a
+        href="/devis"
+        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors text-lg"
+      >
+        Obtenir mon devis gratuit
+      </a>
+    </div>
+  </section>
+
+  <!-- Breadcrumb nav -->
+  <nav class="py-4 px-6 bg-gray-50 text-sm text-neo-gray" aria-label="Fil d'Ariane">
+    <div class="max-w-4xl mx-auto flex flex-wrap gap-1 items-center">
+      <a href="/" class="hover:text-neo-dark">Accueil</a>
+      <span>/</span>
+      <a href="/implantations" class="hover:text-neo-dark">Implantations</a>
+      <span>/</span>
+      <a href={`/implantations/${city.slug}`} class="hover:text-neo-dark">{city.name}</a>
+      <span>/</span>
+      <span class="text-neo-dark font-medium">{sportCap}</span>
+    </div>
+  </nav>
+</BaseLayout>
