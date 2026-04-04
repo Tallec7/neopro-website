@@ -15,13 +15,14 @@ interface Props {
   extraJsonLd?: string | string[];
   ogType?: string;
   locale?: Locale;
+  noAlternates?: boolean;
   articleMeta?: {
     publishedTime: string;
     author: string;
   };
 }
 
-const { title, description, ogImage, canonicalUrl, extraJsonLd: rawExtraJsonLd, ogType, articleMeta } = Astro.props;
+const { title, description, ogImage, canonicalUrl, extraJsonLd: rawExtraJsonLd, ogType, articleMeta, noAlternates } = Astro.props;
 
 const locale = Astro.props.locale ?? getLocaleFromUrl(Astro.url);
 
@@ -72,10 +73,10 @@ const jsonLd = buildLocalBusinessJsonLd({
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Neopro" />
     <link rel="canonical" href={canonical} />
-    {alternates.map((alt) => (
+    {!noAlternates && alternates.map((alt) => (
       <link rel="alternate" hreflang={alt.locale} href={alt.url} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={frUrl} />
+    {!noAlternates && <link rel="alternate" hreflang="x-default" href={frUrl} />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={fullTitle} />
