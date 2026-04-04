@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.neopro-communication.fr/sitemap-index.xml
+Sitemap: https://www.neopro-communication.fr/sitemap-images.xml

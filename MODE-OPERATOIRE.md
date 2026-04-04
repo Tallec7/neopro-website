@@ -66,7 +66,6 @@ C'est le cas le plus courant quand tu recois des maquettes.
    ```
    src/assets/images/     ← images utilisees dans le code (heros, illustrations)
    ```
-   Ou uploade-les dans **Sanity Studio** si c'est du contenu dynamique (logos clubs, images de panneaux solution).
 
 ### Etape 2 : Identifier ce qui change
 
@@ -74,7 +73,7 @@ Compare la maquette Figma avec le site actuel. Ca se classe en 3 categories :
 
 | Type de changement | Ou intervenir | Exemple |
 |-------------------|---------------|---------|
-| **Texte/contenu** | Sanity Studio | Changer un titre, un prix |
+| **Texte/contenu** | Fichiers `src/data/` | Changer un titre, un prix |
 | **Style/layout** | Code (fichiers .astro/.tsx) | Changer des couleurs, espacements, grille |
 | **Nouveau composant** | Code (creer un fichier) | Ajouter une section FAQ |
 
@@ -176,74 +175,13 @@ Le site est deploye sur Hostinger.
    ```
 
 3. Ajoute le lien dans la **navigation** :
-   - Soit dans **Sanity Studio** → Site Settings → navLinks
-   - Soit dans `src/components/Navbar.astro` et `Footer.astro` (si hardcode)
+   - Dans `src/components/Navbar.astro` et `Footer.astro`
 
 4. Commit + push.
 
 ---
 
-## Scenario 4 — Ajouter un nouveau type de contenu dans Sanity
-
-Exemple : tu veux ajouter une section "FAQ" gerable depuis Sanity.
-
-1. **Cree le schema** dans `sanity/neopro/schemaTypes/` :
-   ```ts
-   // sanity/neopro/schemaTypes/faq.ts
-   import { defineType, defineField } from 'sanity'
-
-   export default defineType({
-     name: 'faq',
-     title: 'FAQ',
-     type: 'document',
-     fields: [
-       defineField({ name: 'question', title: 'Question', type: 'string' }),
-       defineField({ name: 'answer', title: 'Reponse', type: 'text' }),
-       defineField({ name: 'order', title: 'Ordre', type: 'number' }),
-     ],
-   })
-   ```
-
-2. **Enregistre-le** dans `sanity/neopro/schemaTypes/index.ts` :
-   ```ts
-   import faq from './faq'
-   // ... ajoute dans le tableau export
-   ```
-
-3. **Ajoute la requete GROQ** dans `src/lib/queries.ts` :
-   ```ts
-   export const faqQuery = `*[_type == "faq"] | order(order asc) {
-     question,
-     answer
-   }`;
-   ```
-
-4. **Utilise dans ta page** :
-   ```astro
-   ---
-   import { sanityClient } from '@/lib/sanity';
-   import { faqQuery } from '@/lib/queries';
-
-   let faqs = [];
-   try {
-     if (sanityClient) {
-       faqs = await sanityClient.fetch(faqQuery);
-     }
-   } catch {}
-   ---
-   ```
-
-5. **Deploie Sanity Studio** :
-   ```bash
-   cd sanity/neopro
-   npx sanity deploy
-   ```
-
-6. Commit + push le code.
-
----
-
-## Scenario 5 — Integrer un export Figma Make (workflow detaille)
+## Scenario 4 — Integrer un export Figma Make (workflow detaille)
 
 ### Pourquoi on ne copie pas le code Figma tel quel
 
@@ -445,8 +383,8 @@ C'est la methode la plus rapide. Claude lit l'export et fait la traduction.
 
 ┌─────────────────────────────────────────────────────┐
 │  NOUVEAU TYPE DE CONTENU (FAQ, equipe, blog...)     │
-│  → Schema Sanity + requete GROQ + code page →       │
-│    npx sanity deploy + git push                     │
+│  → Creer fichier src/data/ + code page →            │
+│    git add/commit/push → deployer sur Hostinger     │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -478,14 +416,6 @@ git add .                            # Stager tous les fichiers
 git commit -m "description"          # Committer
 git push origin main                 # Pousser sur GitHub
 
-# Sanity
-cd sanity/neopro
-npx sanity dev                       # Studio local → localhost:3333
-npx sanity deploy                    # Deployer Studio en ligne
-
-# Seed (remplir Sanity avec le contenu initial)
-cd sanity/neopro
-SANITY_TOKEN="ton-token" node seed.mjs
 ```
 
 ---
@@ -516,16 +446,10 @@ neopro-astro/
 │   ├── layouts/
 │   │   └── BaseLayout.astro     Layout global (SEO, meta, fonts)
 │   ├── lib/
-│   │   ├── sanity.ts            Client Sanity
-│   │   ├── queries.ts           Requetes GROQ
 │   │   └── jsonLd.ts            Schema.org
 │   ├── assets/images/      ← Images optimisees (WebP)
 │   └── styles/
 │       └── global.css           Tailwind + fonts
-├── sanity/neopro/          ← Sanity CMS
-│   ├── schemaTypes/             Schemas du contenu
-│   ├── seed.mjs                 Script pour remplir le contenu initial
-│   └── sanity.config.ts         Config Studio
 ├── Neopro2/               ← Export Figma Make (reference visuelle, NE PAS DEPLOYER)
 ├── .env                    ← Variables d'environnement (NE PAS COMMITTER)
 └── tailwind.config.mjs     ← Design tokens (couleurs, fonts)
@@ -549,9 +473,6 @@ neopro-astro/
 
 **Q: Le site est a quelle adresse ?**
 → Production : https://www.neopro-communication.fr (heberge sur Hostinger)
-
-**Q: Sanity gere quoi exactement ?**
-→ Sanity gere le **contenu modifiable** (textes des offres, logos des clubs, temoignages, etc.). Le **design/layout** (couleurs, espacements, structure des pages) vient du **code** dans `src/`. Les deux sont independants : changer le design dans le code ne touche pas le contenu Sanity, et vice versa.
 
 **Q: C'est quoi le dossier Neopro2/ ?**
 → C'est l'export Figma Make. Il contient du React/Vite qu'on ne deploie **jamais**. C'est juste une **reference visuelle** pour savoir a quoi doit ressembler le site. Claude Code l'utilise pour comparer et aligner le vrai code (dans `src/`). Voir le Scenario 5 pour le workflow complet d'extraction des specs.
