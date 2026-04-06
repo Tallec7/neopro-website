@@ -25,7 +25,7 @@ import Logo from '@/components/icons/Logo.astro';
 
     <meta property="og:title" content="Votre gymnase peut générer des revenus" />
     <meta property="og:description" content="Webinar gratuit — 16 avril à 11h. On vous montre comment en 45 minutes." />
-    <meta property="og:image" content="https://www.neopro-communication.fr/og-default.jpg" />
+    <meta property="og:image" content="https://www.neopro-communication.fr/images/hero-webinar.png" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.neopro-communication.fr/webinar" />
     <meta property="og:locale" content="fr_FR" />
@@ -34,12 +34,12 @@ import Logo from '@/components/icons/Logo.astro';
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Votre gymnase peut générer des revenus" />
     <meta name="twitter:description" content="Webinar gratuit — 16 avril à 11h. On vous montre comment en 45 minutes." />
-    <meta name="twitter:image" content="https://www.neopro-communication.fr/og-default.jpg" />
+    <meta name="twitter:image" content="https://www.neopro-communication.fr/images/hero-webinar.png" />
   </head>
 
   <body class="min-h-screen bg-neo-dark-bg text-white font-outfit">
     <!-- Logo -->
-    <header class="px-6 py-5 md:px-12 md:py-8">
+    <header class="absolute top-0 left-0 right-0 z-20 px-6 py-5 md:px-12 md:py-8">
       <a href="/">
         <Logo variant="white" class="h-[24px] w-auto" />
       </a>
@@ -47,7 +47,10 @@ import Logo from '@/components/icons/Logo.astro';
 
     <main>
       <!-- ── Hero ──────────────────────────────────────────────── -->
-      <section class="px-6 md:px-12 pb-16 md:pb-24 pt-8 md:pt-12 max-w-[900px] mx-auto text-center">
+      <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <img src="/images/hero-webinar.png" alt="Gymnase de handball avec écrans sponsors Neopro" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-neo-dark-bg/70"></div>
+        <div class="relative z-10 px-6 md:px-12 py-24 max-w-[900px] mx-auto text-center">
         <p class="inline-block bg-neo-pink/15 text-neo-pink text-sm font-medium px-4 py-1.5 rounded-full mb-8">
           Webinar gratuit
         </p>
@@ -78,6 +81,7 @@ import Logo from '@/components/icons/Logo.astro';
           Je m'inscris gratuitement
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
         </a>
+        </div>
       </section>
 
       <!-- ── Bénéfices ─────────────────────────────────────────── -->
