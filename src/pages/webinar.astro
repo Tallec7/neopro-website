@@ -200,6 +200,13 @@ import Logo from '@/components/icons/Logo.astro';
             </div>
 
             <div>
+              <label for="telephone" class="block text-sm font-medium text-white/80 mb-1.5">Téléphone</label>
+              <input type="tel" id="telephone" name="telephone" required
+                class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
+                placeholder="06 12 34 56 78" />
+            </div>
+
+            <div>
               <label for="club" class="block text-sm font-medium text-white/80 mb-1.5">Nom du club</label>
               <input type="text" id="club" name="club" required
                 class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
@@ -290,13 +297,14 @@ import Logo from '@/components/icons/Logo.astro';
         const data = {
           prenom: form.prenom.value.trim(),
           email: form.email.value.trim().toLowerCase(),
+          telephone: form.telephone.value.trim(),
           club: form.club.value.trim(),
           sport: form.sport.value,
           a_ecran: form.a_ecran.value,
         };
 
         // Basic validation
-        if (!data.prenom || !data.email || !data.club || !data.sport || !data.a_ecran) {
+        if (!data.prenom || !data.email || !data.telephone || !data.club || !data.sport || !data.a_ecran) {
           formError.textContent = 'Veuillez remplir tous les champs.';
           formError.classList.remove('hidden');
           return;
