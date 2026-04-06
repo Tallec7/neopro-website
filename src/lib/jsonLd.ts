@@ -183,7 +183,7 @@ export function buildAggregateOfferJsonLd(
     '@type': 'Product',
     name: `${businessName} — Régie digitale`,
     description:
-      'Solution de régie digitale pour clubs de sport amateurs. Écrans LED, scoring digital, valorisation partenaires.',
+      'Solution de régie digitale pour clubs de sport. Écrans LED, scoring digital, valorisation partenaires.',
     brand: {
       '@type': 'Brand',
       name: businessName,

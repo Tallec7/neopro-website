@@ -30,7 +30,7 @@ const siteUrl = 'https://www.neopro-communication.fr';
 const extraJsonLdList = rawExtraJsonLd
   ? Array.isArray(rawExtraJsonLd) ? rawExtraJsonLd : [rawExtraJsonLd]
   : [];
-const fullTitle = `${title} | Neopro`;
+const fullTitle = title.startsWith('Neopro') ? title : `${title} | Neopro`;
 const ogImageUrl = ogImage || `${siteUrl}/og-default.jpg`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
 const alternates = getAlternateUrls(Astro.url.pathname, locale, siteUrl);
@@ -38,7 +38,7 @@ const frUrl = alternates.find((a) => a.locale === 'fr')!.url;
 
 const jsonLd = buildLocalBusinessJsonLd({
   name: 'Neopro',
-  description: 'Solution de régie digitale pour clubs de sport amateurs. Écrans LED, scoring digital, valorisation partenaires.',
+  description: 'Solution de régie digitale pour clubs de sport. Écrans LED, scoring digital, valorisation partenaires.',
   email: 'contact@neopro-communication.fr',
   url: siteUrl,
   phone: '+33 7 56 94 94 67',
@@ -56,9 +56,11 @@ const jsonLd = buildLocalBusinessJsonLd({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Google Fonts (preload pour éviter le render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

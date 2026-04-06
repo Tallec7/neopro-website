@@ -6,8 +6,8 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 
-const title = 'Blog — Régie digitale, sponsors et sport amateur';
-const description = "Conseils pratiques pour les clubs de sport amateurs : écrans LED, valorisation des sponsors, régie digitale et animation de matchs.";
+const title = 'Blog — Régie digitale, sponsors et sport';
+const description = "Conseils pratiques pour les clubs de sport : écrans LED, valorisation des sponsors, régie digitale et animation de matchs.";
 ---
 
 <BaseLayout title={title} description={description}>

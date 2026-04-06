@@ -7,7 +7,7 @@ const imageEntries = [
   {
     page: '/',
     images: [
-      { loc: '/og-default.jpg', title: 'Neopro — Régie digitale pour clubs de sport amateurs' },
+      { loc: '/og-default.jpg', title: 'Neopro — Régie digitale pour clubs de sport' },
     ],
   },
   {
