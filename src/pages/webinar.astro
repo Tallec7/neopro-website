@@ -42,19 +42,6 @@ import logoNlf from '@/assets/images/logo-nlf-monochrome.webp';
   </head>
 
   <body class="min-h-screen bg-neo-dark-bg text-white font-outfit">
-    <!-- SVG filter : fond blanc → transparent, pixels colorés → blanc -->
-    <svg style="display:none" aria-hidden="true">
-      <defs>
-        <filter id="logo-to-white" color-interpolation-filters="sRGB">
-          <feColorMatrix type="luminanceToAlpha" result="lum" />
-          <feComponentTransfer in="lum" result="mask">
-            <feFuncA type="linear" slope="-1" intercept="1"/>
-          </feComponentTransfer>
-          <feFlood flood-color="white" result="white" />
-          <feComposite in="white" in2="mask" operator="in" />
-        </filter>
-      </defs>
-    </svg>
     <!-- Logo -->
     <header class="px-6 py-5 md:px-12 md:py-8">
       <a href="/">
@@ -114,7 +101,7 @@ import logoNlf from '@/assets/images/logo-nlf-monochrome.webp';
                   <Image src={logoNlf} alt="Nantes Loire Féminin Handball" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
                 </a>
                 <a href="https://www.corsairesdenantes.fr/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
-                  <img src="/images/Logos/Logo CORSAIRE.jpg" alt="Corsaires de Nantes" class="h-8 w-auto object-contain" style="filter: url(#logo-to-white)" loading="eager" />
+                  <img src="/images/Logos/Nantes Atlantique Hockey Glace.png" alt="Corsaires de Nantes" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
                 </a>
               </div>
             </div>
