@@ -55,14 +55,17 @@ import Logo from '@/components/icons/Logo.astro';
               Webinar gratuit — 16 avril 2026
             </p>
             <h1 class="text-[32px] md:text-[52px] leading-[1.05] mb-5">
-              <span class="font-playfair italic font-normal">Votre gymnase peut</span>
-              <br /><span class="font-black">générer des revenus.</span>
+              <span class="font-playfair italic font-normal">Et si votre gymnase</span>
+              <br /><span class="font-black">rapportait à votre club&nbsp;?</span>
             </h1>
-            <p class="text-lg md:text-xl text-white/80 mb-6">
-              On vous montre comment en 45 minutes.
+            <p class="text-lg md:text-xl text-white/80 mb-3">
+              On vous montre comment en 45 minutes — jeudi 16 avril à 11h. Webinaire gratuit, en ligne.
+            </p>
+            <p class="text-base text-neo-green mb-6">
+              ✓ Avec ou sans écran déjà installé, cette session est faite pour vous.
             </p>
 
-            <div class="flex flex-col gap-2 text-white/70 text-sm md:text-base mb-8">
+            <div class="flex flex-col gap-2 text-white/70 text-sm md:text-base mb-6">
               <span class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-neo-pink shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
                 Jeudi 16 avril 2026 — 11h00 (45 min)
@@ -73,15 +76,79 @@ import Logo from '@/components/icons/Logo.astro';
               </span>
             </div>
 
+            <p class="text-white/60 text-sm mb-3">Pas disponible jeudi ? Inscrivez-vous quand même, on vous envoie le replay.</p>
+
             <a href="#webinar-form" class="inline-flex items-center gap-2 bg-neo-pink text-neo-dark font-bold text-lg px-8 py-4 rounded-full hover:bg-neo-pink/90 transition-colors">
               Je m'inscris gratuitement
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
             </a>
+
+            <!-- Social proof -->
+            <div class="mt-8 pt-6 border-t border-white/10">
+              <p class="text-white/50 text-xs uppercase tracking-wider mb-3">Ils nous font déjà confiance</p>
+              <div class="flex items-center gap-4 flex-wrap">
+                <div class="flex -space-x-2">
+                  <div class="w-9 h-9 rounded-full bg-neo-pink/30 border-2 border-neo-dark-bg flex items-center justify-center text-xs font-bold">HB</div>
+                  <div class="w-9 h-9 rounded-full bg-neo-green/30 border-2 border-neo-dark-bg flex items-center justify-center text-xs font-bold">VB</div>
+                  <div class="w-9 h-9 rounded-full bg-neo-sky/30 border-2 border-neo-dark-bg flex items-center justify-center text-xs font-bold">BC</div>
+                  <div class="w-9 h-9 rounded-full bg-neo-yellow/30 border-2 border-neo-dark-bg flex items-center justify-center text-xs font-bold">FC</div>
+                </div>
+                <p class="text-white/70 text-sm">Des dizaines de clubs amateurs accompagnés partout en France.</p>
+              </div>
+            </div>
           </div>
 
           <!-- Visuel -->
           <div>
             <img src="/images/hero-webinar.png" alt="Présentation Neopro : écrans sponsors dans un gymnase de handball" class="w-full rounded-2xl shadow-2xl" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Pour qui ──────────────────────────────────────────── -->
+      <section class="px-6 md:px-12 py-14 md:py-16">
+        <div class="max-w-[900px] mx-auto">
+          <p class="text-neo-green text-sm font-medium text-center uppercase tracking-wider mb-4">Ce webinar est fait pour vous</p>
+          <h2 class="text-2xl md:text-3xl font-black text-center mb-10">Que vous ayez des écrans ou non.</h2>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-10">
+            <div class="rounded-2xl p-7 border border-neo-pink/20 bg-neo-pink/5">
+              <p class="text-3xl mb-4">📺</p>
+              <p class="text-neo-pink font-bold text-lg mb-2">Vous avez déjà des écrans ?</p>
+              <p class="text-white/70">On vous montre comment les rentabiliser et générer des revenus sponsors dès le prochain match.</p>
+            </div>
+            <div class="rounded-2xl p-7 border border-neo-green/20 bg-neo-green/5">
+              <p class="text-3xl mb-4">🚀</p>
+              <p class="text-neo-green font-bold text-lg mb-2">Vous n'en avez pas encore ?</p>
+              <p class="text-white/70">On vous montre pourquoi c'est le moment et comment démarrer simplement, sans investissement lourd.</p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <p class="text-white/50 text-sm uppercase tracking-wider mb-4">Pour les clubs de</p>
+            <div class="flex flex-wrap justify-center gap-3">
+              {["Handball", "Basketball", "Volleyball", "Futsal", "Football", "Rugby", "Hockey"].map((sport) => (
+                <span class="bg-white/5 border border-white/10 text-white/80 text-sm font-medium px-4 py-2 rounded-full">{sport}</span>
+              ))}
+            </div>
+            <p class="text-white/50 text-sm mt-4">Dirigeants, bénévoles, responsables sponsors</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Animé par ─────────────────────────────────────────── -->
+      <section class="px-6 md:px-12 py-12 md:py-16 bg-neo-dark">
+        <div class="max-w-[760px] mx-auto">
+          <p class="text-neo-pink text-sm font-medium text-center uppercase tracking-wider mb-6">Animé par</p>
+          <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 bg-neo-dark-bg rounded-2xl p-6 md:p-8 border border-white/5">
+            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-neo-pink to-neo-green flex items-center justify-center text-3xl font-black text-neo-dark shrink-0">
+              GL
+            </div>
+            <div class="text-center md:text-left">
+              <h3 class="text-xl md:text-2xl font-black mb-1">Gwenvael Le Tallec</h3>
+              <p class="text-neo-pink font-medium mb-3">Fondateur de NEOPRO</p>
+              <p class="text-white/70">Depuis plusieurs années, j'accompagne les clubs amateurs à transformer leurs gymnases en véritables espaces de visibilité pour leurs partenaires. Je vous partagerai pendant ce webinar des cas concrets, des chiffres et la méthode pas-à-pas.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -137,43 +204,82 @@ import Logo from '@/components/icons/Logo.astro';
             <p class="text-white/90 font-bold mb-3">Et surtout : <span class="text-neo-yellow">compatible tout type d'écran</span>, sans abonnement annuel bloquant.</p>
             <p class="text-white/50">Vous avez déjà un écran ? On s'adapte. Vous n'en avez pas ? On vous accompagne. Pas de matériel imposé, pas de contrat longue durée.</p>
           </div>
+
+          <!-- Agenda minute par minute -->
+          <div class="mt-14">
+            <p class="text-white/50 text-sm uppercase tracking-wider text-center mb-6">Le déroulé minute par minute</p>
+            <div class="bg-neo-dark-bg rounded-2xl border border-white/5 divide-y divide-white/5">
+              <div class="flex items-start gap-5 p-5 md:p-6">
+                <span class="text-neo-pink font-black text-sm md:text-base w-16 shrink-0">0–5 min</span>
+                <p class="text-white/80"><span class="font-bold text-white">Bienvenue.</span> Tour de table express, présentation des objectifs.</p>
+              </div>
+              <div class="flex items-start gap-5 p-5 md:p-6">
+                <span class="text-neo-green font-black text-sm md:text-base w-16 shrink-0">5–15 min</span>
+                <p class="text-white/80"><span class="font-bold text-white">Le constat.</span> Pourquoi vos partenaires actuels veulent plus de visibilité — et comment vos écrans (existants ou non) sont la solution.</p>
+              </div>
+              <div class="flex items-start gap-5 p-5 md:p-6">
+                <span class="text-neo-sky font-black text-sm md:text-base w-16 shrink-0">15–30 min</span>
+                <p class="text-white/80"><span class="font-bold text-white">La méthode NEOPRO.</span> Démo en direct : diffusion sponsors, scoring digital, rapports automatiques. Vous voyez exactement ce que voient nos clubs.</p>
+              </div>
+              <div class="flex items-start gap-5 p-5 md:p-6">
+                <span class="text-neo-yellow font-black text-sm md:text-base w-16 shrink-0">30–40 min</span>
+                <p class="text-white/80"><span class="font-bold text-white">Cas concrets.</span> 2-3 clubs amateurs qui ont généré des revenus sponsors dès la première saison.</p>
+              </div>
+              <div class="flex items-start gap-5 p-5 md:p-6">
+                <span class="text-neo-pink font-black text-sm md:text-base w-16 shrink-0">40–45 min</span>
+                <p class="text-white/80"><span class="font-bold text-white">Vos questions.</span> On répond à tout, en direct.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- ── Pour qui ──────────────────────────────────────────── -->
+      <!-- ── FAQ ───────────────────────────────────────────────── -->
       <section class="px-6 md:px-12 py-16 md:py-20">
-        <div class="max-w-[900px] mx-auto">
-          <p class="text-neo-green text-sm font-medium text-center uppercase tracking-wider mb-4">Ce webinar est fait pour vous</p>
-          <h2 class="text-2xl md:text-3xl font-black text-center mb-12">Que vous ayez des écrans ou non.</h2>
+        <div class="max-w-[760px] mx-auto">
+          <p class="text-neo-pink text-sm font-medium text-center uppercase tracking-wider mb-4">Questions fréquentes</p>
+          <h2 class="text-2xl md:text-3xl font-black text-center mb-12">Tout ce que vous voulez savoir</h2>
 
-          <div class="grid md:grid-cols-2 gap-6 mb-12">
-            <div class="rounded-2xl p-7 border border-neo-pink/20 bg-neo-pink/5">
-              <p class="text-3xl mb-4">📺</p>
-              <p class="text-neo-pink font-bold text-lg mb-2">Vous avez déjà des écrans ?</p>
-              <p class="text-white/70">On vous montre comment les rentabiliser et générer des revenus sponsors dès le prochain match.</p>
-            </div>
-            <div class="rounded-2xl p-7 border border-neo-green/20 bg-neo-green/5">
-              <p class="text-3xl mb-4">🚀</p>
-              <p class="text-neo-green font-bold text-lg mb-2">Vous n'en avez pas encore ?</p>
-              <p class="text-white/70">On vous montre pourquoi c'est le moment et comment démarrer simplement, sans investissement lourd.</p>
-            </div>
-          </div>
+          <div class="space-y-3">
+            <details class="group bg-neo-dark rounded-2xl border border-white/5 overflow-hidden">
+              <summary class="cursor-pointer list-none p-5 md:p-6 flex items-center justify-between gap-4 hover:bg-white/5 transition-colors">
+                <span class="font-bold text-base md:text-lg">Je ne suis pas dispo le 16 avril, j'aurai accès au replay ?</span>
+                <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180 text-neo-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 md:px-6 pb-5 md:pb-6 text-white/70">Oui. Inscrivez-vous quand même : on vous envoie le replay par email dans les 24h après le webinar, accessible sans limite de temps.</p>
+            </details>
 
-          <div class="text-center mb-10">
-            <p class="text-white/50 text-sm uppercase tracking-wider mb-4">Pour les clubs de</p>
-            <div class="flex flex-wrap justify-center gap-3">
-              {["Handball", "Basketball", "Volleyball", "Futsal", "Football", "Rugby", "Hockey"].map((sport) => (
-                <span class="bg-white/5 border border-white/10 text-white/80 text-sm font-medium px-4 py-2 rounded-full">{sport}</span>
-              ))}
-            </div>
-            <p class="text-white/50 text-sm mt-4">Dirigeants, bénévoles, responsables sponsors</p>
-          </div>
+            <details class="group bg-neo-dark rounded-2xl border border-white/5 overflow-hidden">
+              <summary class="cursor-pointer list-none p-5 md:p-6 flex items-center justify-between gap-4 hover:bg-white/5 transition-colors">
+                <span class="font-bold text-base md:text-lg">C'est gratuit ? Y a-t-il un piège ?</span>
+                <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180 text-neo-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 md:px-6 pb-5 md:pb-6 text-white/70">Vraiment gratuit, sans aucune obligation. On partage du concret : méthode, exemples, chiffres. Si la solution NEOPRO vous intéresse à la fin, on en discutera — sinon vous repartez avec des idées pour votre club, c'est tout.</p>
+            </details>
 
-          <div class="text-center">
-            <a href="#webinar-form" class="inline-flex items-center gap-2 bg-neo-pink text-neo-dark font-bold text-lg px-8 py-4 rounded-full hover:bg-neo-pink/90 transition-colors">
-              Je m'inscris gratuitement
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-            </a>
+            <details class="group bg-neo-dark rounded-2xl border border-white/5 overflow-hidden">
+              <summary class="cursor-pointer list-none p-5 md:p-6 flex items-center justify-between gap-4 hover:bg-white/5 transition-colors">
+                <span class="font-bold text-base md:text-lg">Je n'ai pas encore d'écran dans mon gymnase. Ça vaut le coup ?</span>
+                <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180 text-neo-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 md:px-6 pb-5 md:pb-6 text-white/70">Encore plus ! On vous montre comment financer votre premier écran via vos partenaires, sans avancer d'argent. Beaucoup de clubs démarrent comme ça.</p>
+            </details>
+
+            <details class="group bg-neo-dark rounded-2xl border border-white/5 overflow-hidden">
+              <summary class="cursor-pointer list-none p-5 md:p-6 flex items-center justify-between gap-4 hover:bg-white/5 transition-colors">
+                <span class="font-bold text-base md:text-lg">Mon club est petit (300-500 licenciés). C'est pour moi ?</span>
+                <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180 text-neo-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 md:px-6 pb-5 md:pb-6 text-white/70">Oui. NEOPRO est conçu pour les clubs amateurs, sans gros budget ni équipe technique. La majorité de nos clubs sont entre 200 et 800 licenciés.</p>
+            </details>
+
+            <details class="group bg-neo-dark rounded-2xl border border-white/5 overflow-hidden">
+              <summary class="cursor-pointer list-none p-5 md:p-6 flex items-center justify-between gap-4 hover:bg-white/5 transition-colors">
+                <span class="font-bold text-base md:text-lg">Faut-il installer un logiciel ou avoir du matériel particulier ?</span>
+                <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180 text-neo-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 md:px-6 pb-5 md:pb-6 text-white/70">Pour le webinar, juste un navigateur et une connexion internet (Google Meet). Pour la solution NEOPRO côté gymnase : tout est piloté depuis un smartphone, et on s'adapte à votre matériel existant.</p>
+            </details>
           </div>
         </div>
       </section>
@@ -182,65 +288,63 @@ import Logo from '@/components/icons/Logo.astro';
       <section id="webinar-form" class="px-6 md:px-12 py-16 md:py-24 scroll-mt-8">
         <div class="max-w-[560px] mx-auto">
           <h2 class="text-2xl md:text-3xl font-black text-center mb-3">Inscrivez-vous</h2>
-          <p class="text-center text-white/60 mb-10">Jeudi 16 avril 2026 — 11h00 · En ligne · Gratuit</p>
+          <p class="text-center text-white/60 mb-2">Jeudi 16 avril 2026 — 11h00 · En ligne · Gratuit</p>
+          <p class="text-center text-white/40 text-sm mb-10">2 champs suffisent. 30 secondes chrono.</p>
 
           <form id="webinar-registration-form" class="space-y-5" novalidate>
             <div>
-              <label for="prenom" class="block text-sm font-medium text-white/80 mb-1.5">Prénom</label>
+              <label for="prenom" class="block text-sm font-medium text-white/80 mb-1.5">Prénom <span class="text-neo-pink">*</span></label>
               <input type="text" id="prenom" name="prenom" required
                 class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
                 placeholder="Votre prénom" />
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-white/80 mb-1.5">Email</label>
+              <label for="email" class="block text-sm font-medium text-white/80 mb-1.5">Email <span class="text-neo-pink">*</span></label>
               <input type="email" id="email" name="email" required
                 class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
                 placeholder="vous@club.fr" />
             </div>
 
-            <div>
-              <label for="telephone" class="block text-sm font-medium text-white/80 mb-1.5">Téléphone</label>
-              <input type="tel" id="telephone" name="telephone" required
-                class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
-                placeholder="06 12 34 56 78" />
-            </div>
+            <details class="group">
+              <summary class="text-sm text-white/60 cursor-pointer hover:text-white/80 transition-colors list-none flex items-center gap-2">
+                <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7" /></svg>
+                Ajouter quelques infos sur votre club (optionnel)
+              </summary>
 
-            <div>
-              <label for="club" class="block text-sm font-medium text-white/80 mb-1.5">Nom du club</label>
-              <input type="text" id="club" name="club" required
-                class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
-                placeholder="Ex : HBC Nantes" />
-            </div>
+              <div class="space-y-5 mt-5">
+                <div>
+                  <label for="telephone" class="block text-sm font-medium text-white/80 mb-1.5">Téléphone</label>
+                  <input type="tel" id="telephone" name="telephone"
+                    class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
+                    placeholder="06 12 34 56 78" />
+                </div>
 
-            <div>
-              <label for="sport" class="block text-sm font-medium text-white/80 mb-1.5">Sport</label>
-              <select id="sport" name="sport" required
-                class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors appearance-none"
-                style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
-                <option value="" disabled selected class="text-white/30">Choisir un sport</option>
-                <option value="Handball">Handball</option>
-                <option value="Basketball">Basketball</option>
-                <option value="Volleyball">Volleyball</option>
-                <option value="Futsal">Futsal</option>
-                <option value="Football">Football</option>
-                <option value="Rugby">Rugby</option>
-                <option value="Hockey">Hockey</option>
-                <option value="Autre">Autre</option>
-              </select>
-            </div>
+                <div>
+                  <label for="club" class="block text-sm font-medium text-white/80 mb-1.5">Nom du club</label>
+                  <input type="text" id="club" name="club"
+                    class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/30 focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors"
+                    placeholder="Ex : HBC Nantes" />
+                </div>
 
-            <div>
-              <label for="a_ecran" class="block text-sm font-medium text-white/80 mb-1.5">Écrans dans le gymnase ?</label>
-              <select id="a_ecran" name="a_ecran" required
-                class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors appearance-none"
-                style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
-                <option value="" disabled selected class="text-white/30">Choisir une réponse</option>
-                <option value="Oui">Oui</option>
-                <option value="Non">Non</option>
-                <option value="Je ne sais pas">Je ne sais pas</option>
-              </select>
-            </div>
+                <div>
+                  <label for="sport" class="block text-sm font-medium text-white/80 mb-1.5">Sport</label>
+                  <select id="sport" name="sport"
+                    class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white focus:border-neo-pink focus:ring-1 focus:ring-neo-pink outline-none transition-colors appearance-none"
+                    style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 1rem center;">
+                    <option value="" selected class="text-white/30">Choisir un sport</option>
+                    <option value="Handball">Handball</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Futsal">Futsal</option>
+                    <option value="Football">Football</option>
+                    <option value="Rugby">Rugby</option>
+                    <option value="Hockey">Hockey</option>
+                    <option value="Autre">Autre</option>
+                  </select>
+                </div>
+              </div>
+            </details>
 
             <!-- Honeypot -->
             <div class="hidden" aria-hidden="true">
@@ -263,16 +367,54 @@ import Logo from '@/components/icons/Logo.astro';
             <h3 class="text-2xl font-black mb-3">Vous êtes inscrit(e) !</h3>
             <p class="text-white/70 mb-2">Vous recevrez un email de confirmation avec le lien Google Meet.</p>
             <p class="text-white/70 mb-8">Jeudi 16 avril — 11h00. À bientôt !</p>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Webinar+NEOPRO+%3A+Votre+gymnase+peut+g%C3%A9n%C3%A9rer+des+revenus&dates=20260416T090000Z/20260416T094500Z&details=On+vous+montre+comment+en+45+minutes.%0ALien+Google+Meet+%3A+%5Ba+remplir%5D&location=Google+Meet"
-              target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-white/10 text-white font-medium px-6 py-3 rounded-full hover:bg-white/15 transition-colors">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
-              Ajouter à Google Calendar
-            </a>
+
+            <!-- Calendrier -->
+            <p class="text-white/50 text-xs uppercase tracking-wider mb-4">Bloquez la date dans votre agenda</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Webinar+NEOPRO+%3A+Votre+gymnase+peut+g%C3%A9n%C3%A9rer+des+revenus&dates=20260416T090000Z/20260416T100000Z&details=On+vous+montre+comment+en+45+minutes.%0ALien+Google+Meet+envoy%C3%A9+par+email.&location=Google+Meet"
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-medium px-5 py-3 rounded-full hover:bg-white/15 transition-colors text-sm">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                Google Calendar
+              </a>
+              <a href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-%2F%2FNEOPRO%2F%2FWebinar%2F%2FFR%0D%0ABEGIN%3AVEVENT%0D%0AUID%3Awebinar-neopro-20260416%40neopro-communication.fr%0D%0ADTSTAMP%3A20260407T000000Z%0D%0ADTSTART%3A20260416T090000Z%0D%0ADTEND%3A20260416T100000Z%0D%0ASUMMARY%3AWebinar%20NEOPRO%20%3A%20Votre%20gymnase%20peut%20g%C3%A9n%C3%A9rer%20des%20revenus%0D%0ADESCRIPTION%3AOn%20vous%20montre%20comment%20en%2045%20minutes.%20Lien%20Google%20Meet%20envoy%C3%A9%20par%20email.%0D%0ALOCATION%3AGoogle%20Meet%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR"
+                download="webinar-neopro.ics"
+                class="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-medium px-5 py-3 rounded-full hover:bg-white/15 transition-colors text-sm">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 4v16m8-8H4" /></svg>
+                Apple / Outlook
+              </a>
+            </div>
+
+            <!-- Prévenez un collègue -->
+            <div class="bg-white/5 rounded-2xl p-6 border border-white/5">
+              <p class="font-bold text-white mb-2">Un collègue de votre club pourrait être intéressé&nbsp;?</p>
+              <p class="text-white/60 text-sm mb-5">Partagez-lui le webinar en deux clics.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://wa.me/?text=Je%20viens%20de%20m%27inscrire%20%C3%A0%20un%20webinar%20gratuit%20NEOPRO%20le%2016%20avril%20%3A%20%C2%AB%20Et%20si%20votre%20gymnase%20rapportait%20%C3%A0%20votre%20club%20%3F%20%C2%BB.%20%C3%87a%20pourrait%20t%27int%C3%A9resser%20pour%20le%20club%20%3A%20https%3A%2F%2Fwww.neopro-communication.fr%2Fwebinar"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold px-5 py-3 rounded-full hover:bg-[#1ebe5b] transition-colors text-sm">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                  WhatsApp
+                </a>
+                <a href="sms:?body=Je%20viens%20de%20m%27inscrire%20au%20webinar%20gratuit%20NEOPRO%20du%2016%20avril%20%3A%20https%3A%2F%2Fwww.neopro-communication.fr%2Fwebinar"
+                  class="inline-flex items-center justify-center gap-2 bg-white/10 text-white font-medium px-5 py-3 rounded-full hover:bg-white/15 transition-colors text-sm">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" /></svg>
+                  SMS
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- ── Sticky CTA mobile ─────────────────────────────────── -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-neo-dark-bg/95 backdrop-blur-md border-t border-white/10 px-4 py-3 translate-y-full transition-transform duration-300">
+      <a href="#webinar-form" class="flex items-center justify-center gap-2 bg-neo-pink text-neo-dark font-bold text-base px-6 py-3.5 rounded-full w-full">
+        Je m'inscris gratuitement
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+      </a>
+    </div>
 
     <!-- ── Footer ────────────────────────────────────────────── -->
     <footer class="px-6 md:px-12 py-8 text-center text-white/40 text-sm border-t border-white/5">
@@ -280,6 +422,25 @@ import Logo from '@/components/icons/Logo.astro';
     </footer>
 
     <script is:inline>
+      // Sticky CTA mobile : visible après scroll, masqué quand le formulaire est visible
+      const stickyCta = document.getElementById('sticky-cta');
+      const formSection = document.getElementById('webinar-form');
+      let formInView = false;
+      const formObserver = new IntersectionObserver(
+        ([entry]) => { formInView = entry.isIntersecting; updateSticky(); },
+        { threshold: 0.1 }
+      );
+      formObserver.observe(formSection);
+      function updateSticky() {
+        const scrolled = window.scrollY > 500;
+        if (scrolled && !formInView) {
+          stickyCta.classList.remove('translate-y-full');
+        } else {
+          stickyCta.classList.add('translate-y-full');
+        }
+      }
+      window.addEventListener('scroll', updateSticky, { passive: true });
+
       const form = document.getElementById('webinar-registration-form');
       const submitBtn = document.getElementById('submit-btn');
       const formError = document.getElementById('form-error');
@@ -297,15 +458,14 @@ import Logo from '@/components/icons/Logo.astro';
         const data = {
           prenom: form.prenom.value.trim(),
           email: form.email.value.trim().toLowerCase(),
-          telephone: form.telephone.value.trim(),
-          club: form.club.value.trim(),
-          sport: form.sport.value,
-          a_ecran: form.a_ecran.value,
+          telephone: form.telephone?.value.trim() || '',
+          club: form.club?.value.trim() || '',
+          sport: form.sport?.value || '',
         };
 
-        // Basic validation
-        if (!data.prenom || !data.email || !data.telephone || !data.club || !data.sport || !data.a_ecran) {
-          formError.textContent = 'Veuillez remplir tous les champs.';
+        // Basic validation — only prenom + email required
+        if (!data.prenom || !data.email) {
+          formError.textContent = 'Merci d\'indiquer votre prénom et votre email.';
           formError.classList.remove('hidden');
           return;
         }
