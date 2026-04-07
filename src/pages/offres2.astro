@@ -1,0 +1,397 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ClubCarousel from '@/components/ClubCarousel.tsx';
+import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
+import ContactForm from '@/components/ContactForm.tsx';
+import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
+
+// ── Images ───────────────────────────────────────────────────────
+import heroImg from '@/assets/images/hero-offres.webp';
+
+// ── Données ──────────────────────────────────────────────────────
+import { plans, playPlan, videoPackages, additionalOptions } from '@/data/offres-v2';
+import { testimonials } from '@/data/temoignages';
+import { clubs } from '@/data/clubs';
+
+// ── Helpers ──────────────────────────────────────────────────────
+const borderColorMap: Record<string, string> = {
+  yellow: 'border-[#fdbe00]',
+  green: 'border-[#51b28b]',
+  pink: 'border-[#fe6aa6]',
+  black: 'border-gray-200',
+};
+
+const priceColorMap: Record<string, string> = {
+  yellow: 'text-[#c49800]',
+  green: 'text-[#51b28b]',
+  pink: 'text-[#fe6aa6]',
+  black: 'text-[#101828]',
+};
+
+// ── SEO ──────────────────────────────────────────────────────────
+const title = 'Offres régie digitale sport — À partir de 79 €/mois';
+const description = "Découvrez les offres Neopro : Play (79 €/mois sans matériel), Club (149 €/mois), Pro (199 €/mois) et Premium (299 €/mois). Régie digitale clé en main, finançable par vos partenaires.";
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const allPlans = [playPlan, ...plans];
+const offerJsonLd = buildAggregateOfferJsonLd(
+  allPlans.map((plan) => ({
+    name: `Neopro ${plan.name}`,
+    description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
+    price: plan.priceAnnual,
+    priceCurrency: 'EUR',
+    url: `${siteUrl}/devis?offre=${plan.slug}`,
+  })),
+  'Neopro',
+  siteUrl,
+);
+---
+
+<BaseLayout title={title} description={description} extraJsonLd={offerJsonLd} noIndex noAlternates>
+  <!-- Hero -->
+  <section class="relative h-[743px] overflow-hidden">
+    <img
+      src="/images/image_offre_accueil.jpg"
+      alt="Vue d'un gymnase équipé d'un écran digital Neopro avec les offres partenaires affichées"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
+    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
+      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LES OFFRES</p>
+      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
+        <span class="font-playfair italic">Adaptées à</span><br />
+        <span class="font-black">vos besoins</span>
+      </h1>
+      <div>
+        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offres -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">Nos offres</h2>
+      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Commencez sans matériel avec <strong>Play</strong>, ou passez directement au boîtier avec <strong>Club</strong>, <strong>Pro</strong> ou <strong>Premium</strong>.</p>
+
+      <!-- PLAY bandeau -->
+      <div class="relative bg-white border border-gray-200 rounded-[20px] p-[30px] md:p-[40px] mb-[50px] flex flex-col md:flex-row gap-[30px] items-start md:items-center shadow-sm">
+        <span class="absolute -top-3 left-[30px] bg-[#81e3bc] text-[#2f3935] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
+          Sans matériel · SaaS
+        </span>
+        <div class="flex-1">
+          <h3 class="text-[28px] md:text-[32px] font-bold text-[#101828]">{playPlan.name}</h3>
+          <p class="font-playfair italic text-[20px] text-neo-gray mt-[4px]">« {playPlan.pitch} »</p>
+          <p class="text-[15px] text-[#101828] mt-[16px] max-w-[520px]">Accès au player web, vidéos illimitées, télécommande cloud. Idéal pour démarrer en quelques minutes, sans installation.</p>
+          <ul class="flex flex-wrap gap-x-[20px] gap-y-[8px] mt-[16px]">
+            {playPlan.features.slice(0, 5).map((f) => (
+              <li class="flex items-center gap-[8px] text-[14px] text-[#101828]">
+                <svg class="w-4 h-4 shrink-0 text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                {f.label}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="shrink-0 flex flex-col items-start md:items-end gap-[12px]">
+          <div class="md:text-right">
+            <p
+              class="text-[32px] font-bold text-[#101828]"
+              data-price-annual={playPlan.priceAnnual}
+              data-price-monthly={playPlan.priceMonthly}
+            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span></p>
+            <p class="text-[13px] text-[#4a5565] js-secondary">soit {playPlan.priceMonthly} €/mois HT</p>
+          </div>
+          <Button href={`/devis?offre=${playPlan.slug}`} variant="green" arrow>Démarrer avec Play</Button>
+        </div>
+      </div>
+
+      <!-- Toggle Annuel / Mensuel -->
+      <div class="flex flex-col items-center gap-[10px] mb-[40px]">
+        <div class="inline-flex bg-[#f5f5f5] rounded-full p-[6px] shadow-sm" role="tablist" aria-label="Période de facturation">
+          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="annual" aria-pressed="true">Annuel</button>
+          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="monthly" aria-pressed="false">Mensuel</button>
+        </div>
+        <p class="text-[13px] text-neo-green-dark font-medium">Payez à l'année, profitez d'un tarif réduit</p>
+      </div>
+
+      <!-- 3 cartes Club / Pro / Premium -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        {plans.map((offre) => (
+          <div
+            class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'} ${offre.popular ? 'lg:scale-[1.03] shadow-xl' : ''}`}
+          >
+            {offre.popular && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+                Recommandée
+              </span>
+            )}
+            <div class="mb-[20px]">
+              <h3 class="text-[28px] font-bold">{offre.name}</h3>
+              <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
+              <p
+                class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                data-price-annual={offre.priceAnnual}
+                data-price-monthly={offre.priceMonthly}
+              >
+                <span class="js-price">{offre.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span>
+              </p>
+              <p class="text-[14px] text-neo-gray mt-[2px] js-secondary">soit {offre.priceMonthly} €/mois HT</p>
+            </div>
+            <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
+              {offre.features.map((f) => (
+                f.label.startsWith('Tout le pack') ? (
+                  <li class="border-t border-gray-200 pt-[14px] mt-[2px] text-[13px] font-semibold uppercase tracking-wider text-neo-gray">
+                    {f.label.replace(/ :$/, '')}
+                  </li>
+                ) : (
+                  <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                    {f.included ? (
+                      <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                    ) : (
+                      <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
+                    )}
+                    {f.label}
+                  </li>
+                )
+              ))}
+            </ul>
+            <p class="text-[13px] text-[#4a5565] mb-[12px] flex items-center gap-[6px]">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Engagement 9 mois · Boîtier prêté inclus
+            </p>
+            <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+              Choisir cette offre
+            </Button>
+          </div>
+        ))}
+      </div>
+
+      <!-- Options à la carte (dépliable) -->
+      <details class="mt-[60px] bg-[#f5f5f5] rounded-[20px] group border border-gray-200">
+        <summary class="cursor-pointer list-none px-[30px] py-[28px] flex items-center justify-between gap-[20px] hover:bg-[#eeeeee] transition-colors rounded-[20px]">
+          <div class="flex-1">
+            <p class="text-[22px] md:text-[26px] font-bold text-[#101828]">Personnalisez votre pack</p>
+            <p class="text-[14px] text-neo-gray mt-[4px]">Double écran, marque blanche, audit partenariat, Media Day… 9 options disponibles</p>
+          </div>
+          <span class="shrink-0 inline-flex items-center gap-2 bg-white border border-gray-300 rounded-full px-4 py-2 text-[14px] font-medium text-[#101828]">
+            <span class="group-open:hidden">Voir les options</span>
+            <span class="hidden group-open:inline">Masquer</span>
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+          </span>
+        </summary>
+        <div class="px-[30px] pb-[30px] grid grid-cols-1 md:grid-cols-3 gap-[30px]">
+          {additionalOptions.map((cat) => (
+            <div>
+              <h4 class="text-[16px] font-bold text-[#101828] mb-[16px] uppercase tracking-wider">{cat.title}</h4>
+              <ul class="flex flex-col gap-[14px]">
+                {cat.options.map((opt) => (
+                  <li class="border-b border-gray-200 pb-[12px]">
+                    <p class="text-[15px] font-medium text-[#101828]">{opt.label}</p>
+                    <p class="text-[14px] text-neo-green-dark font-bold mt-[2px]">{opt.price} <span class="text-[12px] text-neo-gray font-normal">· {opt.type}</span></p>
+                    <p class="text-[12px] text-neo-gray mt-[2px]">{opt.availability}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Package vidéos en option -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="mb-[60px]">
+        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">PACKAGE VIDÉOS EN OPTION</h2>
+        <p class="text-[18px] text-neo-gray max-w-[700px]">Nous proposons en option de produire et de mettre à jour vos vidéos toute l'année.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        {videoPackages.map((pkg) => (
+          <div class={`relative rounded-[20px] p-[30px] flex flex-col gap-5 ${
+            pkg.name === 'Sans shooting' || pkg.name === 'Avec shooting' ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
+          }`}>
+            {pkg.name === 'Avec shooting' && (
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+                Le plus apprécié
+              </span>
+            )}
+            <h3 class="text-[22px] font-bold">{pkg.name}</h3>
+            <p class="text-neo-gray text-[15px]">{pkg.description}</p>
+            <div>
+              <ul class="list-disc pl-5 flex flex-col gap-[10px] flex-1">
+                {pkg.features.map((f) => (
+                  <li class="text-[14px] text-[rgba(0,0,0,0.8)]">{f}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Finançable par vos partenaires -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
+        <div class="flex-1">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
+            Finançable par vos partenaires
+          </h2>
+          <p class="text-[18px] text-[#4a5565]">Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.</p>
+        </div>
+        <div class="shrink-0 w-full md:w-auto">
+          <form class="flex flex-col sm:flex-row gap-3 w-full" data-financable-form data-pdf-url="/documents/financable-partenaires.pdf">
+            <input
+              type="email"
+              name="email"
+              placeholder="Votre email"
+              required
+              class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
+            />
+            <button
+              type="submit"
+              class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
+            >
+              Recevoir le document
+            </button>
+            <p class="hidden text-[14px] mt-2 w-full" data-form-message></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flotte (opérateurs / ligues / fédérations) -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#2f3935] text-white">
+    <div class="max-w-[1320px] mx-auto flex flex-col lg:flex-row gap-[40px] items-start lg:items-center">
+      <div class="flex-1">
+        <p class="text-[14px] tracking-[2px] text-[#81e3bc] uppercase mb-[16px]">FLOTTE · SUR DEVIS</p>
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] font-bold mb-[20px]">
+          <span class="font-playfair italic">Vous gérez</span> plusieurs clubs ?
+        </h2>
+        <p class="text-[16px] md:text-[18px] text-[#d9d9d9] max-w-[640px]">Pour les opérateurs, ligues, fédérations et réseaux de clubs : déploiement groupé, dashboard centralisé et tarif dégressif.</p>
+      </div>
+      <div class="flex-1 w-full">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-[20px] gap-y-[12px] mb-[30px]">
+          {[
+            'Dashboard multi-sites (carte + grille)',
+            'Déploiement groupé',
+            'Alertes offline',
+            'Analytics comparatives inter-clubs',
+            'Gestion des rôles opérateurs',
+            'Pricing dégressif par volume',
+            'Interlocuteur dédié',
+          ].map((item) => (
+            <li class="flex items-start gap-[10px] text-[15px] text-[#d9d9d9]">
+              <svg class="w-5 h-5 shrink-0 text-[#81e3bc] mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <Button href="/devis?offre=flotte" variant="green" arrow>Demander un devis flotte</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Club Carousel -->
+  <ClubCarousel clubs={clubs} client:visible />
+
+  <!-- Témoignages -->
+  <TestimonialCarousel testimonials={testimonials} client:visible />
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+</BaseLayout>
+
+<style>
+  .js-toggle-btn[aria-pressed="true"] {
+    background-color: #101828;
+    color: #ffffff;
+  }
+  .js-toggle-btn[aria-pressed="false"] {
+    color: #4a5565;
+  }
+</style>
+
+<script>
+  // Toggle Annuel / Mensuel
+  const toggleBtns = document.querySelectorAll<HTMLButtonElement>('.js-toggle-btn');
+  const priceEls = document.querySelectorAll<HTMLElement>('[data-price-annual]');
+
+  function setPeriod(period: 'annual' | 'monthly') {
+    toggleBtns.forEach((btn) => {
+      btn.setAttribute('aria-pressed', btn.dataset.period === period ? 'true' : 'false');
+    });
+    priceEls.forEach((el) => {
+      const annual = Number(el.dataset.priceAnnual);
+      const monthly = Number(el.dataset.priceMonthly);
+      const priceSpan = el.querySelector('.js-price') as HTMLElement | null;
+      const suffixSpan = el.querySelector('.js-suffix') as HTMLElement | null;
+      const secondary = el.parentElement?.querySelector('.js-secondary') as HTMLElement | null;
+      if (!priceSpan || !suffixSpan) return;
+      if (period === 'annual') {
+        priceSpan.textContent = `${annual.toLocaleString('fr-FR')} €`;
+        suffixSpan.textContent = '/an';
+        if (secondary && monthly) secondary.textContent = `soit ${monthly} €/mois HT`;
+      } else if (monthly) {
+        priceSpan.textContent = `${monthly} €`;
+        suffixSpan.textContent = '/mois';
+        if (secondary) secondary.textContent = `soit ${annual.toLocaleString('fr-FR')} €/an HT`;
+      }
+    });
+  }
+
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const period = btn.dataset.period as 'annual' | 'monthly';
+      setPeriod(period);
+    });
+  });
+
+  const form = document.querySelector('[data-financable-form]') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const msg = form.querySelector('[data-form-message]') as HTMLParagraphElement;
+      const pdfUrl = form.dataset.pdfUrl;
+
+      if (!emailInput?.value) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+      msg.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/document', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailInput.value, documentUrl: pdfUrl }),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          msg.textContent = 'Document envoyé ! Vérifiez votre boîte mail.';
+          msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
+          emailInput.value = '';
+        } else {
+          msg.textContent = 'Une erreur est survenue.';
+          msg.className = 'text-[14px] mt-2 w-full text-red-600';
+        }
+      } catch {
+        msg.textContent = 'Erreur de connexion. Réessayez plus tard.';
+        msg.className = 'text-[14px] mt-2 w-full text-red-600';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Recevoir le document';
+      }
+    });
+  }
+</script>
