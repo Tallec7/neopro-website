@@ -76,15 +76,10 @@ export const plans: PricingPlan[] = [
     popular: false,
     buttonVariant: 'yellow',
     features: [
-      { label: 'Boîtier Raspberry Pi inclus', included: true },
-      { label: 'Mode hors-ligne', included: true },
-      { label: 'Hotspot WiFi intégré', included: true },
-      { label: 'Watchdog 24/7 (relance auto)', included: true },
-      { label: 'Contrôle TV CEC (allumage/extinction)', included: true },
-      { label: 'Mises à jour OTA automatiques', included: true },
-      { label: 'Télécommande locale', included: true },
-      { label: 'Rotation pondérée des vidéos', included: false },
-      { label: 'Portail sponsor & Proof of Play', included: false },
+      { label: 'Boîtier autonome, aucune installation', included: true },
+      { label: 'Fonctionne sans WiFi', included: true },
+      { label: 'Mises à jour automatiques (zéro maintenance)', included: true },
+      { label: 'Diffusion 24/7 sans interruption', included: true },
       { label: 'Support email 72h', included: true },
     ],
   },
@@ -100,15 +95,10 @@ export const plans: PricingPlan[] = [
     buttonVariant: 'green',
     features: [
       { label: 'Tout le pack Club, plus :', included: true },
-      { label: 'Multi-profils (match day, entraînement…)', included: true },
       { label: 'Rotation pondérée des vidéos', included: true },
-      { label: 'Vidéos épinglées & programmation horaire', included: true },
-      { label: 'Portail sponsor (accès dédié par annonceur)', included: true },
+      { label: 'Portail sponsor dédié', included: true },
       { label: 'Proof of Play (rapport certifié)', included: true },
-      { label: 'Pack prospection sponsor inclus', included: true },
-      { label: 'Analytics complètes (impressions, completion…)', included: true },
-      { label: 'Backoffice temps réel', included: true },
-      { label: 'Support email 48h', included: true },
+      { label: 'Analytics simples + accès Admin hors-ligne', included: true },
     ],
   },
   {
@@ -123,12 +113,70 @@ export const plans: PricingPlan[] = [
     buttonVariant: 'pink',
     features: [
       { label: 'Tout le pack Pro, plus :', included: true },
-      { label: 'Double écran inclus (2 HDMI)', included: true },
-      { label: 'Failover HDMI automatique', included: true },
+      { label: 'Multi-écrans, contenus indépendants', included: true },
       { label: 'Marque blanche incluse', included: true },
       { label: 'Analytics avancées + export CSV', included: true },
-      { label: 'Diagnostic à distance complet', included: true },
       { label: 'Support 24h + tél jour de match', included: true },
+    ],
+  },
+];
+
+// ── Tableau comparatif complet ────────────────────────────────────
+
+export interface ComparisonRow {
+  label: string;
+  values: [string | boolean, string | boolean, string | boolean, string | boolean]; // Play, Club, Pro, Premium
+}
+
+export interface ComparisonCategory {
+  title: string;
+  rows: ComparisonRow[];
+}
+
+export const comparisonTable: ComparisonCategory[] = [
+  {
+    title: 'Diffusion',
+    rows: [
+      { label: 'Vidéos illimitées', values: [true, true, true, true] },
+      { label: 'Boucle de diffusion automatique', values: [true, true, true, true] },
+      { label: 'Upload drag & drop', values: [true, true, true, true] },
+      { label: 'Multi-profils (match day, entraînement…)', values: [false, false, true, true] },
+      { label: 'Rotation pondérée des vidéos', values: [false, false, true, true] },
+      { label: 'Programmation horaire', values: [false, false, true, true] },
+    ],
+  },
+  {
+    title: 'Matériel & connexion',
+    rows: [
+      { label: 'Boîtier autonome, aucune installation', values: [false, true, true, true] },
+      { label: 'Fonctionne sans WiFi', values: [false, true, true, true] },
+      { label: 'Mises à jour automatiques (zéro maintenance)', values: [false, true, true, true] },
+      { label: 'Multi-écrans, contenus indépendants', values: [false, false, false, true] },
+    ],
+  },
+  {
+    title: 'Sponsors & analytics',
+    rows: [
+      { label: 'Portail sponsor (accès dédié)', values: [false, false, true, true] },
+      { label: 'Proof of Play (rapport certifié)', values: [false, false, true, true] },
+      { label: 'Analytics simples', values: [false, false, true, true] },
+      { label: 'Accès Admin hors-ligne', values: [false, false, true, true] },
+      { label: 'Analytics avancées + export CSV', values: [false, false, false, true] },
+      { label: 'Diagnostic à distance complet', values: [false, false, false, true] },
+    ],
+  },
+  {
+    title: 'Marque & personnalisation',
+    rows: [
+      { label: 'Marque blanche', values: [false, false, 'Option', true] },
+      { label: 'Template aux couleurs du club', values: ['Option', 'Option', 'Option', 'Option'] },
+    ],
+  },
+  {
+    title: 'Support',
+    rows: [
+      { label: 'Support email', values: ['Standard', '72h', '48h', '24h'] },
+      { label: 'Joignable par téléphone jour de match', values: [false, false, false, true] },
     ],
   },
 ];
@@ -139,28 +187,93 @@ export const additionalOptions: OptionCategory[] = [
   {
     title: 'Écran & Identité',
     options: [
-      { label: 'Double écran (2e HDMI ou 2e URL)', price: '350 €/an', type: 'Récurrent', availability: 'Toutes offres' },
-      { label: 'Boîtier additionnel', price: '500 € + 30 €/mois', type: 'Setup + abo', availability: 'Club / Pro / Premium' },
-      { label: 'Template aux couleurs du club', price: '700 €', type: 'One-shot', availability: 'Toutes offres' },
-      { label: 'Marque blanche', price: '500 €/an', type: 'Récurrent', availability: 'Pro (inclus en Premium)' },
+      { label: 'Double écran (2e HDMI ou 2e URL)', price: '', type: 'Récurrent', availability: 'Toutes offres' },
+      { label: 'Boîtier additionnel', price: '', type: 'Setup + abo', availability: 'Club / Pro / Premium' },
+      { label: 'Template aux couleurs du club', price: '', type: 'One-shot', availability: 'Toutes offres' },
+      { label: 'Marque blanche', price: '', type: 'Récurrent', availability: 'Pro (inclus en Premium)' },
     ],
   },
   {
     title: 'Accompagnement',
     options: [
-      { label: 'Audit partenariat (1 jour, fondateur)', price: '1 000 €', type: 'One-shot', availability: 'Pro / Premium' },
+      { label: 'Audit partenariat (1 jour, fondateur)', price: '', type: 'One-shot', availability: 'Pro / Premium' },
     ],
   },
   {
     title: 'Événement',
     options: [
-      { label: 'Pack Media Day', price: '2 500 €', type: 'One-shot', availability: 'Premium' },
-      { label: 'Pack tournoi', price: 'Sur devis', type: 'One-shot', availability: 'Premium' },
+      { label: 'Pack Media Day', price: '', type: 'One-shot', availability: 'Premium' },
+      { label: 'Pack tournoi', price: '', type: 'One-shot', availability: 'Premium' },
     ],
   },
 ];
 
-// ── Packages vidéo ────────────────────────────────────────────────
+// ── Chaîne Neopro (services complémentaires full-stack) ───────────
+
+export interface ChainService {
+  label: string;
+  hint?: string;
+}
+
+export interface ChainStep {
+  step: string;          // numéro ou code
+  title: string;         // ex: "Shooting"
+  tagline: string;       // courte phrase de positionnement
+  icon: 'camera' | 'edit' | 'broadcast' | 'screen';
+  services: ChainService[];
+}
+
+export const chainSteps: ChainStep[] = [
+  {
+    step: '01',
+    title: 'Shooting',
+    tagline: 'On capture vos joueurs et votre club',
+    icon: 'camera',
+    services: [
+      { label: 'Shooting photo & vidéo joueurs (1h / équipe)', hint: 'Sur place, matériel pro' },
+      { label: 'Captation match ou événement', hint: 'Media Day, tournoi, gala' },
+      { label: 'Photos & rushes HD livrés', hint: 'Réutilisables sur tous vos canaux' },
+    ],
+  },
+  {
+    step: '02',
+    title: 'Production',
+    tagline: 'On transforme en contenus qui valorisent vos sponsors',
+    icon: 'edit',
+    services: [
+      { label: 'Annonces de joueurs animées', hint: 'Templates premium' },
+      { label: 'Habillage aux couleurs du club', hint: 'Sur-mesure' },
+      { label: 'Vidéos sponsors & messages club', hint: 'Mises à jour saison' },
+      { label: 'Marque blanche complète', hint: 'Inclus en Premium' },
+    ],
+  },
+  {
+    step: '03',
+    title: 'Diffusion',
+    tagline: 'On diffuse en SaaS ou via boîtier autonome',
+    icon: 'broadcast',
+    services: [
+      { label: 'Player web Play (sans matériel)', hint: 'À partir de 79 €/mois' },
+      { label: 'Boîtier autonome (Club / Pro / Premium)', hint: 'Zéro maintenance, sans WiFi' },
+      { label: 'Portail sponsor & Proof of Play', hint: 'Pro & Premium' },
+      { label: 'Boîtier additionnel', hint: 'Plusieurs salles, plusieurs entrées' },
+    ],
+  },
+  {
+    step: '04',
+    title: 'Écrans',
+    tagline: 'On vous aide à choisir et installer les écrans',
+    icon: 'screen',
+    services: [
+      { label: 'TV grand format (hall, club-house)', hint: 'Conseil et sourcing' },
+      { label: 'LED bord de terrain', hint: 'Visibilité maximale match day' },
+      { label: 'Multi-écrans, contenus indépendants', hint: 'Ex: hall + bord de terrain' },
+      { label: 'Installation & mise en service', hint: 'Sur devis' },
+    ],
+  },
+];
+
+// ── Packages vidéo (legacy, conservés pour rétro-compat) ──────────
 
 export const videoPackages: VideoPackage[] = [
   {

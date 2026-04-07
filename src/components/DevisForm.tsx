@@ -23,9 +23,25 @@ const sportsByLocale: Record<Locale, string[]> = {
 };
 
 const offresByLocale: Record<Locale, string[]> = {
-  fr: ['Essentiel', 'Autonomie', 'Premium', 'Je ne sais pas encore'],
-  en: ['Essential', 'Autonomy', 'Premium', "I don't know yet"],
-  es: ['Esencial', 'Autonomía', 'Premium', 'Aún no lo sé'],
+  fr: ['Play', 'Club', 'Pro', 'Premium', 'Flotte (multi-clubs)', 'Production de contenu', 'Options à la carte', 'Je ne sais pas encore'],
+  en: ['Play', 'Club', 'Pro', 'Premium', 'Fleet (multi-clubs)', 'Content production', 'Add-on options', "I don't know yet"],
+  es: ['Play', 'Club', 'Pro', 'Premium', 'Flota (multi-clubes)', 'Producción de contenido', 'Opciones a la carta', 'Aún no lo sé'],
+};
+
+// Mapping slug d'URL → libellé d'offre
+const slugToOffreLabel: Record<Locale, Record<string, string>> = {
+  fr: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Flotte (multi-clubs)', production: 'Production de contenu', options: 'Options à la carte',
+  },
+  en: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Fleet (multi-clubs)', production: 'Content production', options: 'Add-on options',
+  },
+  es: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Flota (multi-clubes)', production: 'Producción de contenido', options: 'Opciones a la carta',
+  },
 };
 
 const packagesByLocale: Record<Locale, string[]> = {
@@ -67,10 +83,15 @@ export default function DevisForm({ locale = 'fr' }: Props) {
     const params = new URLSearchParams(window.location.search);
     const offreParam = params.get('offre');
     if (offreParam) {
-      const match = offres.find(
-        (o) => o.toLowerCase() === offreParam.toLowerCase()
-      );
-      if (match) setOffre(match);
+      const slugMatch = slugToOffreLabel[locale]?.[offreParam.toLowerCase()];
+      if (slugMatch) {
+        setOffre(slugMatch);
+      } else {
+        const match = offres.find(
+          (o) => o.toLowerCase() === offreParam.toLowerCase()
+        );
+        if (match) setOffre(match);
+      }
     }
   }, []);
 
