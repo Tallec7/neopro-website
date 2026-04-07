@@ -112,7 +112,7 @@ const jsonLd = buildLocalBusinessJsonLd({
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Bandeau promo global (jusqu'au 31 mai) -->
-    <div id="promo-bar" class="relative bg-[#2f3935] text-white border-b-2 border-[#fdbe00]">
+    <div id="promo-bar" class="fixed top-0 left-0 right-0 z-[60] bg-[#2f3935] text-white border-b-2 border-[#fdbe00]">
       <div class="max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[10px] flex items-center justify-center gap-[16px] text-center">
         <span class="hidden sm:inline-flex shrink-0 items-center justify-center w-[26px] h-[26px] rounded-full bg-[#fdbe00] text-[#2f3935] font-black text-[13px]">%</span>
         <p class="text-[13px] md:text-[14px] leading-snug">
@@ -134,9 +134,37 @@ const jsonLd = buildLocalBusinessJsonLd({
         var bar = document.getElementById('promo-bar');
         var btn = document.getElementById('promo-bar-close');
         if (!bar || !btn) return;
-        try { if (sessionStorage.getItem('promo-bar-closed') === '1') bar.style.display = 'none'; } catch (e) {}
+
+        function applyOffset(visible) {
+          var nav = document.getElementById('main-nav');
+          var h = visible ? bar.offsetHeight : 0;
+          document.body.style.paddingTop = visible ? h + 'px' : '';
+          if (nav) nav.style.top = visible ? (h + 20) + 'px' : '';
+        }
+
+        function init() {
+          try {
+            if (sessionStorage.getItem('promo-bar-closed') === '1') {
+              bar.style.display = 'none';
+              applyOffset(false);
+            } else {
+              applyOffset(true);
+            }
+          } catch (e) { applyOffset(true); }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else {
+          init();
+        }
+        window.addEventListener('resize', function () {
+          if (bar.style.display !== 'none') applyOffset(true);
+        });
+
         btn.addEventListener('click', function () {
           bar.style.display = 'none';
+          applyOffset(false);
           try { sessionStorage.setItem('promo-bar-closed', '1'); } catch (e) {}
         });
       })();
