@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import logoRacc from '@/assets/images/logo-racc.webp';
 import logoNarh from '@/assets/images/logo-narh.webp';
 import logoNlf from '@/assets/images/logo-nlf-monochrome.webp';
-import logoCorsaires from '@/assets/images/logo-corsaires.png';
+import logoCorsaires from '@/assets/images/logo-corsaires.webp';
 ---
 
 <!doctype html>
@@ -43,21 +43,6 @@ import logoCorsaires from '@/assets/images/logo-corsaires.png';
   </head>
 
   <body class="min-h-screen bg-neo-dark-bg text-white font-outfit">
-    <!-- SVG filter : supprime le fond blanc avant inversion en blanc -->
-    <svg style="display:none" aria-hidden="true">
-      <defs>
-        <filter id="white-to-transparent">
-          <feColorMatrix type="matrix"
-            values="1  0  0  0  0
-                    0  1  0  0  0
-                    0  0  1  0  0
-                   -2 -2 -2  0  3" />
-          <feComponentTransfer>
-            <feFuncA type="discrete" tableValues="0 1" />
-          </feComponentTransfer>
-        </filter>
-      </defs>
-    </svg>
     <!-- Logo -->
     <header class="px-6 py-5 md:px-12 md:py-8">
       <a href="/">
@@ -117,7 +102,7 @@ import logoCorsaires from '@/assets/images/logo-corsaires.png';
                   <Image src={logoNlf} alt="Nantes Loire Féminin Handball" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
                 </a>
                 <a href="https://www.corsairesdenantes.fr/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
-                  <Image src={logoCorsaires} alt="Corsaires de Nantes" class="h-8 w-auto object-contain" style="filter: url(#white-to-transparent) brightness(0) invert(1)" loading="eager" />
+                  <Image src={logoCorsaires} alt="Corsaires de Nantes" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
                 </a>
               </div>
             </div>
