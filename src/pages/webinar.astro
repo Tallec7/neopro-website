@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import logoRacc from '@/assets/images/logo-racc.webp';
 import logoNarh from '@/assets/images/logo-narh.webp';
 import logoNlf from '@/assets/images/logo-nlf-monochrome.webp';
-import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
+import logoCorsaires from '@/assets/images/logo-corsaires.png';
 ---
 
 <!doctype html>
@@ -104,10 +104,20 @@ import logoRinkHockey from '@/assets/images/logo-rink-hockey.webp';
             <div class="mt-8 pt-6 border-t border-white/10">
               <p class="text-white/50 text-xs uppercase tracking-wider mb-4">Ils nous font déjà confiance</p>
               <div class="flex items-center gap-5 flex-wrap">
-                <Image src={logoRacc} alt="RACC" class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" loading="eager" />
-                <Image src={logoNarh} alt="NARH" class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" loading="eager" />
-                <Image src={logoNlf} alt="NLF" class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" loading="eager" />
-                <Image src={logoRinkHockey} alt="Rink Hockey" class="h-8 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity" loading="eager" />
+                <a href="https://racchand.com/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
+                  <Image src={logoRacc} alt="RACC Handball Nantes" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
+                </a>
+                <a href="https://www.nantes-arh.fr/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
+                  <Image src={logoNarh} alt="Nantes ARH" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
+                </a>
+                <a href="https://www.nantes-loire-feminin-handball.fr/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
+                  <Image src={logoNlf} alt="Nantes Loire Féminin Handball" class="h-8 w-auto object-contain brightness-0 invert" loading="eager" />
+                </a>
+                <a href="https://www.corsairesdenantes.fr/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
+                  <div class="h-8 w-8 rounded-full overflow-hidden">
+                    <Image src={logoCorsaires} alt="Corsaires de Nantes" class="h-full w-full object-cover" loading="eager" />
+                  </div>
+                </a>
               </div>
             </div>
           </div>
