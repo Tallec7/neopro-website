@@ -1,0 +1,343 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import {
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+  buildServiceJsonLd,
+} from '@/lib/jsonLd';
+
+// ── SEO ──────────────────────────────────────────────────────────
+const title = 'Régie sport — La régie digitale clé en main pour clubs | Neopro';
+const description = "Neopro est la régie sport digitale clé en main pour clubs — du professionnel au régional. Écrans LED, appli télécommande, contenus vidéo : valorisez vos sponsors et professionnalisez vos matchs. Dès 79 €/mois.";
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/regie-sport`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Régie sport', url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: 'Régie sport digitale Neopro',
+  description:
+    "Régie sport digitale clé en main pour clubs : écrans LED, boîtier plug & play, appli télécommande, contenus vidéo et valorisation des partenaires. Conçue pour les clubs professionnels, semi-professionnels et amateurs.",
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: ['France', 'Belgique', 'Suisse'],
+  serviceType: 'Régie sport digitale',
+});
+
+const faq = buildFAQPageJsonLd([
+  {
+    question: "Qu'est-ce qu'une régie sport ?",
+    answer:
+      "Une régie sport est l'ensemble des outils qui permettent à un club de gérer la diffusion de contenus pendant un match : affichage du score, spots sponsors, animations, musique, annonces. Avec une régie sport digitale comme Neopro, tout est piloté depuis un boîtier connecté à un écran et une appli smartphone — sans wifi, sans compétences techniques.",
+  },
+  {
+    question: "Quelle différence entre une régie sport et une régie digitale classique ?",
+    answer:
+      "Une régie digitale classique est un outil de diffusion publicitaire généraliste (digital signage). Une régie sport est pensée pour le sport : elle intègre la gestion du score, le timing match, les templates d'animations spécifiques (entrée des équipes, célébrations, time-out), et la valorisation mesurée des sponsors. Neopro est la régie sport conçue spécifiquement pour les clubs — pro, semi-pro et amateurs.",
+  },
+  {
+    question: "La régie sport Neopro est-elle réservée aux clubs professionnels ?",
+    answer:
+      "Non. Neopro est conçu pour s'adapter à tous les clubs — du niveau professionnel au championnat régional. Les clubs pro apprécient la qualité d'image et l'intégration sponsors, les clubs semi-pro et régionaux profitent d'une solution clé en main à un coût maîtrisé (dès 79 €/mois) finançable par leurs partenaires.",
+  },
+  {
+    question: "La régie sport fonctionne-t-elle sans wifi dans le gymnase ?",
+    answer:
+      "Oui. Le boîtier Neopro crée son propre réseau local, indépendant d'internet. Votre smartphone s'y connecte directement pour piloter l'écran pendant le match. C'est la solution parfaite pour les gymnases sans wifi — un cas très fréquent dans le sport amateur et semi-pro.",
+  },
+  {
+    question: "Combien coûte une régie sport Neopro ?",
+    answer:
+      "Les offres Neopro démarrent à 79 €/mois avec Play (SaaS sans matériel). Les formules Club (149 €/mois), Pro (199 €/mois) et Premium (299 €/mois) incluent l'écran, le boîtier, l'appli, les contenus vidéo et le support. Toutes les formules sont conçues pour être finançables par les sponsors du club.",
+  },
+  {
+    question: "Dans quels sports la régie sport Neopro est-elle déployée ?",
+    answer:
+      "Neopro équipe aujourd'hui des clubs de handball, football, basketball, volleyball, rugby, hockey, tennis de table et d'autres sports collectifs et individuels. La solution s'adapte à tous les formats de match et de compétition, avec des templates spécifiques par sport.",
+  },
+]);
+
+const features = [
+  {
+    title: "Écrans LED professionnels",
+    description:
+      "Des écrans LED haute luminosité installés dans votre gymnase ou salle, visibles de tous les spectateurs. Choix entre 2 tailles selon la configuration de votre salle.",
+  },
+  {
+    title: "Boîtier plug & play",
+    description:
+      "Un boîtier connecté à l'écran qui crée son propre réseau wifi local — aucune connexion internet nécessaire. Installation en moins d'une heure.",
+  },
+  {
+    title: "Appli télécommande smartphone",
+    description:
+      "Pilotez toute la régie depuis votre téléphone pendant le match : score, animations, spots sponsors, musique, annonces. Un seul bénévole suffit.",
+  },
+  {
+    title: "Contenus vidéo sur mesure",
+    description:
+      "Templates vidéo professionnels (entrée des équipes, célébrations, mi-temps, spots sponsors) personnalisés aux couleurs de votre club.",
+  },
+  {
+    title: "Valorisation mesurée des sponsors",
+    description:
+      "Reporting automatique : nombre de diffusions, durée d'exposition, audience estimée. De quoi prouver le ROI à vos partenaires et renouveler plus facilement.",
+  },
+  {
+    title: "Conçu pour tous les clubs",
+    description:
+      "Du club professionnel au championnat régional. Une régie sport clé en main, finançable par vos sponsors, pensée pour s'adapter à votre niveau et à vos moyens.",
+  },
+];
+
+const niveaux = [
+  {
+    label: 'Clubs professionnels',
+    description:
+      "Pour les clubs pro et élite qui veulent un outil de régie sport fiable, intégré à leurs sponsors majeurs et à leur identité visuelle. Support prioritaire et contenus personnalisés.",
+  },
+  {
+    label: 'Clubs semi-pro & Nationale',
+    description:
+      "Pour les clubs évoluant en championnats nationaux qui cherchent à professionnaliser l'expérience match et à fidéliser leurs partenaires locaux avec un outil de niveau pro.",
+  },
+  {
+    label: 'Clubs régionaux & amateurs',
+    description:
+      "Pour les clubs du régional au départemental qui veulent se démarquer, offrir un spectacle à leur public et transformer l'écran en nouvelle source de revenus finançable par les sponsors.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, service, faq]}
+>
+  <!-- Hero -->
+  <section class="relative bg-[#2f3935] text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#2f3935] via-[#2f3935] to-[#3d4a45]"></div>
+    <div class="relative max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[100px] md:py-[140px]">
+      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+        Régie sport digitale
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
+        <span class="font-playfair italic font-normal">La régie sport</span> qui transforme<br />
+        votre écran en <span class="text-[#81e3bc]">média interactif</span>.
+      </h1>
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[40px]">
+        Neopro est la régie sport digitale clé en main pour les clubs de sport —
+        du club professionnel au championnat régional. Écrans LED, appli
+        télécommande et contenus vidéo pour animer vos matchs et valoriser vos
+        sponsors, sans wifi et sans compétence technique.
+      </p>
+      <div class="flex flex-wrap gap-[16px]">
+        <Button href="/devis" variant="green" arrow>Obtenir un devis gratuit</Button>
+        <Button href="/solution" variant="white" arrow>Découvrir la solution</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qu'est-ce qu'une régie sport ? -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[30px]">
+        <span class="font-playfair italic">Qu'est-ce qu'une</span> régie sport&nbsp;?
+      </h2>
+      <div class="prose prose-lg max-w-none text-[#4a5565] text-[18px] leading-[1.7]">
+        <p>
+          Une <strong>régie sport</strong> est l'ensemble des outils techniques
+          qui permettent à un club de piloter l'ambiance et la communication
+          pendant un match : affichage du score et du temps, diffusion de spots
+          sponsors, animations visuelles, musique d'ambiance et annonces aux
+          spectateurs. Historiquement, c'était un métier réservé aux clubs
+          professionnels disposant de moyens techniques et humains importants.
+        </p>
+        <p>
+          Avec l'arrivée de la <strong>régie sport digitale</strong>, toutes
+          ces fonctions ont été intégrées dans une solution unique et
+          pilotable depuis un smartphone. C'est ce que fait Neopro : on
+          fournit l'écran LED, le boîtier plug & play, l'appli télécommande
+          et les contenus vidéo, le tout pensé pour les contraintes réelles
+          des clubs de sport — y compris l'absence de wifi dans les gymnases.
+        </p>
+        <p>
+          Résultat : ce qui demandait avant une équipe technique et un budget
+          à 5 chiffres devient accessible à <strong>tout club, du niveau
+          professionnel au championnat régional</strong>, dès 79 €/mois —
+          finançable par les sponsors grâce au nouvel espace publicitaire
+          que l'écran crée.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fonctionnalités -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Ce que contient la régie sport Neopro
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">Tout l'équipement</span> d'une régie
+          pro, en clé en main.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        {features.map((feat) => (
+          <div class="bg-white rounded-[20px] p-[30px] border border-gray-200 hover:border-neo-green-dark transition-colors">
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{feat.title}</h3>
+            <p class="text-[16px] text-neo-gray leading-[1.6]">{feat.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pour qui ? -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Une régie sport pour tous les clubs
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">Du club pro</span> au club régional.
+        </h2>
+        <p class="text-[18px] text-neo-gray mt-[20px]">
+          Neopro n'est pas qu'une solution pour clubs amateurs — c'est une régie
+          sport digitale qui s'adapte à tous les niveaux, avec des offres
+          calibrées pour chaque contexte.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        {niveaux.map((niveau) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px]">
+            <h3 class="text-[24px] font-bold text-[#101828] mb-[16px]">{niveau.label}</h3>
+            <p class="text-[16px] text-neo-gray leading-[1.6]">{niveau.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Offres -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#2f3935] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px] leading-[1.1]">
+        <span class="font-playfair italic font-normal">Prêt à installer</span><br />
+        <span class="font-black">votre régie sport&nbsp;?</span>
+      </h2>
+      <p class="text-[18px] text-white/70 max-w-[640px] mx-auto mb-[40px]">
+        Les offres Neopro démarrent à 79 €/mois et sont finançables par vos
+        sponsors. Choisissez la formule adaptée à votre club et lancez-vous.
+      </p>
+      <div class="flex flex-wrap gap-[16px] justify-center">
+        <Button href="/offres" variant="green" arrow>Voir les offres</Button>
+        <Button href="/devis" variant="white" arrow>Demander un devis</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">Questions</span> fréquentes sur la
+        régie sport
+      </h2>
+      <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200">
+        <details class="group">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+            Qu'est-ce qu'une régie sport ?
+            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="pb-[24px] text-[16px] text-[#4a5565] leading-[1.7]">
+            <p>
+              Une régie sport est l'ensemble des outils qui permettent à un
+              club de gérer la diffusion de contenus pendant un match :
+              affichage du score, spots sponsors, animations, musique,
+              annonces. Avec une régie sport digitale comme Neopro, tout est
+              piloté depuis un boîtier connecté à un écran et une appli
+              smartphone — sans wifi, sans compétences techniques.
+            </p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+            Quelle différence avec une régie digitale classique ?
+            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="pb-[24px] text-[16px] text-[#4a5565] leading-[1.7]">
+            <p>
+              Une régie digitale classique est un outil de diffusion
+              publicitaire généraliste (digital signage). Une régie sport est
+              pensée pour le sport : elle intègre la gestion du score, le
+              timing match, les templates d'animations spécifiques (entrée
+              des équipes, célébrations, time-out), et la valorisation
+              mesurée des sponsors. Neopro est la régie sport conçue
+              spécifiquement pour les clubs.
+            </p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+            Est-ce réservé aux clubs professionnels ?
+            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="pb-[24px] text-[16px] text-[#4a5565] leading-[1.7]">
+            <p>
+              Non. Neopro est conçu pour s'adapter à tous les clubs — du
+              niveau professionnel au championnat régional. Les clubs pro
+              apprécient la qualité d'image et l'intégration sponsors, les
+              clubs semi-pro et régionaux profitent d'une solution clé en
+              main à un coût maîtrisé finançable par leurs partenaires.
+            </p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+            Fonctionne-t-elle sans wifi ?
+            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="pb-[24px] text-[16px] text-[#4a5565] leading-[1.7]">
+            <p>
+              Oui. Le boîtier Neopro crée son propre réseau local,
+              indépendant d'internet. Votre smartphone s'y connecte
+              directement pour piloter l'écran pendant le match.
+            </p>
+          </div>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+            Combien coûte une régie sport Neopro ?
+            <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="pb-[24px] text-[16px] text-[#4a5565] leading-[1.7]">
+            <p>
+              Les offres démarrent à 79 €/mois avec Play (SaaS sans
+              matériel). Les formules Club, Pro et Premium incluent l'écran,
+              le boîtier, l'appli, les contenus vidéo et le support. Toutes
+              sont finançables par les sponsors du club.
+              <a href="/offres" class="text-neo-green-dark font-semibold hover:underline">Voir le détail des offres</a>.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+</BaseLayout>

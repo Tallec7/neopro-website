@@ -18,11 +18,22 @@ interface LocalBusinessOptions {
 export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string {
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'Organization'],
     name: options.name,
+    alternateName: 'Neopro Communication',
     description: options.description,
+    slogan: 'La régie sport digitale pour clubs',
     email: options.email,
     url: options.url,
+    knowsAbout: [
+      'régie sport',
+      'régie digitale',
+      'écran LED gymnase',
+      'sponsoring sportif',
+      'digital signage sport',
+      'affichage dynamique sport',
+      'animation match',
+    ],
   };
 
   if (options.phone) {
@@ -171,6 +182,47 @@ interface BreadcrumbItem {
   url: string;
 }
 
+// ── Service Schema (régie sport) ──────────────────────────────────
+
+interface ServiceOptions {
+  name: string;
+  description: string;
+  url: string;
+  providerName: string;
+  providerUrl: string;
+  areaServed?: string[];
+  serviceType?: string;
+}
+
+/**
+ * Génère le JSON-LD Service pour renforcer la sémantique
+ * d'une page de service (ex: /regie-sport).
+ */
+export function buildServiceJsonLd(options: ServiceOptions): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: options.name,
+    description: options.description,
+    url: options.url,
+    serviceType: options.serviceType || 'Régie sport digitale',
+    category: 'Sports digital signage',
+    provider: {
+      '@type': 'Organization',
+      name: options.providerName,
+      url: options.providerUrl,
+    },
+    areaServed: (options.areaServed || ['France', 'Belgique', 'Suisse']).map((name) => ({
+      '@type': 'Country',
+      name,
+    })),
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Clubs de sport (professionnels, semi-professionnels et amateurs)',
+    },
+  });
+}
+
 export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]): string {
   return JSON.stringify({
     '@context': 'https://schema.org',
@@ -207,9 +259,9 @@ export function buildAggregateOfferJsonLd(
   return JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: `${businessName} — Régie digitale`,
+    name: `${businessName} — Régie sport digitale`,
     description:
-      'Solution de régie digitale pour clubs de sport. Écrans LED, scoring digital, valorisation partenaires.',
+      'La régie sport digitale clé en main pour clubs. Écrans LED, scoring digital, contenus vidéo et valorisation partenaires — du club pro au club régional.',
     brand: {
       '@type': 'Brand',
       name: businessName,

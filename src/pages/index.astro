@@ -13,8 +13,8 @@ import imageTelephoneImg from '@/assets/images/image-telephone.png';
 import { clubs } from '@/data/clubs';
 
 // ── SEO ──────────────────────────────────────────────────────────
-const title = 'Neopro — Régie digitale pour clubs de sport';
-const description = "Neopro installe des écrans et une régie digitale clé en main dans les gymnases. Valorisez vos sponsors, animez vos matchs et pilotez tout depuis un smartphone. Dès 1 500 €/an.";
+const title = 'Neopro — Régie sport digitale pour clubs (pro, semi-pro, amateurs)';
+const description = "Neopro est la régie sport digitale clé en main pour clubs : écrans, appli télécommande et contenus vidéo pour valoriser vos sponsors et animer vos matchs. Du club pro au club régional. Dès 79 €/mois.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -31,10 +31,13 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
     <div class="absolute inset-0 bg-gradient-to-r from-[#2f3935] to-[80%] to-[rgba(47,57,53,0.3)]"></div>
     <div class="relative z-10 flex flex-col justify-end h-full text-white p-8 md:p-[60px] gap-8 md:gap-[40px]">
       <h1 class="text-[36px] md:text-[70px] leading-[1]">
-        <span class="font-playfair italic font-normal">On fait de votre écran,</span>
-        <br /><span class="font-black">un média interactif.</span>
+        <span class="font-playfair italic font-normal">La régie sport</span>
+        <br /><span class="font-black">de votre club.</span>
         <br /><span class="font-playfair italic font-normal">Tel un club pro.</span>
       </h1>
+      <p class="text-white/80 text-[16px] md:text-[20px] max-w-[720px] leading-normal -mt-2">
+        On fait de votre écran un média interactif. Écrans, régie digitale et contenus vidéo pour les clubs de sport — du niveau pro au régional.
+      </p>
       <div class="flex flex-wrap gap-6 md:gap-[43px]">
         <Button href="/solution" variant="white" arrow>
           Découvrez la solution
@@ -50,7 +53,7 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
         <span class="font-playfair italic font-normal">Bienvenue </span><span class="font-black">au club.</span>
       </h2>
       <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal mb-10 md:mb-16">
-        Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs, dans le but de professionnaliser leur expérience match et de créer un nouvel espace publicitaire pour leurs partenaires.
+        Neopro est la régie sport digitale adaptée à tous les clubs — du club professionnel au club régional — pour professionnaliser l'expérience match et créer un nouvel espace publicitaire pour vos partenaires.
       </p>
     </div>
 
@@ -73,16 +76,16 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
     </div>
   </section>
 
-  <!-- La régie digitale de votre club -->
+  <!-- La régie sport digitale de votre club -->
   <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
       <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
         <div>
           <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">
-            La régie digitale de votre club
+            La régie sport digitale de votre club
           </h2>
           <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">
-            Comment ça marche ? A quoi ça sert ?
+            Écrans, appli télécommande, contenus vidéo. Comment ça marche ? À quoi ça sert ? <a href="/regie-sport" class="underline hover:text-neo-green-dark">Tout savoir sur la régie sport Neopro</a>.
           </p>
         </div>
         <Button href="/solution" variant="black" arrow>
@@ -108,7 +111,7 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
       <div class="relative w-full md:w-[550px] md:h-[550px] flex-shrink-0 rounded-[20px] overflow-hidden">
         <img
           src="/images/image_offre.jpg"
-          alt="Offres de régie digitale Neopro pour clubs amateurs"
+          alt="Offres de régie sport Neopro pour clubs"
           class="w-full h-full object-cover"
           loading="lazy"
         />

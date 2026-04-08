@@ -25,8 +25,8 @@ const formatPanelTitle = (title: string) => {
 };
 
 // ── SEO ��──────────────────────────────────────────────────────���──
-const title = 'Solution régie digitale clé en main — Écran, appli et vidéos';
-const description = "Découvrez la solution Neopro : un boîtier plug & play, une appli télécommande et des vidéos pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.";
+const title = 'Régie sport digitale clé en main — Écrans, appli et vidéos';
+const description = "La solution Neopro : une régie sport digitale clé en main pour clubs. Boîtier plug & play, appli télécommande et contenus vidéo pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -44,9 +44,12 @@ const description = "Découvrez la solution Neopro : un boîtier plug & play, un
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LA SOLUTION</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">La régie digitale de</span><br />
+        <span class="font-playfair italic">La régie sport de</span><br />
         <span class="font-black">votre club</span>
       </h1>
+      <p class="text-white/80 text-[16px] md:text-[18px] max-w-[620px] mb-[24px]">
+        Une régie digitale clé en main pensée pour les clubs de sport — du niveau professionnel au championnat régional.
+      </p>
       <div>
         <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
       </div>
@@ -131,7 +134,7 @@ const description = "Découvrez la solution Neopro : un boîtier plug & play, un
   <!-- Panneaux couleurs sticky -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">Plus qu'une solution d'affichage</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">Plus qu'une solution d'affichage : une vraie régie sport</h2>
       <div class="flex flex-col gap-[20px]">
         {colorPanels.map((panel, i) => (
           <div
