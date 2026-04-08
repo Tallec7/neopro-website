@@ -136,4 +136,85 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
   <div id="contact">
     <ContactForm client:visible />
   </div>
+
+  <!-- ── Popup webinar ─────────────────────────────────────────── -->
+  <div id="webinar-popup" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
+    <!-- Overlay -->
+    <div id="webinar-popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <!-- Card -->
+    <div class="relative z-10 bg-neo-dark rounded-2xl border border-white/10 max-w-md w-full p-8 shadow-2xl">
+      <button id="webinar-popup-close" class="absolute top-4 right-4 text-white/40 hover:text-white transition-colors" aria-label="Fermer">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+
+      <p class="inline-block bg-neo-pink/15 text-neo-pink text-xs font-medium px-3 py-1 rounded-full mb-4">
+        Webinar gratuit — 16 avril 2026
+      </p>
+      <h2 class="text-xl font-black leading-tight mb-2">
+        <span class="font-playfair italic font-normal">Et si votre gymnase</span><br />
+        rapportait à votre club&nbsp;?
+      </h2>
+      <p class="text-white/60 text-sm mb-5">Jeudi 16 avril à 11h — 45 min en ligne. On vous montre comment, cas concrets à l'appui.</p>
+
+      <div id="webinar-popup-countdown" class="flex gap-3 mb-6 justify-center"></div>
+
+      <a href="/webinar" class="flex items-center justify-center gap-2 bg-neo-pink text-neo-dark font-bold px-6 py-3.5 rounded-full hover:bg-neo-pink/90 transition-colors w-full text-center">
+        Je m'inscris gratuitement
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <button id="webinar-popup-dismiss" class="mt-3 w-full text-white/40 text-xs hover:text-white/60 transition-colors py-1">
+        Non merci, pas maintenant
+      </button>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const STORAGE_KEY = 'neopro_webinar_popup_dismissed';
+      if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+      const popup = document.getElementById('webinar-popup');
+      const close = document.getElementById('webinar-popup-close');
+      const dismiss = document.getElementById('webinar-popup-dismiss');
+      const overlay = document.getElementById('webinar-popup-overlay');
+      const countdown = document.getElementById('webinar-popup-countdown');
+
+      function closePopup() {
+        sessionStorage.setItem(STORAGE_KEY, '1');
+        popup.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+        setTimeout(() => popup.classList.add('hidden'), 300);
+      }
+
+      // Compte à rebours
+      function updateCountdown() {
+        const target = new Date('2026-04-16T09:00:00Z');
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) { countdown.innerHTML = ''; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        countdown.innerHTML = [
+          { v: d, l: 'jours' },
+          { v: h, l: 'heures' },
+          { v: m, l: 'min' },
+        ].map(({ v, l }) => `
+          <div class="flex flex-col items-center bg-white/5 rounded-xl px-4 py-2 min-w-[56px]">
+            <span class="text-2xl font-black text-neo-pink leading-none">${String(v).padStart(2, '0')}</span>
+            <span class="text-white/40 text-xs mt-1">${l}</span>
+          </div>`).join('');
+      }
+
+      updateCountdown();
+
+      close.addEventListener('click', closePopup);
+      dismiss.addEventListener('click', closePopup);
+      overlay.addEventListener('click', closePopup);
+
+      setTimeout(() => {
+        popup.classList.remove('hidden');
+        popup.classList.add('flex');
+      }, 3000);
+    })();
+  </script>
 </BaseLayout>
