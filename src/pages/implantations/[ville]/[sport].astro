@@ -30,7 +30,7 @@ const breadcrumb = buildBreadcrumbJsonLd([
 const faq = buildFAQPageJsonLd([
   {
     question: `Combien coûte Neopro pour un club de ${sport.name} ${city.at} ?`,
-    answer: `Le tarif Neopro dépend de votre configuration (nombre d'écrans, taille du ${sport.venue}, services choisis). Nous proposons des formules adaptées aux clubs amateurs dès quelques centaines d'euros par mois. Demandez un devis gratuit pour obtenir une estimation précise pour votre club ${city.at}.`,
+    answer: `Le tarif Neopro dépend de votre configuration (nombre d'écrans, taille du ${sport.venue}, services choisis). Nous proposons des formules adaptées à tous les clubs, du niveau pro au régional, dès quelques dizaines d'euros par mois. Demandez un devis gratuit pour obtenir une estimation précise pour votre club ${city.at}.`,
   },
   {
     question: `Comment Neopro fonctionne dans un ${sport.venue} de ${sport.name} ?`,
@@ -44,8 +44,8 @@ const faq = buildFAQPageJsonLd([
 ---
 
 <BaseLayout
-  title={`Régie digitale ${sport.name} ${city.at} — Neopro`}
-  description={`Neopro équipe les clubs de ${sport.name} ${city.at} avec des écrans LED et solutions digitales. Valorisez vos partenaires, modernisez votre ${sport.venue}. Devis gratuit.`}
+  title={`Régie sport ${sport.name} ${city.at} — Neopro`}
+  description={`Neopro, la régie sport digitale clé en main, équipe les clubs de ${sport.name} ${city.at} avec des écrans LED et une régie digitale. Valorisez vos partenaires, modernisez votre ${sport.venue}. Devis gratuit.`}
   canonicalUrl={canonicalUrl}
   extraJsonLd={[breadcrumb, faq]}
   noAlternates
@@ -57,7 +57,7 @@ const faq = buildFAQPageJsonLd([
         {countryLabel} — {city.region}
       </p>
       <h1 class="text-3xl md:text-5xl font-black mb-6">
-        Régie digitale pour les clubs de {sport.name}<br />
+        Régie sport pour les clubs de {sport.name}<br />
         <span class="text-neo-green">{city.at}</span>
       </h1>
       <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
@@ -148,9 +148,9 @@ const faq = buildFAQPageJsonLd([
         pour l'installation et assure le suivi technique à distance.
       </p>
       <p class="text-neo-gray text-lg leading-relaxed">
-        Notre solution est pensée pour les clubs amateurs : pas besoin de compétences techniques,
-        une interface simple, et un support réactif. Rejoignez les clubs qui ont déjà modernisé
-        leur {sport.venue} avec Neopro.
+        Notre régie sport est pensée pour tous les clubs — du niveau pro au championnat régional :
+        pas besoin de compétences techniques, une interface simple et un support réactif.
+        Rejoignez les clubs qui ont déjà modernisé leur {sport.venue} avec Neopro.
       </p>
     </div>
   </section>
@@ -169,8 +169,8 @@ const faq = buildFAQPageJsonLd([
           </summary>
           <p class="mt-4 text-neo-gray leading-relaxed">
             Le tarif dépend de votre configuration (nombre d'écrans, taille du {sport.venue},
-            services choisis). Nous proposons des formules adaptées aux clubs amateurs dès quelques
-            centaines d'euros par mois.
+            services choisis). Nous proposons des formules adaptées à tous les clubs, du niveau
+            pro au régional, dès quelques dizaines d'euros par mois.
             <a href="/devis" class="text-neo-green font-semibold hover:underline"
               >Demandez un devis gratuit</a
             > pour obtenir une estimation précise.

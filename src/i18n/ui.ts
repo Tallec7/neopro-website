@@ -32,27 +32,27 @@ export const ui = {
     'cookie.accept': 'Accepter',
 
     // ── Home ───────────────────────────────────────────────────────
-    'home.title': 'Régie digitale pour clubs de sport amateurs — Nantes & France',
-    'home.description': "Neopro installe des écrans et une régie digitale clé en main dans les gymnases. Valorisez vos sponsors, animez vos matchs et pilotez tout depuis un smartphone. Dès 1 500 €/an.",
-    'home.hero.line1': 'On fait de votre écran,',
-    'home.hero.line2': 'un média interactif.',
+    'home.title': 'Neopro — Régie sport digitale pour clubs (pro, semi-pro, amateurs)',
+    'home.description': "Neopro est la régie sport digitale clé en main pour clubs : écrans, appli télécommande et contenus vidéo pour valoriser vos sponsors et animer vos matchs. Du club pro au club régional. Dès 79 €/mois.",
+    'home.hero.line1': 'La régie sport',
+    'home.hero.line2': 'de votre club.',
     'home.hero.line3': 'Tel un club pro.',
     'home.hero.cta': 'Découvrez la solution',
     'home.welcome.title1': 'Bienvenue ',
     'home.welcome.title2': 'au club.',
-    'home.welcome.text': 'Neopro propose une solution de régie digitale adaptée aux contraintes des clubs amateurs, dans le but de professionnaliser leur expérience match et de créer un nouvel espace publicitaire pour leurs partenaires.',
-    'home.regie.title': 'La régie digitale de votre club',
-    'home.regie.text': 'Comment ça marche ? A quoi ça sert ?',
+    'home.welcome.text': "Neopro est la régie sport digitale adaptée à tous les clubs — du club professionnel au club régional — pour professionnaliser l'expérience match et créer un nouvel espace publicitaire pour vos partenaires.",
+    'home.regie.title': 'La régie sport digitale de votre club',
+    'home.regie.text': 'Écrans, appli télécommande, contenus vidéo. Comment ça marche ?',
     'home.regie.cta': 'Découvrez la solution',
     'home.offres.title': 'Des offres adaptées à vos besoins',
     'home.offres.text': 'Finançable par vos partenaires. Clé en main.',
     'home.offres.cta': 'Découvrez les offres',
 
     // ── Solution ───────────────────────────────────────────────────
-    'solution.title': 'Solution régie digitale clé en main — Écran, appli et vidéos',
-    'solution.description': "Découvrez la solution Neopro : un boîtier plug & play, une appli télécommande et des vidéos pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.",
+    'solution.title': 'Régie sport digitale clé en main — Écrans, appli et vidéos',
+    'solution.description': "La solution Neopro : une régie sport digitale clé en main pour clubs. Boîtier plug & play, appli télécommande et contenus vidéo pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.",
     'solution.hero.label': 'LA SOLUTION',
-    'solution.hero.line1': 'La régie digitale de',
+    'solution.hero.line1': 'La régie sport de',
     'solution.hero.line2': 'votre club',
     'solution.hero.cta': 'Obtenez un devis',
     'solution.panels.label': 'A QUOI ÇA SERT ?',
@@ -63,8 +63,8 @@ export const ui = {
     'solution.offres.cta': 'Découvrez les offres',
 
     // ── Offres ─────────────────────────────────────────────────────
-    'offres.title': 'Offres régie digitale sport amateur — Dès 1 500 €/an',
-    'offres.description': "Comparez les 3 offres Neopro : Essentiel (1 500 €), Autonomie (2 100 €), Premium (3 000 €). Régie digitale clé en main, finançable par vos partenaires. Packages vidéo en option.",
+    'offres.title': 'Offres Régie sport digitale — Dès 79 €/mois',
+    'offres.description': "Découvrez les offres Neopro, la régie sport digitale clé en main pour clubs : Play (79 €/mois sans matériel), Club (149 €/mois), Pro (199 €/mois) et Premium (299 €/mois). Finançable par vos partenaires.",
     'offres.hero.label': 'LES OFFRES',
     'offres.hero.line1': 'Adaptées à',
     'offres.hero.line2': 'vos besoins',
@@ -86,8 +86,8 @@ export const ui = {
     'offres.financable.errorNetwork': 'Erreur de connexion. Réessayez plus tard.',
 
     // ── About ──────────────────────────────────────────────────────
-    'about.title': 'Qui est Neopro — Régie digitale pour clubs amateurs à Nantes',
-    'about.description': "Neopro professionnalise l'expérience match des clubs de sport amateurs avec des écrans et une régie digitale. Basée à Nantes, notre équipe accompagne les clubs partout en France.",
+    'about.title': 'Qui est Neopro — La régie sport digitale pour clubs (Nantes)',
+    'about.description': "Neopro est la régie sport digitale qui professionnalise l'expérience match des clubs — du niveau pro au régional — avec des écrans, une appli télécommande et des contenus vidéo. Basée à Nantes, nous accompagnons les clubs partout en France.",
     'about.heading': 'Qui sommes-nous ?',
     'about.financable.title': 'Finançable par vos partenaires',
     'about.financable.text': "Notre solution a pour but d'être financée par vos partenaires. Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.",
@@ -95,8 +95,8 @@ export const ui = {
     'about.faq.title': 'Questions fréquentes',
 
     // ── Devis ──────────────────────────────────────────────────────
-    'devis.title': 'Demande de devis régie digitale — Estimation gratuite en 2 min',
-    'devis.description': "Obtenez un devis personnalisé pour votre solution de régie digitale Neopro. Choisissez votre offre (Essentiel, Autonomie ou Premium) et recevez votre estimation par email.",
+    'devis.title': 'Demande de devis Régie sport — Estimation gratuite en 2 min',
+    'devis.description': "Obtenez un devis personnalisé pour votre régie sport digitale Neopro. Choisissez votre offre (Play, Club, Pro ou Premium) et recevez votre estimation par email.",
 
     // ── Contact Form ───────────────────────────────────────────────
     'contact.title': 'Intéressé ?',
@@ -175,17 +175,17 @@ export const ui = {
     'cookie.accept': 'Accept',
 
     // ── Home ───────────────────────────────────────────────────────
-    'home.title': 'Digital Display Solution for Amateur Sports Clubs',
-    'home.description': 'Neopro installs screens and a turnkey digital display solution in gyms. Showcase your sponsors, energize your games and control everything from your smartphone.',
-    'home.hero.line1': 'We turn your screen into',
-    'home.hero.line2': 'an interactive media.',
+    'home.title': 'Neopro — Sports Digital Signage for Clubs (Pro, Semi-Pro & Amateur)',
+    'home.description': 'Neopro is the turnkey sports digital signage for clubs: LED screens, a remote-control app and pro video content to showcase your sponsors and energize your games. From pro teams to regional clubs. From €79/month.',
+    'home.hero.line1': 'Your club\'s',
+    'home.hero.line2': 'sports signage.',
     'home.hero.line3': 'Just like the pros.',
     'home.hero.cta': 'Discover the solution',
     'home.welcome.title1': 'Welcome ',
     'home.welcome.title2': 'to the club.',
-    'home.welcome.text': 'Neopro provides a digital display solution tailored to amateur clubs, designed to professionalize the match-day experience and create a new advertising platform for their partners.',
-    'home.regie.title': 'Your club\'s digital display system',
-    'home.regie.text': 'How does it work? What is it for?',
+    'home.welcome.text': 'Neopro is the turnkey sports digital signage for every club — from pro teams to regional clubs — designed to professionalize the match-day experience and open a new advertising space for your partners.',
+    'home.regie.title': 'Your club\'s sports digital signage',
+    'home.regie.text': 'Screens, remote-control app, video content. How does it work?',
     'home.regie.cta': 'Discover the solution',
     'home.offres.title': 'Plans tailored to your needs',
     'home.offres.text': 'Funded by your sponsors. Turnkey.',
@@ -206,8 +206,8 @@ export const ui = {
     'solution.offres.cta': 'Discover the plans',
 
     // ── Offres ─────────────────────────────────────────────────────
-    'offres.title': 'Digital Display Pricing for Amateur Sports — From €1,500/yr',
-    'offres.description': 'Compare the 3 Neopro plans: Essential (€1,500), Autonomy (€2,100), Premium (€3,000). Turnkey digital display, funded by your sponsors. Video packages available.',
+    'offres.title': 'Sports Digital Signage Pricing — From €79/month',
+    'offres.description': 'Discover Neopro plans, the turnkey sports digital signage for clubs: Play (€79/mo, no hardware), Club (€149/mo), Pro (€199/mo) and Premium (€299/mo). Funded by your sponsors.',
     'offres.hero.label': 'PRICING',
     'offres.hero.line1': 'Tailored to',
     'offres.hero.line2': 'your needs',
@@ -229,8 +229,8 @@ export const ui = {
     'offres.financable.errorNetwork': 'Connection error. Please try again later.',
 
     // ── About ──────────────────────────────────────────────────────
-    'about.title': 'About Neopro — Digital Display for Amateur Sports Clubs',
-    'about.description': 'Neopro professionalizes the match-day experience of amateur sports clubs with screens and a digital display system. Based in Nantes, our team supports clubs across France.',
+    'about.title': 'About Neopro — Sports Digital Signage for Clubs',
+    'about.description': 'Neopro is the sports digital signage that professionalizes the match-day experience of clubs — from pro teams to regional clubs — with screens, a remote-control app and video content. Based in Nantes, our team supports clubs across France.',
     'about.heading': 'About Us',
     'about.financable.title': 'Funded by your sponsors',
     'about.financable.text': 'Our solution is designed to be funded by your sponsors. We have prepared an explanatory document ready to share with them.',
@@ -318,17 +318,17 @@ export const ui = {
     'cookie.accept': 'Aceptar',
 
     // ── Home ───────────────────────────────────────────────────────
-    'home.title': 'Solución de pantalla digital para clubes deportivos amateur',
-    'home.description': 'Neopro instala pantallas y una solución digital llave en mano en gimnasios. Destaca a tus patrocinadores, anima tus partidos y controla todo desde tu smartphone.',
-    'home.hero.line1': 'Convertimos tu pantalla en',
-    'home.hero.line2': 'un medio interactivo.',
+    'home.title': 'Neopro — Señalización digital deportiva para clubes (pro, semi-pro, amateur)',
+    'home.description': 'Neopro es la señalización digital deportiva llave en mano para clubes: pantallas, app de control remoto y contenidos de vídeo profesionales. De clubes profesionales a regionales. Desde 79 €/mes.',
+    'home.hero.line1': 'La regiduría deportiva',
+    'home.hero.line2': 'de tu club.',
     'home.hero.line3': 'Como un club profesional.',
     'home.hero.cta': 'Descubre la solución',
     'home.welcome.title1': 'Bienvenido ',
     'home.welcome.title2': 'al club.',
-    'home.welcome.text': 'Neopro ofrece una solución de pantalla digital adaptada a los clubes amateur, diseñada para profesionalizar la experiencia del día de partido y crear un nuevo espacio publicitario para sus patrocinadores.',
-    'home.regie.title': 'La pantalla digital de tu club',
-    'home.regie.text': '¿Cómo funciona? ¿Para qué sirve?',
+    'home.welcome.text': 'Neopro es la señalización digital deportiva adaptada a todos los clubes — del club profesional al club regional — para profesionalizar la experiencia del partido y crear un nuevo espacio publicitario para tus patrocinadores.',
+    'home.regie.title': 'La señalización deportiva de tu club',
+    'home.regie.text': 'Pantallas, app de control remoto, contenidos de vídeo. ¿Cómo funciona?',
     'home.regie.cta': 'Descubre la solución',
     'home.offres.title': 'Planes adaptados a tus necesidades',
     'home.offres.text': 'Financiable por tus patrocinadores. Llave en mano.',
@@ -349,8 +349,8 @@ export const ui = {
     'solution.offres.cta': 'Descubre los planes',
 
     // ── Offres ─────────────────────────────────────────────────────
-    'offres.title': 'Tarifas de pantalla digital para deporte amateur — Desde 1.500 €/año',
-    'offres.description': 'Compara los 3 planes Neopro: Esencial (1.500 €), Autonomía (2.100 €), Premium (3.000 €). Pantalla digital llave en mano, financiable por tus patrocinadores. Paquetes de vídeo opcionales.',
+    'offres.title': 'Tarifas de señalización digital deportiva — Desde 79 €/mes',
+    'offres.description': 'Descubre los planes de Neopro, la señalización digital deportiva llave en mano: Play (79 €/mes sin hardware), Club (149 €/mes), Pro (199 €/mes) y Premium (299 €/mes). Financiable por tus patrocinadores.',
     'offres.hero.label': 'TARIFAS',
     'offres.hero.line1': 'Adaptadas a',
     'offres.hero.line2': 'tus necesidades',
@@ -372,8 +372,8 @@ export const ui = {
     'offres.financable.errorNetwork': 'Error de conexión. Inténtalo más tarde.',
 
     // ── About ──────────────────────────────────────────────────────
-    'about.title': 'Quiénes somos — Pantalla digital para clubes amateur',
-    'about.description': 'Neopro profesionaliza la experiencia del día de partido de los clubes deportivos amateur con pantallas y un sistema digital. Con sede en Nantes, nuestro equipo acompaña a clubes en toda Francia.',
+    'about.title': 'Quiénes somos — Señalización digital deportiva para clubes',
+    'about.description': 'Neopro es la señalización digital deportiva que profesionaliza la experiencia del día de partido de los clubes — desde clubes profesionales hasta regionales — con pantallas, app de control remoto y contenidos de vídeo. Con sede en Nantes, acompañamos a clubes en toda Francia.',
     'about.heading': '¿Quiénes somos?',
     'about.financable.title': 'Financiable por tus patrocinadores',
     'about.financable.text': 'Nuestra solución está diseñada para ser financiada por tus patrocinadores. Hemos preparado un documento explicativo listo para compartir con ellos.',

@@ -11,6 +11,7 @@ const t = useTranslations(locale);
 
 const footerLinks = [
   { label: t('nav.solution'), href: localePath('/solution', locale) },
+  ...(locale === 'fr' ? [{ label: 'Régie sport', href: '/regie-sport' }] : []),
   { label: t('nav.offres'), href: localePath('/offres', locale) },
   { label: t('nav.blog'), href: localePath('/blog', locale) },
   { label: t('footer.implantations'), href: localePath('/implantations', locale) },

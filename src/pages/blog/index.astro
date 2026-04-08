@@ -6,8 +6,8 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 
-const title = 'Blog — Régie digitale, sponsors et sport';
-const description = "Conseils pratiques pour les clubs de sport : écrans LED, valorisation des sponsors, régie digitale et animation de matchs.";
+const title = 'Blog — Régie sport, sponsors et digitale';
+const description = "Conseils pratiques pour les clubs de sport : régie sport digitale, écrans LED, valorisation des sponsors et animation de matchs.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -20,7 +20,7 @@ const description = "Conseils pratiques pour les clubs de sport : écrans LED, v
         <span class="font-black">votre club</span>
       </h1>
       <p class="text-[18px] text-[rgba(255,255,255,0.7)] max-w-[600px]">
-        Guides pratiques, retours d'expérience et conseils pour professionnaliser votre club de sport amateur.
+        Guides pratiques, retours d'expérience et conseils pour professionnaliser votre club de sport — du niveau pro au régional.
       </p>
     </div>
   </section>

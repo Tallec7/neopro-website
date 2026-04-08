@@ -7,7 +7,13 @@ const imageEntries = [
   {
     page: '/',
     images: [
-      { loc: '/og-default.jpg', title: 'Neopro — Régie digitale pour clubs de sport' },
+      { loc: '/og-default.jpg', title: 'Neopro — Régie sport digitale pour clubs' },
+    ],
+  },
+  {
+    page: '/regie-sport',
+    images: [
+      { loc: '/og-default.jpg', title: 'Régie sport digitale Neopro — écrans et régie clé en main pour clubs' },
     ],
   },
   {
