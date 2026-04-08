@@ -142,15 +142,15 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
     <!-- Overlay -->
     <div id="webinar-popup-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <!-- Card -->
-    <div class="relative z-10 bg-neo-dark rounded-2xl border border-white/10 max-w-md w-full p-8 shadow-2xl">
+    <div class="relative z-10 rounded-2xl border border-white/10 max-w-md w-full p-8 shadow-2xl" style="background:#3D3036">
       <button id="webinar-popup-close" class="absolute top-4 right-4 text-white/40 hover:text-white transition-colors" aria-label="Fermer">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
 
-      <p class="inline-block bg-neo-pink/15 text-neo-pink text-xs font-medium px-3 py-1 rounded-full mb-4">
+      <p class="inline-block text-xs font-medium px-3 py-1 rounded-full mb-4" style="background:#FF9EC6;color:#3D3036">
         Webinar gratuit — 16 avril 2026
       </p>
-      <h2 class="text-xl font-black leading-tight mb-2">
+      <h2 class="text-xl font-black leading-tight mb-2 text-white">
         <span class="font-playfair italic font-normal">Et si votre gymnase</span><br />
         rapportait à votre club&nbsp;?
       </h2>
@@ -158,7 +158,7 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
 
       <div id="webinar-popup-countdown" class="flex gap-3 mb-6 justify-center"></div>
 
-      <a href="/webinar" class="flex items-center justify-center gap-2 bg-neo-pink text-neo-dark font-bold px-6 py-3.5 rounded-full hover:bg-neo-pink/90 transition-colors w-full text-center">
+      <a href="/webinar" class="flex items-center justify-center gap-2 font-bold px-6 py-3.5 rounded-full transition-colors w-full text-center" style="background:#FE6AA6;color:#3D3036">
         Je m'inscris gratuitement
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7" /></svg>
       </a>
@@ -199,9 +199,9 @@ const description = "Neopro installe des écrans et une régie digitale clé en 
           { v: h, l: 'heures' },
           { v: m, l: 'min' },
         ].map(({ v, l }) => `
-          <div class="flex flex-col items-center bg-white/5 rounded-xl px-4 py-2 min-w-[56px]">
-            <span class="text-2xl font-black text-neo-pink leading-none">${String(v).padStart(2, '0')}</span>
-            <span class="text-white/40 text-xs mt-1">${l}</span>
+          <div style="background:rgba(255,255,255,0.07);border-radius:12px;padding:8px 16px;min-width:56px;display:flex;flex-direction:column;align-items:center;">
+            <span style="font-size:24px;font-weight:900;color:#FE6AA6;line-height:1;">${String(v).padStart(2, '0')}</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;">${l}</span>
           </div>`).join('');
       }
 
