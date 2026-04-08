@@ -221,6 +221,35 @@ const faq = buildFAQPageJsonLd([
     </div>
   </section>
 
+  <!-- Autres sports -->
+  <section class="py-12 px-6 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-lg font-bold text-neo-dark mb-4">
+        Autres sports {city.at}
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {
+          sports
+            .filter((s) => s.slug !== sport.slug)
+            .map((s) => (
+              <a
+                href={`/implantations/${city.slug}/${s.slug}`}
+                class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-neo-dark text-sm font-medium hover:border-neo-green hover:text-neo-green transition-colors"
+              >
+                {s.name.charAt(0).toUpperCase() + s.name.slice(1)}
+              </a>
+            ))
+        }
+        <a
+          href={`/implantations/${city.slug}`}
+          class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-neo-gray text-sm hover:border-neo-green hover:text-neo-green transition-colors"
+        >
+          Tous les sports {city.at}
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Breadcrumb nav -->
   <nav class="py-4 px-6 bg-gray-50 text-sm text-neo-gray" aria-label="Fil d'Ariane">
     <div class="max-w-4xl mx-auto flex flex-wrap gap-1 items-center">
