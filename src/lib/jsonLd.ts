@@ -61,6 +61,32 @@ export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string 
   return JSON.stringify(schema);
 }
 
+interface WebSiteOptions {
+  name: string;
+  alternateName?: string;
+  url: string;
+}
+
+/**
+ * Génère le JSON-LD WebSite pour permettre à Google d'afficher
+ * le nom du site (plutôt que le domaine) dans les SERP.
+ * Voir : https://developers.google.com/search/docs/appearance/site-names
+ */
+export function buildWebSiteJsonLd(options: WebSiteOptions): string {
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: options.name,
+    url: options.url,
+  };
+
+  if (options.alternateName) {
+    schema.alternateName = options.alternateName;
+  }
+
+  return JSON.stringify(schema);
+}
+
 interface WebPageOptions {
   name: string;
   description: string;
