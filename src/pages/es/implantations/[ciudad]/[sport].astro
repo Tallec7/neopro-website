@@ -1,0 +1,234 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cities, sports } from '@/data/es/implantations';
+import { buildBreadcrumbJsonLd, buildFAQPageJsonLd } from '@/lib/jsonLd';
+
+export function getStaticPaths() {
+  return cities.flatMap((city) =>
+    sports.map((sport) => ({
+      params: { ciudad: city.slug, sport: sport.slug },
+      props: { city, sport },
+    })),
+  );
+}
+
+const { city, sport } = Astro.props;
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/es/implantations/${city.slug}/${sport.slug}`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Inicio', url: `${siteUrl}/es` },
+  { name: 'Ubicaciones', url: `${siteUrl}/es/implantations` },
+  { name: city.name, url: `${siteUrl}/es/implantations/${city.slug}` },
+  { name: sport.name, url: canonicalUrl },
+]);
+
+const faq = buildFAQPageJsonLd([
+  {
+    question: `\u00bfCu\u00e1nto cuesta Neopro para un club de ${sport.name} ${city.at}?`,
+    answer: `El precio depende de tu configuraci\u00f3n (n\u00famero de pantallas, tama\u00f1o del ${sport.venue}, servicios seleccionados). Ofrecemos paquetes para todos los clubes \u2014 desde el deporte profesional hasta las ligas regionales \u2014 a partir de unos pocos cientos de euros al mes. Solicita un presupuesto gratuito para tu club ${city.at}.`,
+  },
+  {
+    question: `\u00bfC\u00f3mo funciona Neopro en un ${sport.venue} de ${sport.name}?`,
+    answer: `Neopro instala pantallas LED en tu ${sport.venue} y gestiona la visualizaci\u00f3n de forma remota a trav\u00e9s de nuestra plataforma. T\u00fa eliges los contenidos (patrocinadores, marcador, noticias del club) y nosotros nos encargamos de la emisi\u00f3n. La instalaci\u00f3n suele completarse en menos de un d\u00eda.`,
+  },
+  {
+    question: `\u00bfEst\u00e1 Neopro disponible para clubes de ${sport.name} en ${city.region}?`,
+    answer: `S\u00ed, Neopro est\u00e1 disponible en toda Espa\u00f1a. Nuestro equipo se desplaza ${city.at} y a toda la regi\u00f3n de ${city.region} para la instalaci\u00f3n. Las actualizaciones de contenido y el soporte t\u00e9cnico se realizan de forma remota.`,
+  },
+]);
+---
+
+<BaseLayout
+  title={`${sport.name} ${city.at} \u2014 Soluci\u00f3n digital Neopro para clubes`}
+  description={`Neopro equipa a clubes de ${sport.name} ${city.at} con pantallas LED y se\u00f1alizaci\u00f3n digital. Da visibilidad a tus patrocinadores y moderniza tu ${sport.venue}. Presupuesto gratuito.`}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, faq]}
+  noAlternates
+  locale="es"
+>
+  <!-- Hero -->
+  <section class="bg-neo-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neo-green text-sm font-semibold uppercase tracking-widest mb-3">
+        Espa\u00f1a \u2014 {city.region}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-black mb-6">
+        Soluci\u00f3n digital para clubes de {sport.name}<br />
+        <span class="text-neo-green">{city.at}</span>
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        {sport.description}
+      </p>
+      <a
+        href="/es/presupuesto"
+        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+      >
+        Presupuesto gratuito para tu club
+      </a>
+    </div>
+  </section>
+
+  <!-- Casos de uso -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8 text-center">
+        Lo que Neopro aporta a tu club de {sport.name}
+      </h2>
+      <ul class="grid md:grid-cols-2 gap-4">
+        {sport.useCases.map((useCase) => (
+          <li class="flex items-start gap-3 p-5 bg-gray-50 rounded-xl">
+            <span class="text-neo-green text-xl mt-0.5 flex-shrink-0">\u2713</span>
+            <span class="text-neo-dark">{useCase}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- C\u00f3mo funciona -->
+  <section class="py-16 px-6 bg-neo-dark-bg text-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black mb-10 text-center">\u00bfC\u00f3mo funciona?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4">1</div>
+          <h3 class="font-bold mb-2">Consulta gratuita</h3>
+          <p class="text-gray-300 text-sm">
+            Analizamos tu {sport.venue} y tus necesidades para proponerte la soluci\u00f3n m\u00e1s adecuada.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4">2</div>
+          <h3 class="font-bold mb-2">Instalaci\u00f3n r\u00e1pida</h3>
+          <p class="text-gray-300 text-sm">
+            Nuestros t\u00e9cnicos instalan las pantallas en un d\u00eda, sin interrumpir la actividad deportiva.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4">3</div>
+          <h3 class="font-bold mb-2">Gesti\u00f3n remota</h3>
+          <p class="text-gray-300 text-sm">
+            Gestiona tus contenidos desde nuestra plataforma. Nosotros nos encargamos del resto.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secci\u00f3n local -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-6">
+        Neopro {city.at} y en {city.region}
+      </h2>
+      {city.localInfo ? (
+        <p class="text-neo-gray text-lg leading-relaxed mb-4">{city.localInfo}</p>
+      ) : null}
+      <p class="text-neo-gray text-lg leading-relaxed mb-4">
+        Neopro acompa\u00f1a a los clubes de {sport.name} {city.at} y en toda la regi\u00f3n de {city.region}.
+        Ya sea en el centro de la ciudad o en los municipios cercanos, nuestro equipo se desplaza para la instalaci\u00f3n y ofrece soporte t\u00e9cnico de forma remota.
+      </p>
+      <p class="text-neo-gray text-lg leading-relaxed">
+        Nuestra soluci\u00f3n est\u00e1 dise\u00f1ada para todos los clubes, del profesional al amateur: sin necesidad de conocimientos t\u00e9cnicos, una interfaz intuitiva y un soporte reactivo. \u00danete a los clubes que ya han modernizado su {sport.venue} con Neopro.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-10 text-center">
+        Preguntas frecuentes
+      </h2>
+      <div class="space-y-4">
+        <details class="bg-white rounded-xl p-6 shadow-sm group">
+          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
+            \u00bfCu\u00e1nto cuesta Neopro para un club de {sport.name} {city.at}?
+            <span class="text-neo-green ml-4">+</span>
+          </summary>
+          <p class="mt-4 text-neo-gray leading-relaxed">
+            El precio depende de tu configuraci\u00f3n (n\u00famero de pantallas, tama\u00f1o del {sport.venue}, servicios seleccionados). Ofrecemos paquetes para todos los clubes, a partir de unos pocos cientos de euros al mes.
+            <a href="/es/presupuesto" class="text-neo-green font-semibold hover:underline">Solicita un presupuesto gratuito</a> para obtener una estimaci\u00f3n precisa.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl p-6 shadow-sm">
+          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
+            \u00bfC\u00f3mo funciona Neopro en un {sport.venue} de {sport.name}?
+            <span class="text-neo-green ml-4">+</span>
+          </summary>
+          <p class="mt-4 text-neo-gray leading-relaxed">
+            Neopro instala pantallas LED en tu {sport.venue} y gestiona la visualizaci\u00f3n de forma remota a trav\u00e9s de nuestra plataforma. T\u00fa eliges los contenidos (patrocinadores, marcador, noticias del club) y nosotros nos encargamos de la emisi\u00f3n. La instalaci\u00f3n suele completarse en menos de un d\u00eda.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl p-6 shadow-sm">
+          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
+            \u00bfEst\u00e1 Neopro disponible para clubes de {sport.name} en {city.region}?
+            <span class="text-neo-green ml-4">+</span>
+          </summary>
+          <p class="mt-4 text-neo-gray leading-relaxed">
+            S\u00ed, Neopro est\u00e1 disponible en toda Espa\u00f1a. Nuestro equipo se desplaza {city.at} y a toda la regi\u00f3n de {city.region} para la instalaci\u00f3n. Las actualizaciones de contenido y el soporte t\u00e9cnico se realizan de forma remota.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black mb-4">
+        \u00bfListo para modernizar tu club de {sport.name} {city.at}?
+      </h2>
+      <p class="text-gray-300 mb-8">
+        Obt\u00e9n un presupuesto personalizado en pocos minutos. Respuesta en menos de 48 horas.
+      </p>
+      <a
+        href="/es/presupuesto"
+        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors text-lg"
+      >
+        Solicitar mi presupuesto gratuito
+      </a>
+    </div>
+  </section>
+
+  <!-- Otros deportes -->
+  <section class="py-12 px-6 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-lg font-bold text-neo-dark mb-4">
+        Otros deportes {city.at}
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {sports.filter((s) => s.slug !== sport.slug).map((s) => (
+          <a
+            href={`/es/implantations/${city.slug}/${s.slug}`}
+            class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-neo-dark text-sm font-medium hover:border-neo-green hover:text-neo-green transition-colors"
+          >
+            {s.name}
+          </a>
+        ))}
+        <a
+          href={`/es/implantations/${city.slug}`}
+          class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-neo-gray text-sm hover:border-neo-green hover:text-neo-green transition-colors"
+        >
+          Todos los deportes {city.at}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb nav -->
+  <nav class="py-4 px-6 bg-gray-50 text-sm text-neo-gray" aria-label="Navegaci\u00f3n de migas de pan">
+    <div class="max-w-4xl mx-auto flex flex-wrap gap-1 items-center">
+      <a href="/es/" class="hover:text-neo-dark">Inicio</a>
+      <span>/</span>
+      <a href="/es/implantations" class="hover:text-neo-dark">Ubicaciones</a>
+      <span>/</span>
+      <a href={`/es/implantations/${city.slug}`} class="hover:text-neo-dark">{city.name}</a>
+      <span>/</span>
+      <span class="text-neo-dark font-medium">{sport.name}</span>
+    </div>
+  </nav>
+</BaseLayout>

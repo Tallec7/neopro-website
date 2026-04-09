@@ -1,0 +1,115 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cities, sports } from '@/data/es/implantations';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { ciudad: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/es/implantations/${city.slug}`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Inicio', url: `${siteUrl}/es` },
+  { name: 'Ubicaciones', url: `${siteUrl}/es/implantations` },
+  { name: city.name, url: canonicalUrl },
+]);
+---
+
+<BaseLayout
+  title={`Se\u00f1alizaci\u00f3n digital deportiva ${city.at} \u2014 Neopro, pantallas y producci\u00f3n para clubes`}
+  description={`Neopro equipa a clubes deportivos ${city.at} con pantallas LED y una soluci\u00f3n de se\u00f1alizaci\u00f3n digital llave en mano. Balonmano, baloncesto, voleibol y m\u00e1s. Presupuesto gratuito.`}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={breadcrumb}
+  noAlternates
+  locale="es"
+>
+  <!-- Hero -->
+  <section class="bg-neo-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neo-green text-sm font-semibold uppercase tracking-widest mb-3">
+        Espa\u00f1a \u2014 {city.region}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-black mb-6">
+        Se\u00f1alizaci\u00f3n digital para clubes<br />
+        <span class="text-neo-green">{city.at}</span>
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        Neopro equipa a clubes deportivos {city.at} \u2014 desde el deporte profesional hasta las ligas regionales \u2014 con pantallas LED y una soluci\u00f3n de se\u00f1alizaci\u00f3n digital llave en mano para dar visibilidad a los patrocinadores y modernizar la experiencia del d\u00eda de partido.
+      </p>
+    </div>
+  </section>
+
+  <!-- Deportes -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-4 text-center">
+        Elige tu deporte
+      </h2>
+      <p class="text-neo-gray text-center mb-10">
+        Neopro ofrece soluciones adaptadas a cada deporte {city.at}.
+      </p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {sports.map((sport) => (
+          <a
+            href={`/es/implantations/${city.slug}/${sport.slug}`}
+            class="group block p-6 bg-gray-50 rounded-xl hover:bg-neo-green transition-all"
+          >
+            <h3 class="font-black text-neo-dark text-lg mb-2">
+              {sport.name}
+            </h3>
+            <p class="text-sm text-neo-gray group-hover:text-neo-dark transition-colors">
+              Soluciones para {sport.venue}s {city.at}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qu\u00e9 Neopro -->
+  <section class="py-16 px-6 bg-neo-dark-bg text-white">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl font-black mb-4">
+          \u00bfPor qu\u00e9 Neopro {city.at}?
+        </h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">\u2713</span>
+            <span>Instalaci\u00f3n in situ {city.at} y en toda la regi\u00f3n de {city.region}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">\u2713</span>
+            <span>Actualizaci\u00f3n de contenidos a distancia sin conocimientos t\u00e9cnicos</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">\u2713</span>
+            <span>Soluci\u00f3n llave en mano para todos los clubes, del profesional al amateur</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">\u2713</span>
+            <span>R\u00e1pido retorno de la inversi\u00f3n gracias a la visibilidad de patrocinadores</span>
+          </li>
+        </ul>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-black text-neo-green mb-2">+{sports.length} deportes</p>
+        <p class="text-gray-300">disponibles {city.at}</p>
+        <a
+          href="/es/presupuesto"
+          class="mt-6 inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        >
+          Solicitar presupuesto gratuito
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
