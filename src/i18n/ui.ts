@@ -23,6 +23,9 @@ export const ui = {
     'nav.regie': 'Régie sport',
 
     // ── Footer ─────────────────────────────────────────────────────
+    'footer.col.produit': 'Produit',
+    'footer.col.ressources': 'Ressources',
+    'footer.col.legal': 'Légal',
     'footer.implantations': 'Implantations',
     'footer.devis': 'Obtenez un devis',
     'footer.contact': 'Nous contacter',
@@ -349,6 +352,9 @@ export const ui = {
     'nav.regie': 'Sports Signage',
 
     // ── Footer ─────────────────────────────────────────────────────
+    'footer.col.produit': 'Product',
+    'footer.col.ressources': 'Resources',
+    'footer.col.legal': 'Legal',
     'footer.implantations': 'Locations',
     'footer.devis': 'Get a Quote',
     'footer.contact': 'Contact Us',
@@ -675,6 +681,9 @@ export const ui = {
     'nav.regie': 'Producción deportiva',
 
     // ── Footer ─────────────────────────────────────────────────────
+    'footer.col.produit': 'Producto',
+    'footer.col.ressources': 'Recursos',
+    'footer.col.legal': 'Legal',
     'footer.implantations': 'Ubicaciones',
     'footer.devis': 'Solicitar presupuesto',
     'footer.contact': 'Contacto',
@@ -1001,6 +1010,9 @@ export const ui = {
     'nav.regie': 'Sport-Regie',
 
     // ── Footer ─────────────────────────────────────────────────────
+    'footer.col.produit': 'Produkt',
+    'footer.col.ressources': 'Ressourcen',
+    'footer.col.legal': 'Rechtliches',
     'footer.implantations': 'Standorte',
     'footer.devis': 'Angebot anfordern',
     'footer.contact': 'Kontakt',
@@ -1327,6 +1339,9 @@ export const ui = {
     'nav.regie': 'Sport-regi',
 
     // ── Footer ─────────────────────────────────────────────────────
+    'footer.col.produit': 'Produkt',
+    'footer.col.ressources': 'Ressourcer',
+    'footer.col.legal': 'Juridisk',
     'footer.implantations': 'Lokationer',
     'footer.devis': 'Få et tilbud',
     'footer.contact': 'Kontakt os',
