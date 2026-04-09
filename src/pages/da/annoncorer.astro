@@ -9,15 +9,15 @@ import {
   buildServiceJsonLd,
 } from '@/lib/jsonLd';
 
-const locale = 'es';
+const locale = 'da';
 const t = useTranslations(locale);
 
 const siteUrl = 'https://www.neopro-communication.fr';
-const canonicalUrl = `${siteUrl}/es/annonceurs`;
+const canonicalUrl = `${siteUrl}/da/annoncorer`;
 
 const breadcrumb = buildBreadcrumbJsonLd([
-  { name: 'Inicio', url: `${siteUrl}/es` },
-  { name: 'Anunciantes', url: canonicalUrl },
+  { name: 'Forside', url: `${siteUrl}/da` },
+  { name: 'Annoncører', url: canonicalUrl },
 ]);
 
 const service = buildServiceJsonLd({

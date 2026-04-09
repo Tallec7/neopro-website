@@ -50,13 +50,32 @@ export function getPathWithoutLocale(pathname: string): string {
 /**
  * Route mapping for pages with different slugs between locales.
  */
+const aboutRoute = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' };
+const annonceurRoute = { fr: '/annonceurs', en: '/advertisers', es: '/anunciantes', de: '/werbetreibende', da: '/annoncorer' };
+
 const routeMap: Record<string, Record<Locale, string>> = {
-  'qui-sommes-nous': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
-  'about': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
-  'sobre-nosotros': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
-  'ueber-uns': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
-  'om-os': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
+  'qui-sommes-nous': aboutRoute,
+  'about': aboutRoute,
+  'sobre-nosotros': aboutRoute,
+  'ueber-uns': aboutRoute,
+  'om-os': aboutRoute,
+  'annonceurs': annonceurRoute,
+  'advertisers': annonceurRoute,
+  'anunciantes': annonceurRoute,
+  'werbetreibende': annonceurRoute,
+  'annoncorer': annonceurRoute,
 };
+
+/**
+ * Build a locale-aware path from a FR slug.
+ * localeRoutePath('/annonceurs', 'en') → '/en/advertisers'
+ */
+export function localeRoutePath(frPath: string, locale: Locale): string {
+  const slug = frPath.replace(/^\/|\/$/g, '').split('/')[0];
+  const mapped = routeMap[slug];
+  if (mapped) return localePath(mapped[locale], locale);
+  return localePath(frPath, locale);
+}
 
 /**
  * Get the URL for a specific locale, handling slug translation.
