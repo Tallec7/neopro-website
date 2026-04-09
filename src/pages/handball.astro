@@ -1,0 +1,332 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import {
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+  buildServiceJsonLd,
+} from '@/lib/jsonLd';
+
+// ── SEO ──────────────────────────────────────────────────────────
+const title = 'Régie sport handball — Écrans & affichage digital pour clubs | Neopro';
+const description = "Solution de régie sport digitale pour clubs de handball : écran LED en gymnase, score en temps réel, spots sponsors animés, pilotage depuis un smartphone. Dès 79 €/mois.";
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/handball`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Handball', url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: 'Régie sport digitale handball — Neopro',
+  description:
+    "Solution de régie sport digitale pour clubs de handball : écran LED en gymnase, scoring digital, spots sponsors animés, animations mi-temps, pilotage depuis un smartphone. Du club pro au régional.",
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: ['France', 'Belgique', 'Suisse'],
+  serviceType: 'Régie sport digitale handball',
+});
+
+const faq = buildFAQPageJsonLd([
+  {
+    question: "L'écran Neopro peut-il afficher le score en temps réel pendant un match de handball ?",
+    answer:
+      "Oui. L'appli télécommande Neopro permet de mettre à jour le score en un tap pendant le match. Le score s'affiche en plein écran entre les séquences sponsors et peut rester affiché en incrustation permanente selon vos préférences. Tout est piloté par un seul bénévole depuis son smartphone.",
+  },
+  {
+    question: "Comment Neopro gère-t-il les mi-temps et les temps-morts en handball ?",
+    answer:
+      "Les mi-temps de 30 minutes et les temps-morts d'équipe (3 par mi-temps) sont les créneaux idéaux pour diffuser les spots sponsors. L'appli vous permet de lancer une playlist de spots d'un simple geste dès le coup de sifflet. Pendant les temps-morts de 60 secondes, un spot court ou une animation de votre club remplit l'écran automatiquement.",
+  },
+  {
+    question: "Le système fonctionne-t-il dans un gymnase sans connexion internet ?",
+    answer:
+      "Oui, c'est même l'un des avantages majeurs. Le boîtier Neopro crée son propre réseau wifi local indépendant d'internet. Votre smartphone s'y connecte directement pour piloter l'écran. C'est la solution parfaite pour les gymnases municipaux sans wifi — un cas très fréquent dans le handball amateur et semi-pro.",
+  },
+  {
+    question: "Combien de sponsors peut-on afficher pendant un match de handball ?",
+    answer:
+      "Il n'y a pas de limite technique. En pratique, un match de handball avec ses 2 mi-temps de 30 minutes, ses temps-morts et son échauffement offre largement le temps de diffuser 10 à 20 spots sponsors différents en rotation. Plus vous avez de sponsors, plus votre investissement se rentabilise rapidement.",
+  },
+]);
+
+const features = [
+  {
+    icon: '🏆',
+    title: 'Scoring digital en temps réel',
+    description:
+      "Affichez le score, le temps de jeu et la période sur l'écran LED. Mise à jour en un tap depuis l'appli smartphone — un seul bénévole suffit.",
+  },
+  {
+    icon: '📺',
+    title: 'Spots sponsors animés',
+    description:
+      "Diffusez les logos et vidéos de vos partenaires en rotation pendant les mi-temps, les temps-morts et l'avant-match. Valorisation mesurée et reporting automatique.",
+  },
+  {
+    icon: '🎬',
+    title: 'Animations de mi-temps',
+    description:
+      "Remplissez les 15 minutes de pause avec des contenus engageants : jeux pour le public, présentation des sponsors, replay des moments forts.",
+  },
+  {
+    icon: '📣',
+    title: 'Annonces joueurs et équipes',
+    description:
+      "Affichez la composition des équipes, les entrées de joueurs et les changements en cours de match. Templates personnalisés aux couleurs de votre club.",
+  },
+  {
+    icon: '📊',
+    title: 'Reporting sponsors automatique',
+    description:
+      "Prouvez le ROI à vos partenaires : nombre de diffusions, durée d'exposition, audience estimée. De quoi renouveler et augmenter vos contrats sponsors.",
+  },
+  {
+    icon: '📡',
+    title: 'Fonctionne sans wifi',
+    description:
+      "Le boîtier Neopro crée son propre réseau local dans le gymnase. Aucune connexion internet requise — idéal pour les salles municipales sans infrastructure réseau.",
+  },
+];
+
+const avantages = [
+  {
+    title: '2 mi-temps de 30 minutes',
+    description:
+      "Chaque pause de 15 minutes entre les mi-temps est un créneau premium pour diffuser les spots sponsors — bien plus long qu'un simple temps-mort.",
+  },
+  {
+    title: 'Public fidèle et passionné',
+    description:
+      "Le handball en France bénéficie d'un public régulier et engagé. Les spectateurs reviennent chaque semaine : vos sponsors touchent la même audience de façon répétée.",
+  },
+  {
+    title: 'Gymnase = écran visible par tous',
+    description:
+      "L'espace fermé du gymnase garantit que l'écran est visible de chaque spectateur. Pas de distance, pas de météo : une visibilité optimale à chaque match.",
+  },
+  {
+    title: 'Temps-morts = créneaux sponsors',
+    description:
+      "Avec 3 temps-morts par équipe et par mi-temps, chaque match offre jusqu'à 12 créneaux de 60 secondes supplémentaires pour vos annonceurs.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, service, faq]}
+  noAlternates
+>
+  <!-- Hero -->
+  <section class="relative bg-[#101828] text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#101828] via-[#101828] to-[#1a2332]"></div>
+    <div class="relative max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[100px] md:py-[140px]">
+      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+        Régie sport handball
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
+        <span class="font-playfair italic font-normal">La régie digitale</span> pensée<br />
+        pour le <span class="text-[#81e3bc]">handball</span>.
+      </h1>
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[40px]">
+        Écran LED en gymnase, score en temps réel, spots sponsors pendant les
+        mi-temps et les temps-morts, pilotage depuis votre smartphone.
+        Tout ce qu'il faut pour professionnaliser vos matchs de handball
+        et valoriser vos partenaires — dès 79&nbsp;€/mois.
+      </p>
+      <div class="flex flex-wrap gap-[16px]">
+        <Button href="/demo" variant="green" arrow>Demander une démo</Button>
+        <Button href="/solution" variant="white" arrow>Découvrir la solution</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi le handball est idéal -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Le match parfait
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          Pourquoi le <span class="font-playfair italic">handball</span> est idéal pour la régie digitale
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+        {avantages.map((item) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] border border-gray-200">
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{item.title}</h3>
+            <p class="text-[16px] text-[#4a5565] leading-[1.6]">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce que Neopro apporte -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Ce que Neopro apporte à votre club
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">6 fonctionnalités</span> conçues pour le handball.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        {features.map((feat) => (
+          <div class="bg-white rounded-[20px] p-[30px] border border-gray-200 hover:border-neo-green-dark transition-colors">
+            <span class="text-[32px] mb-[16px] block">{feat.icon}</span>
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{feat.title}</h3>
+            <p class="text-[16px] text-[#4a5565] leading-[1.6]">{feat.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas concret -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        Cas concret
+      </p>
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">Avant / Après</span> — un club de N2&nbsp;handball
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[40px]">
+        <div class="bg-[#fef2f2] rounded-[20px] p-[30px]">
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[20px]">Avant Neopro</h3>
+          <ul class="space-y-[12px] text-[16px] text-[#4a5565] leading-[1.6]">
+            <li>Score affiché sur un tableau manuel ou une feuille A4</li>
+            <li>Mi-temps silencieuse, public qui sort fumer</li>
+            <li>Sponsors sur des bâches statiques que personne ne regarde</li>
+            <li>Aucune donnée pour justifier le tarif sponsor</li>
+            <li>Ambiance « gymnase municipal » malgré le niveau sportif</li>
+          </ul>
+        </div>
+        <div class="bg-[#f0fdf4] rounded-[20px] p-[30px]">
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[20px]">Avec Neopro</h3>
+          <ul class="space-y-[12px] text-[16px] text-[#4a5565] leading-[1.6]">
+            <li>Score digital visible de partout, mis à jour en un tap</li>
+            <li>Mi-temps animée : spots sponsors, jeux, contenus club</li>
+            <li>Spots vidéo sponsors en rotation sur écran LED</li>
+            <li>Reporting automatique envoyé aux partenaires</li>
+            <li>Ambiance professionnelle qui fidélise le public</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Les offres -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#101828] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px]">
+        <span class="font-playfair italic font-normal">Les offres</span> pour votre club de handball
+      </h2>
+      <p class="text-[18px] text-white/70 max-w-[600px] mx-auto mb-[40px] leading-relaxed">
+        Quatre formules adaptées à votre niveau et à vos ambitions — de 79&nbsp;€/mois
+        à 299&nbsp;€/mois. Toutes finançables par vos sponsors.
+      </p>
+      <div class="flex flex-wrap justify-center gap-[16px]">
+        <Button href="/offres" variant="green" arrow>Voir les offres</Button>
+        <Button href="/demo" variant="white" arrow>Demander une démo</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[800px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">Questions fréquentes</span> — handball
+      </h2>
+      <div class="space-y-[16px]">
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            L'écran Neopro peut-il afficher le score en temps réel pendant un match de handball ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Oui. L'appli télécommande Neopro permet de mettre à jour le score en un tap
+            pendant le match. Le score s'affiche en plein écran entre les séquences sponsors
+            et peut rester affiché en incrustation permanente selon vos préférences.
+            Tout est piloté par un seul bénévole depuis son smartphone.
+          </p>
+        </details>
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            Comment Neopro gère-t-il les mi-temps et les temps-morts en handball ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Les mi-temps de 30 minutes et les temps-morts d'équipe sont les créneaux idéaux
+            pour diffuser les spots sponsors. L'appli vous permet de lancer une playlist
+            de spots d'un simple geste dès le coup de sifflet. Pendant les temps-morts
+            de 60 secondes, un spot court ou une animation de votre club remplit l'écran automatiquement.
+          </p>
+        </details>
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            Le système fonctionne-t-il dans un gymnase sans connexion internet ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Oui, c'est même l'un des avantages majeurs. Le boîtier Neopro crée son propre réseau
+            wifi local indépendant d'internet. Votre smartphone s'y connecte directement pour
+            piloter l'écran. Idéal pour les gymnases municipaux sans wifi.
+          </p>
+        </details>
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            Combien de sponsors peut-on afficher pendant un match de handball ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Il n'y a pas de limite technique. En pratique, un match de handball avec ses
+            2 mi-temps de 30 minutes, ses temps-morts et son échauffement offre largement
+            le temps de diffuser 10 à 20 spots sponsors différents en rotation.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liens internes SEO -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[40px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <p class="text-[14px] text-[#4a5565] leading-[1.8]">
+        En savoir plus :
+        <a href="/solution" class="text-neo-green-dark underline">La solution Neopro</a> ·
+        <a href="/offres" class="text-neo-green-dark underline">Nos offres</a> ·
+        <a href="/annonceurs" class="text-neo-green-dark underline">Annonceurs</a> ·
+        <a href="/blog/experience-match-day-clubs-sport" class="text-neo-green-dark underline">Expérience match day</a> ·
+        <a href="/blog/regie-sport-guide-complet" class="text-neo-green-dark underline">Guide complet régie sport</a> ·
+        <a href="/implantations" class="text-neo-green-dark underline">Nos implantations</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[700px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[16px] text-center">
+        <span class="font-playfair italic font-normal">Contactez-nous</span>
+      </h2>
+      <p class="text-[18px] text-[#4a5565] text-center mb-[40px]">
+        Une question sur la régie sport pour votre club de handball ?
+        Remplissez le formulaire, on vous répond sous 24h.
+      </p>
+      <ContactForm client:visible />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,12 +1,3 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import DevisForm from '@/components/DevisForm.tsx';
-import { useTranslations } from '@/i18n/utils';
-
-const locale = 'de';
-const t = useTranslations(locale);
+return Astro.redirect('/de/demo', 301);
 ---
-
-<BaseLayout title={t('devis.title')} description={t('devis.description')} locale={locale}>
-  <DevisForm locale="de" client:load />
-</BaseLayout>

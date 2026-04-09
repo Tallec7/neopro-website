@@ -1,0 +1,216 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/demo`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Découvrir la solution', url: canonicalUrl },
+]);
+
+const title = 'Découvrir la solution Neopro — Régie sport digitale pour clubs';
+const description = "Découvrez comment Neopro transforme l'expérience match-day de votre club : affichage dynamique, valorisation des sponsors, pilotage depuis un smartphone. Demandez une présentation personnalisée.";
+
+const steps = [
+  {
+    number: '01',
+    title: 'Avant Neopro',
+    subtitle: "L'expérience match-day classique",
+    items: [
+      'Logos sponsors imprimés sur bâches ou PowerPoint figé',
+      'Tableau de score manuel ou électronique basique',
+      'Aucune animation, aucune ambiance visuelle',
+      'Sponsors frustrés : pas de données, pas de ROI mesurable',
+      'Le gymnase ne génère aucun revenu supplémentaire',
+    ],
+    variant: 'before' as const,
+  },
+  {
+    number: '02',
+    title: 'Avec Neopro',
+    subtitle: "L'expérience match-day professionnelle",
+    items: [
+      'Affichage dynamique : spots vidéo sponsors en rotation automatique',
+      'Score digital en temps réel piloté depuis votre smartphone',
+      'Animations pro : entrée des équipes, célébrations, mi-temps',
+      'Reporting automatique pour prouver le ROI à vos partenaires',
+      "L'écran devient un média qui finance votre club",
+    ],
+    variant: 'after' as const,
+  },
+];
+
+const chiffres = [
+  { value: '90 min', label: "d'attention captive par match" },
+  { value: '200-500', label: 'spectateurs par rencontre' },
+  { value: '79 €', label: '/mois — le prix de départ' },
+  { value: '0', label: 'wifi nécessaire dans le gymnase' },
+];
+
+const fonctionnalites = [
+  {
+    title: 'Affichage dynamique match-day',
+    description: "Diffusez les spots de vos sponsors, le score en temps réel, les animations d'avant-match et de mi-temps sur un écran LED professionnel.",
+  },
+  {
+    title: 'Pilotage smartphone',
+    description: "Un seul bénévole suffit. L'appli télécommande contrôle tout : score, animations, sponsors, musique. Fonctionne sans wifi — le boîtier crée son propre réseau.",
+  },
+  {
+    title: 'Valorisation mesurée des sponsors',
+    description: "Reporting automatique : nombre de diffusions, durée d'exposition, audience estimée. Vos sponsors reçoivent des preuves concrètes de visibilité.",
+  },
+  {
+    title: 'Contenus vidéo professionnels',
+    description: "Templates personnalisés aux couleurs de votre club : entrée des équipes, célébrations, spots sponsors animés. Le tout produit par notre équipe.",
+  },
+  {
+    title: 'Expérience match-day complète',
+    description: "Musique d'ambiance, annonces, countdown, animations de but ou point marqué. Transformez chaque match en événement pour votre public.",
+  },
+  {
+    title: 'Installation plug & play',
+    description: "Le boîtier se branche sur votre écran en HDMI. Pas d'installation complexe, pas de wifi à configurer, pas de technicien requis.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={breadcrumb}
+>
+  <!-- Hero -->
+  <section class="bg-[#2f3935] text-white">
+    <div class="max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[80px] md:py-[120px]">
+      <p class="text-[14px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+        Découvrir la solution
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
+        <span class="font-playfair italic font-normal">Transformez</span> votre gymnase<br />
+        en <span class="text-[#81e3bc]">média interactif</span>.
+      </h1>
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[40px]">
+        Découvrez comment Neopro professionnalise l'expérience match-day de votre club
+        et transforme votre écran en nouvel espace publicitaire — financé par vos sponsors.
+      </p>
+      <div class="flex flex-wrap gap-[16px]">
+        <Button href="#contact" variant="green" arrow>Planifier une présentation</Button>
+        <Button href="/offres" variant="white" arrow>Voir les offres</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chiffres clés -->
+  <section class="bg-white py-[60px] md:py-[80px] px-[20px] md:px-[40px] lg:px-[60px]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[20px]">
+        {chiffres.map((c) => (
+          <div class="text-center p-[24px]">
+            <p class="text-[36px] md:text-[48px] font-black text-[#101828] leading-none">{c.value}</p>
+            <p class="text-[14px] md:text-[16px] text-neo-gray mt-[8px]">{c.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Avant / Après -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[50px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Le match-day, avant et après
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">Ce que Neopro</span> change concrètement
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+        {steps.map((step) => (
+          <div class={`rounded-[20px] p-[30px] md:p-[40px] ${step.variant === 'before' ? 'bg-white border border-gray-200' : 'bg-[#2f3935] text-white'}`}>
+            <span class={`text-[14px] font-bold tracking-[2px] uppercase ${step.variant === 'before' ? 'text-red-400' : 'text-[#81e3bc]'}`}>
+              {step.number} — {step.title}
+            </span>
+            <h3 class={`text-[24px] font-bold mt-[12px] mb-[20px] ${step.variant === 'before' ? 'text-[#101828]' : 'text-white'}`}>
+              {step.subtitle}
+            </h3>
+            <ul class="flex flex-col gap-[14px]">
+              {step.items.map((item) => (
+                <li class="flex items-start gap-[12px]">
+                  {step.variant === 'before' ? (
+                    <span class="w-5 h-5 shrink-0 flex items-center justify-center text-red-400 mt-[2px]">✕</span>
+                  ) : (
+                    <svg class="w-5 h-5 shrink-0 text-[#81e3bc] mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                  )}
+                  <span class={`text-[16px] leading-relaxed ${step.variant === 'before' ? 'text-neo-gray' : 'text-white/80'}`}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fonctionnalités -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[50px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Ce que vous obtenez
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">Une régie sport</span> complète, clé en main
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        {fonctionnalites.map((f) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] hover:bg-[#eef5f1] transition-colors">
+            <h3 class="text-[20px] font-bold text-[#101828] mb-[12px]">{f.title}</h3>
+            <p class="text-[16px] text-neo-gray leading-[1.6]">{f.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment ça se passe -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#2f3935] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px] leading-[1.1]">
+        <span class="font-playfair italic font-normal">Comment</span> ça se passe ?
+      </h2>
+      <p class="text-[18px] text-white/70 max-w-[640px] mx-auto mb-[50px]">
+        3 étapes simples pour équiper votre club.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[24px] text-left">
+        <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+          <span class="text-[48px] font-black text-[#81e3bc] leading-none">1</span>
+          <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">Présentation personnalisée</h3>
+          <p class="text-white/60 text-[15px]">On échange 20 min sur vos besoins : sport, nombre de sponsors, configuration du gymnase. On vous montre la solution en contexte.</p>
+        </div>
+        <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+          <span class="text-[48px] font-black text-[#81e3bc] leading-none">2</span>
+          <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">Offre sur mesure</h3>
+          <p class="text-white/60 text-[15px]">On construit ensemble l'offre adaptée à votre club et à vos sponsors. Tout est fait pour être finançable par vos partenaires.</p>
+        </div>
+        <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+          <span class="text-[48px] font-black text-[#81e3bc] leading-none">3</span>
+          <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">Installation & lancement</h3>
+          <p class="text-white/60 text-[15px]">On installe le boîtier, on crée vos contenus et on forme votre équipe. Vous êtes opérationnel pour le prochain match.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+</BaseLayout>

@@ -82,4 +82,10 @@ La régie sport n'est plus un privilège des clubs pros. Avec l'arrivée des **r
 
 Chez Neopro, c'est exactement ce qu'on construit : **la régie sport digitale pour tous les clubs**, du niveau professionnel au championnat régional.
 
-[Découvrez la régie sport Neopro en détail](/regie-sport) ou [demandez un devis personnalisé](/devis) pour votre club.
+[Découvrez la régie sport Neopro en détail](/regie-sport) ou [demandez une présentation gratuite](/demo) pour votre club.
+
+**À lire aussi :**
+- [Expérience match-day : comment transformer chaque match en événement](/blog/experience-match-day-clubs-sport)
+- [Affichage dynamique en sport : le guide complet](/blog/affichage-dynamique-sport-guide-complet)
+- [Publicité en gymnase : le nouveau canal pour les commerces locaux](/blog/publicite-gymnase-nouveau-canal-commerces-locaux)
+- [5 façons de mieux valoriser vos sponsors](/blog/valoriser-sponsors-club-sport-amateur)

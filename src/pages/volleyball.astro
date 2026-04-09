@@ -1,0 +1,329 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import {
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+  buildServiceJsonLd,
+} from '@/lib/jsonLd';
+
+// ── SEO ──────────────────────────────────────────────────────────
+const title = 'Régie sport volleyball — Écrans & affichage digital pour clubs | Neopro';
+const description = "Solution de régie sport digitale pour clubs de volleyball : écran LED en gymnase, score par set, spots sponsors, animation temps-morts. Dès 79 €/mois.";
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/volleyball`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Volleyball', url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: 'Régie sport digitale volleyball — Neopro',
+  description:
+    "Solution de régie sport digitale pour clubs de volleyball : écran LED en gymnase, scoring par set, spots sponsors animés, animations temps-morts et inter-sets, pilotage depuis un smartphone. Du club pro au régional.",
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: ['France', 'Belgique', 'Suisse'],
+  serviceType: 'Régie sport digitale volleyball',
+});
+
+const faq = buildFAQPageJsonLd([
+  {
+    question: "Neopro peut-il afficher le score par set pendant un match de volleyball ?",
+    answer:
+      "Oui. L'appli télécommande Neopro permet d'afficher le score du set en cours et le décompte des sets gagnés. La mise à jour se fait en un tap depuis un smartphone — un seul bénévole suffit pour piloter l'ensemble de la régie pendant le match.",
+  },
+  {
+    question: "Comment exploiter les pauses entre les sets pour les sponsors ?",
+    answer:
+      "Chaque pause entre les sets (3 minutes réglementaires) est un créneau idéal pour diffuser des spots sponsors. Avec 4 à 5 inter-sets par match, plus les temps-morts techniques et d'équipe, le volleyball offre de nombreux créneaux de visibilité. L'appli Neopro lance automatiquement les playlists sponsors dès la pause.",
+  },
+  {
+    question: "La solution fonctionne-t-elle dans un gymnase sans connexion internet ?",
+    answer:
+      "Oui. Le boîtier Neopro crée son propre réseau wifi local, indépendant d'internet. Votre smartphone s'y connecte directement pour piloter l'écran. C'est la solution parfaite pour les gymnases municipaux sans wifi — un cas très courant dans le volleyball amateur.",
+  },
+  {
+    question: "Neopro est-il adapté aux tournois de volleyball ?",
+    answer:
+      "Absolument. Le volleyball est un sport de tournois par excellence, et chaque journée de compétition multiplie les occasions de visibilité pour vos sponsors. Avec Neopro, vous pouvez préparer des playlists différentes pour chaque match et offrir à vos partenaires une exposition sur l'ensemble de la journée.",
+  },
+]);
+
+const features = [
+  {
+    icon: '🏐',
+    title: 'Scoring par set en temps réel',
+    description:
+      "Score du set en cours, décompte des sets gagnés et score détaillé affichés sur l'écran LED. Mise à jour en un tap — un seul bénévole suffit.",
+  },
+  {
+    icon: '📺',
+    title: 'Spots sponsors animés',
+    description:
+      "Diffusez les vidéos et logos de vos partenaires en rotation pendant les inter-sets, les temps-morts et l'avant-match. Valorisation mesurée avec reporting.",
+  },
+  {
+    icon: '🎬',
+    title: 'Animations inter-sets',
+    description:
+      "Remplissez les 3 minutes de pause entre chaque set avec des contenus engageants : spots sponsors, jeux pour le public, stats du match, contenus club.",
+  },
+  {
+    icon: '📣',
+    title: 'Annonces joueurs et rotations',
+    description:
+      "Affichez la composition, les rotations et les remplacements. Templates personnalisés aux couleurs de votre club pour une ambiance professionnelle.",
+  },
+  {
+    icon: '📊',
+    title: 'Reporting sponsors automatique',
+    description:
+      "Prouvez le ROI à vos partenaires : nombre de diffusions, durée d'exposition, audience estimée. De quoi renouveler et augmenter vos contrats.",
+  },
+  {
+    icon: '📡',
+    title: 'Fonctionne sans wifi',
+    description:
+      "Le boîtier Neopro crée son propre réseau local dans le gymnase. Aucune connexion internet requise — parfait pour les salles municipales.",
+  },
+];
+
+const avantages = [
+  {
+    title: 'Sets = pauses naturelles pour les sponsors',
+    description:
+      "Chaque inter-set de 3 minutes est un créneau premium pour diffuser des spots sponsors. Avec 4 à 5 pauses par match, le volleyball offre un rythme idéal pour la valorisation de vos partenaires.",
+  },
+  {
+    title: 'Rotations de joueurs = moments d\'attention',
+    description:
+      "Les rotations de service et les remplacements sont des moments où le jeu s'arrête brièvement et où le public regarde naturellement autour de lui — parfait pour capter l'attention sur l'écran.",
+  },
+  {
+    title: 'Public familial et fidèle',
+    description:
+      "Le volleyball attire un public familial, convivial et régulier. Les spectateurs reviennent chaque semaine : vos sponsors touchent une audience engagée de manière répétée.",
+  },
+  {
+    title: 'Fréquence des tournois = multiplicateur de visibilité',
+    description:
+      "Le volleyball est un sport de tournois et de plateaux. Chaque journée de compétition multiplie les matchs et donc les créneaux de diffusion pour vos sponsors — un vrai effet multiplicateur.",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, service, faq]}
+  noAlternates
+>
+  <!-- Hero -->
+  <section class="relative bg-[#101828] text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#101828] via-[#101828] to-[#1a2332]"></div>
+    <div class="relative max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[100px] md:py-[140px]">
+      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+        Régie sport volleyball
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
+        <span class="font-playfair italic font-normal">La régie digitale</span> pensée<br />
+        pour le <span class="text-[#81e3bc]">volleyball</span>.
+      </h1>
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[40px]">
+        Écran LED en gymnase, score par set en temps réel, spots sponsors
+        pendant les inter-sets et les temps-morts, pilotage depuis un smartphone.
+        Tout pour professionnaliser vos matchs et vos tournois — dès 79&nbsp;€/mois.
+      </p>
+      <div class="flex flex-wrap gap-[16px]">
+        <Button href="/demo" variant="green" arrow>Demander une démo</Button>
+        <Button href="/solution" variant="white" arrow>Découvrir la solution</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi le volleyball est idéal -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Le match parfait
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          Pourquoi le <span class="font-playfair italic">volleyball</span> est idéal pour la régie digitale
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+        {avantages.map((item) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] border border-gray-200">
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{item.title}</h3>
+            <p class="text-[16px] text-[#4a5565] leading-[1.6]">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce que Neopro apporte -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Ce que Neopro apporte à votre club
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">6 fonctionnalités</span> conçues pour le volleyball.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        {features.map((feat) => (
+          <div class="bg-white rounded-[20px] p-[30px] border border-gray-200 hover:border-neo-green-dark transition-colors">
+            <span class="text-[32px] mb-[16px] block">{feat.icon}</span>
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{feat.title}</h3>
+            <p class="text-[16px] text-[#4a5565] leading-[1.6]">{feat.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas concret -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        Cas concret
+      </p>
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">Avant / Après</span> — un club de N2&nbsp;volleyball
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[40px]">
+        <div class="bg-[#fef2f2] rounded-[20px] p-[30px]">
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[20px]">Avant Neopro</h3>
+          <ul class="space-y-[12px] text-[16px] text-[#4a5565] leading-[1.6]">
+            <li>Score sur tableau blanc effaçable, illisible après le 2e set</li>
+            <li>Inter-sets vides, spectateurs qui se dispersent</li>
+            <li>Sponsors sur des kakémonos que personne ne regarde</li>
+            <li>Tournois entiers sans aucune mise en valeur des partenaires</li>
+            <li>Ambiance fade malgré un public présent et fidèle</li>
+          </ul>
+        </div>
+        <div class="bg-[#f0fdf4] rounded-[20px] p-[30px]">
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[20px]">Avec Neopro</h3>
+          <ul class="space-y-[12px] text-[16px] text-[#4a5565] leading-[1.6]">
+            <li>Score digital par set, visible de toute la salle</li>
+            <li>Inter-sets animés : spots sponsors, jeux, contenus club</li>
+            <li>Spots vidéo sponsors en rotation sur écran LED</li>
+            <li>Chaque match de tournoi = exposition supplémentaire</li>
+            <li>Ambiance professionnelle qui valorise le club</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Les offres -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#101828] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px]">
+        <span class="font-playfair italic font-normal">Les offres</span> pour votre club de volleyball
+      </h2>
+      <p class="text-[18px] text-white/70 max-w-[600px] mx-auto mb-[40px] leading-relaxed">
+        Quatre formules adaptées à votre niveau et à vos ambitions — de 79&nbsp;€/mois
+        à 299&nbsp;€/mois. Toutes finançables par vos sponsors.
+      </p>
+      <div class="flex flex-wrap justify-center gap-[16px]">
+        <Button href="/offres" variant="green" arrow>Voir les offres</Button>
+        <Button href="/demo" variant="white" arrow>Demander une démo</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[800px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">Questions fréquentes</span> — volleyball
+      </h2>
+      <div class="space-y-[16px]">
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            Neopro peut-il afficher le score par set pendant un match de volleyball ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Oui. L'appli télécommande Neopro permet d'afficher le score du set en cours
+            et le décompte des sets gagnés. La mise à jour se fait en un tap — un seul
+            bénévole suffit pour piloter l'ensemble de la régie.
+          </p>
+        </details>
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            Comment exploiter les pauses entre les sets pour les sponsors ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Chaque inter-set de 3 minutes est un créneau idéal. Avec 4 à 5 pauses par
+            match plus les temps-morts, le volleyball offre de nombreux créneaux.
+            L'appli lance automatiquement les playlists sponsors dès la pause.
+          </p>
+        </details>
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            La solution fonctionne-t-elle dans un gymnase sans connexion internet ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Oui. Le boîtier Neopro crée son propre réseau wifi local, indépendant
+            d'internet. Votre smartphone s'y connecte directement. Parfait pour les
+            gymnases municipaux sans infrastructure réseau.
+          </p>
+        </details>
+        <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+          <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            Neopro est-il adapté aux tournois de volleyball ?
+            <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+            Absolument. Chaque journée de tournoi multiplie les matchs et donc les
+            créneaux de diffusion pour vos sponsors. Vous pouvez préparer des playlists
+            différentes pour chaque match et maximiser l'exposition sur la journée entière.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liens internes SEO -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[40px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <p class="text-[14px] text-[#4a5565] leading-[1.8]">
+        En savoir plus :
+        <a href="/solution" class="text-neo-green-dark underline">La solution Neopro</a> ·
+        <a href="/offres" class="text-neo-green-dark underline">Nos offres</a> ·
+        <a href="/annonceurs" class="text-neo-green-dark underline">Annonceurs</a> ·
+        <a href="/blog/experience-match-day-clubs-sport" class="text-neo-green-dark underline">Expérience match day</a> ·
+        <a href="/blog/regie-sport-guide-complet" class="text-neo-green-dark underline">Guide complet régie sport</a> ·
+        <a href="/implantations" class="text-neo-green-dark underline">Nos implantations</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[700px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[16px] text-center">
+        <span class="font-playfair italic font-normal">Contactez-nous</span>
+      </h2>
+      <p class="text-[18px] text-[#4a5565] text-center mb-[40px]">
+        Une question sur la régie sport pour votre club de volleyball ?
+        Remplissez le formulaire, on vous répond sous 24h.
+      </p>
+      <ContactForm client:visible />
+    </div>
+  </section>
+</BaseLayout>

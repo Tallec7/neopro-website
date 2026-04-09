@@ -65,7 +65,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <span class="font-black">vos besoins</span>
       </h1>
       <div>
-        <Button href="#contact" variant="green" arrow>Obtenez un devis</Button>
+        <Button href="/demo" variant="green" arrow>Demander une démo gratuite</Button>
       </div>
     </div>
   </section>
@@ -95,7 +95,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             ><span class="js-price">{playPlan.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span></p>
             <p class="text-[13px] text-[#4a5565] js-secondary hidden">Engagement 9 mois minimum</p>
           </div>
-          <Button href={`/devis?offre=${playPlan.slug}`} variant="green" arrow>Démarrer avec Play</Button>
+          <Button href="/demo" variant="green" arrow>Démarrer avec Play</Button>
         </div>
       </div>
 
@@ -181,7 +181,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               Engagement 9 mois · Boîtier prêté inclus
             </p>
-            <Button href={`/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+            <Button href="/demo" variant={offre.buttonVariant} arrow>
               Choisir cette offre
             </Button>
           </div>
@@ -255,7 +255,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#101828] mb-[12px]">
           <span class="font-playfair italic">Compléter</span> votre offre
         </h2>
-        <p class="text-[16px] md:text-[18px] text-neo-gray">À combiner avec n'importe quelle offre — chiffrage personnalisé sur devis.</p>
+        <p class="text-[16px] md:text-[18px] text-neo-gray">À combiner avec n'importe quelle offre — chiffrage personnalisé sur demande.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px]">
@@ -338,7 +338,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       </div>
 
       <div class="text-center mt-[30px]">
-        <Button href="/devis?offre=options" variant="black" arrow>Construire mon offre sur mesure</Button>
+        <Button href="/demo" variant="black" arrow>Construire mon offre sur mesure</Button>
       </div>
     </div>
   </section>
@@ -401,7 +401,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 </li>
               ))}
             </ul>
-            <Button href="/devis?offre=flotte" variant="green" arrow>Demander un devis flotte</Button>
+            <Button href="/demo" variant="green" arrow>Demander une démo flotte</Button>
           </div>
           <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#1a201d] rounded-[16px] px-[40px] py-[36px] border border-[#81e3bc]/20">
             <p class="text-[64px] font-black text-[#81e3bc] leading-none">5+</p>

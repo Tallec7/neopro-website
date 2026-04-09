@@ -74,3 +74,5 @@ Un partenaire qui reçoit un bilan de visibilité en fin de saison est un parten
 | Reporting | Gratuit | Élevé |
 
 La combinaison gagnante : un **écran digital + des vidéos de qualité + un reporting clair**. C'est exactement ce que propose [Neopro](/solution) aux clubs amateurs.
+
+Pour aller plus loin : découvrez comment créer une [expérience match-day complète](/blog/experience-match-day-clubs-sport) ou consultez notre guide sur l'[affichage dynamique en sport](/blog/affichage-dynamique-sport-guide-complet). Et si vous êtes annonceur local, découvrez comment [toucher cette audience captive](/annonceurs).

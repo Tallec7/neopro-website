@@ -1,12 +1,3 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import DevisForm from '@/components/DevisForm.tsx';
-
-// ── SEO ──────────────────────────────────────────────────────────
-const title = 'Demande de devis régie digitale — Estimation gratuite en 2 min';
-const description = "Obtenez un devis personnalisé pour votre solution de régie digitale Neopro. Choisissez votre offre (Essentiel, Autonomie ou Premium) et recevez votre estimation par email.";
+return Astro.redirect('/demo', 301);
 ---
-
-<BaseLayout title={title} description={description}>
-  <DevisForm client:load />
-</BaseLayout>

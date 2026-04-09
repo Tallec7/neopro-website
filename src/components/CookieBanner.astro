@@ -45,6 +45,7 @@ const t = useTranslations(locale);
 
     if (consent === 'accepted') {
       enableGTM();
+      enableLemlist();
     } else if (consent !== 'rejected') {
       banner.classList.remove('hidden');
     }
@@ -53,6 +54,7 @@ const t = useTranslations(locale);
       localStorage.setItem(COOKIE_KEY, 'accepted');
       banner.classList.add('hidden');
       enableGTM();
+      enableLemlist();
     });
 
     document.getElementById('cookie-reject').addEventListener('click', function () {
@@ -72,6 +74,16 @@ const t = useTranslations(locale);
       j.async = true;
       j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
+    }
+
+    function enableLemlist() {
+      if (window.__lemlist_loaded) return;
+      window.__lemlist_loaded = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://app.lemlist.com/api/visitors/tracking?k=7nAy11B92iWqulwGosH46gKWaD4lFsOwB0DCt0IHp8ksJAIZ3BtHCQ4CqAwwPemZ&t=tea_4zxbHG3FtRw84Bjo4';
+      document.head.appendChild(s);
     }
   })();
 </script>

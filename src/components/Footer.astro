@@ -13,6 +13,7 @@ const footerLinks = [
   { label: t('nav.solution'), href: localePath('/solution', locale) },
   ...(locale === 'fr' ? [{ label: 'Régie sport', href: '/regie-sport' }] : []),
   { label: t('nav.offres'), href: localePath('/offres', locale) },
+  { label: t('nav.annonceurs'), href: localePath('/annonceurs', locale) },
   { label: t('nav.blog'), href: localePath('/blog', locale) },
   { label: t('footer.implantations'), href: localePath('/implantations', locale) },
   { label: t('nav.about'), href: localePath(locale === 'fr' ? '/qui-sommes-nous' : '/about', locale) },
@@ -56,11 +57,11 @@ const legalLinks = [
         ))}
       </div>
       <div class="flex flex-wrap gap-[16px] items-center">
-        <Button href={localePath('/devis', locale)} variant="green">
-          {t('footer.devis')}
+        <Button href={localePath('/demo', locale)} variant="green">
+          {t('nav.demo')}
         </Button>
         <Button href="#contact" variant="black">
-          {t('nav.demo')}
+          {t('footer.contact')}
         </Button>
         <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-white hover:text-neo-green transition-colors">
           {t('nav.club')}

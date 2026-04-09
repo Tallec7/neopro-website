@@ -6,10 +6,12 @@ import { Resend } from 'resend';
 const MEET_LINK = 'https://meet.google.com/aje-pzis-rqm';
 const N8N_WEBHOOK = 'https://n8n.srv1531715.hstgr.cloud/webhook/webinar-inscription';
 
-const ICS_CONTENT = [
+const buildIcs = (attendeeName: string, attendeeEmail: string) => [
   'BEGIN:VCALENDAR',
   'VERSION:2.0',
   'PRODID:-//NEOPRO//Webinar//FR',
+  'CALSCALE:GREGORIAN',
+  'METHOD:REQUEST',
   'BEGIN:VEVENT',
   'UID:webinar-neopro-20260416@neopro-communication.fr',
   'DTSTAMP:20260408T000000Z',
@@ -18,6 +20,10 @@ const ICS_CONTENT = [
   'SUMMARY:Webinar NEOPRO : Et si votre gymnase rapportait à votre club ?',
   `DESCRIPTION:Rejoindre le webinar : ${MEET_LINK}`,
   `LOCATION:${MEET_LINK}`,
+  'ORGANIZER;CN=NEOPRO:mailto:contact@neopro-communication.fr',
+  `ATTENDEE;CN=${attendeeName};RSVP=TRUE:mailto:${attendeeEmail}`,
+  'STATUS:CONFIRMED',
+  'SEQUENCE:0',
   'END:VEVENT',
   'END:VCALENDAR',
 ].join('\r\n');
@@ -71,15 +77,38 @@ export const POST: APIRoute = async ({ request }) => {
   // ── Envoi en parallèle : email de confirmation + n8n ──────────
   const [emailResult] = await Promise.allSettled([
     resend.emails.send({
-      from: 'Gwenvael — NEOPRO <noreply@neopro-communication.fr>',
+      from: 'Gwenvael — NEOPRO <contact@neopro-communication.fr>',
       to: email,
       replyTo: 'contact@neopro-communication.fr',
-      subject: '✅ Votre inscription au webinar NEOPRO est confirmée',
+      subject: 'Votre inscription au webinar du 16 avril',
+      headers: {
+        'List-Unsubscribe': '<mailto:contact@neopro-communication.fr?subject=unsubscribe>',
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+      },
+      text: `Bonjour ${prenom},
+
+Votre inscription au webinar NEOPRO est bien enregistrée.
+
+Date : jeudi 16 avril 2026
+Horaire : 11h00 - 11h45
+Format : en ligne via Google Meet
+Lien pour rejoindre : ${MEET_LINK}
+
+Un fichier .ics est joint à cet email pour ajouter l'événement à votre calendrier (Apple Calendar, Outlook, Google Calendar).
+
+Pas disponible le 16 ? Nous vous enverrons le replay par email dans les 24h après le webinar.
+
+À jeudi,
+L'équipe NEOPRO
+https://www.neopro-communication.fr
+
+---
+Pour vous désinscrire, répondez à cet email avec "unsubscribe" en objet.`,
       attachments: [
         {
           filename: 'webinar-neopro-16-avril.ics',
-          content: Buffer.from(ICS_CONTENT).toString('base64'),
-          contentType: 'text/calendar',
+          content: Buffer.from(buildIcs(prenom, email)).toString('base64'),
+          contentType: 'text/calendar; method=REQUEST; charset=UTF-8',
         },
       ],
       html: `
@@ -133,7 +162,7 @@ export const POST: APIRoute = async ({ request }) => {
               </tr>
               <tr>
                 <td style="padding:10px 0;color:#6b7280;vertical-align:top;">💻 Format</td>
-                <td style="padding:10px 0;color:#101828;font-weight:bold;">En ligne — Google Meet (gratuit)</td>
+                <td style="padding:10px 0;color:#101828;font-weight:bold;">En ligne — Google Meet</td>
               </tr>
             </table>
 

@@ -61,4 +61,4 @@ Pas de travaux, pas de câblage réseau, pas de technicien nécessaire.
 
 Un écran LED dans un gymnase est un investissement qui se rentabilise rapidement grâce aux partenaires. Le plus important est de choisir une **solution de régie adaptée** qui vous permette de piloter le contenu facilement, même sans compétences techniques.
 
-[Découvrez les offres Neopro](/offres) pour trouver la formule adaptée à votre club.
+[Découvrez les offres Neopro](/offres) pour trouver la formule adaptée à votre club. Pour comprendre tout le potentiel de l'[affichage dynamique sportif](/blog/affichage-dynamique-sport-guide-complet), consultez notre guide dédié. Et pour transformer votre installation en véritable [expérience match-day](/blog/experience-match-day-clubs-sport), c'est par ici.
