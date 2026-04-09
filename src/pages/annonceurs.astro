@@ -1,0 +1,342 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import AdvertiserContactForm from '@/components/AdvertiserContactForm.tsx';
+import {
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+  buildServiceJsonLd,
+} from '@/lib/jsonLd';
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/annonceurs`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'Annonceurs', url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: 'Régie publicitaire sport — Neopro',
+  description:
+    "Régie publicitaire en gymnases sportifs : un inventaire exclusif d'écrans en salle de sport, audience captive et locale, reporting de diffusion automatique.",
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: ['France'],
+  serviceType: 'Régie publicitaire sportive',
+});
+
+const faq = buildFAQPageJsonLd([
+  {
+    question: "Quel type d'inventaire publicitaire propose Neopro ?",
+    answer:
+      "Neopro opère un réseau d'écrans digitaux installés dans les gymnases et salles de sport en France. Les spots des annonceurs sont diffusés en rotation pendant les matchs et entraînements, devant une audience captive de 200 à 500 spectateurs par événement.",
+  },
+  {
+    question: "Quelle audience touche-t-on via les gymnases ?",
+    answer:
+      "Une audience familiale (25-55 ans), locale et récurrente : parents de joueurs, licenciés, supporters. 200 à 500 spectateurs par match, chaque semaine, pendant 9 mois de saison sportive. C'est une audience que ni l'affichage extérieur ni le digital ne couvrent aujourd'hui.",
+  },
+  {
+    question: "Quels formats publicitaires sont disponibles ?",
+    answer:
+      "Images fixes et spots vidéo, diffusés en rotation sur écrans LED et TV pendant les événements sportifs. Les spots tournent en boucle pendant toute la durée du match (environ 90 minutes), garantissant une répétition élevée.",
+  },
+  {
+    question: "Comment est mesurée la performance des campagnes ?",
+    answer:
+      "Chaque diffusion est tracée automatiquement : nombre de passages, durée d'exposition, créneau, sport et localisation. Un rapport mensuel est généré avec toutes les métriques de diffusion.",
+  },
+  {
+    question: "Le réseau couvre quelles zones géographiques ?",
+    answer:
+      "Le réseau est en déploiement sur le territoire français, avec des clubs opérationnels en Bretagne et Pays de la Loire. L'objectif est une couverture nationale multi-sports (handball, basketball, volleyball, futsal, hockey).",
+  },
+  {
+    question: "Comment intégrer le réseau Neopro dans un plan média ?",
+    answer:
+      "Contactez notre équipe pour un brief personnalisé. Nous définissons ensemble la couverture géographique, les sports ciblés et le format. La mise en diffusion est rapide une fois le brief validé.",
+  },
+]);
+
+const title = 'Régie publicitaire sport — Inventaire exclusif en gymnase | Neopro';
+const description = "Neopro opère le premier réseau d'écrans publicitaires en gymnases sportifs. Audience captive, locale et récurrente. Un inventaire inédit pour les annonceurs et agences média.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, service, faq]}
+>
+  <!-- Hero -->
+  <section class="bg-[#2f3935] text-white">
+    <div class="max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[80px] md:py-[120px]">
+      <p class="text-[14px] tracking-[2px] text-[#fe6aa6] uppercase font-bold mb-[20px]">
+        Régie publicitaire sport
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
+        Un inventaire publicitaire<br />
+        <span class="text-[#81e3bc]">que personne</span><br />
+        <span class="font-playfair italic font-normal">ne peut vous offrir.</span>
+      </h1>
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[16px]">
+        Neopro opère le premier réseau d'écrans en gymnases sportifs.
+        Une audience captive, locale et récurrente — jamais exploitée
+        par la publicité jusqu'ici.
+      </p>
+      <p class="text-[16px] text-white/50 max-w-[760px] mb-[40px]">
+        16 millions de licenciés sportifs. 8 000 gymnases en France.
+        Zéro inventaire publicitaire. Jusqu'à maintenant.
+      </p>
+      <Button href="#contact" variant="pink" arrow>Demander un rendez-vous</Button>
+    </div>
+  </section>
+
+  <!-- L'opportunité -->
+  <section class="bg-[#101828] text-white py-[60px] px-[20px] md:px-[40px] lg:px-[60px]">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="text-[14px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[16px] text-center">
+        L'opportunité
+      </p>
+      <h2 class="text-[28px] md:text-[40px] font-bold text-center mb-[50px] leading-[1.1] max-w-[800px] mx-auto">
+        Le sport amateur est le dernier <span class="font-playfair italic font-normal">média de masse</span> sans régie.
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[20px] text-center">
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">16M</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">licenciés sportifs en France</p>
+        </div>
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">8 000</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">gymnases municipaux</p>
+        </div>
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">90 min</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">d'attention captive par match</p>
+        </div>
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">0</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">régie présente sur ce marché</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi ce média -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[50px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Un média inédit
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          Ce que le gymnase offre<br />
+          <span class="font-playfair italic font-normal">et que personne d'autre ne peut.</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+          <div class="w-[48px] h-[48px] bg-[#81e3bc]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+          </div>
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">Audience captive</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">200 à 500 spectateurs par match. Pas de scroll, pas de skip, pas d'adblocker. Le public reste 90 minutes — il n'a nulle part où aller.</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+          <div class="w-[48px] h-[48px] bg-[#81e3bc]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">Hyper-local</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Chaque gymnase couvre une zone de chalandise précise. Activez les salles qui matchent votre implantation géographique, sport par sport.</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+          <div class="w-[48px] h-[48px] bg-[#81e3bc]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+          </div>
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">Récurrence</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Même public, chaque semaine, pendant 9 mois de saison. La répétition crée la mémorisation — sans fatigue publicitaire.</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+          <div class="w-[48px] h-[48px] bg-[#fe6aa6]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#fe6aa6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">Exclusivité</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Ce média n'existe pas dans les plans média aujourd'hui. Aucune régie, aucun réseau ne couvre les gymnases. C'est un inventaire neuf.</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+          <div class="w-[48px] h-[48px] bg-[#fe6aa6]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#fe6aa6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+          </div>
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">Mesurable</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Chaque diffusion tracée : nombre de passages, durée, créneau, sport, localisation. Reporting mensuel automatique — des données, pas des estimations.</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+          <div class="w-[48px] h-[48px] bg-[#ffec85]/30 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#d4a017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+          </div>
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">Association positive</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Votre marque associée au sport local, à la communauté, aux familles. Un ancrage émotionnel que le digital ne peut pas reproduire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pour qui -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[50px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          Pour qui
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">Annonceurs, agences,</span> régies.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+          <div class="w-[48px] h-[48px] bg-[#81e3bc]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          </div>
+          <h3 class="text-[22px] font-bold text-[#101828] mb-[8px]">Marques & enseignes</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Activez un canal inédit pour toucher les familles dans leur quotidien sportif. Maillage régional ou national, par sport et par zone.</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+          <div class="w-[48px] h-[48px] bg-[#fe6aa6]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#fe6aa6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg>
+          </div>
+          <h3 class="text-[22px] font-bold text-[#101828] mb-[8px]">Agences média</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Intégrez un inventaire exclusif à vos plans média. Audience qualifiée, contexte premium, reporting structuré — un complément idéal au DOOH classique.</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+          <div class="w-[48px] h-[48px] bg-[#ffec85]/30 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#d4a017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          </div>
+          <h3 class="text-[22px] font-bold text-[#101828] mb-[8px]">Régies DOOH</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">Élargissez votre réseau avec un inventaire que vous ne pouvez pas sourcer ailleurs. Partenariat technique et commercial sur mesure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment ça marche -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#2f3935] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[50px] leading-[1.1]">
+        <span class="font-playfair italic font-normal">Comment</span> ça marche ?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[24px] text-left">
+        <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+          <span class="text-[48px] font-black text-[#81e3bc] leading-none">1</span>
+          <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">Brief & ciblage</h3>
+          <p class="text-white/60 text-[15px]">On définit ensemble votre couverture : zones géographiques, sports ciblés, fréquence souhaitée. Vous recevez une recommandation réseau.</p>
+        </div>
+        <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+          <span class="text-[48px] font-black text-[#81e3bc] leading-none">2</span>
+          <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">Diffusion</h3>
+          <p class="text-white/60 text-[15px]">Vos spots (image ou vidéo) sont déployés sur les écrans des gymnases sélectionnés. La rotation démarre dès le prochain match.</p>
+        </div>
+        <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+          <span class="text-[48px] font-black text-[#81e3bc] leading-none">3</span>
+          <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">Reporting</h3>
+          <p class="text-white/60 text-[15px]">Rapport mensuel automatique : nombre de diffusions, audience estimée, créneaux, localisations. Des données réelles, pas des projections.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Le réseau -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        Le réseau
+      </p>
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1] mb-[20px]">
+        <span class="font-playfair italic">En déploiement</span> sur toute la France.
+      </h2>
+      <p class="text-[18px] text-neo-gray leading-relaxed max-w-[700px] mx-auto mb-[40px]">
+        Premiers clubs opérationnels en Bretagne et Pays de la Loire.
+        Handball, basketball, volleyball, futsal, hockey.
+        Le réseau s'étend chaque mois — les premiers annonceurs
+        bénéficieront des meilleures conditions.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[16px] max-w-[800px] mx-auto">
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">5+</p>
+          <p class="text-[13px] text-neo-gray">sports couverts</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">20+</p>
+          <p class="text-[13px] text-neo-gray">matchs / semaine / club</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">9 mois</p>
+          <p class="text-[13px] text-neo-gray">de saison sportive</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">98,5%</p>
+          <p class="text-[13px] text-neo-gray">uptime garanti</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[900px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">Questions</span> fréquentes
+      </h2>
+      <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200">
+        <details class="group">
+          <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+            <h3 class="text-[18px] font-bold text-[#101828] pr-4">Quel type d'inventaire publicitaire propose Neopro ?</h3>
+            <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">Un réseau d'écrans digitaux installés dans les gymnases et salles de sport en France. Les spots des annonceurs sont diffusés en rotation pendant les matchs et entraînements, devant une audience captive de 200 à 500 spectateurs par événement.</p>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+            <h3 class="text-[18px] font-bold text-[#101828] pr-4">Quelle audience touche-t-on via les gymnases ?</h3>
+            <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">Une audience familiale (25-55 ans), locale et récurrente : parents de joueurs, licenciés, supporters. 200 à 500 spectateurs par match, chaque semaine, pendant 9 mois de saison. Une audience que ni l'affichage extérieur ni le digital ne couvrent aujourd'hui.</p>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+            <h3 class="text-[18px] font-bold text-[#101828] pr-4">Quels formats publicitaires sont disponibles ?</h3>
+            <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">Images fixes et spots vidéo, diffusés en rotation sur écrans LED et TV pendant les événements sportifs. Les spots tournent en boucle pendant toute la durée du match (environ 90 minutes), garantissant une répétition élevée.</p>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+            <h3 class="text-[18px] font-bold text-[#101828] pr-4">Comment est mesurée la performance ?</h3>
+            <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">Chaque diffusion est tracée automatiquement : nombre de passages, durée d'exposition, créneau, sport et localisation. Rapport mensuel généré avec toutes les métriques de diffusion.</p>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+            <h3 class="text-[18px] font-bold text-[#101828] pr-4">Où le réseau est-il déployé ?</h3>
+            <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">Le réseau est en déploiement sur le territoire français, avec des clubs opérationnels en Bretagne et Pays de la Loire. Multi-sports : handball, basketball, volleyball, futsal, hockey. L'expansion est continue.</p>
+        </details>
+        <details class="group">
+          <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+            <h3 class="text-[18px] font-bold text-[#101828] pr-4">Comment intégrer Neopro dans un plan média ?</h3>
+            <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">Contactez notre équipe pour un brief personnalisé. Nous définissons ensemble la couverture géographique, les sports ciblés et le format. La mise en diffusion est rapide une fois le brief validé.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact">
+    <AdvertiserContactForm client:visible />
+  </div>
+</BaseLayout>

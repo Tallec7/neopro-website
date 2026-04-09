@@ -1,0 +1,242 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import AdvertiserContactForm from '@/components/AdvertiserContactForm.tsx';
+import { useTranslations } from '@/i18n/utils';
+import {
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+  buildServiceJsonLd,
+} from '@/lib/jsonLd';
+
+const locale = 'es';
+const t = useTranslations(locale);
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/es/advertisers`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Inicio', url: `${siteUrl}/es` },
+  { name: 'Anunciantes', url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: 'Sports Advertising Network — Neopro',
+  description: t('ads.description'),
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: ['France'],
+  serviceType: 'Sports advertising network',
+});
+
+const faq = buildFAQPageJsonLd([
+  { question: t('ads.faq.q1'), answer: t('ads.faq.a1') },
+  { question: t('ads.faq.q2'), answer: t('ads.faq.a2') },
+  { question: t('ads.faq.q3'), answer: t('ads.faq.a3') },
+  { question: t('ads.faq.q4'), answer: t('ads.faq.a4') },
+  { question: t('ads.faq.q5'), answer: t('ads.faq.a5') },
+  { question: t('ads.faq.q6'), answer: t('ads.faq.a6') },
+]);
+---
+
+<BaseLayout
+  title={t('ads.title')}
+  description={t('ads.description')}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, service, faq]}
+  locale={locale}
+>
+  <!-- Hero -->
+  <section class="bg-[#2f3935] text-white">
+    <div class="max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[80px] md:py-[120px]">
+      <p class="text-[14px] tracking-[2px] text-[#fe6aa6] uppercase font-bold mb-[20px]">
+        {t('ads.hero.tag')}
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
+        {t('ads.hero.h1.line1')}<br />
+        <span class="text-[#81e3bc]">{t('ads.hero.h1.line2')}</span><br />
+        <span class="font-playfair italic font-normal">{t('ads.hero.h1.line3')}</span>
+      </h1>
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[16px]">
+        {t('ads.hero.sub')}
+      </p>
+      <p class="text-[16px] text-white/50 max-w-[760px] mb-[40px]">
+        {t('ads.hero.stats')}
+      </p>
+      <Button href="#contact" variant="pink" arrow>{t('ads.hero.cta')}</Button>
+    </div>
+  </section>
+
+  <!-- Opportunity -->
+  <section class="bg-[#101828] text-white py-[60px] px-[20px] md:px-[40px] lg:px-[60px]">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="text-[14px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[16px] text-center">
+        {t('ads.opp.tag')}
+      </p>
+      <h2 class="text-[28px] md:text-[40px] font-bold text-center mb-[50px] leading-[1.1] max-w-[800px] mx-auto">
+        {t('ads.opp.h2a')}<span class="font-playfair italic font-normal">{t('ads.opp.h2b')}</span>{t('ads.opp.h2c')}
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[20px] text-center">
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">16M</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">{t('ads.opp.stat1')}</p>
+        </div>
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">8 000</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">{t('ads.opp.stat2')}</p>
+        </div>
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">90 min</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">{t('ads.opp.stat3')}</p>
+        </div>
+        <div>
+          <p class="text-[36px] md:text-[48px] font-black text-[#81e3bc] leading-none">0</p>
+          <p class="text-[14px] text-white/60 mt-[8px]">{t('ads.opp.stat4')}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why this medium -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[50px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">{t('ads.media.tag')}</p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          {t('ads.media.h2a')}<br />
+          <span class="font-playfair italic font-normal">{t('ads.media.h2b')}</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+        {[
+          { key: 'captive', color: 'neo-green-dark', bg: '#81e3bc', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' },
+          { key: 'local', color: 'neo-green-dark', bg: '#81e3bc', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
+          { key: 'recur', color: 'neo-green-dark', bg: '#81e3bc', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+          { key: 'exclu', color: '[#fe6aa6]', bg: '#fe6aa6', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+          { key: 'measur', color: '[#fe6aa6]', bg: '#fe6aa6', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+          { key: 'assoc', color: '[#d4a017]', bg: '#ffec85', icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+        ].map((item) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px]">
+            <div class={`w-[48px] h-[48px] bg-[${item.bg}]/20 rounded-[12px] flex items-center justify-center mb-[16px]`}>
+              <svg class={`w-6 h-6 text-${item.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {item.icon.split(' M').map((d, i) => (
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={i === 0 ? d : `M${d}`} />
+                ))}
+              </svg>
+            </div>
+            <h3 class="text-[20px] font-bold text-[#101828] mb-[10px]">{t(`ads.media.${item.key}.title` as any)}</h3>
+            <p class="text-[16px] text-neo-gray leading-[1.6]">{t(`ads.media.${item.key}.desc` as any)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- For whom -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[50px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">{t('ads.who.tag')}</p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
+          <span class="font-playfair italic">{t('ads.who.h2a')}</span>{t('ads.who.h2b')}
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+        <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+          <div class="w-[48px] h-[48px] bg-[#81e3bc]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          </div>
+          <h3 class="text-[22px] font-bold text-[#101828] mb-[8px]">{t('ads.who.brands.title')}</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">{t('ads.who.brands.desc')}</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+          <div class="w-[48px] h-[48px] bg-[#fe6aa6]/20 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#fe6aa6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg>
+          </div>
+          <h3 class="text-[22px] font-bold text-[#101828] mb-[8px]">{t('ads.who.agencies.title')}</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">{t('ads.who.agencies.desc')}</p>
+        </div>
+        <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+          <div class="w-[48px] h-[48px] bg-[#ffec85]/30 rounded-[12px] flex items-center justify-center mb-[16px]">
+            <svg class="w-6 h-6 text-[#d4a017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          </div>
+          <h3 class="text-[22px] font-bold text-[#101828] mb-[8px]">{t('ads.who.dooh.title')}</h3>
+          <p class="text-[16px] text-neo-gray leading-[1.6]">{t('ads.who.dooh.desc')}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#2f3935] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[50px] leading-[1.1]">
+        <span class="font-playfair italic font-normal">{t('ads.how.h2a')}</span>{t('ads.how.h2b')}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[24px] text-left">
+        {[1, 2, 3].map((n) => (
+          <div class="bg-white/5 rounded-[20px] p-[30px] border border-white/10">
+            <span class="text-[48px] font-black text-[#81e3bc] leading-none">{n}</span>
+            <h3 class="text-[20px] font-bold mt-[12px] mb-[8px]">{t(`ads.how.step${n}.title` as any)}</h3>
+            <p class="text-white/60 text-[15px]">{t(`ads.how.step${n}.desc` as any)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Network -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">{t('ads.network.tag')}</p>
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1] mb-[20px]">
+        <span class="font-playfair italic">{t('ads.network.h2a')}</span>{t('ads.network.h2b')}
+      </h2>
+      <p class="text-[18px] text-neo-gray leading-relaxed max-w-[700px] mx-auto mb-[40px]">{t('ads.network.desc')}</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[16px] max-w-[800px] mx-auto">
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">5+</p>
+          <p class="text-[13px] text-neo-gray">{t('ads.network.sports')}</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">20+</p>
+          <p class="text-[13px] text-neo-gray">{t('ads.network.matches')}</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">9 mois</p>
+          <p class="text-[13px] text-neo-gray">{t('ads.network.season')}</p>
+        </div>
+        <div class="bg-[#f5f5f5] rounded-[16px] p-[20px]">
+          <p class="text-[28px] font-black text-[#101828]">98,5%</p>
+          <p class="text-[13px] text-neo-gray">{t('ads.network.uptime')}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[900px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
+        <span class="font-playfair italic">{t('ads.faq.title').split(' ')[0]}</span> {t('ads.faq.title').split(' ').slice(1).join(' ')}
+      </h2>
+      <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <details class="group">
+            <summary class="flex items-center justify-between py-[20px] cursor-pointer">
+              <h3 class="text-[18px] font-bold text-[#101828] pr-4">{t(`ads.faq.q${n}` as any)}</h3>
+              <svg class="w-5 h-5 shrink-0 text-neo-gray group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <p class="text-[16px] text-neo-gray pb-[20px] leading-relaxed">{t(`ads.faq.a${n}` as any)}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div id="contact">
+    <AdvertiserContactForm client:visible locale={locale} />
+  </div>
+</BaseLayout>
