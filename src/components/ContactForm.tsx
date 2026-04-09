@@ -16,12 +16,18 @@ export default function ContactForm({ locale = 'fr' }: Props) {
     nom: '',
     prenom: '',
     email: '',
+    telephone: '',
+    organisation: '',
+    objet: '',
     message: '',
+    consent: false,
   });
   const [status, setStatus] = useState<Status>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,7 +43,7 @@ export default function ContactForm({ locale = 'fr' }: Props) {
 
       if (res.ok) {
         setStatus('success');
-        setFormData({ nom: '', prenom: '', email: '', message: '' });
+        setFormData({ nom: '', prenom: '', email: '', telephone: '', organisation: '', objet: '', message: '', consent: false });
       } else {
         setStatus('error');
       }
@@ -74,9 +80,14 @@ export default function ContactForm({ locale = 'fr' }: Props) {
         ) : (
           <div className="bg-white rounded-[10px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_1px_2px_0px_rgba(0,0,0,0.1)] w-full">
             <form className="flex flex-col gap-[24px] items-end p-[30px]" onSubmit={handleSubmit}>
+              {/* Honeypot anti-spam */}
+              <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+
               <div className="flex flex-col md:flex-row gap-[24px] w-full">
                 <div className="flex-1 flex flex-col gap-[8px]">
-                  <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.nom')}</label>
+                  <label className="font-medium text-[16px] text-black leading-[24px]">
+                    {t(locale, 'contact.nom')} <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
                     name="nom"
@@ -87,7 +98,9 @@ export default function ContactForm({ locale = 'fr' }: Props) {
                   />
                 </div>
                 <div className="flex-1 flex flex-col gap-[8px]">
-                  <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.prenom')}</label>
+                  <label className="font-medium text-[16px] text-black leading-[24px]">
+                    {t(locale, 'contact.prenom')} <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
                     name="prenom"
@@ -98,28 +111,105 @@ export default function ContactForm({ locale = 'fr' }: Props) {
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-[8px] w-full">
-                <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.email')}</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={inputClasses}
-                />
+
+              <div className="flex flex-col md:flex-row gap-[24px] w-full">
+                <div className="flex-1 flex flex-col gap-[8px]">
+                  <label className="font-medium text-[16px] text-black leading-[24px]">
+                    {t(locale, 'contact.email')} <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={inputClasses}
+                  />
+                </div>
+                <div className="flex-1 flex flex-col gap-[8px]">
+                  <label className="font-medium text-[16px] text-black leading-[24px]">
+                    {t(locale, 'contact.telephone')} <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="telephone"
+                    required
+                    value={formData.telephone}
+                    onChange={handleChange}
+                    className={inputClasses}
+                  />
+                </div>
               </div>
+
+              <div className="flex flex-col md:flex-row gap-[24px] w-full">
+                <div className="flex-1 flex flex-col gap-[8px]">
+                  <label className="font-medium text-[16px] text-black leading-[24px]">
+                    {t(locale, 'contact.organisation')}
+                  </label>
+                  <input
+                    type="text"
+                    name="organisation"
+                    value={formData.organisation}
+                    onChange={handleChange}
+                    placeholder={t(locale, 'contact.placeholder.organisation')}
+                    className={inputClasses}
+                  />
+                </div>
+                <div className="flex-1 flex flex-col gap-[8px]">
+                  <label className="font-medium text-[16px] text-black leading-[24px]">
+                    {t(locale, 'contact.objet')} <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    name="objet"
+                    required
+                    value={formData.objet}
+                    onChange={handleChange}
+                    className={`${inputClasses} appearance-none bg-white`}
+                  >
+                    <option value="">{t(locale, 'contact.objet.select')}</option>
+                    <option value="demo">{t(locale, 'contact.objet.demo')}</option>
+                    <option value="devis">{t(locale, 'contact.objet.devis')}</option>
+                    <option value="info">{t(locale, 'contact.objet.info')}</option>
+                    <option value="autre">{t(locale, 'contact.objet.autre')}</option>
+                  </select>
+                </div>
+              </div>
+
               <div className="flex flex-col gap-[8px] w-full">
                 <label className="font-medium text-[16px] text-black leading-[24px]">{t(locale, 'contact.message')}</label>
                 <textarea
                   name="message"
                   rows={5}
-                  required
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full h-[146px] border border-[#d1d5dc] px-4 py-3 text-black outline-none focus:border-[#81e3bc] transition-colors text-[16px] resize-none"
                 />
               </div>
+
+              {/* RGPD consent */}
+              <div className="flex items-start gap-3 w-full">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  required
+                  checked={formData.consent}
+                  onChange={handleChange}
+                  className="mt-1 h-4 w-4 accent-[#81e3bc] cursor-pointer"
+                />
+                <label className="text-[14px] text-[#4a5565] leading-[20px]">
+                  {t(locale, 'contact.consent')}{' '}
+                  <a
+                    href={locale === 'fr' ? '/politique-de-confidentialite' : `/${locale}/privacy-policy`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-[#51b28b] hover:text-[#81e3bc]"
+                  >
+                    {t(locale, 'contact.privacyLink')}
+                  </a>
+                  {' '}<span className="text-red-500">*</span>
+                </label>
+              </div>
+
               <button
                 type="submit"
                 disabled={status === 'sending'}
