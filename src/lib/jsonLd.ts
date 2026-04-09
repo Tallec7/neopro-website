@@ -33,7 +33,14 @@ export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string 
       'digital signage sport',
       'affichage dynamique sport',
       'animation match',
+      'expérience match-day',
+      'affichage dynamique gymnase',
+      'publicité sport amateur',
+      'DOOH sport',
     ],
+    foundingDate: '2025',
+    numberOfEmployees: { '@type': 'QuantitativeValue', value: 2 },
+    priceRange: '€€',
   };
 
   if (options.phone) {
@@ -64,6 +71,13 @@ export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string 
   if (options.sameAs && options.sameAs.length > 0) {
     schema.sameAs = options.sameAs;
   }
+
+  schema.logo = {
+    '@type': 'ImageObject',
+    url: `${options.url}/NeoPro_Core_Assets_Logo_NShape_Stacked_BLK.png`,
+    width: 567,
+    height: 567,
+  };
 
   if (options.image) {
     schema.image = options.image;
