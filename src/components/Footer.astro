@@ -33,90 +33,88 @@ const colLegal = [
 
 <footer class="bg-neo-dark-bg text-white">
   <div class="max-w-[1200px] mx-auto px-6 md:px-[120px] pt-[60px] md:pt-[80px] pb-[60px] md:pb-[96px]">
-
-    <!-- Top: Logo + colonnes nav -->
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-10 md:gap-12">
-
-      <!-- Col 1: Logo + réseaux + CTA -->
-      <div class="flex flex-col gap-6">
-        <a href={localePath('/', locale)}>
-          <Logo variant="white" class="h-[34px] w-auto" />
+    <!-- Row 1: Logo + Social icons -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+      <a href={localePath('/', locale)}>
+        <Logo variant="white" class="h-[34px] w-auto" />
+      </a>
+      <div class="flex gap-[10px]">
+        <a href="https://www.instagram.com/neopro_fr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-neo-green hover:text-neo-green-dark transition-colors">
+          <SocialIcons platform="instagram" size={25} />
         </a>
-        <div class="flex gap-[10px]">
-          <a href="https://www.instagram.com/neopro_fr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-neo-green hover:text-neo-green-dark transition-colors">
-            <SocialIcons platform="instagram" size={25} />
-          </a>
-          <a href="https://www.linkedin.com/company/neopro-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-neo-green hover:text-neo-green-dark transition-colors">
-            <SocialIcons platform="linkedin" size={22} />
-          </a>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-3 mt-2">
-          <Button href={localePath('/demo', locale)} variant="green">
-            {t('nav.demo')}
-          </Button>
-          <Button href="#contact" variant="black">
-            {t('footer.contact')}
-          </Button>
-        </div>
-      </div>
-
-      <!-- Col 2: Produit -->
-      <div>
-        <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-4">
-          {t('footer.col.produit')}
-        </h4>
-        <ul class="flex flex-col gap-3 text-[15px]">
-          {colProduit.map((link) => (
-            <li>
-              <a href={link.href} class="text-[rgba(255,255,255,0.7)] hover:text-white transition-colors">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Col 3: Ressources -->
-      <div>
-        <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-4">
-          {t('footer.col.ressources')}
-        </h4>
-        <ul class="flex flex-col gap-3 text-[15px]">
-          {colRessources.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="text-[rgba(255,255,255,0.7)] hover:text-white transition-colors"
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Col 4: Légal -->
-      <div>
-        <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-4">
-          {t('footer.col.legal')}
-        </h4>
-        <ul class="flex flex-col gap-3 text-[15px]">
-          {colLegal.map((link) => (
-            <li>
-              <a href={link.href} class="text-[rgba(255,255,255,0.7)] hover:text-white transition-colors">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <a href="https://www.linkedin.com/company/neopro-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-neo-green hover:text-neo-green-dark transition-colors">
+          <SocialIcons platform="linkedin" size={22} />
+        </a>
       </div>
     </div>
 
-    <!-- Divider + Copyright -->
-    <div class="h-[1px] bg-[rgba(255,255,255,0.15)] mt-12 mb-6" />
-    <p class="text-[13px] text-[rgba(255,255,255,0.4)]">
-      &copy; {year} {t('footer.copyright')}
-    </p>
+    <!-- Divider — green line -->
+    <div class="h-[2px] bg-neo-green my-8" />
+
+    <!-- Row 2: Nav columns + CTAs -->
+    <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+      <!-- Nav links in columns -->
+      <div class="flex flex-wrap gap-x-12 gap-y-6">
+        <!-- Col Produit -->
+        <div>
+          <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-3">
+            {t('footer.col.produit')}
+          </h4>
+          <ul class="flex flex-col gap-2 text-[15px]">
+            {colProduit.map((link) => (
+              <li>
+                <a href={link.href} class="text-white hover:text-neo-green transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Col Ressources -->
+        <div>
+          <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-3">
+            {t('footer.col.ressources')}
+          </h4>
+          <ul class="flex flex-col gap-2 text-[15px]">
+            {colRessources.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-white hover:text-neo-green transition-colors"
+                  {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-[16px] items-start">
+        <Button href={localePath('/demo', locale)} variant="green">
+          {t('nav.demo')}
+        </Button>
+        <Button href="#contact" variant="black">
+          {t('footer.contact')}
+        </Button>
+      </div>
+    </div>
+
+    <!-- Row 3: Legal links + Copyright -->
+    <div class="h-[1px] bg-[rgba(255,255,255,0.15)] mt-8 mb-6" />
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div class="flex flex-wrap gap-[20px] text-[13px] text-[rgba(255,255,255,0.5)]">
+        {colLegal.map((link) => (
+          <a href={link.href} class="hover:text-white transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <p class="text-[13px] text-[rgba(255,255,255,0.4)]">
+        &copy; {year} {t('footer.copyright')}
+      </p>
+    </div>
   </div>
 </footer>
