@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import CookieBanner from '@/components/CookieBanner.astro';
 import { buildLocalBusinessJsonLd, buildWebSiteJsonLd } from '@/lib/jsonLd';
-import { getLocaleFromUrl, getAlternateUrls } from '@/i18n/utils';
+import { getLocaleFromUrl, getAlternateUrls, useTranslations } from '@/i18n/utils';
 import type { Locale } from '@/i18n/ui';
 
 interface Props {
@@ -26,6 +26,7 @@ interface Props {
 const { title, description, ogImage, canonicalUrl, extraJsonLd: rawExtraJsonLd, ogType, articleMeta, noAlternates, noIndex } = Astro.props;
 
 const locale = Astro.props.locale ?? getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
 
 const siteUrl = 'https://www.neopro-communication.fr';
 const extraJsonLdList = rawExtraJsonLd
@@ -128,15 +129,15 @@ const webSiteJsonLd = buildWebSiteJsonLd({
     <div id="promo-bar" class="fixed top-0 left-0 right-0 z-[60] bg-[#423E33] text-white border-b-2 border-[#fdbe00]">
       <div class="max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[10px] flex items-center justify-center gap-[16px] text-center">
 <p class="text-[13px] md:text-[14px] leading-snug">
-          <span class="text-[#fdbe00] font-bold uppercase tracking-wider mr-2">⚡ Offre limitée</span>
-          <span class="font-semibold"><span class="text-[#fdbe00]">-20 %</span> sur l'offre Pro</span>
+          <span class="text-[#fdbe00] font-bold uppercase tracking-wider mr-2">{t('promo.label')}</span>
+          <span class="font-semibold">{t('promo.pro')}</span>
           <span class="text-[#9ca3af] mx-2">·</span>
-          <span class="font-semibold"><span class="text-[#fdbe00]">Shooting offert</span> sur l'offre Premium</span>
+          <span class="font-semibold">{t('promo.premium')}</span>
           <span class="text-[#9ca3af] mx-2 hidden md:inline">·</span>
-          <span class="text-[#d9d9d9] hidden md:inline">jusqu'au 31 mai</span>
-          <a href="/offres2" class="ml-3 inline-flex items-center gap-1 text-[#fdbe00] font-bold underline underline-offset-2 hover:text-white transition-colors">Voir les offres →</a>
+          <span class="text-[#d9d9d9] hidden md:inline">{t('promo.until')}</span>
+          <a href={locale === 'fr' ? '/offres2' : `/${locale}/offres`} class="ml-3 inline-flex items-center gap-1 text-[#fdbe00] font-bold underline underline-offset-2 hover:text-white transition-colors">{t('promo.cta')}</a>
         </p>
-        <button type="button" id="promo-bar-close" aria-label="Fermer" class="shrink-0 ml-2 w-[24px] h-[24px] flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-[#d9d9d9]">
+        <button type="button" id="promo-bar-close" aria-label={t('promo.close')} class="shrink-0 ml-2 w-[24px] h-[24px] flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-[#d9d9d9]">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>

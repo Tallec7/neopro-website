@@ -5,6 +5,7 @@ interface Club {
 
 interface Props {
   clubs: Club[];
+  title?: string;
 }
 
 function ClubLogo({ club }: { club: Club }) {
@@ -20,7 +21,7 @@ function ClubLogo({ club }: { club: Club }) {
   );
 }
 
-export default function ClubCarousel({ clubs }: Props) {
+export default function ClubCarousel({ clubs, title = 'Les clubs Neopro' }: Props) {
   const validClubs = clubs.filter((c) => c.logoUrl);
 
   if (validClubs.length === 0) return null;
@@ -31,7 +32,7 @@ export default function ClubCarousel({ clubs }: Props) {
   return (
     <section className="py-24 overflow-hidden bg-white">
       <h2 className="text-[36px] md:text-[48px] font-bold text-[#101828] text-center mb-[60px] px-5">
-        Les clubs Neopro
+        {title}
       </h2>
       <div className="overflow-hidden">
         <div

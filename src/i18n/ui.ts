@@ -15,6 +15,7 @@ export const ui = {
     // ── Nav ────────────────────────────────────────────────────────
     'nav.solution': 'La solution',
     'nav.offres': 'Les offres',
+    'nav.annonceurs': 'Annonceurs',
     'nav.blog': 'Blog',
     'nav.about': 'Qui sommes-nous ?',
     'nav.demo': 'Planifier une démo',
@@ -23,6 +24,7 @@ export const ui = {
     // ── Footer ─────────────────────────────────────────────────────
     'footer.implantations': 'Implantations',
     'footer.devis': 'Obtenez un devis',
+    'footer.contact': 'Nous contacter',
     'footer.mentions': 'Mentions légales',
     'footer.privacy': 'Politique de confidentialité',
     'footer.copyright': 'Neopro Communication. Tous droits réservés.',
@@ -152,12 +154,25 @@ export const ui = {
     'devisForm.hockeyGlace': 'Hockey sur glace',
     'devisForm.tennisTable': 'Tennis de table',
     'devisForm.rinkHockey': 'Rink Hockey',
+
+    // ── Clubs & Testimonials ──────────────────────────────────────
+    'clubs.title': 'Les clubs Neopro',
+    'testimonials.title': 'Ce que disent les clubs',
+
+    // ── Promo Banner ──────────────────────────────────────────────
+    'promo.label': '⚡ Offre limitée',
+    'promo.pro': '-20 % sur l\'offre Pro',
+    'promo.premium': 'Shooting offert sur l\'offre Premium',
+    'promo.until': 'jusqu\'au 31 mai',
+    'promo.cta': 'Voir les offres →',
+    'promo.close': 'Fermer',
   },
 
   en: {
     // ── Nav ────────────────────────────────────────────────────────
     'nav.solution': 'The Solution',
     'nav.offres': 'Pricing',
+    'nav.annonceurs': 'Advertisers',
     'nav.blog': 'Blog',
     'nav.about': 'About Us',
     'nav.demo': 'Book a Demo',
@@ -166,6 +181,7 @@ export const ui = {
     // ── Footer ─────────────────────────────────────────────────────
     'footer.implantations': 'Locations',
     'footer.devis': 'Get a Quote',
+    'footer.contact': 'Contact Us',
     'footer.mentions': 'Legal Notice',
     'footer.privacy': 'Privacy Policy',
     'footer.copyright': 'Neopro Communication. All rights reserved.',
@@ -295,12 +311,25 @@ export const ui = {
     'devisForm.hockeyGlace': 'Ice Hockey',
     'devisForm.tennisTable': 'Table Tennis',
     'devisForm.rinkHockey': 'Rink Hockey',
+
+    // ── Clubs & Testimonials ──────────────────────────────────────
+    'clubs.title': 'Neopro Clubs',
+    'testimonials.title': 'What clubs say',
+
+    // ── Promo Banner ──────────────────────────────────────────────
+    'promo.label': '⚡ Limited offer',
+    'promo.pro': '-20% on the Pro plan',
+    'promo.premium': 'Free photoshoot with the Premium plan',
+    'promo.until': 'until May 31',
+    'promo.cta': 'See the plans →',
+    'promo.close': 'Close',
   },
 
   es: {
     // ── Nav ────────────────────────────────────────────────────────
     'nav.solution': 'La Solución',
     'nav.offres': 'Tarifas',
+    'nav.annonceurs': 'Anunciantes',
     'nav.blog': 'Blog',
     'nav.about': 'Quiénes somos',
     'nav.demo': 'Reservar una demo',
@@ -309,6 +338,7 @@ export const ui = {
     // ── Footer ─────────────────────────────────────────────────────
     'footer.implantations': 'Ubicaciones',
     'footer.devis': 'Solicitar presupuesto',
+    'footer.contact': 'Contacto',
     'footer.mentions': 'Aviso legal',
     'footer.privacy': 'Política de privacidad',
     'footer.copyright': 'Neopro Communication. Todos los derechos reservados.',
@@ -438,12 +468,25 @@ export const ui = {
     'devisForm.hockeyGlace': 'Hockey sobre hielo',
     'devisForm.tennisTable': 'Tenis de mesa',
     'devisForm.rinkHockey': 'Hockey sobre patines',
+
+    // ── Clubs & Testimonials ──────────────────────────────────────
+    'clubs.title': 'Los clubes Neopro',
+    'testimonials.title': 'Lo que dicen los clubes',
+
+    // ── Promo Banner ──────────────────────────────────────────────
+    'promo.label': '⚡ Oferta limitada',
+    'promo.pro': '-20 % en el plan Pro',
+    'promo.premium': 'Sesión de fotos gratis con el plan Premium',
+    'promo.until': 'hasta el 31 de mayo',
+    'promo.cta': 'Ver los planes →',
+    'promo.close': 'Cerrar',
   },
 
   de: {
     // ── Nav ────────────────────────────────────────────────────────
     'nav.solution': 'Die Lösung',
     'nav.offres': 'Angebote',
+    'nav.annonceurs': 'Werbetreibende',
     'nav.blog': 'Blog',
     'nav.about': 'Über uns',
     'nav.demo': 'Demo buchen',
@@ -452,6 +495,7 @@ export const ui = {
     // ── Footer ─────────────────────────────────────────────────────
     'footer.implantations': 'Standorte',
     'footer.devis': 'Angebot anfordern',
+    'footer.contact': 'Kontakt',
     'footer.mentions': 'Impressum',
     'footer.privacy': 'Datenschutz',
     'footer.copyright': 'Neopro Communication. Alle Rechte vorbehalten.',
@@ -581,12 +625,25 @@ export const ui = {
     'devisForm.hockeyGlace': 'Eishockey',
     'devisForm.tennisTable': 'Tischtennis',
     'devisForm.rinkHockey': 'Rollhockey',
+
+    // ── Clubs & Testimonials ──────────────────────────────────────
+    'clubs.title': 'Die Neopro-Vereine',
+    'testimonials.title': 'Was die Vereine sagen',
+
+    // ── Promo Banner ──────────────────────────────────────────────
+    'promo.label': '⚡ Begrenztes Angebot',
+    'promo.pro': '-20 % auf das Pro-Angebot',
+    'promo.premium': 'Kostenloses Fotoshooting beim Premium-Angebot',
+    'promo.until': 'bis 31. Mai',
+    'promo.cta': 'Angebote ansehen →',
+    'promo.close': 'Schließen',
   },
 
   da: {
     // ── Nav ────────────────────────────────────────────────────────
     'nav.solution': 'Løsningen',
     'nav.offres': 'Priser',
+    'nav.annonceurs': 'Annoncører',
     'nav.blog': 'Blog',
     'nav.about': 'Om os',
     'nav.demo': 'Book en demo',
@@ -595,6 +652,7 @@ export const ui = {
     // ── Footer ─────────────────────────────────────────────────────
     'footer.implantations': 'Lokationer',
     'footer.devis': 'Få et tilbud',
+    'footer.contact': 'Kontakt os',
     'footer.mentions': 'Juridisk information',
     'footer.privacy': 'Privatlivspolitik',
     'footer.copyright': 'Neopro Communication. Alle rettigheder forbeholdes.',
@@ -724,6 +782,18 @@ export const ui = {
     'devisForm.hockeyGlace': 'Ishockey',
     'devisForm.tennisTable': 'Bordtennis',
     'devisForm.rinkHockey': 'Rullehockey',
+
+    // ── Clubs & Testimonials ──────────────────────────────────────
+    'clubs.title': 'Neopro-klubberne',
+    'testimonials.title': 'Hvad klubberne siger',
+
+    // ── Promo Banner ──────────────────────────────────────────────
+    'promo.label': '⚡ Begrænset tilbud',
+    'promo.pro': '-20 % på Pro-tilbuddet',
+    'promo.premium': 'Gratis fotoshoot med Premium-tilbuddet',
+    'promo.until': 'indtil 31. maj',
+    'promo.cta': 'Se tilbuddene →',
+    'promo.close': 'Luk',
   },
 } as const;
 

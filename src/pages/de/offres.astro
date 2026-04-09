@@ -410,10 +410,10 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   </section>
 
   <!-- Club Carousel -->
-  <ClubCarousel clubs={clubs} client:visible />
+  <ClubCarousel clubs={clubs} title={t('clubs.title')} client:visible />
 
   <!-- Testimonials -->
-  <TestimonialCarousel testimonials={testimonials} client:visible />
+  <TestimonialCarousel testimonials={testimonials} sectionTitle={t('testimonials.title')} client:visible />
 
   <!-- Contact -->
   <div id="contact">
