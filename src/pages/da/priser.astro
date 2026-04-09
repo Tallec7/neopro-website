@@ -7,12 +7,12 @@ import ContactForm from '@/components/ContactForm.tsx';
 import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
 import { useTranslations } from '@/i18n/utils';
 
-// ── DE Data ─────────────────────────────────────────────────────
-import { plans, playPlan, comparisonTable, videoPackages, additionalOptions, chainSteps } from '@/data/de/offres';
-import { testimonials } from '@/data/de/temoignages';
+// ── DA Data ─────────────────────────────────────────────────────
+import { plans, playPlan, comparisonTable, videoPackages, additionalOptions, chainSteps } from '@/data/da/priser';
+import { testimonials } from '@/data/da/temoignages';
 import { clubs } from '@/data/clubs';
 
-const locale = 'de';
+const locale = 'da';
 const t = useTranslations(locale);
 
 const borderColorMap: Record<string, string> = {
@@ -37,7 +37,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
-    url: `${siteUrl}/de/devis?offre=${plan.slug}`,
+    url: `${siteUrl}/da/tilbud?offre=${plan.slug}`,
   })),
   'Neopro',
   siteUrl,
@@ -49,7 +49,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <section class="relative h-[743px] overflow-hidden">
     <img
       src="/images/image_offre_accueil.jpg"
-      alt="Sporthalle mit Neopro Digitalbildschirm und Partnerangeboten"
+      alt="Sportshal udstyret med en Neopro digitalskærm der viser partnertilbud"
       class="absolute inset-0 w-full h-full object-cover"
       loading="eager"
     />
@@ -66,21 +66,21 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
-  <!-- Angebote -->
+  <!-- Tilbud -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[30px] md:pb-[40px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">Unsere Angebote</h2>
-      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Starten Sie ohne Hardware mit <strong>Play</strong>, oder wechseln Sie direkt zum Gerät mit <strong>Club</strong>, <strong>Pro</strong> oder <strong>Premium</strong>.</p>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">{t('offres.plans.title')}</h2>
+      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Start uden hardware med <strong>Play</strong>, eller gå direkte til boksen med <strong>Club</strong>, <strong>Pro</strong> eller <strong>Premium</strong>.</p>
 
-      <!-- PLAY Banner -->
+      <!-- PLAY banner -->
       <div class="relative bg-white border border-gray-200 rounded-[20px] p-[30px] md:p-[40px] mb-[50px] flex flex-col md:flex-row gap-[30px] items-start md:items-center shadow-sm">
         <span class="absolute -top-3 left-[30px] bg-[#81e3bc] text-[#2f3935] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
-          Ohne Hardware · SaaS
+          Uden hardware · SaaS
         </span>
         <div class="flex-1">
           <h3 class="text-[28px] md:text-[32px] font-bold text-[#101828]">{playPlan.name}</h3>
           <p class="font-playfair italic text-[20px] text-neo-gray mt-[4px]">« {playPlan.pitch} »</p>
-          <p class="text-[15px] text-[#101828] mt-[16px] max-w-[520px]">Zugang zum Web-Player, unbegrenzte Videos, Cloud-Fernbedienung. Ideal, um in wenigen Minuten zu starten, ohne Installation.</p>
+          <p class="text-[15px] text-[#101828] mt-[16px] max-w-[520px]">Adgang til webafspilleren, ubegrænsede videoer, cloud-fjernbetjening. Ideel til at komme i gang på få minutter, uden installation.</p>
         </div>
         <div class="shrink-0 flex flex-col items-start md:items-end gap-[14px]">
           <div class="md:text-right">
@@ -88,23 +88,23 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               class="text-[32px] font-bold text-[#101828]"
               data-price-annual={playPlan.priceAnnual}
               data-price-monthly={playPlan.priceMonthly}
-            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('de-DE')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/Jahr</span></p>
-            <p class="text-[13px] text-[#4a5565] js-secondary hidden">Mindestlaufzeit 9 Monate</p>
+            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/år</span></p>
+            <p class="text-[13px] text-[#4a5565] js-secondary hidden">Binding 9 måneder minimum</p>
           </div>
-          <Button href={`/de/devis?offre=${playPlan.slug}`} variant="green" arrow>Mit Play starten</Button>
+          <Button href={`/da/tilbud?offre=${playPlan.slug}`} variant="green" arrow>Start med Play</Button>
         </div>
       </div>
 
-      <!-- Toggle Jährlich / Monatlich -->
+      <!-- Toggle Årlig / Månedlig -->
       <div class="flex flex-col items-center gap-[10px] mb-[40px]">
-        <div class="inline-flex bg-[#f5f5f5] rounded-full p-[6px] shadow-sm" role="tablist" aria-label="Abrechnungszeitraum">
-          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="annual" aria-pressed="true">Jährlich</button>
-          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="monthly" aria-pressed="false">Monatlich</button>
+        <div class="inline-flex bg-[#f5f5f5] rounded-full p-[6px] shadow-sm" role="tablist" aria-label="Faktureringsperiode">
+          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="annual" aria-pressed="true">Årlig</button>
+          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="monthly" aria-pressed="false">Månedlig</button>
         </div>
-        <p class="text-[13px] text-neo-green-dark font-medium">Jährlich = reduzierter Tarif · Monatlich = 9 Monate Mindestlaufzeit</p>
+        <p class="text-[13px] text-neo-green-dark font-medium">Årlig = reduceret pris · Månedlig = 9 måneders binding</p>
       </div>
 
-      <!-- 3 Karten Club / Pro / Premium -->
+      <!-- 3 kort Club / Pro / Premium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div
@@ -112,12 +112,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           >
             {offre.popular && (
               <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                Empfohlen
+                {t('offres.plans.popular')}
               </span>
             )}
             {(offre.slug === 'pro' || offre.slug === 'premium') && (
               <span class="absolute top-[14px] right-[14px] bg-[#fdbe00] text-[#2f3935] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
-                ★ Aktion 31. Mai
+                ★ Kampagne 31. maj
               </span>
             )}
             <div class="mb-[20px]">
@@ -126,17 +126,17 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               {offre.slug === 'pro' ? (
                 <>
                   <p class="text-[14px] text-neo-gray line-through mt-[12px] mb-[-4px]">
-                    <span data-price-annual={offre.priceAnnual} data-price-monthly={offre.priceMonthly}><span class="js-price">{offre.priceAnnual.toLocaleString('de-DE')} €</span><span class="js-suffix">/Jahr</span></span>
+                    <span data-price-annual={offre.priceAnnual} data-price-monthly={offre.priceMonthly}><span class="js-price">{offre.priceAnnual.toLocaleString('da-DK')} €</span><span class="js-suffix">/år</span></span>
                   </p>
                   <p
                     class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
                     data-price-annual={Math.round(offre.priceAnnual * 0.8)}
                     data-price-monthly={Math.round(offre.priceMonthly * 0.8)}
                   >
-                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('de-DE')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/Jahr</span>
+                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/år</span>
                     <span class="text-[12px] font-bold text-[#51b28b] bg-[#e6f5ee] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
                   </p>
-                  <p class="text-[12px] text-[#51b28b] font-semibold mt-[4px]">Angebot gültig bis 31. Mai</p>
+                  <p class="text-[12px] text-[#51b28b] font-semibold mt-[4px]">Tilbud gælder til 31. maj</p>
                 </>
               ) : (
                 <p
@@ -144,20 +144,20 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                   data-price-annual={offre.priceAnnual}
                   data-price-monthly={offre.priceMonthly}
                 >
-                  <span class="js-price">{offre.priceAnnual.toLocaleString('de-DE')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/Jahr</span>
+                  <span class="js-price">{offre.priceAnnual.toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/år</span>
                 </p>
               )}
               {offre.slug === 'premium' && (
                 <p class="text-[12px] text-[#fe6aa6] font-semibold mt-[6px] leading-snug">
-                  ★ Foto-/Video-Shooting + Produktion geschenkt für 1 Mannschaft (bis 31. Mai)
+                  ★ Foto-/videooptagelse + produktion gratis for 1 hold (til 31. maj)
                 </p>
               )}
-              <p class="text-[13px] text-neo-gray mt-[4px] js-secondary hidden">Mindestlaufzeit 9 Monate</p>
+              <p class="text-[13px] text-neo-gray mt-[4px] js-secondary hidden">Binding 9 måneder minimum</p>
             </div>
             <div class="border-t border-gray-200 mb-[16px]"></div>
             <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
-                f.label.startsWith('Alles aus dem') ? (
+                f.label.startsWith('Alt i') ? (
                   <li class="-mt-[10px] text-[13px] font-semibold uppercase tracking-wider text-neo-gray">
                     {f.label.replace(/ :$/, '').replace(/:$/, '')}
                   </li>
@@ -175,25 +175,25 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             </ul>
             <p class="text-[13px] text-[#4a5565] mb-[12px] flex items-center gap-[6px]">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              9 Monate Laufzeit · Gerät leihweise inklusive
+              9 måneders binding · Boks udlånt inkluderet
             </p>
-            <Button href={`/de/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
-              Dieses Angebot wählen
+            <Button href={`/da/tilbud?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+              {t('offres.plans.cta')}
             </Button>
           </div>
         ))}
       </div>
 
-      <!-- Vergleichstabelle (aufklappbar) -->
+      <!-- Detaljeret sammenligningstabel (foldbar) -->
       <details class="mt-[40px] bg-white rounded-[20px] group border border-gray-200">
         <summary class="cursor-pointer list-none px-[30px] py-[24px] flex items-center justify-between gap-[20px] hover:bg-[#fafafa] transition-colors rounded-[20px]">
           <div class="flex-1">
-            <p class="text-[18px] md:text-[22px] font-bold text-[#101828]">Alle Funktionen vergleichen</p>
-            <p class="text-[13px] text-neo-gray mt-[2px]">Detailansicht aller 4 Angebote Zeile für Zeile</p>
+            <p class="text-[18px] md:text-[22px] font-bold text-[#101828]">Sammenlign alle funktioner</p>
+            <p class="text-[13px] text-neo-gray mt-[2px]">Detaljeret oversigt over de 4 tilbud linje for linje</p>
           </div>
           <span class="shrink-0 inline-flex items-center gap-2 bg-[#f5f5f5] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-medium text-[#101828]">
-            <span class="group-open:hidden">Tabelle anzeigen</span>
-            <span class="hidden group-open:inline">Ausblenden</span>
+            <span class="group-open:hidden">Vis tabel</span>
+            <span class="hidden group-open:inline">Skjul</span>
             <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
           </span>
         </summary>
@@ -243,33 +243,33 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
-  <!-- Ihr Angebot ergänzen: Produktion / Bildschirme / Zusatzoptionen -->
+  <!-- Supplér jeres tilbud: Produktion / Skærme / Tilvalg -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[40px] max-w-[760px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[12px]">ERGÄNZEND</p>
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[12px]">SOM SUPPLEMENT</p>
         <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#101828] mb-[12px]">
-          <span class="font-playfair italic">Ergänzen</span> Sie Ihr Angebot
+          <span class="font-playfair italic">Supplér</span> jeres tilbud
         </h2>
-        <p class="text-[16px] md:text-[18px] text-neo-gray">Kombinierbar mit jedem Angebot — individuelle Kalkulation auf Anfrage.</p>
+        <p class="text-[16px] md:text-[18px] text-neo-gray">Kan kombineres med ethvert tilbud — personligt tilbud på forespørgsel.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px]">
 
-        <!-- Spalte 1: Inhaltsproduktion (3 Video-Pakete) -->
+        <!-- Kolonne 1: Indholdsproduktion (3 videopakker) -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
             <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#79e8fa] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">🎬</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Inhaltsproduktion</h3>
+            <h3 class="text-[20px] font-bold text-[#101828]">Indholdsproduktion</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">Wir filmen Ihre Spieler und integrieren sie in unsere Premium-Templates.</p>
+          <p class="text-[13px] text-neo-gray italic mb-[18px]">Vi filmer jeres spillere og integrerer dem i vores premium-skabeloner.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {videoPackages.map((pkg) => (
               <li class="border-l-2 border-[#79e8fa] pl-[12px]">
                 <p class="text-[14px] font-bold text-[#101828] flex items-center gap-2">
                   {pkg.name}
                   {pkg.popular && <span class="text-[10px] bg-[#79e8fa] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">★ Top</span>}
-                  {pkg.name === 'Standard' && <span class="text-[10px] bg-[#81e3bc] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Inklusive</span>}
+                  {pkg.name === 'Standard' && <span class="text-[10px] bg-[#81e3bc] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Inkl.</span>}
                 </p>
                 <p class="text-[12px] text-neo-gray mb-[6px]">{pkg.description}</p>
                 <ul class="flex flex-col gap-[3px]">
@@ -284,13 +284,13 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           </ul>
         </div>
 
-        <!-- Spalte 2: Bildschirme & Installation -->
+        <!-- Kolonne 2: Skærme & installation -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
             <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fdbe00] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">📺</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Bildschirme & Installation</h3>
+            <h3 class="text-[20px] font-bold text-[#101828]">Skærme & installation</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">Wir helfen Ihnen bei der Auswahl und Installation der passenden Bildschirme.</p>
+          <p class="text-[13px] text-neo-gray italic mb-[18px]">Vi hjælper jer med at vælge og installere de rigtige skærme.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {chainSteps[3].services.map((opt) => (
               <li class="flex items-start gap-[10px]">
@@ -304,13 +304,13 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           </ul>
         </div>
 
-        <!-- Spalte 3: Zusatzoptionen -->
+        <!-- Kolonne 3: Tilvalg à la carte -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
             <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fe6aa6] text-white flex items-center justify-center font-bold text-[18px]">+</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Zusatzoptionen</h3>
+            <h3 class="text-[20px] font-bold text-[#101828]">Tilvalg à la carte</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">Zum Personalisieren und Erweitern Ihres Angebots.</p>
+          <p class="text-[13px] text-neo-gray italic mb-[18px]">For at tilpasse og gå videre med jeres tilbud.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {additionalOptions.map((cat) => (
               <li>
@@ -334,12 +334,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       </div>
 
       <div class="text-center mt-[30px]">
-        <Button href="/de/devis?offre=options" variant="black" arrow>Mein individuelles Angebot zusammenstellen</Button>
+        <Button href="/da/tilbud?offre=options" variant="black" arrow>Sammensæt mit skræddersyede tilbud</Button>
       </div>
     </div>
   </section>
 
-  <!-- Finanzierbar durch Ihre Partner -->
+  <!-- Finansieret af jeres partnere -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
@@ -371,25 +371,25 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
-  <!-- Flotte (Betreiber / Ligen / Verbände) -->
+  <!-- Flåde (operatører / ligaer / forbund) -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[80px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="relative bg-[#2f3935] text-white rounded-[20px] overflow-hidden p-[36px] md:p-[50px]">
         <div class="relative flex flex-col lg:flex-row gap-[32px] items-start lg:items-center justify-between">
           <div class="flex-1 max-w-[640px]">
-            <p class="text-[13px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[12px]">FLOTTE · SPEZIELLES ANGEBOT</p>
+            <p class="text-[13px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[12px]">FLÅDE · DEDIKERET TILBUD</p>
             <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold mb-[14px]">
-              <span class="font-playfair italic">Sie verwalten</span> mehrere Vereine?
+              <span class="font-playfair italic">Administrerer I</span> flere klubber?
             </h2>
-            <p class="text-[15px] md:text-[16px] text-[#d9d9d9] mb-[20px]">Ligen, Verbände, Betreiber und Vereinsnetzwerke: Gruppen-Deployment, zentrales Dashboard, degressiver Tarif.</p>
+            <p class="text-[15px] md:text-[16px] text-[#d9d9d9] mb-[20px]">Ligaer, forbund, operatører og klubnetværk: samlet udrulning, centralt dashboard, degressiv prissætning.</p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-[20px] gap-y-[8px] mb-[24px]">
               {[
-                'Multi-Standort-Dashboard',
-                'Gruppen-Deployment',
-                'Offline-Warnungen',
-                'Vereinsübergreifende Statistiken',
-                'Degressiver Tarif',
-                'Persönlicher Ansprechpartner',
+                'Multi-site dashboard',
+                'Samlet udrulning',
+                'Offline-alarmer',
+                'Statistik på tværs af klubber',
+                'Degressiv prissætning',
+                'Dedikeret kontaktperson',
               ].map((item) => (
                 <li class="flex items-start gap-[8px] text-[14px] text-[#d9d9d9]">
                   <svg class="w-4 h-4 shrink-0 text-[#81e3bc] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
@@ -397,12 +397,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 </li>
               ))}
             </ul>
-            <Button href="/de/devis?offre=flotte" variant="green" arrow>Flotten-Angebot anfragen</Button>
+            <Button href="/da/tilbud?offre=flotte" variant="green" arrow>Anmod om et flådetilbud</Button>
           </div>
           <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#1a201d] rounded-[16px] px-[40px] py-[36px] border border-[#81e3bc]/20">
             <p class="text-[64px] font-black text-[#81e3bc] leading-none">5+</p>
-            <p class="text-[13px] text-[#d9d9d9] uppercase tracking-wider mt-[8px]">Vereine / Standorte</p>
-            <p class="text-[12px] text-neo-gray mt-[12px] text-center max-w-[140px]">ab denen die Flotte sinnvoll wird</p>
+            <p class="text-[13px] text-[#d9d9d9] uppercase tracking-wider mt-[8px]">klubber / steder</p>
+            <p class="text-[12px] text-neo-gray mt-[12px] text-center max-w-[140px]">fra hvor flåden bliver relevant</p>
           </div>
         </div>
       </div>
@@ -417,7 +417,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 
   <!-- Contact -->
   <div id="contact">
-    <ContactForm locale="de" client:visible />
+    <ContactForm locale="da" client:visible />
   </div>
 </BaseLayout>
 
@@ -432,7 +432,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 </style>
 
 <script>
-  // Toggle Jährlich / Monatlich
+  // Toggle Årlig / Månedlig
   const toggleBtns = document.querySelectorAll<HTMLButtonElement>('.js-toggle-btn');
   const priceEls = document.querySelectorAll<HTMLElement>('[data-price-annual]');
 
@@ -448,12 +448,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       const secondary = el.parentElement?.querySelector('.js-secondary') as HTMLElement | null;
       if (!priceSpan || !suffixSpan) return;
       if (period === 'annual') {
-        priceSpan.textContent = `${annual.toLocaleString('de-DE')} €`;
-        suffixSpan.textContent = '/Jahr';
+        priceSpan.textContent = `${annual.toLocaleString('da-DK')} €`;
+        suffixSpan.textContent = '/år';
         if (secondary) secondary.classList.add('hidden');
       } else if (monthly) {
         priceSpan.textContent = `${monthly} €`;
-        suffixSpan.textContent = '/Monat';
+        suffixSpan.textContent = '/md';
         if (secondary) secondary.classList.remove('hidden');
       }
     });
@@ -478,7 +478,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       if (!emailInput?.value) return;
 
       btn.disabled = true;
-      btn.textContent = 'Wird gesendet…';
+      btn.textContent = 'Sender...';
       msg.classList.add('hidden');
 
       try {
@@ -489,19 +489,19 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         });
 
         if (res.ok) {
-          msg.textContent = 'Dokument gesendet! Prüfen Sie Ihr Postfach.';
+          msg.textContent = 'Dokument sendt! Tjek jeres indbakke.';
           msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
           emailInput.value = '';
         } else {
-          msg.textContent = 'Ein Fehler ist aufgetreten.';
+          msg.textContent = 'Der opstod en fejl.';
           msg.className = 'text-[14px] mt-2 w-full text-red-600';
         }
       } catch {
-        msg.textContent = 'Verbindungsfehler. Bitte versuchen Sie es später erneut.';
+        msg.textContent = 'Forbindelsesfejl. Prøv igen senere.';
         msg.className = 'text-[14px] mt-2 w-full text-red-600';
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Dokument erhalten';
+        btn.textContent = 'Modtag dokumentet';
       }
     });
   }

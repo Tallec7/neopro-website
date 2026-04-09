@@ -82,4 +82,4 @@ Die Sportanzeige ist kein Privileg der Profivereine mehr. Mit dem Aufkommen **sc
 
 Bei Neopro bauen wir genau das: **die digitale Sportanzeige für alle Vereine**, vom Profiniveau bis zur Regionalmeisterschaft.
 
-[Entdecken Sie die Neopro-Sportanzeige im Detail](/de/regie-sport) oder [fordern Sie ein individuelles Angebot an](/de/devis) für Ihren Verein.
+[Entdecken Sie die Neopro-Sportanzeige im Detail](/de/regie-sport) oder [fordern Sie ein individuelles Angebot an](/de/angebot) für Ihren Verein.

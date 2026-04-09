@@ -61,4 +61,4 @@ Ingen byggearbejde, ingen netværkskabler, ingen tekniker nødvendig.
 
 En LED-skærm i en sportshal er en investering, der hurtigt tjener sig ind takket være partnerne. Det vigtigste er at vælge en **tilpasset digital skiltningsløsning**, der giver dig mulighed for nemt at styre indholdet, selv uden tekniske kompetencer.
 
-[Oplev Neopro-tilbuddene](/da/offres) og find den formel, der passer til din klub.
+[Oplev Neopro-tilbuddene](/da/priser) og find den formel, der passer til din klub.

@@ -11,7 +11,7 @@ import heroImg from '@/assets/images/hero-solution.webp';
 
 // ── EN Data ─────────────────────────────────────────────────────
 import { solutionPanels, colorPanels, steps } from '@/data/en/solution';
-import { chainSteps } from '@/data/en/offres';
+import { chainSteps } from '@/data/en/pricing';
 
 const panelIconVariants = ['pink', 'yellow', 'green', 'blue'] as const;
 
@@ -216,7 +216,7 @@ const t = useTranslations(locale);
             {t('solution.offres.text')}
           </p>
           <div class="mt-[20px]">
-            <Button href="/en/offres" variant="black" arrow>
+            <Button href="/en/pricing" variant="black" arrow>
 
               {t('solution.offres.cta')}
             </Button>

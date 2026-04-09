@@ -73,4 +73,4 @@ This level of professionalism is what turns a one-time sponsor into a **loyal pa
 
 Digital signage solutions for amateur clubs start at **1,500 EUR/year excl. VAT**. It's an investment that pays for itself as soon as you gain one or two additional sponsors thanks to the screen.
 
-[View Neopro plans](/en/offres) to choose the right package for your club, or [request a personalized quote](/en/devis).
+[View Neopro plans](/en/pricing) to choose the right package for your club, or [request a personalized quote](/en/quote).

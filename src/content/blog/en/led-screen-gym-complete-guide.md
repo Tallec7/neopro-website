@@ -61,4 +61,4 @@ No construction work, no network cabling, no technician required.
 
 An LED screen in a gym is an investment that pays for itself quickly through partners. The most important thing is to choose a **suitable signage solution** that lets you manage content easily, even without technical skills.
 
-[Discover Neopro plans](/en/offres) to find the right package for your club.
+[Discover Neopro plans](/en/pricing) to find the right package for your club.

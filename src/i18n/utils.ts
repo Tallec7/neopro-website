@@ -52,6 +52,9 @@ export function getPathWithoutLocale(pathname: string): string {
  */
 const aboutRoute = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' };
 const annonceurRoute = { fr: '/annonceurs', en: '/advertisers', es: '/anunciantes', de: '/werbetreibende', da: '/annoncorer' };
+const offresRoute = { fr: '/offres', en: '/pricing', es: '/precios', de: '/angebote', da: '/priser' };
+const devisRoute = { fr: '/devis', en: '/quote', es: '/presupuesto', de: '/angebot', da: '/tilbud' };
+const regieRoute = { fr: '/regie-sport', en: '/sports-signage', es: '/produccion-deportiva', de: '/sport-regie', da: '/sport-regi' };
 
 const routeMap: Record<string, Record<Locale, string>> = {
   'qui-sommes-nous': aboutRoute,
@@ -64,6 +67,21 @@ const routeMap: Record<string, Record<Locale, string>> = {
   'anunciantes': annonceurRoute,
   'werbetreibende': annonceurRoute,
   'annoncorer': annonceurRoute,
+  'offres': offresRoute,
+  'pricing': offresRoute,
+  'precios': offresRoute,
+  'angebote': offresRoute,
+  'priser': offresRoute,
+  'devis': devisRoute,
+  'quote': devisRoute,
+  'presupuesto': devisRoute,
+  'angebot': devisRoute,
+  'tilbud': devisRoute,
+  'regie-sport': regieRoute,
+  'sports-signage': regieRoute,
+  'produccion-deportiva': regieRoute,
+  'sport-regie': regieRoute,
+  'sport-regi': regieRoute,
 };
 
 /**

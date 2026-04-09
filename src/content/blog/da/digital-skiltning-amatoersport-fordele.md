@@ -73,4 +73,4 @@ Det er dette niveau af professionalisme, der forvandler en enkeltstående sponso
 
 Digitale skiltningsløsninger til amatørklubber starter fra **1.500 €/år ekskl. moms**. Det er en investering, der tjener sig ind, så snart du får en eller to ekstra sponsorer takket være skærmen.
 
-[Se Neopro-tilbuddene](/da/offres) for at vælge den formel, der passer til din klub, eller [anmod om et tilpasset tilbud](/da/devis).
+[Se Neopro-tilbuddene](/da/priser) for at vælge den formel, der passer til din klub, eller [anmod om et tilpasset tilbud](/da/tilbud).

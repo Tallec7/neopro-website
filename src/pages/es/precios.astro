@@ -8,7 +8,7 @@ import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
 import { useTranslations } from '@/i18n/utils';
 
 // ── ES Data ─────────────────────────────────────────────────────
-import { plans, playPlan, comparisonTable, videoPackages, additionalOptions, chainSteps } from '@/data/es/offres';
+import { plans, playPlan, comparisonTable, videoPackages, additionalOptions, chainSteps } from '@/data/es/precios';
 import { testimonials } from '@/data/es/temoignages';
 import { clubs } from '@/data/clubs';
 
@@ -39,7 +39,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
-    url: `${siteUrl}/es/devis?offre=${plan.slug}`,
+    url: `${siteUrl}/es/presupuesto?offre=${plan.slug}`,
   })),
   'Neopro',
   siteUrl,
@@ -93,7 +93,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             ><span class="js-price">{playPlan.priceAnnual.toLocaleString('es-ES')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/año</span></p>
             <p class="text-[13px] text-[#4a5565] js-secondary hidden">Compromiso mínimo de 9 meses</p>
           </div>
-          <Button href={`/es/devis?offre=${playPlan.slug}`} variant="green" arrow>Empezar con Play</Button>
+          <Button href={`/es/presupuesto?offre=${playPlan.slug}`} variant="green" arrow>Empezar con Play</Button>
         </div>
       </div>
 
@@ -179,7 +179,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               Compromiso 9 meses · Dispositivo prestado incluido
             </p>
-            <Button href={`/es/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+            <Button href={`/es/presupuesto?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
               Elegir este plan
             </Button>
           </div>
@@ -336,7 +336,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       </div>
 
       <div class="text-center mt-[30px]">
-        <Button href="/es/devis?offre=options" variant="black" arrow>Crear mi oferta a medida</Button>
+        <Button href="/es/presupuesto?offre=options" variant="black" arrow>Crear mi oferta a medida</Button>
       </div>
     </div>
   </section>
@@ -399,7 +399,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 </li>
               ))}
             </ul>
-            <Button href="/es/devis?offre=flotte" variant="green" arrow>Solicitar presupuesto flota</Button>
+            <Button href="/es/presupuesto?offre=flotte" variant="green" arrow>Solicitar presupuesto flota</Button>
           </div>
           <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#1a201d] rounded-[16px] px-[40px] py-[36px] border border-[#81e3bc]/20">
             <p class="text-[64px] font-black text-[#81e3bc] leading-none">5+</p>

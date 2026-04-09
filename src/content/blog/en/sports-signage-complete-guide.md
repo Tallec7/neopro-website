@@ -82,4 +82,4 @@ Sports signage is no longer a privilege of professional clubs. With the arrival 
 
 At Neopro, that's exactly what we're building: **digital sports signage for all clubs**, from professional level to regional championships.
 
-[Discover Neopro sports signage in detail](/en/regie-sport) or [request a personalized quote](/en/devis) for your club.
+[Discover Neopro sports signage in detail](/en/regie-sport) or [request a personalized quote](/en/quote) for your club.

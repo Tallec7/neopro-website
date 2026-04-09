@@ -1,7 +1,7 @@
 ---
 import Logo from '@/components/icons/Logo.astro';
 import Button from '@/components/Button.astro';
-import { useTranslations, localePath, getOtherLocales, getLocaleUrl } from '@/i18n/utils';
+import { useTranslations, localePath, localeRoutePath, getOtherLocales, getLocaleUrl } from '@/i18n/utils';
 import { languages, type Locale } from '@/i18n/ui';
 
 interface Props { locale?: Locale; }
@@ -14,7 +14,7 @@ const flags: Record<Locale, string> = { fr: '🇫🇷', en: '🇬🇧', es: '�
 
 const navLinks = [
   { label: t('nav.solution'), href: localePath('/solution', locale) },
-  { label: t('nav.offres'), href: localePath('/offres', locale) },
+  { label: t('nav.offres'), href: localeRoutePath('/offres', locale) },
   { label: t('nav.blog'), href: localePath('/blog', locale) },
   { label: t('nav.about'), href: localePath(aboutSlug[locale], locale) },
 ];

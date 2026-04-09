@@ -73,4 +73,4 @@ Es este nivel de profesionalismo el que transforma a un patrocinador puntual en 
 
 Las soluciones de señalización digital para clubes amateur empiezan desde **1.500 €/año sin IVA**. Es una inversión que se amortiza en cuanto consigues uno o dos patrocinadores adicionales gracias a la pantalla.
 
-[Consulta los planes de Neopro](/es/offres) para elegir la fórmula adaptada a tu club, o [solicita un presupuesto personalizado](/es/devis).
+[Consulta los planes de Neopro](/es/precios) para elegir la fórmula adaptada a tu club, o [solicita un presupuesto personalizado](/es/presupuesto).

@@ -61,4 +61,4 @@ Keine Bauarbeiten, keine Netzwerkverkabelung, kein Techniker erforderlich.
 
 Ein LED-Bildschirm in der Sporthalle ist eine Investition, die sich dank der Partner schnell amortisiert. Am wichtigsten ist die Wahl einer **geeigneten Anzeigelösung**, mit der Sie die Inhalte einfach steuern können, auch ohne technische Kenntnisse.
 
-[Entdecken Sie die Neopro-Angebote](/de/offres), um die passende Formel für Ihren Verein zu finden.
+[Entdecken Sie die Neopro-Angebote](/de/angebote), um die passende Formel für Ihren Verein zu finden.

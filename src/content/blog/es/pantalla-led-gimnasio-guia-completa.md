@@ -61,4 +61,4 @@ Sin obras, sin cableado de red, sin necesidad de técnico.
 
 Una pantalla LED en un gimnasio es una inversión que se amortiza rápidamente gracias a los patrocinadores. Lo más importante es elegir una **solución de señalización adaptada** que te permita gestionar el contenido fácilmente, incluso sin conocimientos técnicos.
 
-[Descubre los planes de Neopro](/es/offres) para encontrar la fórmula adaptada a tu club.
+[Descubre los planes de Neopro](/es/precios) para encontrar la fórmula adaptada a tu club.

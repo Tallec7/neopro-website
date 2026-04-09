@@ -82,4 +82,4 @@ Sportsskiltning er ikke længere et privilegium for professionelle klubber. Med 
 
 Hos Neopro er det præcis, hvad vi bygger: **digital sportsskiltning til alle klubber**, fra professionelt niveau til regionsmesterskab.
 
-[Oplev Neopro sportsskiltning i detaljer](/da/regie-sport) eller [anmod om et tilpasset tilbud](/da/devis) til din klub.
+[Oplev Neopro sportsskiltning i detaljer](/da/regie-sport) eller [anmod om et tilpasset tilbud](/da/tilbud) til din klub.

@@ -73,4 +73,4 @@ Dieses Maß an Professionalität verwandelt einen einmaligen Sponsor in einen **
 
 Die Lösungen für digitale Anzeigen für Amateurvereine beginnen ab **1.500 €/Jahr zzgl. MwSt.**. Das ist eine Investition, die sich rentiert, sobald Sie dank des Bildschirms ein oder zwei zusätzliche Sponsoren gewinnen.
 
-[Sehen Sie sich die Neopro-Angebote an](/de/offres), um die passende Formel für Ihren Verein zu wählen, oder [fordern Sie ein individuelles Angebot an](/de/devis).
+[Sehen Sie sich die Neopro-Angebote an](/de/angebote), um die passende Formel für Ihren Verein zu wählen, oder [fordern Sie ein individuelles Angebot an](/de/angebot).

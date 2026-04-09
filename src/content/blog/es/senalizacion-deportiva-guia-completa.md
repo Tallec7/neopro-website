@@ -82,4 +82,4 @@ La señalización deportiva ya no es un privilegio de los clubes profesionales. 
 
 En Neopro, es exactamente lo que construimos: **la señalización deportiva digital para todos los clubes**, del nivel profesional al campeonato regional.
 
-[Descubre la señalización deportiva Neopro en detalle](/es/regie-sport) o [solicita un presupuesto personalizado](/es/devis) para tu club.
+[Descubre la señalización deportiva Neopro en detalle](/es/regie-sport) o [solicita un presupuesto personalizado](/es/presupuesto) para tu club.

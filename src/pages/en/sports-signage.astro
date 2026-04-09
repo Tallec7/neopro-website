@@ -9,14 +9,14 @@ import {
   buildServiceJsonLd,
 } from '@/lib/jsonLd';
 
-const locale = 'fr';
+const locale = 'en';
 const t = useTranslations(locale);
 
 const siteUrl = 'https://www.neopro-communication.fr';
-const canonicalUrl = `${siteUrl}/regie-sport`;
+const canonicalUrl = `${siteUrl}/en/sports-signage`;
 
 const breadcrumb = buildBreadcrumbJsonLd([
-  { name: 'Accueil', url: siteUrl },
+  { name: 'Home', url: `${siteUrl}/en` },
   { name: t('nav.regie'), url: canonicalUrl },
 ]);
 
@@ -26,7 +26,7 @@ const service = buildServiceJsonLd({
   url: canonicalUrl,
   providerName: 'Neopro',
   providerUrl: siteUrl,
-  areaServed: ['France', 'Belgique', 'Suisse'],
+  areaServed: ['France', 'Belgium', 'Switzerland'],
   serviceType: t('regie.hero.tag'),
 });
 
@@ -59,6 +59,7 @@ const niveaux = [
   description={t('regie.description')}
   canonicalUrl={canonicalUrl}
   extraJsonLd={[breadcrumb, service, faq]}
+  locale={locale}
 >
   <!-- Hero -->
   <section class="relative bg-[#2f3935] text-white overflow-hidden">
