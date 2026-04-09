@@ -29,3 +29,15 @@ pnpm-debug.log*
 
 # original unoptimized images
 _originals/
+
+# Figma export (reference only)
+Neopro2/
+
+# API backup
+_api-backup/
+
+# SEO audit reports
+audit-seo-neopro*.html
+
+# Sanity migrations
+sanity/neopro/migrations/
