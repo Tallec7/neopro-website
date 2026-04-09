@@ -8,13 +8,14 @@ import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
 import { useTranslations } from '@/i18n/utils';
 
 // ── ES Data ─────────────────────────────────────────────────────
-import { plans, videoPackages } from '@/data/es/offres';
+import { plans, playPlan, comparisonTable, videoPackages, additionalOptions, chainSteps } from '@/data/es/offres';
 import { testimonials } from '@/data/es/temoignages';
 import { clubs } from '@/data/clubs';
 
 const locale = 'es';
 const t = useTranslations(locale);
 
+// ── Helpers ──────────────────────────────────────────────────────
 const borderColorMap: Record<string, string> = {
   yellow: 'border-[#fdbe00]',
   green: 'border-[#51b28b]',
@@ -23,15 +24,17 @@ const borderColorMap: Record<string, string> = {
 };
 
 const priceColorMap: Record<string, string> = {
-  yellow: 'text-[#c49800]',
+  yellow: 'text-[#fdbe00]',
   green: 'text-[#51b28b]',
   pink: 'text-[#fe6aa6]',
   black: 'text-[#101828]',
 };
 
+// ── SEO ──────────────────────────────────────────────────────────
 const siteUrl = 'https://www.neopro-communication.fr';
+const allPlans = [playPlan, ...plans];
 const offerJsonLd = buildAggregateOfferJsonLd(
-  plans.map((plan) => ({
+  allPlans.map((plan) => ({
     name: `Neopro ${plan.name}`,
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
@@ -65,88 +68,280 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
-  <!-- 3 plans -->
-  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+  <!-- Ofertas -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[30px] md:pb-[40px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{t('offres.plans.title')}</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">Nuestros planes</h2>
+      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Empieza sin hardware con <strong>Play</strong>, o pasa directamente al dispositivo con <strong>Club</strong>, <strong>Pro</strong> o <strong>Premium</strong>.</p>
+
+      <!-- PLAY bandeau -->
+      <div class="relative bg-white border border-gray-200 rounded-[20px] p-[30px] md:p-[40px] mb-[50px] flex flex-col md:flex-row gap-[30px] items-start md:items-center shadow-sm">
+        <span class="absolute -top-3 left-[30px] bg-[#81e3bc] text-[#2f3935] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
+          Sin hardware · SaaS
+        </span>
+        <div class="flex-1">
+          <h3 class="text-[28px] md:text-[32px] font-bold text-[#101828]">{playPlan.name}</h3>
+          <p class="font-playfair italic text-[20px] text-neo-gray mt-[4px]">« {playPlan.pitch} »</p>
+          <p class="text-[15px] text-[#101828] mt-[16px] max-w-[520px]">Acceso al reproductor web, vídeos ilimitados, mando a distancia cloud. Ideal para empezar en pocos minutos, sin instalación.</p>
+        </div>
+        <div class="shrink-0 flex flex-col items-start md:items-end gap-[14px]">
+          <div class="md:text-right">
+            <p
+              class="text-[32px] font-bold text-[#101828]"
+              data-price-annual={playPlan.priceAnnual}
+              data-price-monthly={playPlan.priceMonthly}
+            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('es-ES')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/año</span></p>
+            <p class="text-[13px] text-[#4a5565] js-secondary hidden">Compromiso mínimo de 9 meses</p>
+          </div>
+          <Button href={`/es/devis?offre=${playPlan.slug}`} variant="green" arrow>Empezar con Play</Button>
+        </div>
+      </div>
+
+      <!-- Toggle Anual / Mensual -->
+      <div class="flex flex-col items-center gap-[10px] mb-[40px]">
+        <div class="inline-flex bg-[#f5f5f5] rounded-full p-[6px] shadow-sm" role="tablist" aria-label="Periodo de facturación">
+          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="annual" aria-pressed="true">Anual</button>
+          <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="monthly" aria-pressed="false">Mensual</button>
+        </div>
+        <p class="text-[13px] text-neo-green-dark font-medium">Anual = tarifa reducida · Mensual = compromiso 9 meses</p>
+      </div>
+
+      <!-- 3 tarjetas Club / Pro / Premium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div
-            class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'}`}
+            class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'} ${offre.popular ? 'lg:scale-[1.03] shadow-xl' : ''}`}
           >
             {offre.popular && (
-              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                {t('offres.plans.popular')}
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+                Recomendado
+              </span>
+            )}
+            {(offre.slug === 'pro' || offre.slug === 'premium') && (
+              <span class="absolute top-[14px] right-[14px] bg-[#fdbe00] text-[#2f3935] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
+                ★ Promo 31 mayo
               </span>
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class={`text-[28px] font-bold mt-[4px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}>{offre.priceAnnual.toLocaleString('es-ES')}€/año</p>
-              {offre.priceMonthly && (
-                <p class="text-[14px] text-neo-gray mt-[2px]">o {offre.priceMonthly}€/mes {offre.taxType}*</p>
+              <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
+              {offre.slug === 'pro' ? (
+                <>
+                  <p class="text-[14px] text-neo-gray line-through mt-[12px] mb-[-4px]">
+                    <span data-price-annual={offre.priceAnnual} data-price-monthly={offre.priceMonthly}><span class="js-price">{offre.priceAnnual.toLocaleString('es-ES')} €</span><span class="js-suffix">/año</span></span>
+                  </p>
+                  <p
+                    class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                    data-price-annual={Math.round(offre.priceAnnual * 0.8)}
+                    data-price-monthly={Math.round(offre.priceMonthly * 0.8)}
+                  >
+                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('es-ES')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/año</span>
+                    <span class="text-[12px] font-bold text-[#51b28b] bg-[#e6f5ee] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
+                  </p>
+                  <p class="text-[12px] text-[#51b28b] font-semibold mt-[4px]">Oferta válida hasta el 31 de mayo</p>
+                </>
+              ) : (
+                <p
+                  class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                  data-price-annual={offre.priceAnnual}
+                  data-price-monthly={offre.priceMonthly}
+                >
+                  <span class="js-price">{offre.priceAnnual.toLocaleString('es-ES')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/año</span>
+                </p>
               )}
-              <p class="text-[14px] text-neo-gray italic mt-[4px]">{offre.subtitle}</p>
+              {offre.slug === 'premium' && (
+                <p class="text-[12px] text-[#fe6aa6] font-semibold mt-[6px] leading-snug">
+                  ★ Sesión foto/vídeo + producción gratis para 1 equipo (hasta el 31 de mayo)
+                </p>
+              )}
+              <p class="text-[13px] text-neo-gray mt-[4px] js-secondary hidden">Compromiso mínimo de 9 meses</p>
             </div>
+            <div class="border-t border-gray-200 mb-[16px]"></div>
             <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
-                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
-                  {f.included ? (
-                    <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
-                  ) : (
-                    <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
-                  )}
-                  {f.label}
-                </li>
+                f.label.startsWith('Todo el pack') ? (
+                  <li class="-mt-[10px] text-[13px] font-semibold uppercase tracking-wider text-neo-gray">
+                    {f.label.replace(/:$/, '')}
+                  </li>
+                ) : (
+                  <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                    {f.included ? (
+                      <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                    ) : (
+                      <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
+                    )}
+                    {f.label}
+                  </li>
+                )
               ))}
             </ul>
+            <p class="text-[13px] text-[#4a5565] mb-[12px] flex items-center gap-[6px]">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Compromiso 9 meses · Dispositivo prestado incluido
+            </p>
             <Button href={`/es/devis?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
-              {t('offres.plans.cta')}
+              Elegir este plan
             </Button>
           </div>
         ))}
       </div>
-      <p class="text-center text-[14px] text-neo-gray mt-[30px]">
-        {t('offres.plans.note1')}
-      </p>
-      <p class="text-center text-[14px] text-neo-gray mt-[8px]">
-        {t('offres.plans.note2')}
-      </p>
-    </div>
-  </section>
 
-  <!-- Video packages -->
-  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
-    <div class="max-w-[1320px] mx-auto">
-      <div class="mb-[60px]">
-        <h2 class="text-[16px] tracking-[2px] text-[#101828] uppercase font-bold mb-[20px]">{t('offres.video.label')}</h2>
-        <p class="text-[18px] text-neo-gray max-w-[700px]">{t('offres.video.text')}</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
-        {videoPackages.map((pkg) => (
-          <div class={`relative rounded-[20px] p-[30px] flex flex-col gap-5 ${
-            pkg.name === 'Sin sesión de fotos' || pkg.name === 'Con sesión de fotos' ? 'bg-white border-4 border-[#1ec5e0]' : 'bg-[rgba(217,217,217,0.6)]'
-          }`}>
-            {pkg.name === 'Con sesión de fotos' && (
-              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#79e8fa] text-[#2f3935] text-[18px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
-                {t('offres.video.popular')}
-              </span>
-            )}
-            <h3 class="text-[22px] font-bold">{pkg.name}</h3>
-            <p class="text-neo-gray text-[15px]">{pkg.description}</p>
-            <div>
-              <ul class="list-disc pl-5 flex flex-col gap-[10px] flex-1">
-                {pkg.features.map((f) => (
-                  <li class="text-[14px] text-[rgba(0,0,0,0.8)]">{f}</li>
-                ))}
-              </ul>
-            </div>
+      <!-- Tabla comparativa detallada (desplegable) -->
+      <details class="mt-[40px] bg-white rounded-[20px] group border border-gray-200">
+        <summary class="cursor-pointer list-none px-[30px] py-[24px] flex items-center justify-between gap-[20px] hover:bg-[#fafafa] transition-colors rounded-[20px]">
+          <div class="flex-1">
+            <p class="text-[18px] md:text-[22px] font-bold text-[#101828]">Comparar todas las funcionalidades</p>
+            <p class="text-[13px] text-neo-gray mt-[2px]">Vista detallada de los 4 planes línea por línea</p>
           </div>
-        ))}
+          <span class="shrink-0 inline-flex items-center gap-2 bg-[#f5f5f5] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-medium text-[#101828]">
+            <span class="group-open:hidden">Ver la tabla</span>
+            <span class="hidden group-open:inline">Ocultar</span>
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+          </span>
+        </summary>
+        <div class="px-[20px] md:px-[30px] pb-[30px] overflow-x-auto">
+          <table class="w-full border-collapse min-w-[640px]">
+            <thead>
+              <tr class="border-b-2 border-gray-200">
+                <th class="text-left py-[14px] pr-[10px] text-[14px] font-bold text-[#101828] w-[40%]"></th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#101828]">Play</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#c49800]">Club</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-neo-green-dark relative">
+                  Pro
+                  <span class="absolute -top-[2px] left-1/2 -translate-x-1/2 text-[9px] bg-[#81e3bc] text-[#2f3935] font-bold px-2 py-[1px] rounded-full uppercase tracking-wider whitespace-nowrap">★</span>
+                </th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#fe6aa6]">Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonTable.map((cat) => (
+                <>
+                  <tr>
+                    <td colspan="5" class="pt-[24px] pb-[8px] text-[12px] font-bold uppercase tracking-wider text-neo-gray">{cat.title}</td>
+                  </tr>
+                  {cat.rows.map((row) => (
+                    <tr class="border-b border-gray-100">
+                      <td class="py-[12px] pr-[10px] text-[14px] text-[#101828]">{row.label}</td>
+                      {row.values.map((v) => (
+                        <td class="text-center py-[12px] px-[8px]">
+                          {v === true ? (
+                            <svg class="w-5 h-5 inline text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                          ) : v === false ? (
+                            <span class="text-[#c0c5cc] text-[18px]">—</span>
+                          ) : (
+                            <span class="text-[13px] text-[#4a5565] font-medium">{v}</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- Completar tu oferta: Producción / Pantallas / Opciones a la carta -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="mb-[40px] max-w-[760px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[12px]">COMPLEMENTOS</p>
+        <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#101828] mb-[12px]">
+          <span class="font-playfair italic">Completar</span> tu oferta
+        </h2>
+        <p class="text-[16px] md:text-[18px] text-neo-gray">Combinable con cualquier plan — presupuesto personalizado bajo demanda.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px]">
+
+        <!-- Columna 1: Producción de contenido -->
+        <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
+          <div class="flex items-center gap-[12px] mb-[16px]">
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#79e8fa] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">🎬</span>
+            <h3 class="text-[20px] font-bold text-[#101828]">Producción de contenido</h3>
+          </div>
+          <p class="text-[13px] text-neo-gray italic mb-[18px]">Fotografiamos a tus jugadores y los integramos en nuestras plantillas premium.</p>
+          <ul class="flex flex-col gap-[14px] flex-1">
+            {videoPackages.map((pkg) => (
+              <li class="border-l-2 border-[#79e8fa] pl-[12px]">
+                <p class="text-[14px] font-bold text-[#101828] flex items-center gap-2">
+                  {pkg.name}
+                  {pkg.popular && <span class="text-[10px] bg-[#79e8fa] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">★ Top</span>}
+                  {pkg.name === 'Estándar' && <span class="text-[10px] bg-[#81e3bc] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Incluido</span>}
+                </p>
+                <p class="text-[12px] text-neo-gray mb-[6px]">{pkg.description}</p>
+                <ul class="flex flex-col gap-[3px]">
+                  {pkg.features.map((f) => (
+                    <li class="text-[12px] text-[#4a5565] flex items-start gap-[6px]">
+                      <span class="text-[#1ec5e0] mt-[1px]">·</span>{f}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Columna 2: Pantallas e instalación -->
+        <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
+          <div class="flex items-center gap-[12px] mb-[16px]">
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fdbe00] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">📺</span>
+            <h3 class="text-[20px] font-bold text-[#101828]">Pantallas e instalación</h3>
+          </div>
+          <p class="text-[13px] text-neo-gray italic mb-[18px]">Te ayudamos a elegir e instalar las pantallas adecuadas.</p>
+          <ul class="flex flex-col gap-[14px] flex-1">
+            {chainSteps[3].services.map((opt) => (
+              <li class="flex items-start gap-[10px]">
+                <svg class="w-4 h-4 shrink-0 text-[#fdbe00] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                <div>
+                  <p class="text-[14px] text-[#101828] leading-snug">{opt.label}</p>
+                  {opt.hint && <p class="text-[12px] text-neo-gray mt-[1px]">{opt.hint}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Columna 3: Opciones a la carta -->
+        <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
+          <div class="flex items-center gap-[12px] mb-[16px]">
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fe6aa6] text-white flex items-center justify-center font-bold text-[18px]">+</span>
+            <h3 class="text-[20px] font-bold text-[#101828]">Opciones a la carta</h3>
+          </div>
+          <p class="text-[13px] text-neo-gray italic mb-[18px]">Para personalizar y llevar tu oferta más lejos.</p>
+          <ul class="flex flex-col gap-[14px] flex-1">
+            {additionalOptions.map((cat) => (
+              <li>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-neo-gray mb-[6px]">{cat.title}</p>
+                <ul class="flex flex-col gap-[6px]">
+                  {cat.options.map((opt) => (
+                    <li class="flex items-start gap-[8px]">
+                      <svg class="w-4 h-4 shrink-0 text-[#fe6aa6] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                      <div>
+                        <p class="text-[13px] text-[#101828] leading-snug">{opt.label}</p>
+                        <p class="text-[11px] text-neo-gray">{opt.availability}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-[30px]">
+        <Button href="/es/devis?offre=options" variant="black" arrow>Crear mi oferta a medida</Button>
       </div>
     </div>
   </section>
 
-  <!-- Funded by your sponsors -->
+  <!-- Financiable por tus patrocinadores -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
@@ -178,19 +373,101 @@ const offerJsonLd = buildAggregateOfferJsonLd(
     </div>
   </section>
 
+  <!-- Flota (operadores / ligas / federaciones) -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[80px]">
+    <div class="max-w-[1320px] mx-auto">
+      <div class="relative bg-[#2f3935] text-white rounded-[20px] overflow-hidden p-[36px] md:p-[50px]">
+        <div class="relative flex flex-col lg:flex-row gap-[32px] items-start lg:items-center justify-between">
+          <div class="flex-1 max-w-[640px]">
+            <p class="text-[13px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[12px]">FLOTA · OFERTA DEDICADA</p>
+            <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold mb-[14px]">
+              <span class="font-playfair italic">¿Gestionas</span> varios clubes?
+            </h2>
+            <p class="text-[15px] md:text-[16px] text-[#d9d9d9] mb-[20px]">Ligas, federaciones, operadores y redes de clubes: despliegue agrupado, dashboard centralizado, tarifa decreciente.</p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-[20px] gap-y-[8px] mb-[24px]">
+              {[
+                'Dashboard multi-sedes',
+                'Despliegue agrupado',
+                'Alertas offline',
+                'Analíticas inter-clubes',
+                'Precio decreciente',
+                'Interlocutor dedicado',
+              ].map((item) => (
+                <li class="flex items-start gap-[8px] text-[14px] text-[#d9d9d9]">
+                  <svg class="w-4 h-4 shrink-0 text-[#81e3bc] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Button href="/es/devis?offre=flotte" variant="green" arrow>Solicitar presupuesto flota</Button>
+          </div>
+          <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#1a201d] rounded-[16px] px-[40px] py-[36px] border border-[#81e3bc]/20">
+            <p class="text-[64px] font-black text-[#81e3bc] leading-none">5+</p>
+            <p class="text-[13px] text-[#d9d9d9] uppercase tracking-wider mt-[8px]">clubes / sedes</p>
+            <p class="text-[12px] text-neo-gray mt-[12px] text-center max-w-[140px]">a partir del cual la flota resulta pertinente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Club Carousel -->
   <ClubCarousel clubs={clubs} client:visible />
 
-  <!-- Testimonials -->
+  <!-- Testimonios -->
   <TestimonialCarousel testimonials={testimonials} client:visible />
 
-  <!-- Contact -->
+  <!-- Contacto -->
   <div id="contact">
     <ContactForm locale="es" client:visible />
   </div>
 </BaseLayout>
 
+<style>
+  .js-toggle-btn[aria-pressed="true"] {
+    background-color: #101828;
+    color: #ffffff;
+  }
+  .js-toggle-btn[aria-pressed="false"] {
+    color: #4a5565;
+  }
+</style>
+
 <script>
+  // Toggle Anual / Mensual
+  const toggleBtns = document.querySelectorAll<HTMLButtonElement>('.js-toggle-btn');
+  const priceEls = document.querySelectorAll<HTMLElement>('[data-price-annual]');
+
+  function setPeriod(period: 'annual' | 'monthly') {
+    toggleBtns.forEach((btn) => {
+      btn.setAttribute('aria-pressed', btn.dataset.period === period ? 'true' : 'false');
+    });
+    priceEls.forEach((el) => {
+      const annual = Number(el.dataset.priceAnnual);
+      const monthly = Number(el.dataset.priceMonthly);
+      const priceSpan = el.querySelector('.js-price') as HTMLElement | null;
+      const suffixSpan = el.querySelector('.js-suffix') as HTMLElement | null;
+      const secondary = el.parentElement?.querySelector('.js-secondary') as HTMLElement | null;
+      if (!priceSpan || !suffixSpan) return;
+      if (period === 'annual') {
+        priceSpan.textContent = `${annual.toLocaleString('es-ES')} €`;
+        suffixSpan.textContent = '/año';
+        if (secondary) secondary.classList.add('hidden');
+      } else if (monthly) {
+        priceSpan.textContent = `${monthly} €`;
+        suffixSpan.textContent = '/mes';
+        if (secondary) secondary.classList.remove('hidden');
+      }
+    });
+  }
+
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const period = btn.dataset.period as 'annual' | 'monthly';
+      setPeriod(period);
+    });
+  });
+
   const form = document.querySelector('[data-financable-form]') as HTMLFormElement | null;
   if (form) {
     form.addEventListener('submit', async (e) => {
