@@ -2,7 +2,7 @@ export interface City {
   slug: string;
   name: string;
   at: string; // "à Lyon", "au Havre", "à La Rochelle"
-  country: 'FR' | 'BE' | 'CH';
+  country: 'FR' | 'BE' | 'CH' | 'DE' | 'AT' | 'DK';
   region: string;
   localInfo?: string; // Paragraph unique à la ville pour enrichir le contenu SEO
 }

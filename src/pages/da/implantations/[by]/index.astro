@@ -1,0 +1,115 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cities, sports } from '@/data/da/implantations';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { by: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/da/implantations/${city.slug}`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Forside', url: `${siteUrl}/da` },
+  { name: 'Lokationer', url: `${siteUrl}/da/implantations` },
+  { name: city.name, url: canonicalUrl },
+]);
+---
+
+<BaseLayout
+  title={`Digital klubløsning ${city.at} — Neopro, skærme & styring for klubber`}
+  description={`Neopro udstyrer sportsklubber ${city.at} med LED-skærme og en nøglefærdig digital skærmløsning. Håndbold, fodbold, ishockey og mere. Gratis tilbud.`}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={breadcrumb}
+  noAlternates
+  locale="da"
+>
+  <!-- Hero -->
+  <section class="bg-neo-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neo-green text-sm font-semibold uppercase tracking-widest mb-3">
+        Danmark — {city.region}
+      </p>
+      <h1 class="text-3xl md:text-5xl font-black mb-6">
+        Digital klubløsning for foreninger<br />
+        <span class="text-neo-green">{city.at}</span>
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        Neopro udstyrer sportsklubber {city.at} — fra eliten til bredden — med LED-skærme og en nøglefærdig digital skærmløsning, der gør sponsorer synlige og moderniserer kampdagsoplevelsen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sportsgrene -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-4 text-center">
+        Vælg din sportsgren
+      </h2>
+      <p class="text-neo-gray text-center mb-10">
+        Neopro tilbyder skræddersyede løsninger til hver sportsgren {city.at}.
+      </p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {sports.map((sport) => (
+          <a
+            href={`/da/implantations/${city.slug}/${sport.slug}`}
+            class="group block p-6 bg-gray-50 rounded-xl hover:bg-neo-green transition-all"
+          >
+            <h3 class="font-black text-neo-dark text-lg mb-2">
+              {sport.name}
+            </h3>
+            <p class="text-sm text-neo-gray group-hover:text-neo-dark transition-colors">
+              Løsninger til {sport.venue}er {city.at}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hvorfor Neopro -->
+  <section class="py-16 px-6 bg-neo-dark-bg text-white">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl font-black mb-4">
+          Hvorfor Neopro {city.at}?
+        </h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Installation på stedet {city.at} og i hele {city.region}</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Fjernstyrede indholdsopdateringer uden teknisk viden</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Nøglefærdig løsning til alle klubber — fra elite til bredde</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neo-green mt-1">✓</span>
+            <span>Hurtig return on investment gennem sponsorsynlighed</span>
+          </li>
+        </ul>
+      </div>
+      <div class="text-center">
+        <p class="text-4xl font-black text-neo-green mb-2">+{sports.length} sportsgrene</p>
+        <p class="text-gray-300">dækket {city.at}</p>
+        <a
+          href="/da/devis"
+          class="mt-6 inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        >
+          Få et gratis tilbud
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

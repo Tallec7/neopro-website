@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cities, sports } from '@/data/da/implantations';
+import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/da/implantations`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Forside', url: `${siteUrl}/da` },
+  { name: 'Lokationer', url: canonicalUrl },
+]);
+---
+
+<BaseLayout
+  title="Digital klubløsning — Neopro lokationer i Danmark"
+  description="Neopro installerer nøglefærdige digitale skærmløsninger i sportshaller. Håndbold, fodbold, ishockey og mere. Find din by i Danmark."
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={breadcrumb}
+  noAlternates
+  locale="da"
+>
+  <!-- Hero -->
+  <section class="bg-neo-dark text-white py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-black mb-6">
+        Neopro i hele<br />
+        <span class="text-neo-green">Danmark</span>
+      </h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        Vi hjælper sportsklubber i hele Danmark med en nøglefærdig digital skærmløsning. Find din by og opdag, hvordan Neopro kan professionalisere din klub.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sportsgrene -->
+  <section class="py-10 px-6 bg-gray-50">
+    <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
+      {sports.map((sport) => (
+        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neo-dark border border-gray-200">
+          {sport.name}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Danmark -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8">
+        🇩🇰 Danmark
+      </h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {cities.map((city) => (
+          <a
+            href={`/da/implantations/${city.slug}`}
+            class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-neo-green transition-all font-medium text-neo-dark"
+          >
+            {city.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-black mb-4">
+        Er din by ikke på listen?
+      </h2>
+      <p class="text-gray-300 mb-8">
+        Neopro er tilgængelig i hele Danmark. Kontakt os for et gratis tilbud.
+      </p>
+      <a
+        href="/da/devis"
+        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+      >
+        Få et gratis tilbud
+      </a>
+    </div>
+  </section>
+</BaseLayout>
