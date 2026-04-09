@@ -2,25 +2,25 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog', ({ id }) => !id.includes('/'))).sort(
+const posts = (await getCollection('blog', ({ id }) => id.startsWith('da/'))).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 
-const title = 'Blog — Régie sport, sponsors et digitale';
-const description = "Conseils pratiques pour les clubs de sport : régie sport digitale, écrans LED, valorisation des sponsors et animation de matchs.";
+const title = 'Blog — Sportsskiltning, sponsorer og digital';
+const description = "Praktiske råd til sportsklubber: digital sportsskiltning, LED-skærme, sponsorværdi og kampanimation.";
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} locale="da">
   <!-- Hero -->
   <section class="bg-neo-dark-bg px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[900px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">BLOG</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[20px]">
-        <span class="font-playfair italic">Ressources pour</span><br />
-        <span class="font-black">votre club</span>
+        <span class="font-playfair italic">Ressourcer til</span><br />
+        <span class="font-black">jeres klub</span>
       </h1>
       <p class="text-[18px] text-[rgba(255,255,255,0.7)] max-w-[600px]">
-        Guides pratiques, retours d'expérience et conseils pour professionnaliser votre club de sport — du niveau pro au régional.
+        Praktiske guides, erfaringer og tips til at professionalisere din sportsklub — fra professionelt til regionalt niveau.
       </p>
     </div>
   </section>
@@ -31,11 +31,11 @@ const description = "Conseils pratiques pour les clubs de sport : régie sport d
       <div class="flex flex-col gap-[40px]">
         {posts.map((post) => (
           <article class="group">
-            <a href={`/blog/${post.id}`} class="block">
+            <a href={`/da/blog/${post.id.replace('da/', '')}`} class="block">
               <div class="flex flex-col gap-[12px]">
                 <div class="flex items-center gap-[12px] text-[14px] text-neo-gray">
                   <time datetime={post.data.date.toISOString().slice(0, 10)}>
-                    {post.data.date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {post.data.date.toLocaleDateString('da-DK', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </time>
                   {post.data.tags.length > 0 && (
                     <>
@@ -51,7 +51,7 @@ const description = "Conseils pratiques pour les clubs de sport : régie sport d
                   {post.data.description}
                 </p>
                 <span class="text-neo-green-dark font-medium text-[16px] group-hover:underline">
-                  Lire l'article →
+                  Læs artiklen →
                 </span>
               </div>
             </a>

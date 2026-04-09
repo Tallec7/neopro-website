@@ -5,9 +5,9 @@ import { getCollection, render } from 'astro:content';
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/jsonLd';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ id }) => !id.includes('/'));
+  const posts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
   return posts.map((post) => ({
-    params: { slug: post.id },
+    params: { slug: post.id.replace('es/', '') },
     props: { post },
   }));
 }
@@ -18,7 +18,7 @@ const { Content } = await render(post);
 const title = post.data.title;
 const description = post.data.description;
 const siteUrl = 'https://www.neopro-communication.fr';
-const articleUrl = `${siteUrl}/blog/${post.id}`;
+const articleUrl = `${siteUrl}/es/blog/${post.id.replace('es/', '')}`;
 const dateISO = post.data.date.toISOString().slice(0, 10);
 
 const articleJsonLd = buildArticleJsonLd({
@@ -30,8 +30,8 @@ const articleJsonLd = buildArticleJsonLd({
 });
 
 const breadcrumbJsonLd = buildBreadcrumbJsonLd([
-  { name: 'Accueil', url: siteUrl },
-  { name: 'Blog', url: `${siteUrl}/blog` },
+  { name: 'Inicio', url: siteUrl },
+  { name: 'Blog', url: `${siteUrl}/es/blog` },
   { name: title, url: articleUrl },
 ]);
 
@@ -43,12 +43,13 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
   extraJsonLd={[articleJsonLd, breadcrumbJsonLd]}
   ogType="article"
   articleMeta={{ publishedTime: dateISO, author: post.data.author }}
+  locale="es"
 >
   <article class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[760px] mx-auto">
       <!-- Breadcrumb -->
       <nav class="text-[14px] text-neo-gray mb-[40px]">
-        <a href="/blog" class="hover:text-neo-green-dark transition-colors">Blog</a>
+        <a href="/es/blog" class="hover:text-neo-green-dark transition-colors">Blog</a>
         <span class="mx-2">›</span>
         <span class="text-[#101828]">{post.data.title}</span>
       </nav>
@@ -57,7 +58,7 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
       <header class="mb-[40px]">
         <div class="flex items-center gap-[12px] text-[14px] text-neo-gray mb-[16px]">
           <time datetime={post.data.date.toISOString().slice(0, 10)}>
-            {post.data.date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
           <span>·</span>
           <span>{post.data.author}</span>
@@ -84,15 +85,15 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
       <!-- CTA -->
       <div class="mt-[60px] bg-[rgba(129,227,188,0.2)] rounded-[20px] p-[30px] md:p-[40px] flex flex-col md:flex-row items-center gap-[20px] justify-between">
         <div>
-          <p class="text-[20px] font-bold text-[#101828]">Prêt à équiper votre club ?</p>
-          <p class="text-[16px] text-neo-gray mt-1">Découvrez nos offres de régie digitale dès 1 500 €/an.</p>
+          <p class="text-[20px] font-bold text-[#101828]">¿Listo para equipar tu club?</p>
+          <p class="text-[16px] text-neo-gray mt-1">Descubre nuestros planes desde 1.500 €/año.</p>
         </div>
-        <Button href="/devis" variant="green" arrow>Demander un devis</Button>
+        <Button href="/es/devis" variant="green" arrow>Solicitar presupuesto</Button>
       </div>
 
       <!-- Back -->
       <div class="mt-[40px]">
-        <a href="/blog" class="text-neo-green-dark font-medium hover:underline">← Retour au blog</a>
+        <a href="/es/blog" class="text-neo-green-dark font-medium hover:underline">← Volver al blog</a>
       </div>
     </div>
   </article>
