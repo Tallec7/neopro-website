@@ -51,9 +51,11 @@ export function getPathWithoutLocale(pathname: string): string {
  * Route mapping for pages with different slugs between locales.
  */
 const routeMap: Record<string, Record<Locale, string>> = {
-  'qui-sommes-nous': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' },
-  'about': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' },
-  'sobre-nosotros': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros' },
+  'qui-sommes-nous': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
+  'about': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
+  'sobre-nosotros': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
+  'ueber-uns': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
+  'om-os': { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' },
 };
 
 /**

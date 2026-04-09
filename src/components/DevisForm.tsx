@@ -20,12 +20,16 @@ const sportsByLocale: Record<Locale, string[]> = {
   fr: [...sports, 'Rink Hockey', 'Hockey sur glace', 'Badminton', 'Tennis de table', 'Autre'],
   en: [...sports, 'Rink Hockey', 'Ice Hockey', 'Badminton', 'Table Tennis', 'Other'],
   es: [...sports, 'Rink Hockey', 'Hockey sobre hielo', 'Bádminton', 'Tenis de mesa', 'Otro'],
+  de: [...sports, 'Rollhockey', 'Eishockey', 'Badminton', 'Tischtennis', 'Andere'],
+  da: [...sports, 'Rullehockey', 'Ishockey', 'Badminton', 'Bordtennis', 'Andet'],
 };
 
 const offresByLocale: Record<Locale, string[]> = {
   fr: ['Play', 'Club', 'Pro', 'Premium', 'Flotte (multi-clubs)', 'Production de contenu', 'Options à la carte', 'Je ne sais pas encore'],
   en: ['Play', 'Club', 'Pro', 'Premium', 'Fleet (multi-clubs)', 'Content production', 'Add-on options', "I don't know yet"],
   es: ['Play', 'Club', 'Pro', 'Premium', 'Flota (multi-clubes)', 'Producción de contenido', 'Opciones a la carta', 'Aún no lo sé'],
+  de: ['Play', 'Club', 'Pro', 'Premium', 'Flotte (Multi-Vereine)', 'Content-Produktion', 'Einzeloptionen', 'Weiß ich noch nicht'],
+  da: ['Play', 'Club', 'Pro', 'Premium', 'Flåde (multi-klubber)', 'Indholdsproduktion', 'Tilvalg', 'Ved det ikke endnu'],
 };
 
 // Mapping slug d'URL → libellé d'offre
@@ -42,12 +46,22 @@ const slugToOffreLabel: Record<Locale, Record<string, string>> = {
     play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
     flotte: 'Flota (multi-clubes)', production: 'Producción de contenido', options: 'Opciones a la carta',
   },
+  de: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Flotte (Multi-Vereine)', production: 'Content-Produktion', options: 'Einzeloptionen',
+  },
+  da: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Flåde (multi-klubber)', production: 'Indholdsproduktion', options: 'Tilvalg',
+  },
 };
 
 const packagesByLocale: Record<Locale, string[]> = {
   fr: ['Classique (inclus)', 'Sans shooting', 'Avec shooting', 'Je ne sais pas encore'],
   en: ['Standard (included)', 'Without shoot', 'With shoot', "I don't know yet"],
   es: ['Estándar (incluido)', 'Sin sesión de fotos', 'Con sesión de fotos', 'Aún no lo sé'],
+  de: ['Standard (inklusive)', 'Ohne Fotoshooting', 'Mit Fotoshooting', 'Weiß ich noch nicht'],
+  da: ['Standard (inkluderet)', 'Uden fotoshoot', 'Med fotoshoot', 'Ved det ikke endnu'],
 };
 
 const nbEquipes = ['1', '2', '3', '4', '5+'];
