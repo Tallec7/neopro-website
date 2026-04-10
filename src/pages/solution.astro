@@ -24,12 +24,35 @@ const formatPanelTitle = (title: string) => {
   return `<span class="font-playfair italic font-normal">${first}</span> <span class="font-black">${rest}</span>`;
 };
 
-// ── SEO ��──────────────────────────────────────────────────────���──
+// ── SEO ──────────────────────────────────────────────────────────
+import {
+  buildServiceJsonLd,
+  buildBreadcrumbJsonLd,
+} from '@/lib/jsonLd';
+
 const title = 'La solution Neopro — Régie sport digitale clé en main pour clubs';
 const description = "La solution Neopro : une régie sport digitale clé en main pour clubs. Boîtier plug & play, appli télécommande et contenus vidéo pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.";
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const canonicalUrl = `${siteUrl}/solution`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+  { name: 'La solution', url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: 'Neopro — Régie sport digitale',
+  description,
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: ['France', 'Belgique', 'Suisse'],
+  serviceType: 'Régie sport digitale',
+});
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} extraJsonLd={[breadcrumb, service]}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
     <Image

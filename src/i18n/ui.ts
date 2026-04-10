@@ -10,6 +10,10 @@ export type Locale = keyof typeof languages;
 
 export const defaultLocale: Locale = 'fr';
 
+import { sportsPart1 } from './sports-part1';
+import { sportsPart2 } from './sports-part2';
+import { seoPages } from './seo-pages';
+
 export const ui = {
   fr: {
     // ── Nav ────────────────────────────────────────────────────────
@@ -349,6 +353,9 @@ export const ui = {
     'regie.faq.q5': 'Combien coûte une régie sport Neopro ?',
     'regie.faq.a5': "Les offres démarrent à 79 €/mois avec Play (SaaS sans matériel). Les formules Club, Pro et Premium incluent l'écran, le boîtier, l'appli, les contenus vidéo et le support. Toutes sont finançables par les sponsors du club.",
     'regie.faq.link': 'Voir le détail des offres',
+    ...sportsPart1.fr,
+    ...sportsPart2.fr,
+    ...seoPages.fr,
   },
 
   en: {
@@ -689,6 +696,9 @@ export const ui = {
     'regie.faq.q5': 'How much does Neopro sports signage cost?',
     'regie.faq.a5': 'Plans start at €79/month with Play (SaaS, no hardware). The Club, Pro and Premium packages include the screen, box, app, video content and support. All are fundable by the club\'s sponsors.',
     'regie.faq.link': 'View full plan details',
+    ...sportsPart1.en,
+    ...sportsPart2.en,
+    ...seoPages.en,
   },
 
   es: {
@@ -1029,6 +1039,9 @@ export const ui = {
     'regie.faq.q5': '¿Cuánto cuesta la producción deportiva Neopro?',
     'regie.faq.a5': 'Los planes empiezan en 79 €/mes con Play (SaaS sin hardware). Las fórmulas Club, Pro y Premium incluyen la pantalla, el dispositivo, la app, los contenidos de vídeo y el soporte. Todas son financiables por los sponsors del club.',
     'regie.faq.link': 'Ver el detalle de los planes',
+    ...sportsPart1.es,
+    ...sportsPart2.es,
+    ...seoPages.es,
   },
 
   de: {
@@ -1369,6 +1382,9 @@ export const ui = {
     'regie.faq.q5': 'Was kostet die Neopro Sport-Regie?',
     'regie.faq.a5': 'Die Angebote starten ab 79 €/Monat mit Play (SaaS ohne Hardware). Die Pakete Club, Pro und Premium umfassen Bildschirm, Box, App, Videoinhalte und Support. Alle sind durch die Sponsoren des Vereins finanzierbar.',
     'regie.faq.link': 'Alle Angebote im Detail ansehen',
+    ...sportsPart1.de,
+    ...sportsPart2.de,
+    ...seoPages.de,
   },
 
   da: {
@@ -1709,6 +1725,9 @@ export const ui = {
     'regie.faq.q5': 'Hvad koster Neopro sport-regi?',
     'regie.faq.a5': 'Planerne starter fra 79 €/md. med Play (SaaS uden hardware). Pakkerne Club, Pro og Premium inkluderer skærm, boks, app, videoindhold og support. Alle kan finansieres af klubbens sponsorer.',
     'regie.faq.link': 'Se alle planer i detaljer',
+    ...sportsPart1.da,
+    ...sportsPart2.da,
+    ...seoPages.da,
   },
 } as const;
 

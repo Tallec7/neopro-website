@@ -1,0 +1,226 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ContactForm from '@/components/ContactForm.tsx';
+import { useTranslations, localeRoutePath, localePath } from '@/i18n/utils';
+import type { Locale } from '@/i18n/ui';
+import {
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+  buildServiceJsonLd,
+} from '@/lib/jsonLd';
+
+interface Props { locale: Locale; slug: string; }
+const { locale, slug } = Astro.props;
+const t = useTranslations(locale);
+const p = 'seo_affichage';
+
+const siteUrl = 'https://www.neopro-communication.fr';
+const pathPrefix = locale === 'fr' ? '' : `/${locale}`;
+const canonicalUrl = `${siteUrl}${pathPrefix}/${slug}`;
+
+const homeName = locale === 'fr' ? 'Accueil' : locale === 'en' ? 'Home' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Forside';
+const homeUrl = locale === 'fr' ? siteUrl : `${siteUrl}/${locale}`;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: homeName, url: homeUrl },
+  { name: t(`${p}.hero.tag` as any), url: canonicalUrl },
+]);
+
+const service = buildServiceJsonLd({
+  name: t(`${p}.title` as any),
+  description: t(`${p}.description` as any),
+  url: canonicalUrl,
+  providerName: 'Neopro',
+  providerUrl: siteUrl,
+  areaServed: locale === 'fr' ? ['France', 'Belgique', 'Suisse'] :
+              locale === 'en' ? ['France', 'Belgium', 'Switzerland'] :
+              locale === 'es' ? ['Francia', 'Bélgica', 'Suiza'] :
+              locale === 'de' ? ['Frankreich', 'Belgien', 'Schweiz'] :
+              ['Frankrig', 'Belgien', 'Schweiz'],
+  serviceType: t(`${p}.hero.tag` as any),
+});
+
+const faq = buildFAQPageJsonLd([
+  { question: t(`${p}.faq.q1` as any), answer: t(`${p}.faq.a1` as any) },
+  { question: t(`${p}.faq.q2` as any), answer: t(`${p}.faq.a2` as any) },
+  { question: t(`${p}.faq.q3` as any), answer: t(`${p}.faq.a3` as any) },
+  { question: t(`${p}.faq.q4` as any), answer: t(`${p}.faq.a4` as any) },
+  { question: t(`${p}.faq.q5` as any), answer: t(`${p}.faq.a5` as any) },
+]);
+
+const usages = [
+  { icon: t(`${p}.usage1.icon` as any), title: t(`${p}.usage1.title` as any), description: t(`${p}.usage1.desc` as any) },
+  { icon: t(`${p}.usage2.icon` as any), title: t(`${p}.usage2.title` as any), description: t(`${p}.usage2.desc` as any) },
+  { icon: t(`${p}.usage3.icon` as any), title: t(`${p}.usage3.title` as any), description: t(`${p}.usage3.desc` as any) },
+  { icon: t(`${p}.usage4.icon` as any), title: t(`${p}.usage4.title` as any), description: t(`${p}.usage4.desc` as any) },
+];
+
+const avantages = [
+  { title: t(`${p}.adv1.title` as any), description: t(`${p}.adv1.desc` as any) },
+  { title: t(`${p}.adv2.title` as any), description: t(`${p}.adv2.desc` as any) },
+  { title: t(`${p}.adv3.title` as any), description: t(`${p}.adv3.desc` as any) },
+  { title: t(`${p}.adv4.title` as any), description: t(`${p}.adv4.desc` as any) },
+];
+---
+
+<BaseLayout
+  title={t(`${p}.title` as any)}
+  description={t(`${p}.description` as any)}
+  canonicalUrl={canonicalUrl}
+  extraJsonLd={[breadcrumb, service, faq]}
+  locale={locale}
+>
+  <!-- Hero -->
+  <section class="relative bg-[#101828] text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#101828] via-[#101828] to-[#1a2332]"></div>
+    <div class="relative max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[100px] md:py-[140px]">
+      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+        {t(`${p}.hero.tag` as any)}
+      </p>
+      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]" set:html={t(`${p}.hero.h1` as any)} />
+      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[40px]">
+        {t(`${p}.hero.sub` as any)}
+      </p>
+      <div class="flex flex-wrap gap-[16px]">
+        <Button href={localeRoutePath('/devis', locale)} variant="green" arrow>{t(`${p}.hero.cta1` as any)}</Button>
+        <Button href={localePath('/solution', locale)} variant="white" arrow>{t(`${p}.hero.cta2` as any)}</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usages -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          {t(`${p}.usages.tag` as any)}
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]" set:html={t(`${p}.usages.h2` as any)} />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+        {usages.map((item) => (
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] border border-gray-200">
+            <span class="text-[32px] mb-[12px] block">{item.icon}</span>
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{item.title}</h3>
+            <p class="text-[16px] text-[#4a5565] leading-[1.6]">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantages -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[760px] mb-[60px]">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+          {t(`${p}.advantages.tag` as any)}
+        </p>
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]" set:html={t(`${p}.advantages.h2` as any)} />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+        {avantages.map((item) => (
+          <div class="bg-white rounded-[20px] p-[30px] border border-gray-200">
+            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{item.title}</h3>
+            <p class="text-[16px] text-[#4a5565] leading-[1.6]">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Affichage statique vs dynamique -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        {t(`${p}.vs.tag` as any)}
+      </p>
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]" set:html={t(`${p}.vs.h2` as any)} />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[40px]">
+        <div class="bg-[#fef2f2] rounded-[20px] p-[30px]">
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[20px]">{t(`${p}.vs.static.title` as any)}</h3>
+          <ul class="space-y-[12px] text-[16px] text-[#4a5565] leading-[1.6]">
+            <li>{t(`${p}.vs.static.li1` as any)}</li>
+            <li>{t(`${p}.vs.static.li2` as any)}</li>
+            <li>{t(`${p}.vs.static.li3` as any)}</li>
+            <li>{t(`${p}.vs.static.li4` as any)}</li>
+            <li>{t(`${p}.vs.static.li5` as any)}</li>
+          </ul>
+        </div>
+        <div class="bg-[#f0fdf4] rounded-[20px] p-[30px]">
+          <h3 class="text-[20px] font-bold text-[#101828] mb-[20px]">{t(`${p}.vs.dynamic.title` as any)}</h3>
+          <ul class="space-y-[12px] text-[16px] text-[#4a5565] leading-[1.6]">
+            <li>{t(`${p}.vs.dynamic.li1` as any)}</li>
+            <li>{t(`${p}.vs.dynamic.li2` as any)}</li>
+            <li>{t(`${p}.vs.dynamic.li3` as any)}</li>
+            <li>{t(`${p}.vs.dynamic.li4` as any)}</li>
+            <li>{t(`${p}.vs.dynamic.li5` as any)}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#101828] text-white">
+    <div class="max-w-[900px] mx-auto text-center">
+      <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px]" set:html={t(`${p}.cta.h2` as any)} />
+      <p class="text-[18px] text-white/70 max-w-[600px] mx-auto mb-[40px] leading-relaxed">
+        {t(`${p}.cta.sub` as any)}
+      </p>
+      <div class="flex flex-wrap justify-center gap-[16px]">
+        <Button href={localeRoutePath('/offres', locale)} variant="green" arrow>{t(`${p}.cta.cta1` as any)}</Button>
+        <Button href={localeRoutePath('/devis', locale)} variant="white" arrow>{t(`${p}.cta.cta2` as any)}</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[800px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]" set:html={t(`${p}.faq.title` as any)} />
+      <div class="space-y-[16px]">
+        {[1, 2, 3, 4].map((i) => (
+          <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
+            <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+              {t(`${p}.faq.q${i}` as any)}
+              <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
+              {t(`${p}.faq.a${i}` as any)}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Liens internes SEO -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[40px] bg-white">
+    <div class="max-w-[900px] mx-auto">
+      <p class="text-[14px] text-[#4a5565] leading-[1.8]">
+        {t(`${p}.links.label` as any)}
+        <a href={localeRoutePath('/tableau-affichage-sportif', locale)} class="text-neo-green-dark underline">{t(`${p}.links.tableau` as any)}</a> &middot;
+        <a href={localeRoutePath('/ecran-led-gymnase', locale)} class="text-neo-green-dark underline">{t(`${p}.links.ecran` as any)}</a> &middot;
+        <a href={localeRoutePath('/tableau-de-score-electronique', locale)} class="text-neo-green-dark underline">{t(`${p}.links.score` as any)}</a> &middot;
+        <a href={localePath('/solution', locale)} class="text-neo-green-dark underline">{t(`${p}.links.solution` as any)}</a> &middot;
+        <a href={localeRoutePath('/offres', locale)} class="text-neo-green-dark underline">{t(`${p}.links.offres` as any)}</a> &middot;
+        <a href={localeRoutePath('/blog/affichage-dynamique-sport-guide-complet', locale)} class="text-neo-green-dark underline">{t(`${p}.links.guide` as any)}</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
+    <div class="max-w-[700px] mx-auto">
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[16px] text-center">
+        <span class="font-playfair italic font-normal">{t(`${p}.contact.h2` as any)}</span>
+      </h2>
+      <p class="text-[18px] text-[#4a5565] text-center mb-[40px]">
+        {t(`${p}.contact.sub` as any)}
+      </p>
+      <ContactForm client:visible />
+    </div>
+  </section>
+</BaseLayout>
