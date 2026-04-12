@@ -272,10 +272,12 @@ export function buildAggregateOfferJsonLd(
   const prices = offers.map((o) => o.price);
   return JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'SoftwareApplication',
     name: `${businessName} — Régie sport digitale`,
     description:
       'La régie sport digitale clé en main pour clubs. Écrans LED, scoring digital, contenus vidéo et valorisation partenaires — du club pro au club régional.',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
     brand: {
       '@type': 'Brand',
       name: businessName,
