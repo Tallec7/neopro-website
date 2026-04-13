@@ -52,7 +52,7 @@ export const ui = {
     'home.hero.cta': 'Découvrez la solution',
     'home.welcome.title1': 'Bienvenue ',
     'home.welcome.title2': 'au club.',
-    'home.welcome.text': "Neopro est la régie sport digitale adaptée à tous les clubs — du club professionnel au club régional — pour professionnaliser l'expérience match et créer un nouvel espace publicitaire pour vos partenaires.",
+    'home.welcome.text': "Neopro est la régie sport digitale adaptée à tous les clubs — du club amateur au club professionnel — pour professionnaliser l'expérience match et créer un nouvel espace publicitaire pour vos partenaires.",
     'home.regie.title': 'La régie sport digitale de votre club',
     'home.regie.text': 'Écrans, appli télécommande, contenus vidéo. Comment ça marche ?',
     'home.regie.cta': 'Découvrez la solution',

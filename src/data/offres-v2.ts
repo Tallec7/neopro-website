@@ -47,8 +47,8 @@ export const playPlan: PricingPlan = {
   pitch: "Essayez, c'est prêt",
   mode: 'SaaS',
   taxType: 'HT',
-  priceAnnual: 790,
-  priceMonthly: 79,
+  priceAnnual: 990,
+  priceMonthly: 99,
   popular: false,
   buttonVariant: 'black',
   features: [
@@ -71,8 +71,8 @@ export const plans: PricingPlan[] = [
     pitch: 'La TV pro de votre club',
     mode: 'Boîtier',
     taxType: 'HT',
-    priceAnnual: 1500,
-    priceMonthly: 149,
+    priceAnnual: 1890,
+    priceMonthly: 189,
     popular: false,
     buttonVariant: 'yellow',
     features: [
@@ -89,8 +89,8 @@ export const plans: PricingPlan[] = [
     pitch: 'Vos sponsors voient le résultat',
     mode: 'Boîtier',
     taxType: 'HT',
-    priceAnnual: 2100,
-    priceMonthly: 199,
+    priceAnnual: 2490,
+    priceMonthly: 249,
     popular: true,
     buttonVariant: 'green',
     features: [
@@ -107,8 +107,8 @@ export const plans: PricingPlan[] = [
     pitch: "On s'occupe de tout",
     mode: 'Boîtier',
     taxType: 'HT',
-    priceAnnual: 3000,
-    priceMonthly: 299,
+    priceAnnual: 3490,
+    priceMonthly: 349,
     popular: false,
     buttonVariant: 'pink',
     features: [

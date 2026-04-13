@@ -30,8 +30,8 @@ const priceColorMap: Record<string, string> = {
 };
 
 // ── SEO ──────────────────────────────────────────────────────────
-const title = 'Offres Régie sport digitale — À partir de 79 €/mois';
-const description = "Découvrez les offres Neopro, la régie sport digitale clé en main pour clubs : Play (79 €/mois sans matériel), Club (149 €/mois), Pro (199 €/mois) et Premium (299 €/mois). Finançable par vos partenaires.";
+const title = 'Offres Régie sport digitale — À partir de 99 €/mois';
+const description = "Découvrez les offres Neopro, la régie sport digitale clé en main pour clubs : Play (99 €/mois sans matériel), Club (189 €/mois), Pro (249 €/mois) et Premium (349 €/mois). Finançable par vos partenaires.";
 
 const siteUrl = 'https://www.neopro-communication.fr';
 const allPlans = [playPlan, ...plans];
@@ -119,7 +119,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 Recommandée
               </span>
             )}
-            {(offre.slug === 'pro' || offre.slug === 'premium') && (
+            {offre.slug === 'club' && (
               <span class="absolute top-[14px] right-[14px] bg-[#fdbe00] text-[#2f3935] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
                 ★ Promo 31 mai
               </span>
@@ -127,18 +127,18 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
               <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
-              {offre.slug === 'pro' ? (
+              {offre.slug === 'club' ? (
                 <>
                   <p class="text-[14px] text-neo-gray line-through mt-[12px] mb-[-4px]">
                     <span data-price-annual={offre.priceAnnual} data-price-monthly={offre.priceMonthly}><span class="js-price">{offre.priceAnnual.toLocaleString('fr-FR')} €</span><span class="js-suffix">/an</span></span>
                   </p>
                   <p
                     class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
-                    data-price-annual={Math.round(offre.priceAnnual * 0.8)}
-                    data-price-monthly={Math.round(offre.priceMonthly * 0.8)}
+                    data-price-annual={1490}
+                    data-price-monthly={149}
                   >
-                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span>
-                    <span class="text-[12px] font-bold text-[#51b28b] bg-[#e6f5ee] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
+                    <span class="js-price">1 490 €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span>
+                    <span class="text-[12px] font-bold text-[#51b28b] bg-[#e6f5ee] px-2 py-[2px] rounded-full ml-2 align-middle">149 €/mois</span>
                   </p>
                   <p class="text-[12px] text-[#51b28b] font-semibold mt-[4px]">Offre valable jusqu'au 31 mai</p>
                 </>
@@ -149,11 +149,6 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                   data-price-monthly={offre.priceMonthly}
                 >
                   <span class="js-price">{offre.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span>
-                </p>
-              )}
-              {offre.slug === 'premium' && (
-                <p class="text-[12px] text-[#fe6aa6] font-semibold mt-[6px] leading-snug">
-                  ★ Shooting photo/vidéo + production offerts pour 1 équipe (jusqu'au 31 mai)
                 </p>
               )}
               <p class="text-[13px] text-neo-gray mt-[4px] js-secondary hidden">Engagement 9 mois minimum</p>
