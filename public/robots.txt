@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /videos/
 Sitemap: https://www.neopro-communication.fr/sitemap-index.xml
 Sitemap: https://www.neopro-communication.fr/sitemap-images.xml
