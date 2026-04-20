@@ -8,6 +8,7 @@ import node from '@astrojs/node';
 export default defineConfig({
   site: 'https://www.neopro-communication.fr',
   output: 'static',
+  trailingSlash: 'always',
   adapter: node({ mode: 'standalone' }),
   integrations: [
     react(),

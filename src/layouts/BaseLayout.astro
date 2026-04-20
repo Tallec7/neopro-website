@@ -34,7 +34,8 @@ const extraJsonLdList = rawExtraJsonLd
   : [];
 const fullTitle = title.startsWith('Neopro') ? title : `${title} | Neopro`;
 const ogImageUrl = ogImage || `${siteUrl}/og-default.jpg`;
-const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+const rawCanonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+const canonical = rawCanonical.endsWith('/') ? rawCanonical : rawCanonical + '/';
 const alternates = getAlternateUrls(Astro.url.pathname, locale, siteUrl);
 const frUrl = alternates.find((a) => a.locale === 'fr')!.url;
 
