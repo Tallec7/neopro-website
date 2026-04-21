@@ -11,6 +11,22 @@ export const cities: City[] = [
     region: 'Greater London',
     localInfo:
       'London is home to one of the most diverse sports scenes in the world. With thousands of community sports clubs across 32 boroughs, indoor sports thrive in venues from the Copper Box Arena to local leisure centres. The capital hosts clubs competing in the British Basketball League, National Handball League, and Super League Volleyball.',
+    sportHighlights: {
+      handball:
+        'London is the heart of English handball, with the London GD and several community clubs driving participation across the boroughs. The capital offers an unrivalled pool of local sponsors — from SMEs to global corporates — looking for targeted visibility in grassroots sports venues.',
+      basketball:
+        'Basketball thrives in London through the London Lions in the BBL and a dense network of community clubs across East, North, and South London. The diversity of the capital\'s audience gives sponsors one of the most valuable reach opportunities in UK grassroots sport.',
+      volleyball:
+        'Volleyball has a strong London footprint with clubs competing in the Super League and an active grassroots scene in council-run sports halls. The capital\'s mix of universities, corporate partners, and multicultural audiences makes it an ideal setting for sponsor-driven screen content.',
+      futsal:
+        'Futsal is booming in London, powered by a diverse multicultural community and hundreds of amateur teams playing weekly in leisure centres. The capital\'s concentration of young audiences and local businesses creates an excellent environment for screen-based sponsor rotations.',
+      'ice-hockey':
+        'Ice hockey in London centres on the Streatham Redskins and other long-standing community clubs, with rinks such as Lee Valley and Alexandra Palace hosting regular fixtures. The sport\'s loyal London following offers clubs a strong platform for ongoing sponsor partnerships.',
+      badminton:
+        'Badminton is among the most widely played sports in London, with competitive clubs and leagues across every borough. The capital\'s dense club network and corporate sponsor base make badminton venues particularly attractive for recurring digital ad loops.',
+      'table-tennis':
+        'London has a deep-rooted table tennis community, with venues like Greenhouse Sports anchoring competitive play across the capital. The sport\'s loyal club following and London\'s business ecosystem create a reliable environment for local sponsor visibility.',
+    },
   },
   {
     slug: 'manchester',
@@ -20,6 +36,22 @@ export const cities: City[] = [
     region: 'Greater Manchester',
     localInfo:
       'Manchester has a deeply rooted sporting culture that extends well beyond football. The Manchester Giants compete in the BBL, and the city boasts a thriving grassroots indoor sports scene. Community halls and leisure centres across Greater Manchester host hundreds of handball, basketball, and volleyball sessions each week.',
+    sportHighlights: {
+      handball:
+        'Manchester\'s handball scene has grown steadily thanks to strong grassroots development and universities in the region. The city\'s dynamic business ecosystem, from manufacturing to services, provides a solid base of local sponsors willing to support indoor sports clubs.',
+      basketball:
+        'Basketball in Manchester is anchored by the Manchester Giants in the BBL and a wide amateur network across Greater Manchester. The city\'s young, diverse population and strong SME landscape make it a prime market for sponsor-backed screens in sports halls.',
+      volleyball:
+        'Volleyball benefits from strong university and community representation across Manchester, with Salford and other clubs feeding regional leagues. The consistent match-day audience offers local sponsors a reliable recurring visibility.',
+      futsal:
+        'Futsal is on the rise in Manchester, with a strong multicultural player base and leagues running year-round in council and private sports halls. The city\'s thriving SME sector provides clubs with a natural sponsor ecosystem.',
+      'ice-hockey':
+        'Ice hockey has deep roots in Manchester with the Manchester Storm and long-established community rinks. The Altrincham Ice Dome regularly hosts competitive fixtures, offering clubs a strong audience for sponsor-driven screen content.',
+      badminton:
+        'Badminton is one of the most widely practised sports across Greater Manchester, with an extensive network of clubs in Trafford, Salford, and beyond. The region\'s local business community makes badminton venues ideal for recurring sponsor loops.',
+      'table-tennis':
+        'Table tennis has a strong club network across Manchester and the North West, with events hosted regularly at the English Institute of Sport partners. The sport\'s loyal, community-based audience offers sponsors steady visibility over time.',
+    },
   },
   {
     slug: 'birmingham',
@@ -29,6 +61,22 @@ export const cities: City[] = [
     region: 'West Midlands',
     localInfo:
       'Birmingham, host of the 2022 Commonwealth Games, has seen a surge in grassroots sports participation. The city\'s National Indoor Arena and numerous community venues support a vibrant indoor sports culture. Basketball, badminton, and table tennis are particularly popular across the West Midlands.',
+    sportHighlights: {
+      handball:
+        'Handball is gaining traction in Birmingham through community clubs and university programmes across the West Midlands. The region\'s industrial and service economy offers a steady flow of local sponsors interested in supporting grassroots sport.',
+      basketball:
+        'Basketball is particularly vibrant in Birmingham, with the Birmingham Bears and a dense amateur network. The Commonwealth Games legacy has boosted infrastructure, giving clubs modern venues ideal for sponsor-driven digital screens.',
+      volleyball:
+        'Volleyball has a strong foothold in Birmingham, supported by a mix of university clubs and long-standing community teams. The venues host regular competitive fixtures, making them well suited to ongoing sponsor visibility.',
+      futsal:
+        'Futsal has grown significantly in Birmingham on the back of a multicultural playing population and dedicated indoor facilities. Local SMEs are increasingly engaged with the sport, making clubs a natural fit for digital sponsor partnerships.',
+      'ice-hockey':
+        'Ice hockey in Birmingham centres on the Solihull Barons and the Hobs Arena, with a loyal fan following across the West Midlands. The sport\'s high-energy match days provide an ideal backdrop for sponsor-driven screen content.',
+      badminton:
+        'Badminton is among the most played sports across Birmingham and the West Midlands, with an extensive network of clubs at all levels. The strong local business community creates steady demand for visibility in badminton venues.',
+      'table-tennis':
+        'Table tennis is especially strong in Birmingham, with competitive leagues and national tournaments regularly held in the region. The sport\'s loyal audience offers sponsors a recurring and cost-effective advertising opportunity.',
+    },
   },
   {
     slug: 'leeds',

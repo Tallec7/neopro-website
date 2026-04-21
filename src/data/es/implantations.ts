@@ -10,6 +10,22 @@ export const cities: City[] = [
     region: 'Comunidad de Madrid',
     localInfo:
       'Madrid es el epicentro del deporte espa\u00f1ol, con una densidad excepcional de clubes y pabellones deportivos. El balonmano madrile\u00f1o cuenta con referentes como el Atl\u00e9tico de Madrid BM, y la ciudad alberga cientos de clubes amateur de baloncesto, voleibol y f\u00fatbol sala que compiten en ligas regionales y nacionales.',
+    sportHighlights: {
+      balonmano:
+        'El balonmano madrile\u00f1o combina una s\u00f3lida tradici\u00f3n amateur con referencias hist\u00f3ricas a nivel nacional. La densidad de pabellones en la Comunidad de Madrid y el dinamismo empresarial de la capital ofrecen un entorno \u00f3ptimo para rentabilizar pantallas digitales con patrocinios locales recurrentes.',
+      baloncesto:
+        'El baloncesto es uno de los deportes m\u00e1s arraigados en Madrid, con una base amateur enorme y una cultura de cantera excepcional. Las empresas madrile\u00f1as participan activamente en el patrocinio deportivo, especialmente en baloncesto, lo que convierte a las pantallas de pabell\u00f3n en un soporte muy demandado.',
+      voleibol:
+        'El voleibol en Madrid cuenta con una red activa de clubes universitarios y municipales, con ligas regionales muy disputadas. Los pabellones madrile\u00f1os acogen un p\u00fablico joven y familiar, perfecto para visibilizar patrocinadores locales de forma constante.',
+      'futbol-sala':
+        'Madrid es una capital del f\u00fatbol sala espa\u00f1ol, con clubes de referencia como Inter Movistar y una base amateur fort\u00edsima en toda la comunidad. Los pabellones acogen p\u00fablicos fieles, un escenario \u00f3ptimo para pantallas que rotan patrocinadores locales y escaparates de producto.',
+      hockey:
+        'El hockey en Madrid tiene una tradici\u00f3n estable, con clubes bien implantados y ligas regionales activas. La combinaci\u00f3n de aficionados fieles y un tejido empresarial vibrante crea oportunidades claras de colaboraci\u00f3n con patrocinadores locales.',
+      badminton:
+        'El b\u00e1dminton madrile\u00f1o vive un crecimiento notable, impulsado por la red de clubes municipales y universitarios. Las competiciones regionales atraen p\u00fablicos variados, ideales para dar visibilidad a marcas locales en los pabellones.',
+      'tenis-de-mesa':
+        'El tenis de mesa tiene en Madrid una base s\u00f3lida gracias a clubes veteranos y torneos regulares. Las salas acogen un p\u00fablico t\u00e9cnico y fiel, un marco propicio para promocionar patrocinadores locales en pantalla.',
+    },
   },
   {
     slug: 'barcelona',
@@ -19,6 +35,22 @@ export const cities: City[] = [
     region: 'Catalu\u00f1a',
     localInfo:
       'Barcelona es una ciudad con una cultura deportiva extraordinaria. El FC Barcelona tiene secciones de balonmano, baloncesto y f\u00fatbol sala de primer nivel mundial. La base amateur catalana es inmensa, con miles de equipos compitiendo en ligas federadas cada fin de semana en pabellones repartidos por toda la ciudad y su \u00e1rea metropolitana.',
+    sportHighlights: {
+      balonmano:
+        'El balonmano catal\u00e1n tiene en Barcelona un referente mundial con el FC Barcelona, pero la fuerza real est\u00e1 en los cientos de clubes amateur repartidos por el \u00e1rea metropolitana. El tejido empresarial catal\u00e1n es uno de los m\u00e1s activos de Espa\u00f1a en patrocinio deportivo.',
+      baloncesto:
+        'El baloncesto barcelon\u00e9s vive una edad de oro, con una cantera aficionada muy extensa y competiciones regionales muy disputadas. La diversidad de las empresas catalanas ofrece un abanico amplio de patrocinadores potenciales para los clubes locales.',
+      voleibol:
+        'El voleibol est\u00e1 profundamente implantado en Catalu\u00f1a, con una red densa de clubes en Barcelona y su \u00e1rea metropolitana. Los pabellones acogen semanalmente competiciones que atraen p\u00fablicos fieles — un entorno \u00f3ptimo para comunicaci\u00f3n digital de patrocinadores.',
+      'futbol-sala':
+        'El f\u00fatbol sala es uno de los deportes con mayor penetraci\u00f3n en Catalu\u00f1a. Barcelona concentra clubes hist\u00f3ricos y una base amateur muy activa, con empresas locales acostumbradas a invertir en sponsoring deportivo de proximidad.',
+      hockey:
+        'El hockey tiene en Barcelona y Catalu\u00f1a su mayor feudo nacional, con clubes hist\u00f3ricos y una afici\u00f3n muy fiel. Las pistas y pabellones catalanes generan una visibilidad constante para los patrocinadores que apuestan por este deporte tradicional.',
+      badminton:
+        'El b\u00e1dminton catal\u00e1n cuenta con una base s\u00f3lida de clubes, especialmente en el \u00e1rea metropolitana de Barcelona. Las competiciones regionales movilizan un p\u00fablico activo, ideal para dar visibilidad a patrocinadores locales.',
+      'tenis-de-mesa':
+        'El tenis de mesa catal\u00e1n es uno de los m\u00e1s competitivos de Espa\u00f1a, con Barcelona como epicentro. Las salas concentran jugadores y aficionados, ofreciendo un marco de comunicaci\u00f3n estable para patrocinadores locales.',
+    },
   },
   {
     slug: 'valencia',
@@ -28,6 +60,22 @@ export const cities: City[] = [
     region: 'Comunidad Valenciana',
     localInfo:
       'Valencia es una de las ciudades m\u00e1s deportivas de Espa\u00f1a. La Comunidad Valenciana destaca especialmente en balonmano, con clubes hist\u00f3ricos, y en baloncesto con el Valencia Basket como referente. El tejido asociativo deportivo valenciano es muy activo, con numerosos clubes amateur que buscan soluciones modernas para sus patrocinadores.',
+    sportHighlights: {
+      balonmano:
+        'El balonmano valenciano cuenta con una tradici\u00f3n hist\u00f3rica y una base amateur muy estructurada. Las empresas de la Comunidad Valenciana — especialmente cer\u00e1mica, agroalimentaci\u00f3n y servicios — son habituales en el patrocinio deportivo local.',
+      baloncesto:
+        'El baloncesto valenciano destaca por el Valencia Basket y una potente cantera en toda la comunidad. Los pabellones se llenan con p\u00fablicos familiares y empresariales, un entorno ideal para rentabilizar pantallas con patrocinadores locales.',
+      voleibol:
+        'El voleibol es uno de los deportes de pabell\u00f3n m\u00e1s practicados en la Comunidad Valenciana, con una red asociativa amplia. El clima y la cultura deportiva mediterr\u00e1nea favorecen la asistencia regular y la visibilidad continua de patrocinadores.',
+      'futbol-sala':
+        'El f\u00fatbol sala tiene una presencia muy fuerte en la Comunidad Valenciana, con equipos reconocidos y una base amateur muy activa. Las empresas locales apoyan frecuentemente este deporte de sala — un escenario perfecto para rotar patrocinadores en pantalla.',
+      hockey:
+        'El hockey valenciano cuenta con clubes establecidos y una afici\u00f3n fiel. La combinaci\u00f3n de ligas regionales y torneos locales crea visibilidad recurrente para los patrocinadores que se asocian a los clubes.',
+      badminton:
+        'El b\u00e1dminton crece con fuerza en la Comunidad Valenciana, impulsado por una red de clubes municipales y torneos regulares. Las salas generan un flujo constante de p\u00fablico, perfecto para comunicaci\u00f3n digital de patrocinadores locales.',
+      'tenis-de-mesa':
+        'El tenis de mesa valenciano se apoya en clubes veteranos y un calendario activo de competiciones. El p\u00fablico t\u00e9cnico y las empresas locales crean un entorno propicio para asociar marcas a los clubes.',
+    },
   },
   {
     slug: 'sevilla',

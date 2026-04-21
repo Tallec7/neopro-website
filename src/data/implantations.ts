@@ -8,7 +8,7 @@ export interface City {
   // Paragraphe unique par couple (ville, sport) — désambiguïse le contenu
   // aux yeux de Google qui sinon voit les 6 pages sport d'une même ville
   // comme des quasi-doublons.
-  sportHighlights?: Partial<Record<'handball' | 'football' | 'basketball' | 'volleyball' | 'rugby' | 'badminton', string>>;
+  sportHighlights?: Partial<Record<string, string>>;
 }
 
 export interface Sport {

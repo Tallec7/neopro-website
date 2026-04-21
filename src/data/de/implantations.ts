@@ -12,6 +12,16 @@ export const cities: City[] = [
     region: 'Hamburg',
     localInfo:
       'Hamburg ist eine der führenden Handballstädte Deutschlands. Der HSV Hamburg und die SG Hamburg-Nord stehen für Spitzenhandball, während über 60 Amateurvereine die Breite der Sportkultur zeigen. Die Hamburger Sponsorenlandschaft bietet ideale Voraussetzungen für digitale Vereinskommunikation.',
+    sportHighlights: {
+      handball:
+        'Hamburg ist ein historisches Zentrum des deutschen Handballs, mit einer tief verwurzelten Tradition und einer dichten Amateurszene, die sich über den gesamten Stadtstaat erstreckt. Die Hamburger Wirtschaft — Hafenlogistik, Medien, Mittelstand — bietet Vereinen ein außergewöhnliches Umfeld für Sponsoringpartnerschaften.',
+      basketball:
+        'Der Hamburger Basketball erlebt ein starkes Wachstum, getragen von den Veolia Towers Hamburg und einem aktiven Amateurnetzwerk in den Bezirken. Das hanseatische Publikum ist sportbegeistert und anspruchsvoll — ein ideales Umfeld für professionelle Sponsorenkommunikation in der Halle.',
+      volleyball:
+        'Volleyball ist in Hamburg besonders in den Hochschul- und Freizeitligen stark vertreten, mit einem dichten Vereinsnetz im gesamten Stadtgebiet. Die wachsende Popularität der Hallensportarten schafft wiederkehrende Publikumsgelegenheiten für lokale Partner.',
+      eishockey:
+        'Eishockey hat in Hamburg mit den Crocodiles Hamburg eine feste Verankerung, ergänzt durch lokale Amateurclubs und eine engagierte Fanszene. Die Eissporthallen bieten ein intensives Spieltagserlebnis, das ideal für digitale Sponsorenauftritte geeignet ist.',
+    },
   },
   {
     slug: 'berlin',
@@ -21,6 +31,16 @@ export const cities: City[] = [
     region: 'Berlin',
     localInfo:
       'Berlin vereint die größte Dichte an Sportvereinen in Deutschland — über 2.400 Clubs mit mehr als 700.000 Mitgliedern. Handball hat mit den Füchsen Berlin einen Bundesliga-Leuchtturm, doch der wahre Reichtum liegt in den Bezirksligen: hunderte Amateurmannschaften suchen nach modernen Lösungen zur Sponsoren-Sichtbarkeit.',
+    sportHighlights: {
+      handball:
+        'Berliner Handball profitiert vom Bundesliga-Glanz der Füchse Berlin, der sich positiv auf die gesamte Amateurszene in den zwölf Bezirken auswirkt. Die Hauptstadt vereint ein junges, vielfältiges Publikum mit einem breiten Spektrum lokaler Sponsoren — von Start-ups bis zu etablierten Mittelständlern.',
+      basketball:
+        'Basketball ist in Berlin besonders dynamisch, angeführt von Alba Berlin und ergänzt durch Hunderte von Amateurclubs in allen Bezirken. Die multikulturelle Spielerschaft und das junge Publikum bieten Sponsoren eine einzigartige Reichweite in der deutschen Hauptstadt.',
+      volleyball:
+        'Volleyball ist in Berlin mit den Berlin Volleys in der Bundesliga und einer lebendigen Amateurszene stark vertreten. Die Bezirkshallen der Stadt bieten regelmäßige Spielveranstaltungen, ideal für kontinuierliche Sponsoren-Präsenz.',
+      eishockey:
+        'Die Eisbären Berlin prägen den Hauptstadt-Eissport seit Jahrzehnten und bilden den Motor einer engagierten Amateurszene. Die Berliner Eishallen ziehen ein treues Publikum an, das sich für starke Bindungen zwischen Clubs und lokalen Partnern anbietet.',
+    },
   },
   {
     slug: 'kiel',
@@ -30,6 +50,16 @@ export const cities: City[] = [
     region: 'Schleswig-Holstein',
     localInfo:
       'Kiel ist die Hauptstadt des deutschen Handballs. Der THW Kiel, mit über 20 Meistertiteln, prägt die gesamte Region. Schleswig-Holstein hat eine der höchsten Handballdichten Deutschlands — von der Kreisliga bis zur Bundesliga. Die Amateurvereine profitieren von einer handballbegeisterten Sponsorenkultur.',
+    sportHighlights: {
+      handball:
+        'Kiel lebt Handball wie kaum eine andere Stadt Deutschlands — der THW Kiel setzt seit Jahrzehnten nationale Maßstäbe. Die Amateurvereine in Schleswig-Holstein profitieren von einer einzigartigen Handballkultur, in der lokale Unternehmen traditionell stark ins Vereinssponsoring investieren.',
+      basketball:
+        'Basketball in Kiel ist weniger dominant als Handball, hat aber mit den Kiel Baltic Hurricanes und mehreren Amateurclubs eine solide Basis. Das norddeutsche Publikum schätzt Sportveranstaltungen mit hoher Wiedererkennung — ideal für regelmäßige Sponsoren-Einblendungen.',
+      volleyball:
+        'Volleyball hat in Kiel und Schleswig-Holstein eine wachsende Vereinsbasis, getragen von Hochschule und Freizeitsport. Die Hallen entlang der Förde bieten regelmäßige Spieltage und eine loyale Anhängerschaft, die sich gut für lokale Partnerschaften eignet.',
+      eishockey:
+        'Eishockey ist in Kiel mit den Kieler REV (Rennen e.V.) und Nachwuchsvereinen vertreten, die auf eine traditionelle Basis bauen. Die norddeutsche Eissportkultur erzeugt intensive Spieltagsatmosphäre — ein attraktives Umfeld für digitale Sponsorenauftritte.',
+    },
   },
   {
     slug: 'flensburg',
