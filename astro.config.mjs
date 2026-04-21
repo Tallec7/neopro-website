@@ -15,7 +15,7 @@ export default defineConfig({
     sitemap({
       i18n: {
         defaultLocale: 'fr',
-        locales: { fr: 'fr-FR', en: 'en-US', es: 'es-ES', de: 'de-DE', da: 'da-DK' },
+        locales: { fr: 'fr-FR', en: 'en-US', es: 'es-ES', de: 'de-DE', da: 'da-DK', it: 'it-IT', pl: 'pl-PL', nl: 'nl-NL', pt: 'pt-PT' },
       },
       changefreq: 'weekly',
       lastmod: new Date(),
@@ -24,16 +24,16 @@ export default defineConfig({
         const path = url.pathname;
 
         // Priorités (1.0 = max, 0.1 = min)
-        if (path === '/' || /^\/(en|es|de|da)\/$/.test(path)) {
+        if (path === '/' || /^\/(en|es|de|da|it|pl|nl|pt)\/$/.test(path)) {
           item.priority = 1.0;
           item.changefreq = 'weekly';
-        } else if (/\/(offres|pricing|precios|angebote|priser)\/$/.test(path)) {
+        } else if (/\/(offres|pricing|precios|angebote|priser|offerte|oferty|aanbod|ofertas)\/$/.test(path)) {
           item.priority = 0.9;
           item.changefreq = 'weekly';
-        } else if (/\/(solution|regie-sport|sports-signage|sport-regie|produccion-deportiva|sport-regi)\/$/.test(path)) {
+        } else if (/\/(solution|soluzione|rozwiazanie|oplossing|solucao|regie-sport|sports-signage|sport-regie|produccion-deportiva|sport-regi)\/$/.test(path)) {
           item.priority = 0.9;
           item.changefreq = 'monthly';
-        } else if (/^\/((en|es|de|da)\/)?(basketball|handball|haandbold|balonmano|volleyball|voleibol|football|futbol|fussball|fodbold|badminton|rugby|futsal|hockey|ice-hockey|eishockey|ishockey)/.test(path)) {
+        } else if (/^\/((en|es|de|da|it|pl|nl|pt)\/)?(basketball|pallacanestro|koszykowka|basketbal|basquetebol|handball|pallamano|pilka-reczna|handbal|andebol|haandbold|balonmano|volleyball|pallavolo|siatkowka|volleybal|voleibol|football|calcio|pilka-nozna|voetbal|futebol|futbol|fussball|fodbold|badminton|rugby|futsal|hockey|ice-hockey|eishockey|ishockey)/.test(path)) {
           item.priority = 0.8;
           item.changefreq = 'monthly';
         } else if (path.includes('/implantations/')) {
