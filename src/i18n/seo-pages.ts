@@ -2,6 +2,7 @@ import { seoPagesP1 } from './seo-pages-part1';
 import { seoPagesP2 } from './seo-pages-part2';
 import { seoPagesP3 } from './seo-pages-part3';
 import { seoPagesPivotsIt } from './seo-pages-pivots-it';
+import { seoPagesPivotsPl } from './seo-pages-pivots-pl';
 
 // Locali IT/PL/NL/PT : per le 2 pagine pivot (seo_tableau + seo_ecran) usiamo
 // traduzioni native; per le altre 4 pagine SEO, fallback FR temporaneo
@@ -28,6 +29,7 @@ export const seoPages = {
   } as const,
   pl: {
     ...seoPagesP1.fr,
+    ...seoPagesPivotsPl,
   } as const,
   nl: {
     ...seoPagesP1.fr,

@@ -2015,7 +2015,7 @@ export const ui = {
 
     ...sportsPart1.fr,
     ...sportsPart2.fr,
-    ...seoPages.fr,
+    ...seoPages.pl,
   },
   nl: {
     'nav.solution': 'Oplossing',
