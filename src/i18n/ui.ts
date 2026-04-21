@@ -19,6 +19,7 @@ import { sportsPart2 } from './sports-part2';
 import { sportsRugbyIt } from './sports-rugby-it';
 import { sportsRugbyPl } from './sports-rugby-pl';
 import { sportsRugbyNl } from './sports-rugby-nl';
+import { sportsRugbyPt } from './sports-rugby-pt';
 import { seoPages } from './seo-pages';
 
 export const ui = {
@@ -2295,6 +2296,7 @@ export const ui = {
 
     ...sportsPart1.fr,
     ...sportsPart2.fr,
+    ...sportsRugbyPt,
     ...seoPages.pt,
   },
 } as const;
