@@ -11,23 +11,31 @@ const t = useTranslations(locale);
 
 const year = new Date().getFullYear();
 
+// Pages avec versions localisées existantes (sinon fallback FR)
+const localesWithFullPages: Locale[] = ['fr', 'en', 'es', 'de', 'da'];
+const blogPath = localesWithFullPages.includes(locale) ? localePath('/blog', locale) : '/blog';
+const implantationsPath = localesWithFullPages.includes(locale) ? localePath('/implantations', locale) : '/implantations';
+const regiePath = localesWithFullPages.includes(locale) ? localeRoutePath('/regie-sport', locale) : '/regie-sport';
+const annonceursPath = localesWithFullPages.includes(locale) ? localeRoutePath('/annonceurs', locale) : '/annonceurs';
+
 const colProduit = [
-  { label: t('nav.solution'), href: localePath('/solution', locale) },
-  { label: t('nav.regie'), href: localeRoutePath('/regie-sport', locale) },
+  { label: t('nav.solution'), href: localeRoutePath('/solution', locale) },
+  { label: t('nav.regie'), href: regiePath },
   { label: t('nav.offres'), href: localeRoutePath('/offres', locale) },
-  { label: t('nav.annonceurs'), href: localeRoutePath('/annonceurs', locale) },
-  { label: t('footer.implantations'), href: localePath('/implantations', locale) },
+  { label: t('nav.annonceurs'), href: annonceursPath },
+  { label: t('footer.implantations'), href: implantationsPath },
 ];
 
 const colRessources = [
-  { label: t('nav.blog'), href: localePath('/blog', locale) },
+  { label: t('nav.blog'), href: blogPath },
   { label: t('nav.about'), href: localeRoutePath('/qui-sommes-nous', locale) },
   { label: t('nav.club'), href: 'https://neopro-admin.kalonpartners.bzh', external: true },
 ];
 
+// Pages légales — uniquement en FR pour toutes les locales
 const colLegal = [
-  { label: t('footer.mentions'), href: localePath('/mentions-legales', locale) },
-  { label: t('footer.privacy'), href: localePath('/politique-de-confidentialite', locale) },
+  { label: t('footer.mentions'), href: '/mentions-legales' },
+  { label: t('footer.privacy'), href: '/politique-de-confidentialite' },
 ];
 ---
 

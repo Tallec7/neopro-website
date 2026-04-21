@@ -199,7 +199,7 @@ export default function ContactForm({ locale = 'fr' }: Props) {
                 <label className="text-[14px] text-[#4a5565] leading-[20px]">
                   {t(locale, 'contact.consent')}{' '}
                   <a
-                    href={locale === 'fr' ? '/politique-de-confidentialite' : `/${locale}/privacy-policy`}
+                    href="/politique-de-confidentialite"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline text-[#51b28b] hover:text-[#81e3bc]"

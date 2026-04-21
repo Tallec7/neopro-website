@@ -12,10 +12,13 @@ const otherLocales = getOtherLocales(locale);
 const aboutSlug: Record<Locale, string> = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os', it: '/chi-siamo', pl: '/o-nas', nl: '/over-ons', pt: '/sobre-nos' };
 const flags: Record<Locale, string> = { fr: '🇫🇷', en: '🇬🇧', es: '🇪🇸', de: '🇩🇪', da: '🇩🇰', it: '🇮🇹', pl: '🇵🇱', nl: '🇳🇱', pt: '🇵🇹' };
 
+const localesWithBlog: Locale[] = ['fr', 'en', 'es', 'de', 'da'];
+const blogHref = localesWithBlog.includes(locale) ? localePath('/blog', locale) : '/blog';
+
 const navLinks = [
-  { label: t('nav.solution'), href: localePath('/solution', locale) },
+  { label: t('nav.solution'), href: localeRoutePath('/solution', locale) },
   { label: t('nav.offres'), href: localeRoutePath('/offres', locale) },
-  { label: t('nav.blog'), href: localePath('/blog', locale) },
+  { label: t('nav.blog'), href: blogHref },
   { label: t('nav.about'), href: localePath(aboutSlug[locale], locale) },
 ];
 

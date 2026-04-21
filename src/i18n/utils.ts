@@ -55,6 +55,7 @@ const annonceurRoute = { fr: '/annonceurs', en: '/advertisers', es: '/anunciante
 const offresRoute = { fr: '/offres', en: '/pricing', es: '/precios', de: '/angebote', da: '/priser', it: '/offerte', pl: '/oferty', nl: '/aanbod', pt: '/ofertas' };
 const devisRoute = { fr: '/devis', en: '/quote', es: '/presupuesto', de: '/angebot', da: '/tilbud', it: '/preventivo', pl: '/wycena', nl: '/offerte-aanvragen', pt: '/orcamento' };
 const regieRoute = { fr: '/regie-sport', en: '/sports-signage', es: '/produccion-deportiva', de: '/sport-regie', da: '/sport-regi', it: '/regia-sportiva', pl: '/rezyseria-sportowa', nl: '/sportregie', pt: '/regia-esportiva' };
+const solutionRoute = { fr: '/solution', en: '/solution', es: '/solution', de: '/solution', da: '/solution', it: '/soluzione', pl: '/rozwiazanie', nl: '/oplossing', pt: '/solucao' };
 
 // ── Sport pages ─────────────────────────────────────────────────
 const basketballRoute = { fr: '/basketball', en: '/basketball', es: '/baloncesto', de: '/basketball', da: '/basketball', it: '/pallacanestro', pl: '/koszykowka', nl: '/basketbal', pt: '/basquetebol' };
@@ -103,6 +104,11 @@ const routeMap: Record<string, Record<Locale, string>> = {
   'produccion-deportiva': regieRoute,
   'sport-regie': regieRoute,
   'sport-regi': regieRoute,
+  'solution': solutionRoute,
+  'soluzione': solutionRoute,
+  'rozwiazanie': solutionRoute,
+  'oplossing': solutionRoute,
+  'solucao': solutionRoute,
   // Sport pages
   'basketball': basketballRoute,
   'baloncesto': basketballRoute,
