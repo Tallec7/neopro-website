@@ -17,6 +17,7 @@ export const defaultLocale: Locale = 'fr';
 import { sportsPart1 } from './sports-part1';
 import { sportsPart2 } from './sports-part2';
 import { sportsRugbyIt } from './sports-rugby-it';
+import { sportsRugbyPl } from './sports-rugby-pl';
 import { seoPages } from './seo-pages';
 
 export const ui = {
@@ -2017,6 +2018,7 @@ export const ui = {
 
     ...sportsPart1.fr,
     ...sportsPart2.fr,
+    ...sportsRugbyPl,
     ...seoPages.pl,
   },
   nl: {
