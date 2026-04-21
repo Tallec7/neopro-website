@@ -49,7 +49,7 @@ const currentPath = Astro.url.pathname;
 
     <!-- Desktop CTAs -->
     <div class="hidden md:flex items-center gap-[16px] h-[44px]">
-      <Button href={localePath('/demo', locale)} variant="black">
+      <Button href={localeRoutePath('/devis', locale)} variant="black">
         {t('nav.demo')}
       </Button>
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors">
@@ -101,7 +101,7 @@ const currentPath = Astro.url.pathname;
       </a>
     ))}
     <div class="flex flex-col gap-3 pt-2">
-      <Button href={localePath('/demo', locale)} variant="black">
+      <Button href={localeRoutePath('/devis', locale)} variant="black">
         {t('nav.demo')}
       </Button>
       <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark">
