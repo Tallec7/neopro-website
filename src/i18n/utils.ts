@@ -93,6 +93,7 @@ const routeMap: Record<string, Record<Locale, string>> = {
   'angebote': offresRoute,
   'priser': offresRoute,
   'devis': devisRoute,
+  'demo': devisRoute,
   'quote': devisRoute,
   'presupuesto': devisRoute,
   'angebot': devisRoute,
