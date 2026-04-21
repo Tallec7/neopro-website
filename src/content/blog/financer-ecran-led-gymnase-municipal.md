@@ -1,129 +1,165 @@
 ---
 title: "Comment financer un écran LED dans un gymnase municipal"
-description: "Découvrez les 4 pistes de financement pour installer un écran LED dans votre gymnase : sponsors privés, subventions, co-financement et leasing."
+description: "5 montages financiers pour installer un écran LED dans votre gymnase : autorisation simple, subventions DETR/ANS/CPER, modèle Gymnase connecté, déploiement territorial et partenariat solidaire."
 date: 2026-04-22
 author: Neopro
-tags: ["écran LED", "financement", "gymnase municipal", "subvention"]
+tags: ["écran LED", "financement", "gymnase municipal", "subvention", "collectivité", "DETR", "ANS"]
 ---
 
 # Comment financer un écran LED dans un gymnase municipal
 
-L'installation d'un écran LED dans un gymnase municipal transforme l'expérience sportive, attire du public et génère des revenus publicitaires. Mais avant d'en profiter, il faut résoudre l'équation financière. Combien ça coûte ? Qui paie ? Quelles aides existent ?
+La France compte **18 449 gymnases** — le plus grand parc d'équipements sportifs publics d'Europe — et pourtant, presque aucun n'est équipé d'un écran digital. Les stades de foot ont leurs panneaux LED, les arènes de basketball américaines leurs jumbotrons, mais le gymnase municipal reste figé dans les années 1990 : tableau d'affichage en plastique, banderoles de sponsors défraîchies, sono crachotante.
 
-Cet article détaille les **4 pistes de financement** à votre disposition et vous guide pour monter un dossier solide.
+C'est aussi une opportunité. Car derrière chaque gymnase, il y a 5 à 10 clubs — **handball, basketball, volleyball, badminton** — qui cherchent des sponsors, une mairie qui veut communiquer avec ses habitants et des entreprises locales prêtes à investir dans une visibilité mesurable.
+
+Le handball est le premier bénéficiaire : avec 9 300 clubs en France, c'est le sport le plus pratiqué en salle, et ses matchs génèrent un public récurrent, idéal pour rentabiliser un écran digital. Le basketball suit de près (11 753 clubs), en forte croissance dans les gymnases de toutes tailles. Ensemble, ces deux disciplines représentent la majorité des créneaux du gymnase municipal type — et donc la majorité des occasions de diffusion pour les sponsors.
+
+Il existe aujourd'hui **5 montages financiers** pour équiper un gymnase municipal d'un écran LED professionnel. Certains ne coûtent rien à la collectivité. D'autres mobilisent des subventions nationales et régionales. Tous sont complémentaires.
 
 ## Combien coûte un écran LED pour un gymnase ?
 
-Avant de chercher des financements, posons les ordres de grandeur. Le coût dépend de la taille de l'écran, de la résolution (pitch) et de l'installation.
+Avant de parler financement, posons les ordres de grandeur.
 
-| Élément | Fourchette de prix |
+| Élément | Fourchette |
 |---|---|
-| Écran LED P4-P6 (3 à 6 m²) | 8 000 € – 20 000 € |
+| Écran LED (3 à 6 m², pitch P4-P6) | 8 000 € – 20 000 € |
 | Structure de fixation | 1 500 € – 4 000 € |
 | Installation électrique | 1 000 € – 3 000 € |
-| Logiciel de régie et mise en service | 1 500 € – 5 000 € |
-| **Total projet** | **12 000 € – 32 000 €** |
+| Logiciel de régie et mise en service | inclus dans l'abonnement |
+| **Total équipement** | **2 000 € – 25 000 €** selon la configuration |
 
-Pour un gymnase municipal standard, un projet complet se situe généralement entre **15 000 et 25 000 €**. C'est un investissement significatif, mais les sources de financement sont multiples — et cumulables.
+La fourchette est large parce que les solutions ne se valent pas. Chez Neopro, le modèle de **régie digitale clé en main** (logiciel, contenu, gestion commerciale des sponsors) transforme cette dépense en investissement qui s'autofinance en 12 à 24 mois.
 
-## Piste 1 : Le financement par les sponsors privés
+Voyons maintenant les 5 montages disponibles.
 
-C'est la piste la plus directe et souvent la plus rapide. Le principe : des entreprises locales financent tout ou partie de l'écran en échange de temps de diffusion publicitaire.
+---
 
-### Comment ça fonctionne
+## Format F1 — Autorisation simple : 0 € pour la collectivité
 
-- Vous démontrez aux entreprises le potentiel de visibilité : nombre de spectateurs par semaine, profil de l'audience, fréquence des événements.
-- Chaque sponsor acquiert un forfait annuel de diffusion (par exemple, 500 à 2 000 € par an pour un spot de 15 secondes en rotation).
-- Avec 10 à 15 sponsors à 1 000 € en moyenne, vous dégagez 10 000 à 15 000 € par an — de quoi amortir l'écran en 1 à 2 saisons.
+Le point d'entrée le plus rapide. La collectivité n'investit rien : elle autorise simplement un opérateur à installer et exploiter l'écran dans son gymnase.
 
-L'avantage : l'écran **s'autofinance** grâce aux revenus publicitaires qu'il génère. C'est un investissement, pas une dépense.
+**Comment ça fonctionne :**
 
-Pour approfondir le sujet des écrans LED en gymnase, consultez notre [guide complet sur les écrans LED en gymnase](/blog/ecran-led-gymnase-guide-complet).
+- Une **délibération du conseil municipal** ou une **convention d'usage** suffit.
+- L'opérateur (Neopro) installe l'écran à ses frais, gère les sponsors et reverse une redevance au club ou à la commune.
+- La mairie récupère des **créneaux de communication gratuits** pour ses annonces municipales.
 
-## Piste 2 : Les subventions publiques
+**Idéal pour :** les communes qui veulent tester sans risque, ou celles dont le budget d'investissement est saturé. C'est aussi la voie la plus rapide — une convention peut se signer en quelques semaines.
 
-Plusieurs dispositifs publics peuvent cofinancer un équipement sportif numérique.
+---
 
-### L'Agence nationale du Sport (ex-CNDS)
+## Format F2 — Financement de l'écran : 2 000 à 25 000 € en one-shot
 
-L'Agence nationale du Sport (ANS) finance des projets d'équipement sportif via les subventions « Équipements structurants ». Un écran LED peut entrer dans le cadre d'un projet de **modernisation d'équipement sportif** si le dossier met en avant l'amélioration de l'accueil du public et le développement de la pratique.
+La commune ou l'intercommunalité achète l'équipement, idéalement en mobilisant des subventions. L'écran devient un bien municipal, exploité en partenariat avec les clubs résidents.
 
-- **Montant** : jusqu'à 20 à 30 % du coût total du projet.
-- **Délai** : 3 à 6 mois de traitement. Anticipez.
-- **Condition** : le gymnase doit être ouvert à plusieurs associations et accueillir des compétitions officielles.
+**Sources de financement mobilisables :**
 
-### Les subventions municipales et intercommunales
-
-La mairie ou la communauté de communes dispose souvent d'une enveloppe pour l'**équipement des installations sportives**. L'écran LED entre dans cette catégorie, surtout si vous argumentez sur la communication municipale.
-
-Un argument massue : l'écran peut diffuser les informations de la mairie (événements, messages de prévention, annonces locales) en dehors des créneaux sportifs. La collectivité y gagne un **support de communication supplémentaire** sans coût récurrent.
-
-### Les subventions régionales
-
-Certaines régions proposent des aides à la **transition numérique des associations** ou au **développement du sport pour tous**. Renseignez-vous auprès de la Direction régionale de la jeunesse, des sports et de la cohésion sociale (DRJSCS).
-
-## Piste 3 : Le co-financement club-mairie
-
-Dans la plupart des gymnases municipaux, le bâtiment appartient à la commune mais les clubs l'utilisent au quotidien. Le co-financement est donc une solution naturelle.
-
-### Schéma type
-
-| Part | Financeur | Source |
+| Dispositif | Ce qu'il finance | Taux courant |
 |---|---|---|
-| 40 à 50 % | Mairie | Budget équipement sportif |
-| 30 à 40 % | Club(s) résident(s) | Revenus sponsoring |
-| 10 à 20 % | Subvention ANS/région | Dossier de demande |
+| **DETR** (Dotation Équipement des Territoires Ruraux) | Équipements structurants en zone rurale | 20 à 40 % |
+| **DSIL** (Dotation de Soutien à l'Investissement Local) | Modernisation des équipements publics | 15 à 35 % |
+| **FSIL** (Fonds de Soutien à l'Investissement Local) | Projets prioritaires des préfectures | Variable |
+| **ANS** (Agence nationale du Sport) | Équipements sportifs structurants | 20 à 30 % |
+| **CPER** (Contrat de Plan État-Région) | Projets pluriannuels d'envergure | Selon contrat |
 
-### Pourquoi la mairie a tout à gagner
+**Un exemple concret :**  
+Gymnase de 1 500 m², budget total 18 000 €. La commune dépose un dossier DETR (30 % = 5 400 €) + ANS (25 % = 4 500 €). Reste à charge : 8 100 €, financés sur le budget équipement sportif. L'écran est opérationnel en 6 mois.
 
-La collectivité investit dans un équipement qui :
+---
 
-- **Valorise le patrimoine sportif** de la commune auprès des habitants et des visiteurs.
-- **Attire de nouveaux événements** : les organisateurs de tournois préfèrent les salles équipées.
-- **Génère de la communication gratuite** : la mairie dispose de créneaux de diffusion pour ses propres messages.
-- **Ne coûte rien en fonctionnement** : les frais d'exploitation (électricité, maintenance logicielle) sont couverts par les revenus publicitaires du club.
+## Format F3 — Le Gymnase connecté ★ (le modèle signature)
 
-Présentez le projet au service des sports de votre mairie avec ces arguments chiffrés. Les élus sont sensibles aux équipements qui **ne pèsent pas sur le budget de fonctionnement**.
+C'est le montage le plus complet et le plus reproductible. Une collectivité investit dans **un écran partagé par 5 à 10 clubs**, chacun bénéficiant d'un accès à la régie digitale, tout en conservant un canal municipal dédié.
 
-## Piste 4 : Le leasing (location financière)
+**Structure financière :**
 
-Si le budget d'investissement initial est un frein, le leasing permet d'étaler le coût sur 24 à 48 mois.
+| Poste | Montant |
+|---|---|
+| Investissement initial (mairie) | 2 000 € – 25 000 € |
+| Abonnement annuel régie Neopro | ~2 000 €/an |
+| Revenus annuels des sponsors | 1 500 € – 3 000 €/an par club |
 
-### Le principe
+**Ce que la collectivité y gagne :**
 
-- Un organisme financier achète l'écran et vous le loue.
-- Vous payez des mensualités fixes (300 à 800 €/mois selon l'équipement).
-- En fin de contrat, vous pouvez racheter l'écran pour une valeur résiduelle (souvent 1 € symbolique).
+- Un **outil de communication municipal** actif 365 jours par an (alertes météo, événements locaux, informations pratiques).
+- Une **mise en valeur du patrimoine sportif** auprès des habitants et des visiteurs.
+- Un **modèle autofinancé** : les revenus de régie des clubs couvrent les frais d'abonnement.
+- Un **effet réseau** : un seul écran sert toute une communauté sportive locale.
 
-### Avantages du leasing
+**Éligibilités :** le budget d'investissement initial est éligible DETR, DSIL et ANS dans la plupart des dossiers. L'abonnement annuel entre dans le budget de fonctionnement du service des sports.
 
-- **Pas d'investissement initial** : le club ou la mairie n'avance rien.
-- **Charges déductibles** : pour une association, les loyers sont des charges de fonctionnement, plus simples à budgéter qu'un investissement.
-- **Équipement à jour** : en fin de contrat, vous pouvez renouveler pour un écran plus récent.
+Ce modèle est particulièrement adapté aux **communes de 5 000 à 30 000 habitants** qui disposent d'un gymnase multi-sports accueillant plusieurs associations.
 
-Le leasing est particulièrement adapté aux clubs qui ont déjà des sponsors prêts à payer : les revenus publicitaires mensuels couvrent les mensualités de location dès le premier mois.
+---
+
+## Format F4 — Déploiement territorial : 80 000 à 600 000 €
+
+Réservé aux intercommunalités, aux agglomérations et aux conseils départementaux qui souhaitent équiper plusieurs gymnases simultanément.
+
+**Le principe :** un accord-cadre avec Neopro couvre l'ensemble des gymnases du territoire. La collectivité bénéficie de tarifs dégressifs, d'une gestion centralisée et d'un réseau media sportif territorial.
+
+**Ce que ça représente :**
+
+- 10 gymnases équipés = 50 à 100 clubs bénéficiaires
+- Un réseau de communication local à l'échelle du département
+- Des revenus de régie mutualisés qui alimentent un fonds de développement sportif
+
+**Financements mobilisables :** CPER, fonds régionaux pour la transition numérique des collectivités, dotations exceptionnelles en année olympique ou post-olympique.
+
+---
+
+## Format F5 — Partenariat solidaire : gymnase connecté + accès jeunesse
+
+Identique au Format F3, avec une dimension sociale supplémentaire : **10 % des revenus de régie** sont reversés dans un fonds dédié au financement des licences sportives pour les jeunes des quartiers prioritaires (QPV) ou des zones rurales (ZRR).
+
+**Pourquoi ce format existe :**
+
+Certaines communes en QPV ou ZRR peinent à mobiliser des sponsors locaux. Le partenariat solidaire permet à la collectivité de flécher une part des revenus de l'écran vers la **réduction des inégalités d'accès au sport**.
+
+**Éligibilités spécifiques :** fonds d'intervention de l'ANS pour les quartiers prioritaires, ANCT (Agence nationale de cohésion des territoires), politique de la ville.
+
+---
+
+## Quel format choisir ?
+
+| Votre situation | Format recommandé |
+|---|---|
+| Budget nul, décision rapide souhaitée | F1 — Autorisation simple |
+| Commune rurale avec accès DETR/DSIL | F2 + dossier de subventions |
+| Gymnase multi-clubs, mairie impliquée | **F3 — Gymnase connecté ★** |
+| Intercommunalité, plusieurs gymnases | F4 — Déploiement territorial |
+| QPV / ZRR, dimension sociale | F5 — Partenariat solidaire |
+
+Dans tous les cas, les formats sont **cumulables** : un F3 peut intégrer une subvention ANS (F2) et une dimension solidaire (F5).
+
+---
 
 ## Comment monter le dossier
 
-Quel que soit le schéma de financement retenu, votre dossier doit convaincre les décideurs.
+Quel que soit le format retenu, votre dossier doit convaincre les décideurs. Voici les pièces incontournables.
 
-### Les pièces essentielles
+**Pour un élu ou un service des sports :**
 
-1. **Devis détaillé** : matériel, installation, mise en service, maintenance. Demandez un devis à au moins deux fournisseurs.
-2. **Plan de financement** : qui paie quoi, sur quelle durée. Montrez que le modèle est viable.
-3. **Prévisionnel de revenus** : combien de sponsors, à quel tarif, pour quel revenu annuel. Soyez conservateur dans vos estimations.
-4. **Planning d'installation** : les élus veulent savoir quand et comment, sans perturbation des créneaux sportifs.
-5. **Convention d'utilisation** : qui gère l'écran, qui décide du contenu, quels créneaux pour la mairie, quels créneaux pour le club.
+1. **Devis détaillé** : matériel, installation, mise en service. Demandez un devis formalisé à Neopro — il est gratuit et sert de base au dossier de subvention.
+2. **Plan de financement** : qui paie quoi, sur quelle durée, avec quelles subventions.
+3. **Prévisionnel de revenus** : nombre de clubs, nombre de sponsors potentiels, revenus annuels estimés. Soyez conservateur.
+4. **Convention d'utilisation** : qui gère l'écran, quels créneaux pour la mairie, quels créneaux pour les clubs.
+5. **Planning d'installation** : les élus veulent savoir quand et comment, sans perturbation du calendrier sportif.
 
-Découvrez nos [offres clé en main](/offres) qui incluent le matériel, le logiciel de régie et l'accompagnement pour monter votre dossier.
+**Pour un dossier DETR ou DSIL :**  
+La clé est de positionner le projet dans la rubrique **"équipements structurants favorisant la pratique sportive"**. Mettez en avant le nombre de clubs bénéficiaires, le nombre de pratiquants concernés et la durée de vie de l'équipement (10 à 15 ans pour un écran LED de qualité).
 
-## L'écran LED, un investissement rentable
+---
 
-Un écran LED dans un gymnase n'est pas un gadget. C'est un **outil de génération de revenus** pour le club et un **support de communication** pour la collectivité. Bien financé, il s'amortit en 12 à 24 mois grâce aux recettes publicitaires.
+## L'écran LED, un investissement qui s'autofinance
 
-Les clubs qui ont franchi le pas constatent en moyenne une **augmentation de 40 à 60 % de leurs revenus sponsoring** dès la première saison. Les annonceurs locaux sont prêts à payer plus pour une visibilité digitale mesurable que pour un panneau PVC statique.
+Un écran LED dans un gymnase n'est pas un gadget. C'est un **outil de génération de revenus** pour les clubs et un **support de communication** pour la collectivité.
 
-N'attendez plus pour moderniser votre gymnase. [Demandez une démo](/demo) pour voir concrètement comment la solution fonctionne.
+Les clubs qui franchissent le pas constatent en moyenne une **augmentation de 40 à 60 % de leurs revenus sponsoring** dès la première saison. Les entreprises locales paient plus pour une visibilité digitale mesurable que pour un panneau statique qu'on ne regarde plus.
+
+Et la mairie y gagne elle aussi : un gymnase équipé d'un écran digital attire des tournois régionaux, des compétitions officielles, des événements de plus grande envergure — tout ce qui fait vivre le territoire.
+
+**Prochaine étape :** [demandez une démo gratuite](/demo) et nous préparons avec vous le montage financier adapté à votre situation.
 
 ---
 
@@ -133,3 +169,4 @@ N'attendez plus pour moderniser votre gymnase. [Demandez une démo](/demo) pour 
 - [Régie sport : le guide complet](/blog/regie-sport-guide-complet)
 - [Affichage dynamique sport : le guide complet](/blog/affichage-dynamique-sport-guide-complet)
 - [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur)
+- [Sponsoring club amateur : le guide 2026](/blog/sponsoring-club-amateur-guide-2026)
