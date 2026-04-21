@@ -50,31 +50,31 @@ export function getPathWithoutLocale(pathname: string): string {
 /**
  * Route mapping for pages with different slugs between locales.
  */
-const aboutRoute = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' };
-const annonceurRoute = { fr: '/annonceurs', en: '/advertisers', es: '/anunciantes', de: '/werbetreibende', da: '/annoncorer' };
-const offresRoute = { fr: '/offres', en: '/pricing', es: '/precios', de: '/angebote', da: '/priser' };
-const devisRoute = { fr: '/devis', en: '/quote', es: '/presupuesto', de: '/angebot', da: '/tilbud' };
-const regieRoute = { fr: '/regie-sport', en: '/sports-signage', es: '/produccion-deportiva', de: '/sport-regie', da: '/sport-regi' };
+const aboutRoute = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os', it: '/chi-siamo', pl: '/o-nas', nl: '/over-ons', pt: '/sobre-nos' };
+const annonceurRoute = { fr: '/annonceurs', en: '/advertisers', es: '/anunciantes', de: '/werbetreibende', da: '/annoncorer', it: '/inserzionisti', pl: '/reklamodawcy', nl: '/adverteerders', pt: '/anunciantes' };
+const offresRoute = { fr: '/offres', en: '/pricing', es: '/precios', de: '/angebote', da: '/priser', it: '/offerte', pl: '/oferty', nl: '/aanbod', pt: '/ofertas' };
+const devisRoute = { fr: '/devis', en: '/quote', es: '/presupuesto', de: '/angebot', da: '/tilbud', it: '/preventivo', pl: '/wycena', nl: '/offerte-aanvragen', pt: '/orcamento' };
+const regieRoute = { fr: '/regie-sport', en: '/sports-signage', es: '/produccion-deportiva', de: '/sport-regie', da: '/sport-regi', it: '/regia-sportiva', pl: '/rezyseria-sportowa', nl: '/sportregie', pt: '/regia-esportiva' };
 
 // ── Sport pages ─────────────────────────────────────────────────
-const basketballRoute = { fr: '/basketball', en: '/basketball', es: '/baloncesto', de: '/basketball', da: '/basketball' };
-const handballRoute = { fr: '/handball', en: '/handball', es: '/balonmano', de: '/handball', da: '/haandbold' };
-const volleyballRoute = { fr: '/volleyball', en: '/volleyball', es: '/voleibol', de: '/volleyball', da: '/volleyball' };
-const futsalRoute = { fr: '/futsal', en: '/futsal', es: '/futsal', de: '/futsal', da: '/futsal' };
-const badmintonRoute = { fr: '/badminton', en: '/badminton', es: '/badminton', de: '/badminton', da: '/badminton' };
-const footballRoute = { fr: '/football', en: '/football', es: '/futbol', de: '/fussball', da: '/fodbold' };
-const rugbyRoute = { fr: '/rugby', en: '/rugby', es: '/rugby', de: '/rugby', da: '/rugby' };
-const hockeyGlaceRoute = { fr: '/hockey-sur-glace', en: '/ice-hockey', es: '/hockey-hielo', de: '/eishockey', da: '/ishockey' };
-const rinkHockeyRoute = { fr: '/rink-hockey', en: '/rink-hockey', es: '/hockey-patines', de: '/rollhockey', da: '/rullehockey' };
-const hockeyGazonRoute = { fr: '/hockey-sur-gazon', en: '/field-hockey', es: '/hockey-hierba', de: '/feldhockey', da: '/landhockey' };
+const basketballRoute = { fr: '/basketball', en: '/basketball', es: '/baloncesto', de: '/basketball', da: '/basketball', it: '/pallacanestro', pl: '/koszykowka', nl: '/basketbal', pt: '/basquetebol' };
+const handballRoute = { fr: '/handball', en: '/handball', es: '/balonmano', de: '/handball', da: '/haandbold', it: '/pallamano', pl: '/pilka-reczna', nl: '/handbal', pt: '/andebol' };
+const volleyballRoute = { fr: '/volleyball', en: '/volleyball', es: '/voleibol', de: '/volleyball', da: '/volleyball', it: '/pallavolo', pl: '/siatkowka', nl: '/volleybal', pt: '/voleibol' };
+const futsalRoute = { fr: '/futsal', en: '/futsal', es: '/futsal', de: '/futsal', da: '/futsal', it: '/calcio-a-5', pl: '/futsal', nl: '/zaalvoetbal', pt: '/futsal' };
+const badmintonRoute = { fr: '/badminton', en: '/badminton', es: '/badminton', de: '/badminton', da: '/badminton', it: '/badminton', pl: '/badminton', nl: '/badminton', pt: '/badminton' };
+const footballRoute = { fr: '/football', en: '/football', es: '/futbol', de: '/fussball', da: '/fodbold', it: '/calcio', pl: '/pilka-nozna', nl: '/voetbal', pt: '/futebol' };
+const rugbyRoute = { fr: '/rugby', en: '/rugby', es: '/rugby', de: '/rugby', da: '/rugby', it: '/rugby', pl: '/rugby', nl: '/rugby', pt: '/rugby' };
+const hockeyGlaceRoute = { fr: '/hockey-sur-glace', en: '/ice-hockey', es: '/hockey-hielo', de: '/eishockey', da: '/ishockey', it: '/hockey-ghiaccio', pl: '/hokej-na-lodzie', nl: '/ijshockey', pt: '/hoquei-no-gelo' };
+const rinkHockeyRoute = { fr: '/rink-hockey', en: '/rink-hockey', es: '/hockey-patines', de: '/rollhockey', da: '/rullehockey', it: '/hockey-pista', pl: '/hokej-na-rolkach', nl: '/rolhockey', pt: '/hoquei-em-patins' };
+const hockeyGazonRoute = { fr: '/hockey-sur-gazon', en: '/field-hockey', es: '/hockey-hierba', de: '/feldhockey', da: '/landhockey', it: '/hockey-prato', pl: '/hokej-na-trawie', nl: '/veldhockey', pt: '/hoquei-em-campo' };
 
 // ── SEO pages ───────────────────────────────────────────────────
-const tableauAffichageRoute = { fr: '/tableau-affichage-sportif', en: '/sports-scoreboard', es: '/marcador-deportivo', de: '/sport-anzeigetafel', da: '/sport-resultattavle' };
-const tableauScoreRoute = { fr: '/tableau-de-score-electronique', en: '/electronic-scoreboard', es: '/marcador-electronico', de: '/elektronische-anzeigetafel', da: '/elektronisk-resultattavle' };
-const ecranLedRoute = { fr: '/ecran-led-gymnase', en: '/gymnasium-led-screen', es: '/pantalla-led-gimnasio', de: '/led-bildschirm-sporthalle', da: '/led-skaerm-gymnastiksalen' };
-const affichageDynamiqueRoute = { fr: '/affichage-dynamique-salle-sport', en: '/digital-signage-sports-venue', es: '/senalizacion-digital-deportiva', de: '/digitale-beschilderung-sporthalle', da: '/digital-skiltning-sportshal' };
-const scoringDigitalRoute = { fr: '/scoring-digital', en: '/digital-scoring', es: '/marcador-digital', de: '/digitales-scoring', da: '/digital-scoring' };
-const comparatifRoute = { fr: '/comparatif-tableau-affichage-sportif', en: '/sports-scoreboard-comparison', es: '/comparativa-marcador-deportivo', de: '/vergleich-sport-anzeigetafel', da: '/sammenligning-sport-resultattavle' };
+const tableauAffichageRoute = { fr: '/tableau-affichage-sportif', en: '/sports-scoreboard', es: '/marcador-deportivo', de: '/sport-anzeigetafel', da: '/sport-resultattavle', it: '/tabellone-sportivo', pl: '/tablica-wynikow-sportowa', nl: '/sport-scorebord', pt: '/placar-desportivo' };
+const tableauScoreRoute = { fr: '/tableau-de-score-electronique', en: '/electronic-scoreboard', es: '/marcador-electronico', de: '/elektronische-anzeigetafel', da: '/elektronisk-resultattavle', it: '/tabellone-elettronico', pl: '/elektroniczna-tablica-wynikow', nl: '/elektronisch-scorebord', pt: '/placar-eletronico' };
+const ecranLedRoute = { fr: '/ecran-led-gymnase', en: '/gymnasium-led-screen', es: '/pantalla-led-gimnasio', de: '/led-bildschirm-sporthalle', da: '/led-skaerm-gymnastiksalen', it: '/schermo-led-palestra', pl: '/ekran-led-hala-sportowa', nl: '/led-scherm-sporthal', pt: '/tela-led-pavilhao' };
+const affichageDynamiqueRoute = { fr: '/affichage-dynamique-salle-sport', en: '/digital-signage-sports-venue', es: '/senalizacion-digital-deportiva', de: '/digitale-beschilderung-sporthalle', da: '/digital-skiltning-sportshal', it: '/segnaletica-digitale-palasport', pl: '/cyfrowe-oznakowanie-hala-sportowa', nl: '/digitale-signage-sporthal', pt: '/sinaletica-digital-pavilhao' };
+const scoringDigitalRoute = { fr: '/scoring-digital', en: '/digital-scoring', es: '/marcador-digital', de: '/digitales-scoring', da: '/digital-scoring', it: '/punteggio-digitale', pl: '/cyfrowe-punktowanie', nl: '/digitale-scoring', pt: '/pontuacao-digital' };
+const comparatifRoute = { fr: '/comparatif-tableau-affichage-sportif', en: '/sports-scoreboard-comparison', es: '/comparativa-marcador-deportivo', de: '/vergleich-sport-anzeigetafel', da: '/sammenligning-sport-resultattavle', it: '/confronto-tabelloni-sportivi', pl: '/porownanie-tablic-sportowych', nl: '/vergelijking-sportscoreborden', pt: '/comparacao-placares-desportivos' };
 
 const routeMap: Record<string, Record<Locale, string>> = {
   'qui-sommes-nous': aboutRoute,

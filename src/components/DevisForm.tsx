@@ -22,6 +22,10 @@ const sportsByLocale: Record<Locale, string[]> = {
   es: [...sports, 'Rink Hockey', 'Hockey sobre hielo', 'Bádminton', 'Tenis de mesa', 'Otro'],
   de: [...sports, 'Rollhockey', 'Eishockey', 'Badminton', 'Tischtennis', 'Andere'],
   da: [...sports, 'Rullehockey', 'Ishockey', 'Badminton', 'Bordtennis', 'Andet'],
+  it: [...sports, 'Hockey su pista', 'Hockey su ghiaccio', 'Badminton', 'Tennis tavolo', 'Altro'],
+  pl: [...sports, 'Hokej na rolkach', 'Hokej na lodzie', 'Badminton', 'Tenis stołowy', 'Inne'],
+  nl: [...sports, 'Rolhockey', 'IJshockey', 'Badminton', 'Tafeltennis', 'Anders'],
+  pt: [...sports, 'Hóquei em patins', 'Hóquei no gelo', 'Badminton', 'Ténis de mesa', 'Outro'],
 };
 
 const offresByLocale: Record<Locale, string[]> = {
@@ -30,6 +34,10 @@ const offresByLocale: Record<Locale, string[]> = {
   es: ['Play', 'Club', 'Pro', 'Premium', 'Flota (multi-clubes)', 'Producción de contenido', 'Opciones a la carta', 'Aún no lo sé'],
   de: ['Play', 'Club', 'Pro', 'Premium', 'Flotte (Multi-Vereine)', 'Content-Produktion', 'Einzeloptionen', 'Weiß ich noch nicht'],
   da: ['Play', 'Club', 'Pro', 'Premium', 'Flåde (multi-klubber)', 'Indholdsproduktion', 'Tilvalg', 'Ved det ikke endnu'],
+  it: ['Play', 'Club', 'Pro', 'Premium', 'Flotta (multi-club)', 'Produzione contenuti', 'Opzioni à la carte', 'Non lo so ancora'],
+  pl: ['Play', 'Club', 'Pro', 'Premium', 'Flota (multi-kluby)', 'Produkcja treści', 'Opcje à la carte', 'Jeszcze nie wiem'],
+  nl: ['Play', 'Club', 'Pro', 'Premium', 'Vloot (multi-clubs)', 'Contentproductie', 'Opties à la carte', 'Weet ik nog niet'],
+  pt: ['Play', 'Club', 'Pro', 'Premium', 'Frota (multi-clubes)', 'Produção de conteúdo', 'Opções à la carte', 'Ainda não sei'],
 };
 
 // Mapping slug d'URL → libellé d'offre
@@ -54,6 +62,22 @@ const slugToOffreLabel: Record<Locale, Record<string, string>> = {
     play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
     flotte: 'Flåde (multi-klubber)', production: 'Indholdsproduktion', options: 'Tilvalg',
   },
+  it: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Flotta (multi-club)', production: 'Produzione contenuti', options: 'Opzioni à la carte',
+  },
+  pl: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Flota (multi-kluby)', production: 'Produkcja treści', options: 'Opcje à la carte',
+  },
+  nl: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Vloot (multi-clubs)', production: 'Contentproductie', options: 'Opties à la carte',
+  },
+  pt: {
+    play: 'Play', club: 'Club', pro: 'Pro', premium: 'Premium',
+    flotte: 'Frota (multi-clubes)', production: 'Produção de conteúdo', options: 'Opções à la carte',
+  },
 };
 
 const packagesByLocale: Record<Locale, string[]> = {
@@ -62,6 +86,10 @@ const packagesByLocale: Record<Locale, string[]> = {
   es: ['Estándar (incluido)', 'Sin sesión de fotos', 'Con sesión de fotos', 'Aún no lo sé'],
   de: ['Standard (inklusive)', 'Ohne Fotoshooting', 'Mit Fotoshooting', 'Weiß ich noch nicht'],
   da: ['Standard (inkluderet)', 'Uden fotoshoot', 'Med fotoshoot', 'Ved det ikke endnu'],
+  it: ['Standard (incluso)', 'Senza shooting', 'Con shooting', 'Non lo so ancora'],
+  pl: ['Standard (w cenie)', 'Bez sesji zdjęciowej', 'Z sesją zdjęciową', 'Jeszcze nie wiem'],
+  nl: ['Standaard (inbegrepen)', 'Zonder fotoshoot', 'Met fotoshoot', 'Weet ik nog niet'],
+  pt: ['Padrão (incluído)', 'Sem sessão fotográfica', 'Com sessão fotográfica', 'Ainda não sei'],
 };
 
 const nbEquipes = ['1', '2', '3', '4', '5+'];

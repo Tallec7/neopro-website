@@ -9,8 +9,8 @@ const locale = Astro.props.locale ?? 'fr';
 const t = useTranslations(locale);
 const otherLocales = getOtherLocales(locale);
 
-const aboutSlug: Record<Locale, string> = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os' };
-const flags: Record<Locale, string> = { fr: '🇫🇷', en: '🇬🇧', es: '🇪🇸', de: '🇩🇪', da: '🇩🇰' };
+const aboutSlug: Record<Locale, string> = { fr: '/qui-sommes-nous', en: '/about', es: '/sobre-nosotros', de: '/ueber-uns', da: '/om-os', it: '/chi-siamo', pl: '/o-nas', nl: '/over-ons', pt: '/sobre-nos' };
+const flags: Record<Locale, string> = { fr: '🇫🇷', en: '🇬🇧', es: '🇪🇸', de: '🇩🇪', da: '🇩🇰', it: '🇮🇹', pl: '🇵🇱', nl: '🇳🇱', pt: '🇵🇹' };
 
 const navLinks = [
   { label: t('nav.solution'), href: localePath('/solution', locale) },
