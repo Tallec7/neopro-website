@@ -4,7 +4,7 @@ import Button from '@/components/Button.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
-import { buildAggregateOfferJsonLd } from '@/lib/jsonLd';
+import { buildAggregateOfferJsonLd, buildFAQPageJsonLd } from '@/lib/jsonLd';
 
 // ── Images ───────────────────────────────────────────────────────
 import heroImg from '@/assets/images/hero-offres.webp';
@@ -35,6 +35,33 @@ const description = "Découvrez les offres Neopro, la régie sport digitale clé
 
 const siteUrl = 'https://www.neopro-communication.fr';
 const allPlans = [playPlan, ...plans];
+const faqJsonLd = buildFAQPageJsonLd([
+  {
+    question: 'Combien coûte Neopro ?',
+    answer: "Les offres Neopro démarrent à 99 €/an (Play, sans matériel) puis 189 €/an (Club), 249 €/an (Pro) et 349 €/an (Premium) — engagement 9 mois minimum. Tous les tarifs s'entendent hors taxes et boîtier fourni sur les offres Club et supérieures.",
+  },
+  {
+    question: 'Faut-il acheter le matériel (écrans, boîtier) ?',
+    answer: "Non, le boîtier Neopro est prêté avec les offres Club, Pro et Premium. Vous pouvez utiliser vos propres écrans — le boîtier se branche en HDMI sur n'importe quelle télévision ou écran. Si vous avez besoin d'écrans, Neopro peut vous accompagner sur le choix et l'installation.",
+  },
+  {
+    question: 'Comment financer Neopro grâce à mes partenaires ?',
+    answer: "La solution Neopro est conçue pour être financée par vos sponsors. En affichant leurs logos et vidéos sur votre écran, vous leur offrez une visibilité ciblée — un argument commercial solide. Nous mettons à disposition un document partenaires clé en main pour faciliter vos démarches.",
+  },
+  {
+    question: "Neopro fonctionne-t-il sans connexion internet ni wifi ?",
+    answer: "Oui. Le boîtier Neopro intègre une connexion 4G incluse dans l'abonnement — pas besoin du wifi de votre salle. La mise à jour des contenus s'effectue à distance depuis notre plateforme, même dans des gymnases sans infrastructure réseau.",
+  },
+  {
+    question: 'Pour quels sports et quels niveaux de clubs ?',
+    answer: "Neopro s'adapte à tous les sports en salle : handball, basketball, volleyball, football, futsal, badminton, hockey, rugby à 5, etc. La solution est pensée aussi bien pour les clubs professionnels que pour les associations amateures de championnat régional ou départemental.",
+  },
+  {
+    question: "Y a-t-il un engagement de durée ?",
+    answer: "Les offres Neopro sont souscrites avec un engagement minimum de 9 mois. En facturation annuelle, vous bénéficiez du tarif réduit. En facturation mensuelle, l'engagement 9 mois reste requis mais vous offre plus de flexibilité de trésorerie.",
+  },
+]);
+
 const offerJsonLd = buildAggregateOfferJsonLd(
   allPlans.map((plan) => ({
     name: `Neopro ${plan.name}`,
@@ -48,7 +75,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 );
 ---
 
-<BaseLayout title={title} description={description} extraJsonLd={offerJsonLd}>
+<BaseLayout title={title} description={description} extraJsonLd={[offerJsonLd, faqJsonLd]}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
     <img
@@ -409,6 +436,50 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             <p class="text-[12px] text-neo-gray mt-[12px] text-center max-w-[140px]">à partir desquels la flotte devient pertinente</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-gray-50">
+    <div class="max-w-[800px] mx-auto">
+      <h2 class="text-[28px] md:text-[36px] font-bold text-[#101828] mb-[10px]">Questions fréquentes</h2>
+      <p class="text-[16px] text-neo-gray mb-[40px]">Tout ce qu'il faut savoir avant de se lancer.</p>
+      <div class="flex flex-col gap-[12px]">
+        {[
+          {
+            q: 'Combien coûte Neopro ?',
+            a: "Les offres démarrent à 99 €/an (Play, sans matériel), puis 189 €/an (Club), 249 €/an (Pro) et 349 €/an (Premium). Engagement 9 mois minimum, boîtier prêté inclus sur Club et supérieures.",
+          },
+          {
+            q: 'Faut-il acheter des écrans ou un boîtier ?',
+            a: "Non. Le boîtier Neopro est prêté avec votre abonnement (offres Club+). Il se branche en HDMI sur n'importe quelle télévision ou écran existant — aucun achat nécessaire pour démarrer.",
+          },
+          {
+            q: 'Comment financer Neopro grâce à mes partenaires ?',
+            a: "Neopro est conçu pour être rentabilisé par vos sponsors. En leur offrant une visibilité ciblée sur vos écrans (logos, vidéos, temps de passage), vous disposez d'un argument commercial concret. Nous fournissons un document partenaires clé en main pour faciliter vos démarches.",
+          },
+          {
+            q: 'La solution fonctionne-t-elle sans wifi ?',
+            a: "Oui. Le boîtier intègre une connexion 4G incluse dans l'abonnement — aucune infrastructure réseau requise dans votre salle. Les contenus sont mis à jour à distance depuis notre plateforme.",
+          },
+          {
+            q: 'Pour quels sports et niveaux de clubs ?',
+            a: "Neopro s'adapte à tous les sports en salle : handball, basketball, volleyball, futsal, badminton, hockey, rugby... et à tous les niveaux, du club professionnel à l'association de championnat régional.",
+          },
+          {
+            q: "Y a-t-il un engagement de durée ?",
+            a: "L'engagement minimum est de 9 mois. La facturation annuelle donne accès au tarif réduit ; la facturation mensuelle offre plus de souplesse de trésorerie tout en maintenant l'engagement.",
+          },
+        ].map((item) => (
+          <details class="bg-white rounded-[16px] border border-gray-200 group">
+            <summary class="flex items-center justify-between gap-4 px-[24px] py-[20px] cursor-pointer list-none font-bold text-[16px] text-[#101828]">
+              {item.q}
+              <span class="shrink-0 text-neo-green-dark text-[20px] group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="px-[24px] pb-[20px] text-[15px] text-neo-gray leading-relaxed">{item.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>

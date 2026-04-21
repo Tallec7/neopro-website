@@ -28,6 +28,7 @@ const formatPanelTitle = (title: string) => {
 import {
   buildServiceJsonLd,
   buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
 } from '@/lib/jsonLd';
 
 const title = 'La solution Neopro — Régie sport digitale clé en main pour clubs';
@@ -41,6 +42,33 @@ const breadcrumb = buildBreadcrumbJsonLd([
   { name: 'La solution', url: canonicalUrl },
 ]);
 
+const faqJsonLd = buildFAQPageJsonLd([
+  {
+    question: 'Comment fonctionne Neopro exactement ?',
+    answer: "Neopro est une régie sport digitale clé en main : un boîtier plug & play se branche en HDMI sur votre écran ou télévision. Via l'application télécommande, vous programmez vos contenus (logos partenaires, vidéos, scores) et les diffusez à distance. Aucune compétence technique requise.",
+  },
+  {
+    question: "Combien de temps prend l'installation ?",
+    answer: "L'installation est généralement réalisée en moins d'une journée par nos techniciens. Le boîtier se branche en HDMI sur votre écran existant — pas de câblage complexe ni de travaux. Vous êtes opérationnel le jour même.",
+  },
+  {
+    question: 'Faut-il un accès wifi dans la salle ?',
+    answer: "Non. Le boîtier Neopro embarque une connexion 4G incluse dans l'abonnement. Vous n'avez pas besoin du réseau de votre salle pour que les écrans fonctionnent et se mettent à jour.",
+  },
+  {
+    question: 'Qui gère les contenus diffusés sur les écrans ?',
+    answer: "Vous gardez la main via l'application télécommande Neopro. Vous choisissez ce qui s'affiche (partenaires, scores, actualités club) et quand. Neopro peut également produire vos contenus vidéo professionnels (shootings joueurs, templates animés) en option.",
+  },
+  {
+    question: 'Neopro est-il adapté aux petits clubs ?',
+    answer: "Oui. La solution est pensée pour tous les niveaux, du club professionnel à l'association amateur de championnat régional. L'offre Play (sans matériel) permet même de démarrer sans aucune installation physique.",
+  },
+  {
+    question: 'Sur quels écrans puis-je utiliser Neopro ?',
+    answer: "Sur n'importe quel écran disposant d'une entrée HDMI : téléviseur, écran PC, écran d'affichage dynamique, écran LED. Si vous avez besoin d'écrans, Neopro peut vous conseiller et vous aider à les sourcer et les installer.",
+  },
+]);
+
 const service = buildServiceJsonLd({
   name: 'Neopro — Régie sport digitale',
   description,
@@ -52,7 +80,7 @@ const service = buildServiceJsonLd({
 });
 ---
 
-<BaseLayout title={title} description={description} extraJsonLd={[breadcrumb, service]}>
+<BaseLayout title={title} description={description} extraJsonLd={[breadcrumb, service, faqJsonLd]}>
   <!-- Hero -->
   <section class="relative h-[743px] overflow-hidden">
     <Image
@@ -252,6 +280,50 @@ const service = buildServiceJsonLd({
             </Button>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-gray-50">
+    <div class="max-w-[800px] mx-auto">
+      <h2 class="text-[28px] md:text-[36px] font-bold text-[#101828] mb-[10px]">Questions fréquentes</h2>
+      <p class="text-[16px] text-neo-gray mb-[40px]">Tout ce qu'il faut savoir sur la solution Neopro.</p>
+      <div class="flex flex-col gap-[12px]">
+        {[
+          {
+            q: 'Comment fonctionne Neopro exactement ?',
+            a: "Un boîtier plug & play se branche en HDMI sur votre écran ou télévision. Via l'application télécommande, vous programmez vos contenus (logos partenaires, vidéos, scores) et les diffusez à distance. Aucune compétence technique requise.",
+          },
+          {
+            q: "Combien de temps prend l'installation ?",
+            a: "Nos techniciens réalisent l'installation en moins d'une journée. Le boîtier se branche en HDMI sur votre écran existant — pas de câblage complexe, pas de travaux. Vous êtes opérationnel le jour même.",
+          },
+          {
+            q: 'Faut-il un accès wifi dans la salle ?',
+            a: "Non. Le boîtier embarque une connexion 4G incluse dans l'abonnement. Pas besoin du réseau de votre salle pour que les écrans fonctionnent et se mettent à jour.",
+          },
+          {
+            q: 'Qui gère les contenus diffusés sur les écrans ?',
+            a: "Vous gardez la main via l'application télécommande. Vous choisissez ce qui s'affiche (partenaires, scores, actualités club) et quand. En option, Neopro peut produire vos contenus vidéo pro (shootings joueurs, templates animés).",
+          },
+          {
+            q: 'Neopro est-il adapté aux petits clubs ?',
+            a: "Oui. La solution est pensée pour tous les niveaux — du club pro à l'association de championnat régional. L'offre Play (sans matériel) permet même de démarrer sans installation physique.",
+          },
+          {
+            q: 'Sur quels écrans puis-je utiliser Neopro ?',
+            a: "Sur n'importe quel écran avec entrée HDMI : téléviseur, écran PC, écran LED. Si vous avez besoin d'écrans, Neopro peut vous conseiller, sourcer et installer le matériel adapté.",
+          },
+        ].map((item) => (
+          <details class="bg-white rounded-[16px] border border-gray-200 group">
+            <summary class="flex items-center justify-between gap-4 px-[24px] py-[20px] cursor-pointer list-none font-bold text-[16px] text-[#101828]">
+              {item.q}
+              <span class="shrink-0 text-neo-green-dark text-[20px] group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="px-[24px] pb-[20px] text-[15px] text-neo-gray leading-relaxed">{item.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
