@@ -19,7 +19,7 @@ const siteUrl = 'https://www.neopro-communication.fr';
 const pathPrefix = locale === 'fr' ? '' : `/${locale}`;
 const canonicalUrl = `${siteUrl}${pathPrefix}/${slug}`;
 
-const homeName = locale === 'fr' ? 'Accueil' : locale === 'en' ? 'Home' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Forside';
+const homeName = locale === 'fr' ? 'Accueil' : locale === 'en' ? 'Home' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : locale === 'it' ? 'Home' : locale === 'pl' ? 'Strona główna' : locale === 'nl' ? 'Home' : locale === 'pt' ? 'Início' : 'Forside';
 const homeUrl = locale === 'fr' ? siteUrl : `${siteUrl}/${locale}`;
 
 const breadcrumb = buildBreadcrumbJsonLd([
@@ -37,6 +37,10 @@ const service = buildServiceJsonLd({
               locale === 'en' ? ['France', 'Belgium', 'Switzerland'] :
               locale === 'es' ? ['Francia', 'Bélgica', 'Suiza'] :
               locale === 'de' ? ['Frankreich', 'Belgien', 'Schweiz'] :
+              locale === 'it' ? ['Italia', 'Svizzera', 'Francia'] :
+              locale === 'pl' ? ['Polska', 'Niemcy', 'Czechy'] :
+              locale === 'nl' ? ['Nederland', 'België', 'Duitsland'] :
+              locale === 'pt' ? ['Portugal', 'Espanha', 'França'] :
               ['Frankrig', 'Belgien', 'Schweiz'],
   serviceType: t(`${p}.hero.tag` as any),
 });
