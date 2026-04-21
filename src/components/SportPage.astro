@@ -209,6 +209,32 @@ const demoCta2Label = t(`${sport}.cta.btn2` as any);
     </div>
   </section>
 
+  <!-- Villes les plus actives (FR uniquement) -->
+  {locale === 'fr' && (
+    <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[80px] bg-white">
+      <div class="max-w-[1200px] mx-auto">
+        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">IMPLANTATIONS</p>
+        <h2 class="text-[26px] md:text-[34px] font-bold text-[#101828] mb-[8px]">
+          Villes les plus actives en {t(`${sport}.hero.tag` as any).replace(/régie sport\s*/i, '').trim() || sport}
+        </h2>
+        <p class="text-[16px] text-neo-gray mb-[32px]">Neopro accompagne des clubs dans toute la France — découvrez notre présence ville par ville.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-[12px] mb-[24px]">
+          {['paris', 'lyon', 'marseille', 'toulouse', 'bordeaux', 'lille', 'nantes', 'nice', 'montpellier', 'strasbourg', 'rennes', 'grenoble'].map((citySlug) => (
+            <a
+              href={`/implantations/${citySlug}/${slug}`}
+              class="block text-center px-3 py-3 bg-[#f5f5f5] rounded-[12px] text-[14px] font-semibold text-[#101828] hover:bg-neo-green hover:text-neo-dark capitalize transition-colors"
+            >
+              {citySlug.charAt(0).toUpperCase() + citySlug.slice(1)}
+            </a>
+          ))}
+        </div>
+        <a href="/implantations" class="text-[14px] text-neo-green-dark font-semibold hover:underline">
+          → Voir toutes les villes
+        </a>
+      </div>
+    </section>
+  )}
+
   <!-- Liens internes SEO -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[40px] bg-white">
     <div class="max-w-[900px] mx-auto">

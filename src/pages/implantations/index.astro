@@ -39,14 +39,20 @@ const breadcrumb = buildBreadcrumbJsonLd([
 
   <!-- Sports couverts -->
   <section class="py-10 px-6 bg-neo-dark-bg">
-    <div class="max-w-5xl mx-auto flex flex-wrap justify-center gap-3">
-      {
-        sports.map((sport) => (
-          <span class="bg-neo-dark text-neo-green border border-neo-green/30 px-4 py-2 rounded-full text-sm font-semibold capitalize">
-            {sport.name}
-          </span>
-        ))
-      }
+    <div class="max-w-5xl mx-auto">
+      <p class="text-center text-neo-gray text-sm mb-4">Sports couverts — cliquez pour découvrir la solution</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {
+          sports.map((sport) => (
+            <a
+              href={`/${sport.slug}`}
+              class="bg-neo-dark text-neo-green border border-neo-green/30 px-4 py-2 rounded-full text-sm font-semibold capitalize hover:bg-neo-green hover:text-neo-dark transition-colors"
+            >
+              {sport.name}
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 
