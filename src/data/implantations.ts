@@ -5,6 +5,10 @@ export interface City {
   country: 'FR' | 'BE' | 'CH' | 'DE' | 'AT' | 'DK' | 'GB' | 'US' | 'CA' | 'ES';
   region: string;
   localInfo?: string; // Paragraph unique à la ville pour enrichir le contenu SEO
+  // Paragraphe unique par couple (ville, sport) — désambiguïse le contenu
+  // aux yeux de Google qui sinon voit les 6 pages sport d'une même ville
+  // comme des quasi-doublons.
+  sportHighlights?: Partial<Record<'handball' | 'football' | 'basketball' | 'volleyball' | 'rugby' | 'badminton', string>>;
 }
 
 export interface Sport {
@@ -25,6 +29,20 @@ export const cities: City[] = [
     region: 'Île-de-France',
     localInfo:
       'Paris concentre le réseau de clubs sportifs amateurs le plus dense de France, avec plusieurs centaines de gymnases municipaux répartis dans les 20 arrondissements. L\'Île-de-France représente à elle seule près de 20 % des licenciés sportifs nationaux — une opportunité unique pour valoriser vos partenaires locaux auprès d\'une audience large et régulière.',
+    sportHighlights: {
+      handball:
+        'L\'Île-de-France est la première région française en nombre de licenciés de handball. Les gymnases parisiens et de la petite couronne accueillent des compétitions de Nationale à départementale chaque week-end, offrant une visibilité soutenue pour vos partenaires auprès d\'un public régulier de joueurs, familles et bénévoles.',
+      football:
+        'Avec plusieurs centaines de milliers de licenciés, l\'Île-de-France est la région la plus peuplée au registre FFF. Les stades municipaux parisiens et les terrains synthétiques des communes limitrophes accueillent matchs officiels et tournois toute la saison — un levier puissant pour exposer vos partenaires auprès d\'une audience locale diversifiée.',
+      basketball:
+        'Paris et sa métropole comptent plusieurs clubs évoluant en championnats nationaux masculins et féminins. Les salles omnisports parisiennes accueillent un public jeune et urbain, particulièrement réceptif aux contenus digitaux en match — un contexte idéal pour valoriser vos annonceurs.',
+      volleyball:
+        'Le volleyball parisien s\'appuie sur un réseau dense de clubs universitaires et de quartier, portés par une pratique féminine très développée. Les gymnases de la capitale réunissent une audience fidèle lors des tournois et championnats régionaux, contexte propice à une présentation soignée de vos sponsors.',
+      rugby:
+        'Paris concentre plusieurs clubs historiques du rugby français, du Top 14 aux divisions fédérales. Les clubs amateurs de la métropole bénéficient d\'une base de supporters fidèles et d\'un tissu d\'entreprises dense — un environnement favorable aux partenariats valorisés en bord de touche.',
+      badminton:
+        'Le badminton connaît une forte croissance en Île-de-France, sport préféré de nombreux pratiquants adultes et scolaires. Les gymnases parisiens accueillent tournois interclubs et championnats régionaux, générant une audience diversifiée pour vos partenaires lors d\'événements étalés sur toute la saison.',
+    },
   },
   {
     slug: 'marseille',
@@ -34,6 +52,20 @@ export const cities: City[] = [
     region: 'Provence-Alpes-Côte d\'Azur',
     localInfo:
       'Marseille est une ville à la culture sportive intense, portée par ses quartiers et ses clubs de proximité. Le sport amateur y est particulièrement vivace, avec un tissu dense de clubs de handball, football et basketball dans les arrondissements nord comme sud. La métropole Aix-Marseille-Provence compte parmi les plus actives de France pour la pratique sportive associative.',
+    sportHighlights: {
+      handball:
+        'La région PACA est une terre de handball reconnue, portée par des clubs historiques et un vivier amateur dense sur la métropole Aix-Marseille-Provence. Les gymnases marseillais accueillent des rencontres régionales au rythme soutenu, créant une exposition précieuse pour les commerces et partenaires de quartier.',
+      football:
+        'Marseille vit au rythme du football populaire depuis plus d\'un siècle. Au-delà de l\'équipe phare, des dizaines de clubs amateurs animent les terrains des arrondissements nord et sud, attirant chaque week-end un public familial — un terreau idéal pour ancrer vos partenaires dans la vie de quartier.',
+      basketball:
+        'Le basket de rue et de club est profondément ancré dans la culture marseillaise, porté par des salles omnisports en activité permanente. Les matchs de niveau régional à national rassemblent un public jeune et diversifié, offrant une plateforme moderne pour les marques locales.',
+      volleyball:
+        'Le volleyball provençal profite du climat méditerranéen qui favorise la pratique indoor et outdoor. Les clubs marseillais comptent des équipes compétitives en championnats régionaux, avec une audience fidèle lors des tournois et des matchs à domicile.',
+      rugby:
+        'Le rugby amateur irrigue toute la Provence, de Marseille à Aubagne en passant par Salon et Aix-en-Provence. Les clubs marseillais cultivent des valeurs communautaires fortes, portées par des supporters locaux et des commerces de proximité — cadre naturel pour un partenariat visible et engagé.',
+      badminton:
+        'Le badminton connaît un essor marqué à Marseille, soutenu par l\'activité des clubs universitaires et associatifs. Les gymnases de la métropole accueillent compétitions régionales et tournois loisirs, touchant une audience intergénérationnelle pour vos partenaires.',
+    },
   },
   {
     slug: 'lyon',
@@ -43,6 +75,20 @@ export const cities: City[] = [
     region: 'Auvergne-Rhône-Alpes',
     localInfo:
       'Lyon et sa métropole accueillent plus de 600 clubs sportifs amateurs toutes disciplines confondues. L\'Auvergne-Rhône-Alpes est l\'une des régions les plus dynamiques de France pour le handball et le basketball, avec plusieurs clubs évoluant en ligues nationales. Le tissu associatif sportif lyonnais est reconnu pour son professionnalisme et son engagement partenaires.',
+    sportHighlights: {
+      handball:
+        'Le handball est une discipline phare d\'Auvergne-Rhône-Alpes, avec plusieurs clubs évoluant au plus haut niveau régional et national. Les gymnases lyonnais accueillent des rencontres de championnats de France et régionales, offrant une visibilité hebdomadaire à vos partenaires auprès d\'un public passionné.',
+      football:
+        'L\'agglomération lyonnaise rassemble une très forte densité de clubs amateurs, du football de quartier aux équipes féminines ambitieuses. Les stades et terrains synthétiques de Villeurbanne, Vénissieux ou Caluire accueillent chaque week-end matchs et tournois, contexte idéal pour associer vos marques à la vie sportive locale.',
+      basketball:
+        'Lyon est une capitale majeure du basketball français, structurée autour d\'un écosystème professionnel et d\'un tissu amateur dense. Les salles omnisports de la métropole attirent un public jeune, mobile et prescripteur — terrain idéal pour une exposition digitale dynamique de vos sponsors.',
+      volleyball:
+        'Le volleyball lyonnais s\'appuie sur des clubs universitaires reconnus et une pratique masculine comme féminine ancrée dans la région. Les gymnases de la métropole accueillent des compétitions régionales régulières, favorisant une fidélisation des spectateurs et une exposition répétée des partenaires.',
+      rugby:
+        'Lyon combine un passé rugbystique fort et une ferveur populaire intacte, relayée par de nombreux clubs amateurs dans la métropole. Les troisièmes mi-temps sont institutionnalisées et rassemblent supporters, bénévoles et partenaires locaux — cadre chaleureux pour exposer vos marques.',
+      badminton:
+        'Le badminton auvergnat-rhônalpin compte parmi les plus dynamiques de France, avec des clubs lyonnais très actifs en compétitions interclubs. Les gymnases multifonctions de la métropole accueillent des tournois réguliers, générant une fréquentation étalée sur la saison pour vos annonceurs.',
+    },
   },
   {
     slug: 'toulouse',
