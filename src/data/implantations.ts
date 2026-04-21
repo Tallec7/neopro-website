@@ -98,6 +98,20 @@ export const cities: City[] = [
     region: 'Occitanie',
     localInfo:
       'Toulouse est la capitale incontestée du rugby français, mais la ville est aussi un vivier majeur pour le handball — l\'Occitanie héberge plusieurs clubs de haut niveau régional. Le tissu amateur toulousain est dense, engagé, et les matchs à domicile drainent des supporters fidèles et des partenaires locaux impliqués. Un terrain idéal pour la régie digitale.',
+    sportHighlights: {
+      handball:
+        'Toulouse porte une tradition handballistique reconnue, avec des clubs évoluant au plus haut niveau national et un maillage amateur solide en Occitanie. Les gymnases toulousains accueillent matchs de championnat et phases finales régionales — autant d\'occasions de valoriser vos partenaires devant un public connaisseur et fidèle.',
+      football:
+        'Le football amateur toulousain s\'appuie sur des dizaines de clubs disséminés dans la métropole et la proche banlieue. Les stades municipaux et terrains synthétiques accueillent chaque week-end des rencontres de tous niveaux, attirant familles et bénévoles — un public ancré dans la vie locale, idéal pour ancrer vos marques.',
+      basketball:
+        'Le basketball toulousain bénéficie d\'une croissance continue portée par la présence d\'un club professionnel et d\'un réseau amateur dynamique. Les salles omnisports de la métropole réunissent un public urbain et jeune, réceptif aux contenus partenaires diffusés en match.',
+      volleyball:
+        'Le volleyball compte à Toulouse plusieurs clubs universitaires et associatifs performants, dopés par la population étudiante de la ville rose. Les gymnases accueillent tournois et championnats régionaux, garantissant une fréquentation régulière pour vos annonceurs.',
+      rugby:
+        'Toulouse est la capitale mondiale du rugby, avec une ferveur populaire sans équivalent. Au-delà du club phare, le tissu amateur occitan est d\'une densité exceptionnelle : clubs de village, formations jeunes, écoles de rugby — autant de scènes naturelles pour exposer vos partenaires aux couleurs locales.',
+      badminton:
+        'Le badminton toulousain s\'inscrit dans la forte dynamique occitane, région parmi les plus actives de France sur cette discipline. Les gymnases de la métropole accueillent compétitions interclubs et tournois loisirs, captant un public intergénérationnel pour vos partenaires.',
+    },
   },
   {
     slug: 'nice',
@@ -107,6 +121,20 @@ export const cities: City[] = [
     region: 'Provence-Alpes-Côte d\'Azur',
     localInfo:
       'Nice et la Côte d\'Azur bénéficient d\'une pratique sportive intense grâce à leur climat et à leur densité de population. La métropole niçoise concentre une forte activité amateur dans le football, le volleyball et les sports collectifs en salle. La présence de nombreuses entreprises locales en fait un territoire particulièrement favorable à la valorisation de partenaires sportifs.',
+    sportHighlights: {
+      handball:
+        'Le handball est solidement ancré sur la Côte d\'Azur, avec des clubs niçois engagés en championnats régionaux et un vivier jeune en croissance. Les gymnases de la métropole accueillent des rencontres suivies par un public familial, créant un cadre stable pour valoriser vos partenaires tout au long de la saison.',
+      football:
+        'Le football niçois profite d\'un climat idéal qui permet une pratique quasi-continue sur terrain extérieur. La métropole compte de nombreux clubs amateurs répartis entre le centre-ville, l\'arrière-pays et le littoral — autant de scènes locales pour exposer vos commerces et partenaires à une audience fidèle.',
+      basketball:
+        'Le basketball connaît un essor marqué à Nice, soutenu par une pratique jeune très active dans les salles omnisports de la métropole. Les matchs de championnat régional attirent un public urbain et réceptif aux contenus digitaux, idéal pour une régie partenaires moderne.',
+      volleyball:
+        'Le volleyball est un sport phare de la Côte d\'Azur, porté par une culture plage-et-salle particulièrement dynamique. Les clubs niçois alternent entre compétitions indoor et tournois estivaux, offrant une exposition diversifiée à vos marques au fil de l\'année.',
+      rugby:
+        'Le rugby amateur niçois s\'inscrit dans la tradition rugbystique provençale, animé par des clubs de proximité fidèles à leurs supporters. Les matchs à domicile rassemblent un public soudé autour d\'un après-match convivial — contexte idéal pour incarner un partenariat local durable.',
+      badminton:
+        'Le badminton est en forte progression à Nice, porté par une pratique loisir et compétition dans les gymnases de la métropole. Les tournois régionaux rassemblent des joueurs de tous âges, offrant à vos partenaires une visibilité étalée sur toute la saison.',
+    },
   },
   {
     slug: 'nantes',
@@ -116,6 +144,20 @@ export const cities: City[] = [
     region: 'Pays de la Loire',
     localInfo:
       'Nantes est l\'une des capitales du handball français — la Loire-Atlantique figure régulièrement parmi les départements les plus actifs pour ce sport. Plus largement, les Pays de la Loire affichent un taux de licenciés sportifs parmi les plus élevés de France. Les clubs nantais bénéficient d\'un tissu économique local fort, propice à la recherche de partenaires et au développement de la régie digitale.',
+    sportHighlights: {
+      handball:
+        'Nantes est une place forte historique du handball français, avec un club professionnel emblématique et un vivier amateur parmi les plus actifs de l\'Ouest. Les gymnases nantais vibrent chaque week-end au rythme des championnats — un terrain de visibilité exceptionnel pour associer vos marques à une passion locale reconnue.',
+      football:
+        'Le football nantais s\'appuie sur une culture populaire profondément ancrée et un réseau dense de clubs amateurs répartis dans la métropole. Les terrains accueillent une pratique régulière à tous les niveaux, offrant à vos partenaires locaux une scène de proximité et une audience engagée.',
+      basketball:
+        'Le basketball progresse fortement à Nantes, porté par une scène pro-B dynamique et un tissu amateur structuré. Les salles omnisports nantaises réunissent un public jeune et urbain, particulièrement réceptif aux contenus partenaires diffusés sur écran lors des matchs.',
+      volleyball:
+        'Le volleyball nantais bénéficie de la vitalité sportive des Pays de la Loire, avec des clubs compétitifs en championnats régionaux et nationaux. Les gymnases accueillent matchs et tournois toute la saison, offrant une exposition récurrente aux annonceurs locaux.',
+      rugby:
+        'Le rugby nantais s\'inscrit dans une tradition ligérienne solide, portée par des clubs amateurs aux troisièmes mi-temps conviviales. Le public nantais, fidèle et intergénérationnel, crée un environnement chaleureux pour ancrer vos partenariats dans la vie du club.',
+      badminton:
+        'Le badminton est très présent à Nantes, porté par des clubs dynamiques et une pratique loisir largement démocratisée. Les tournois et championnats régionaux accueillis dans les gymnases nantais offrent à vos partenaires une visibilité étalée sur l\'ensemble de la saison.',
+    },
   },
   {
     slug: 'montpellier',
@@ -125,6 +167,20 @@ export const cities: City[] = [
     region: 'Occitanie',
     localInfo:
       'Ville universitaire et sportive, Montpellier affiche une forte densité de clubs amateurs portée par sa population jeune et dynamique. Le handball y est une tradition ancrée depuis des décennies. La présence d\'un écosystème d\'entreprises tech et de PME régionales en fait un terrain fertile pour la valorisation de partenaires via des écrans digitaux en salle.',
+    sportHighlights: {
+      handball:
+        'Montpellier est l\'une des capitales françaises du handball, avec une tradition de haut niveau qui irrigue tout le tissu amateur local. Les clubs de l\'agglomération bénéficient d\'un public averti et d\'un vivier de partenaires sensibles à ce sport historique de la ville.',
+      football:
+        'Le football amateur montpelliérain s\'appuie sur un maillage dense de clubs dans l\'agglomération et sur le littoral héraultais. La forte croissance démographique de la région attire régulièrement de nouveaux partenaires économiques intéressés par une visibilité locale ciblée.',
+      basketball:
+        'Le basketball tient une place solide dans l\'Hérault, porté par un public jeune et universitaire particulièrement nombreux à Montpellier. Les salles accueillent un mix de familles, d\'étudiants et d\'entreprises locales — une audience hétérogène idéale pour diversifier les annonceurs.',
+      volleyball:
+        'Le volleyball bénéficie à Montpellier d\'une forte visibilité grâce à la tradition sportive méditerranéenne et au climat favorable à la pratique en salle comme en extérieur. Les clubs régionaux s\'appuient sur un public fidèle et sur un écosystème de partenaires habitués aux sports collectifs.',
+      rugby:
+        'Le rugby fait partie intégrante de la culture occitane, et Montpellier s\'inscrit dans ce territoire historique du ballon ovale. Les clubs amateurs de l\'Hérault évoluent dans un environnement où les entreprises locales soutiennent naturellement ce sport emblématique du Sud.',
+      badminton:
+        'Le badminton se développe rapidement à Montpellier, porté par la densité de clubs universitaires et la jeunesse de la population. Les gymnases de l\'agglomération accueillent une pratique variée, offrant aux partenaires locaux une audience active et diversifiée.',
+    },
   },
   {
     slug: 'strasbourg',
@@ -134,6 +190,20 @@ export const cities: City[] = [
     region: 'Grand Est',
     localInfo:
       'Strasbourg et l\'Alsace ont une forte tradition sportive, notamment en handball et en football. La région Grand Est se distingue par un tissu associatif sportif particulièrement organisé, héritage d\'une culture germanique de l\'engagement associatif. Les clubs strasbourgeois sont reconnus pour leur sérieux dans la gestion partenaires — un atout pour rentabiliser rapidement une solution de régie digitale.',
+    sportHighlights: {
+      handball:
+        'Le handball alsacien bénéficie d\'une culture sportive transfrontalière, la proximité avec l\'Allemagne ayant nourri une tradition de jeu collectif structuré. Les clubs strasbourgeois évoluent dans un environnement où les partenaires locaux connaissent bien ce sport et s\'y investissent durablement.',
+      football:
+        'Le football est profondément ancré à Strasbourg et dans tout le Grand Est, avec un tissu amateur particulièrement dense dans la métropole et les communes alentour. Les clubs bénéficient d\'un écosystème d\'entreprises régionales, souvent PME industrielles, prêtes à s\'engager dans des partenariats de proximité.',
+      basketball:
+        'Le basketball strasbourgeois s\'appuie sur un vivier de pratiquants jeunes et un maillage associatif solide dans toute l\'eurométropole. Les salles de l\'agglomération attirent un public familial fidèle, propice à des partenariats récurrents avec le tissu économique local.',
+      volleyball:
+        'Le volleyball se développe à Strasbourg avec une base associative structurée, portée par la culture alsacienne du sport collectif de salle. Les gymnases locaux accueillent une pratique régulière qui offre aux partenaires une visibilité constante tout au long de la saison.',
+      rugby:
+        'Le rugby strasbourgeois, plus confidentiel qu\'en régions historiques, bénéficie néanmoins d\'une dynamique solide portée par les clubs de l\'agglomération. Le public alsacien, habitué aux rendez-vous sportifs de salle comme de plein air, offre une audience engagée.',
+      badminton:
+        'Le badminton est particulièrement dynamique en Alsace, héritage d\'une culture transfrontalière qui favorise ce sport très pratiqué en Allemagne. Les clubs strasbourgeois bénéficient d\'un niveau de pratique élevé et d\'une audience fidèle aux compétitions régionales.',
+    },
   },
   {
     slug: 'bordeaux',
@@ -143,6 +213,20 @@ export const cities: City[] = [
     region: 'Nouvelle-Aquitaine',
     localInfo:
       'Bordeaux et la Nouvelle-Aquitaine représentent l\'une des premières régions de France pour le rugby amateur, mais aussi un bassin solide pour le football, le basketball et le handball. Le dynamisme économique bordelais attire des entreprises locales prêtes à s\'engager comme partenaires de clubs sportifs — un contexte idéal pour maximiser la valeur de votre régie digitale.',
+    sportHighlights: {
+      rugby:
+        'Bordeaux se situe au cœur de l\'une des plus grandes régions de rugby en France, avec une densité de clubs amateurs inégalée dans le Sud-Ouest. Les partenariats y sont une tradition solide, souvent portés par des entreprises locales attachées à la culture ovale de la Gironde.',
+      football:
+        'Le football amateur bordelais s\'appuie sur un réseau dense de clubs couvrant la métropole et le bassin d\'Arcachon. La vitalité économique de la région, portée par le vin, le numérique et l\'aéronautique, offre un vivier de partenaires locaux motivés.',
+      handball:
+        'Le handball girondin se développe sur une base solide de clubs amateurs structurés, profitant de la dynamique sportive générale de la Nouvelle-Aquitaine. Les salles bordelaises accueillent un public familial et engagé, idéal pour un affichage partenaires récurrent.',
+      basketball:
+        'Le basketball bordelais bénéficie d\'un bassin universitaire important et d\'un maillage associatif dense dans l\'agglomération. Les clubs locaux évoluent dans un contexte économique favorable, où les PME régionales cherchent régulièrement des leviers de visibilité de proximité.',
+      volleyball:
+        'Le volleyball girondin s\'appuie sur un tissu associatif actif, porté par la culture sportive de la Nouvelle-Aquitaine et la pratique loisir autour du bassin d\'Arcachon. Les gymnases bordelais accueillent une pratique régulière offrant une visibilité constante aux partenaires.',
+      badminton:
+        'Le badminton se développe fortement à Bordeaux, avec des clubs bien implantés dans la métropole et une forte pratique universitaire. Les compétitions régionales attirent un public fidèle, propice à la mise en avant de partenaires locaux sur écran.',
+    },
   },
   {
     slug: 'lille',
@@ -152,6 +236,20 @@ export const cities: City[] = [
     region: 'Hauts-de-France',
     localInfo:
       'Lille et sa métropole abritent l\'un des bassins les plus denses de clubs amateurs du nord de la France. Les Hauts-de-France ont une culture sportive profondément ancrée dans les territoires, avec une forte pratique du football, du handball et du volleyball. Le tissu industriel et commercial local offre de nombreuses opportunités de partenariats pour les clubs qui se dotent d\'une solution de communication digitale.',
+    sportHighlights: {
+      football:
+        'Le football est une passion collective dans les Hauts-de-France, et la métropole lilloise en est l\'un des cœurs battants. Les clubs amateurs bénéficient d\'une ferveur populaire forte et d\'un tissu de partenaires — PME, commerces, industriels — historiquement engagés auprès du sport local.',
+      handball:
+        'Le handball nordiste s\'appuie sur une tradition sportive de territoire, avec des clubs amateurs solidement implantés dans la métropole et les bassins miniers reconvertis. Les salles accueillent un public fidèle, héritier d\'une culture communautaire du sport collectif.',
+      volleyball:
+        'Le volleyball est particulièrement actif dans la région lilloise, avec des clubs structurés et une pratique universitaire importante. Les gymnases de la métropole offrent une exposition régulière aux partenaires locaux tout au long de la saison.',
+      basketball:
+        'Le basketball lillois bénéficie d\'une dynamique urbaine forte, portée par la jeunesse de la population et la densité étudiante de l\'agglomération. Les clubs amateurs s\'appuient sur un maillage dense de salles et un public familial régulier.',
+      rugby:
+        'Le rugby nordiste, moins historique que dans le Sud-Ouest, connaît une progression constante dans la métropole lilloise. Les clubs amateurs bénéficient d\'une audience curieuse et d\'un tissu d\'entreprises locales sensibles aux valeurs du sport collectif.',
+      badminton:
+        'Le badminton est l\'un des sports en plus forte croissance dans les Hauts-de-France, avec un maillage de clubs dense dans la métropole lilloise. Les compétitions régionales attirent un public nombreux, propice à une visibilité soutenue des partenaires.',
+    },
   },
   {
     slug: 'rennes',
