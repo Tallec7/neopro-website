@@ -2289,7 +2289,7 @@ export const ui = {
 
     ...sportsPart1.fr,
     ...sportsPart2.fr,
-    ...seoPages.fr,
+    ...seoPages.pt,
   },
 } as const;
 
