@@ -1,20 +1,22 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
-
-<BaseLayout
-  title="Page introuvable"
-  description="Cette page n'existe pas."
-  noAlternates
-  noIndex
->
-  <section class="min-h-[70vh] flex flex-col items-center justify-center px-6 py-24 text-center">
-    <p class="text-[120px] md:text-[180px] font-black text-[#e8f5f0] leading-none select-none">404</p>
-    <h1 class="text-[28px] md:text-[40px] font-bold text-[#101828] mt-[-20px] mb-4">
-      Page introuvable
-    </h1>
-    <p class="text-[#4a5565] text-[18px] max-w-[480px]">
-      La page que vous cherchez n'existe pas ou a été déplacée.
-    </p>
-  </section>
-</BaseLayout>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Site fermé</title>
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; background: #101828; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
+      main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+      h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 700; margin: 0; letter-spacing: -0.02em; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Site fermé</h1>
+    </main>
+  </body>
+</html>

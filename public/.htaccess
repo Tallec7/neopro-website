@@ -1,90 +1,14 @@
 # ──────────────────────────────────────────────────────────────
-# 301 redirects pour nettoyer les 404 remontés par Google Search Console
-# (export du 2026-04-21)
+# Site fermé — toute URL hors racine est redirigée vers /
 # ──────────────────────────────────────────────────────────────
 
-# ── A. Mauvaise langue × ville (hreflang obsolète) ─────────────
-# Villes DK → /da/
-Redirect 301 /es/implantations/holstebro/ishockey/     /da/implantations/holstebro/ishockey/
-Redirect 301 /en/implantations/holstebro/ishockey/     /da/implantations/holstebro/ishockey/
-Redirect 301 /de/implantations/holstebro/ishockey/     /da/implantations/holstebro/ishockey/
-Redirect 301 /implantations/holstebro/ishockey/        /da/implantations/holstebro/ishockey/
-Redirect 301 /implantations/silkeborg/fodbold/         /da/implantations/silkeborg/fodbold/
-Redirect 301 /en/implantations/silkeborg/fodbold/      /da/implantations/silkeborg/fodbold/
-Redirect 301 /de/implantations/silkeborg/fodbold/      /da/implantations/silkeborg/fodbold/
-Redirect 301 /es/implantations/silkeborg/fodbold/      /da/implantations/silkeborg/fodbold/
-Redirect 301 /implantations/esbjerg/fodbold/           /da/implantations/esbjerg/fodbold/
-Redirect 301 /en/implantations/esbjerg/fodbold/        /da/implantations/esbjerg/fodbold/
-Redirect 301 /de/implantations/esbjerg/fodbold/        /da/implantations/esbjerg/fodbold/
-Redirect 301 /es/implantations/esbjerg/fodbold/        /da/implantations/esbjerg/fodbold/
-Redirect 301 /implantations/herning/                   /da/implantations/herning/
-Redirect 301 /es/implantations/aarhus/haandbold/       /da/implantations/aarhus/haandbold/
+RewriteEngine On
 
-# Villes DE → /de/
-Redirect 301 /en/implantations/berlin/handball/        /de/implantations/berlin/handball/
-Redirect 301 /en/implantations/goeppingen/handball/    /de/implantations/goeppingen/handball/
-Redirect 301 /da/implantations/goeppingen/handball/    /de/implantations/goeppingen/handball/
+# Laisser passer les assets nécessaires à l'affichage de la page de fermeture
+RewriteCond %{REQUEST_URI} ^/(favicon\.ico|favicon\.svg|favicon-32x32\.png|apple-touch-icon\.png|site\.webmanifest|robots\.txt|og-default\.jpg)$ [OR]
+RewriteCond %{REQUEST_URI} ^/(_astro|images|videos|documents)/ [OR]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^ - [L]
 
-# Villes FR → racine (/implantations/...)
-Redirect 301 /da/implantations/metz/handball/          /implantations/metz/handball/
-Redirect 301 /da/implantations/besancon/handball/      /implantations/besancon/handball/
-Redirect 301 /de/implantations/toulon/football/        /implantations/toulon/football/
-Redirect 301 /en/implantations/annecy/volleyball/      /implantations/annecy/volleyball/
-Redirect 301 /en/implantations/nancy/                  /implantations/nancy/
-Redirect 301 /de/implantations/lyon/handball/          /implantations/lyon/handball/
-Redirect 301 /es/implantations/saint-etienne/badminton/ /implantations/saint-etienne/badminton/
-Redirect 301 /de/implantations/reims/badminton/        /implantations/reims/badminton/
-Redirect 301 /de/implantations/angers/rugby/           /implantations/angers/rugby/
-Redirect 301 /da/implantations/angers/rugby/           /implantations/angers/rugby/
-Redirect 301 /es/implantations/dijon/handball/         /implantations/dijon/handball/
-Redirect 301 /es/implantations/le-havre/               /implantations/le-havre/
-Redirect 301 /en/implantations/le-havre/               /implantations/le-havre/
-Redirect 301 /en/implantations/clermont-ferrand/badminton/ /implantations/clermont-ferrand/badminton/
-Redirect 301 /da/implantations/clermont-ferrand/badminton/ /implantations/clermont-ferrand/badminton/
-Redirect 301 /de/implantations/clermont-ferrand/badminton/ /implantations/clermont-ferrand/badminton/
-Redirect 301 /en/implantations/namur/basketball/       /implantations/namur/basketball/
-Redirect 301 /de/implantations/nimes/badminton/        /implantations/nimes/badminton/
-Redirect 301 /da/implantations/nimes/badminton/        /implantations/nimes/badminton/
-Redirect 301 /en/implantations/neuchatel/handball/     /implantations/neuchatel/handball/
-Redirect 301 /es/implantations/neuchatel/handball/     /implantations/neuchatel/handball/
-Redirect 301 /en/implantations/le-havre/volleyball/    /implantations/le-havre/volleyball/
-Redirect 301 /es/implantations/le-havre/volleyball/    /implantations/le-havre/volleyball/
-Redirect 301 /en/implantations/amiens/                 /implantations/amiens/
-Redirect 301 /en/implantations/tours/badminton/        /implantations/tours/badminton/
-Redirect 301 /es/implantations/tours/badminton/        /implantations/tours/badminton/
-
-# ── B. /{locale}/demo/ → page devis localisée ──────────────────
-Redirect 301 /en/demo/ /en/quote/
-Redirect 301 /de/demo/ /de/angebot/
-Redirect 301 /da/demo/ /da/tilbud/
-
-# ── C. /{locale}/offres/ → page prix localisée ─────────────────
-Redirect 301 /en/offres/ /en/pricing/
-Redirect 301 /de/offres/ /de/angebote/
-Redirect 301 /es/offres/ /es/precios/
-
-# ── D. Divers ──────────────────────────────────────────────────
-Redirect 301 /offres2/ /offres/
-Redirect 301 /es/mentions-legales /mentions-legales/
-Redirect 301 /es/mentions-legales/ /mentions-legales/
-
-# ── E. Blog : slug/langue mismatch ─────────────────────────────
-# Slug DE sans /de/
-Redirect 301 /blog/sportanzeige-kompletter-leitfaden/       /de/blog/sportanzeige-kompletter-leitfaden/
-Redirect 301 /da/blog/sportanzeige-kompletter-leitfaden/    /de/blog/sportanzeige-kompletter-leitfaden/
-Redirect 301 /en/blog/sportanzeige-kompletter-leitfaden/    /de/blog/sportanzeige-kompletter-leitfaden/
-# Slug DA sans /da/
-Redirect 301 /blog/vaerdisaet-sponsorer-amatoer-sportsklub/    /da/blog/vaerdisaet-sponsorer-amatoer-sportsklub/
-Redirect 301 /en/blog/vaerdisaet-sponsorer-amatoer-sportsklub/ /da/blog/vaerdisaet-sponsorer-amatoer-sportsklub/
-Redirect 301 /de/blog/vaerdisaet-sponsorer-amatoer-sportsklub/ /da/blog/vaerdisaet-sponsorer-amatoer-sportsklub/
-# Slug EN sans /en/
-Redirect 301 /blog/led-screen-gym-complete-guide/        /en/blog/led-screen-gym-complete-guide/
-Redirect 301 /de/blog/led-screen-gym-complete-guide/     /en/blog/led-screen-gym-complete-guide/
-Redirect 301 /da/blog/led-screen-gym-complete-guide/     /en/blog/led-screen-gym-complete-guide/
-Redirect 301 /blog/digital-signage-amateur-sports-benefits/    /en/blog/digital-signage-amateur-sports-benefits/
-Redirect 301 /de/blog/digital-signage-amateur-sports-benefits/ /en/blog/digital-signage-amateur-sports-benefits/
-Redirect 301 /da/blog/digital-signage-amateur-sports-benefits/ /en/blog/digital-signage-amateur-sports-benefits/
-# Slug FR sur mauvaise langue
-Redirect 301 /en/blog/regie-sport-guide-complet/ /blog/regie-sport-guide-complet/
-Redirect 301 /de/blog/regie-sport-guide-complet/ /blog/regie-sport-guide-complet/
-Redirect 301 /da/blog/regie-sport-guide-complet/ /blog/regie-sport-guide-complet/
+# Tout le reste → racine (301)
+RewriteRule ^.*$ / [R=301,L]
