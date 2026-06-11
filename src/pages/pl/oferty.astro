@@ -34,16 +34,19 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 ---
 
 <BaseLayout title={t('offres.title')} description={t('offres.description')} extraJsonLd={offerJsonLd} locale={locale}>
-  <section class="relative h-[500px] md:h-[743px] overflow-hidden">
-    <img src="/images/image_offre_accueil.jpg" alt="Hala sportowa z cyfrowym ekranem MADXP i ofertami partnerów" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
-    <div class="absolute inset-0 bg-[rgba(6,38,63,0.6)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{t('offres.hero.label')}</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-display">{t('offres.hero.line1')}</span><br />
-        <span class="font-black">{t('offres.hero.line2')}</span>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">{t('offres.hero.label')}</p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
+        <span>{t('offres.hero.line1')}</span> <span class="text-madxp-light">{t('offres.hero.line2')}</span>
       </h1>
-      <div><Button href="#contact" variant="green" arrow>{t('offres.hero.cta')}</Button></div>
+      <div class="mt-9"><Button href="#contact" variant="white" arrow>{t('offres.hero.cta')}</Button></div>
     </div>
   </section>
 

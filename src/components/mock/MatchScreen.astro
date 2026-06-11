@@ -1,0 +1,41 @@
+---
+// Maquette « écran de match » 100 % CSS — visuel produit sans photo.
+// Libellés neutres (EN) pour fonctionner dans toutes les langues.
+interface Props {
+  home?: string;
+  away?: string;
+  timer?: string;
+  class?: string;
+}
+const { home = '24', away = '21', timer = '28:14', class: className = '' } = Astro.props;
+---
+<div class:list={['rounded-[20px] overflow-hidden bg-madxp-ink ring-1 ring-white/10 shadow-2xl', className]}>
+  <div class="flex items-center justify-between px-5 md:px-8 py-4 border-b border-white/10">
+    <span class="font-mono text-[12px] md:text-[14px] tracking-[0.18em] text-madxp-bone/60 uppercase">MadXP · Match-Day</span>
+    <span class="inline-flex items-center gap-2 font-mono text-[12px] md:text-[14px] tracking-[0.18em] text-madxp-bone uppercase">
+      <span class="w-2 h-2 rounded-full bg-madxp-red animate-pulse"></span> Live
+    </span>
+  </div>
+  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 md:px-12 py-10 md:py-14">
+    <div class="text-center">
+      <p class="font-mono text-[11px] md:text-[13px] tracking-[0.2em] text-madxp-light uppercase mb-2">Home</p>
+      <p class="font-display text-[64px] md:text-[110px] leading-none text-madxp-bone">{home}</p>
+    </div>
+    <div class="text-center">
+      <p class="font-mono text-[12px] md:text-[15px] tracking-[0.2em] text-madxp-bone/60">{timer}</p>
+    </div>
+    <div class="text-center">
+      <p class="font-mono text-[11px] md:text-[13px] tracking-[0.2em] text-madxp-light uppercase mb-2">Away</p>
+      <p class="font-display text-[64px] md:text-[110px] leading-none text-madxp-bone">{away}</p>
+    </div>
+  </div>
+  <div class="flex items-center gap-3 px-5 md:px-8 py-4 bg-madxp-blue">
+    <span class="font-mono text-[11px] md:text-[13px] tracking-[0.2em] text-madxp-bone/80 uppercase shrink-0">Sponsors</span>
+    <div class="flex-1 flex gap-2 md:gap-3">
+      <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15"></span>
+      <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15"></span>
+      <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15 hidden sm:block"></span>
+      <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15 hidden md:block"></span>
+    </div>
+  </div>
+</div>

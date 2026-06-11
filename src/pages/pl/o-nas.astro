@@ -2,10 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
 import { useTranslations } from '@/i18n/utils';
 
-import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
 import { aboutParagraphs } from '@/data/equipe';
 
 const locale = 'pl';
@@ -13,27 +11,61 @@ const t = useTranslations(locale);
 ---
 
 <BaseLayout title={t('about.title')} description={t('about.description')} locale={locale}>
-  <section class="relative h-[500px] md:h-[600px] overflow-hidden">
-    <Image src={quiSommesNousImg} alt="Zespół MADXP" class="absolute inset-0 w-full h-full object-cover" loading="eager" widths={[640, 1024, 1440, 1920]} sizes="100vw" />
-    <div class="absolute inset-0 bg-[rgba(6,38,63,0.55)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">O NAS</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[20px]">
-        <span class="font-display">MADXP, </span><br />
-        <span class="font-black">cyfrowa reżyseria sportowa dla klubów.</span>
-      </h1>
-      <p class="text-white/80 text-[16px] md:text-[18px] max-w-[720px]">
-        Wnosimy profesjonalizm wielkiego sportu do klubów amatorskich — ekrany, aplikacja-pilot i treści wideo pod klucz.
-      </p>
-    </div>
-  </section>
+  <!-- Hero AMBITION -->
+  <section class="bg-madxp-night">
+    <div class="flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-start px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+      <!-- Left: AMBITION + text -->
+      <div class="flex flex-col gap-[60px] items-start">
+        <div class="relative">
+          <div
+            class="text-[48px] md:text-[80px] lg:text-[138px] font-[900] leading-[1] text-[#093a60] select-none"
+            aria-hidden="true"
+          >
+            <p>AMBICJA</p>
+            <p>AMBICJA</p>
+            <p>AMBI</p>
+            <p>AMBICJA</p>
+            <p>AMBICJA</p>
+          </div>
+          <h1 class="absolute left-[70%] top-[96px] md:top-[160px] lg:top-[280px] text-[28px] md:text-[40px] lg:text-[60px] leading-[1.1] whitespace-nowrap">
+            <span class="font-display text-white">Pokaż<br />swoją</span>
+          </h1>
+        </div>
 
-  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
-    <div class="max-w-[900px] mx-auto flex flex-col gap-[24px]">
-      {aboutParagraphs.map((p) => (
-        <p class="text-[18px] text-[#4a5565] leading-[1.7]">{p}</p>
-      ))}
-      <div class="mt-[20px]"><Button href="/pl/rozwiazanie/" variant="black" arrow>Odkryj rozwiązanie</Button></div>
+        <div class="max-w-[712px]">
+          <h2 class="text-white text-[48px] font-bold mb-[20px]">O nas</h2>
+          <div class="text-white text-[18px] space-y-4 prose prose-invert prose-p:my-2 prose-ul:my-2 prose-li:my-0 max-w-none">
+            {aboutParagraphs.map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+          <div class="mt-[30px]"><Button href="/pl/rozwiazanie/" variant="white" arrow>Odkryj rozwiązanie</Button></div>
+        </div>
+      </div>
+
+      <!-- Right: carte « MadXP en bref » (sticky, sans photo) -->
+      <div class="pt-[30px] lg:pt-[60px] lg:self-stretch">
+        <div class="w-full max-w-[548px] lg:sticky lg:top-[120px]">
+          <div class="rounded-[20px] bg-madxp-blue text-madxp-bone p-8 md:p-10 lg:aspect-[548/685] flex flex-col justify-between gap-10">
+            <p class="font-mono text-[12px] tracking-[0.2em] uppercase text-madxp-bone/70">MadXP w skrócie</p>
+            <div class="flex flex-col gap-8">
+              <div>
+                <p class="font-display text-[56px] md:text-[72px] leading-none">3</p>
+                <p class="font-mono text-[13px] tracking-[0.16em] uppercase text-madxp-bone/80 mt-2">aktywowane źródła przychodu</p>
+              </div>
+              <div>
+                <p class="font-display text-[56px] md:text-[72px] leading-none">79 €<span class="text-[24px] align-top">/m</span></p>
+                <p class="font-mono text-[13px] tracking-[0.16em] uppercase text-madxp-bone/80 mt-2">finansowane przez sponsorów</p>
+              </div>
+              <div>
+                <p class="font-display text-[56px] md:text-[72px] leading-none">Europa</p>
+                <p class="font-mono text-[13px] tracking-[0.16em] uppercase text-madxp-bone/80 mt-2">wspierane kluby</p>
+              </div>
+            </div>
+            <p class="font-mono text-[12px] tracking-[0.18em] uppercase text-madxp-bone/60">by Kalon Partners</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

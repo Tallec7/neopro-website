@@ -11,27 +11,9 @@ const imageEntries = [
     ],
   },
   {
-    page: '/regie-sport',
+    page: '/regie-sport/',
     images: [
       { loc: '/og-default.jpg', title: 'Régie sport digitale MADXP — écrans et régie clé en main pour clubs' },
-    ],
-  },
-  {
-    page: '/solution',
-    images: [
-      { loc: '/_astro/hero-solution', title: 'Joueurs de handball devant un écran digital MADXP' },
-    ],
-  },
-  {
-    page: '/offres',
-    images: [
-      { loc: '/_astro/hero-offres', title: 'Gymnase équipé d\'un écran digital MADXP avec les offres partenaires' },
-    ],
-  },
-  {
-    page: '/qui-sommes-nous',
-    images: [
-      { loc: '/_astro/qui-sommes-nous', title: 'L\'équipe MADXP lors d\'une installation dans un gymnase' },
     ],
   },
 ];

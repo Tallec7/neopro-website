@@ -3,12 +3,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
+import MatchScreen from '@/components/mock/MatchScreen.astro';
+import RemoteMock from '@/components/mock/RemoteMock.astro';
+import OfferCard from '@/components/mock/OfferCard.astro';
 import { useTranslations } from '@/i18n/utils';
-
-// ── Images ───────────────────────────────────────────────────────
-import heroImg from '@/assets/images/hero-accueil-v2.webp';
-import imageTelephoneImg from '@/assets/images/image-telephone.png';
 
 // ── Données ──────────────────────────────────────────────────────
 import { clubs } from '@/data/clubs';
@@ -18,27 +16,27 @@ const t = useTranslations(locale);
 ---
 
 <BaseLayout title={t('home.title')} description={t('home.description')} locale={locale}>
-  <!-- Hero -->
-  <section class="relative h-[500px] md:h-[743px] bg-[#06263f] overflow-hidden">
-    <Image
-      src={heroImg}
-      alt="MADXP digital screen displaying sponsor content in a handball gym"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      widths={[768, 1280, 1920]}
-      sizes="100vw"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#06263f] to-[80%] to-[rgba(6,38,63,0.3)]"></div>
-    <div class="relative z-10 flex flex-col justify-end h-full text-white p-8 md:p-[60px] gap-8 md:gap-[40px]">
-      <h1 class="text-[36px] md:text-[70px] leading-[1]">
-        <span class="font-display font-normal">{t('home.hero.line1')}</span>
-        <br /><span class="font-black">{t('home.hero.line2')}</span>
-        <br /><span class="font-display font-normal">{t('home.hero.line3')}</span>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[55%] bg-madxp-blue/25 [clip-path:polygon(28%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[42%] bg-madxp-blue/30 [clip-path:polygon(34%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[34vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+
+    <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-[60px] pt-28 md:pt-[180px] pb-20 md:pb-[130px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6 md:mb-8">
+        Match-Day · Ad · Experience · Media
+      </p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[92px] max-w-[16ch]">
+        <span>{t('home.hero.line1')}</span>
+        <br /><span class="text-madxp-light">{t('home.hero.line2')}</span>
+        <br /><span>{t('home.hero.line3')}</span>
       </h1>
-      <p class="text-white/80 text-[16px] md:text-[20px] max-w-[720px] leading-normal -mt-2">
+      <p class="mt-8 text-[18px] md:text-[24px] leading-relaxed text-madxp-bone/80 max-w-[620px]">
         We turn your screen into an interactive media. Screens, digital signage and video content for sports clubs — from professional to regional level.
       </p>
-      <div class="flex flex-wrap gap-6 md:gap-[43px]">
+      <div class="mt-10 flex flex-wrap gap-4 md:gap-6">
         <Button href="/en/solution/" variant="white" arrow>
           {t('home.hero.cta')}
         </Button>
@@ -57,22 +55,9 @@ const t = useTranslations(locale);
       </p>
     </div>
 
-    <!-- Video -->
+    <!-- Maquette « écran de match » 100 % CSS -->
     <div class="px-5 pb-16 md:pb-24">
-      <div class="max-w-[1320px] mx-auto">
-        <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#0a0b0d] shadow-2xl">
-          <video
-            class="w-full h-full object-cover"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="/og-default.jpg"
-          >
-            <source src="/videos/accueil-demo.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
+      <MatchScreen class="max-w-[1100px] mx-auto" />
     </div>
   </section>
 
@@ -92,28 +77,21 @@ const t = useTranslations(locale);
           {t('home.regie.cta')}
         </Button>
       </div>
-      <div class="w-full md:w-[550px] md:h-[550px] flex-shrink-0">
-        <Image
-          src={imageTelephoneImg}
-          alt="MADXP remote control app on smartphone for gym screen"
-          class="w-full h-full rounded-[20px] object-cover"
-          loading="lazy"
-          widths={[600, 1200]}
-          sizes="(max-width: 768px) 100vw, 550px"
-        />
-      </div>
+      <RemoteMock />
     </div>
   </section>
 
   <!-- Plans tailored to your needs -->
   <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
-      <div class="relative w-full md:w-[550px] md:h-[550px] flex-shrink-0 rounded-[20px] overflow-hidden">
-        <img
-          src="/images/image_offre.jpg"
-          alt="MADXP digital display plans for amateur clubs"
-          class="w-full h-full object-cover"
-          loading="lazy"
+      <div class="w-full md:w-[550px] flex-shrink-0">
+        <OfferCard
+          square
+          fromLabel="From"
+          price="79"
+          period="/ month"
+          note="Fundable by your sponsors. No long-term commitment."
+          features={['Screen + signage software', 'Remote control app', 'Video & sponsor content', 'Turnkey installation']}
         />
       </div>
       <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">

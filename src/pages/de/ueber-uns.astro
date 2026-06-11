@@ -2,12 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
 import { buildFAQPageJsonLd } from '@/lib/jsonLd';
 import { useTranslations } from '@/i18n/utils';
-
-// ── Images ───────────────────────────────────────────────────────
-import quiSommesNousImg from '@/assets/images/qui-sommes-nous.webp';
 
 // ── DE Data ─────────────────────────────────────────────────────
 import { faqItems } from '@/data/de/faq';
@@ -65,17 +61,27 @@ const faqJsonLd = buildFAQPageJsonLd(
         </div>
       </div>
 
-      <!-- Right: sticky photo -->
+      <!-- Right: carte « MadXP en bref » (sticky, sans photo) -->
       <div class="pt-[30px] lg:pt-[60px] lg:self-stretch">
         <div class="w-full max-w-[548px] lg:sticky lg:top-[120px]">
-          <Image
-            src={quiSommesNousImg}
-            alt="Das MADXP-Team bei einer Installation in der Sporthalle"
-            class="w-full aspect-[548/685] rounded-[20px] object-cover"
-            loading="eager"
-            widths={[548, 1096]}
-            sizes="(max-width: 768px) 100vw, 548px"
-          />
+          <div class="rounded-[20px] bg-madxp-blue text-madxp-bone p-8 md:p-10 lg:aspect-[548/685] flex flex-col justify-between gap-10">
+            <p class="font-mono text-[12px] tracking-[0.2em] uppercase text-madxp-bone/70">MadXP kurz gefasst</p>
+            <div class="flex flex-col gap-8">
+              <div>
+                <p class="font-display text-[56px] md:text-[72px] leading-none">3</p>
+                <p class="font-mono text-[13px] tracking-[0.16em] uppercase text-madxp-bone/80 mt-2">aktivierte Einnahmequellen für Vereine</p>
+              </div>
+              <div>
+                <p class="font-display text-[56px] md:text-[72px] leading-none">79 €<span class="text-[24px] align-top">/M</span></p>
+                <p class="font-mono text-[13px] tracking-[0.16em] uppercase text-madxp-bone/80 mt-2">finanzierbar durch Ihre Partner</p>
+              </div>
+              <div>
+                <p class="font-display text-[56px] md:text-[72px] leading-none">Europa</p>
+                <p class="font-mono text-[13px] tracking-[0.16em] uppercase text-madxp-bone/80 mt-2">überall betreute Vereine</p>
+              </div>
+            </div>
+            <p class="font-mono text-[12px] tracking-[0.18em] uppercase text-madxp-bone/60">by Kalon Partners</p>
+          </div>
         </div>
       </div>
     </div>
