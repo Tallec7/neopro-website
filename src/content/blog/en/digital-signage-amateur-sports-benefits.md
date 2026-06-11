@@ -2,7 +2,7 @@
 title: "Digital Signage in Amateur Sports: 7 Concrete Benefits for Your Club"
 description: "Discover how digital signage transforms the match experience, retains sponsors and professionalizes the image of your amateur sports club."
 date: 2026-03-18
-author: Neopro
+author: MADXP
 tags: ["digital signage", "amateur sports", "benefits", "clubs"]
 ---
 
@@ -73,4 +73,4 @@ This level of professionalism is what turns a one-time sponsor into a **loyal pa
 
 Digital signage solutions for amateur clubs start at **1,500 EUR/year excl. VAT**. It's an investment that pays for itself as soon as you gain one or two additional sponsors thanks to the screen.
 
-[View Neopro plans](/en/pricing) to choose the right package for your club, or [request a personalized quote](/en/quote).
+[View MADXP plans](/en/pricing/) to choose the right package for your club, or [request a personalized quote](/en/quote/).

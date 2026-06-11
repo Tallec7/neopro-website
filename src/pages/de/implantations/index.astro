@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { cities, sports } from '@/data/de/implantations';
 import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const canonicalUrl = `${siteUrl}/de/implantations`;
 
 const deCities = cities.filter((c) => c.country === 'DE');
@@ -16,21 +16,21 @@ const breadcrumb = buildBreadcrumbJsonLd([
 ---
 
 <BaseLayout
-  title="Digitale Vereinslösung — Neopro Standorte in Deutschland & Österreich"
-  description="Neopro installiert schlüsselfertige digitale Anzeigelösungen in Sporthallen. Handball, Basketball, Volleyball und mehr. Finden Sie Ihren Standort in Deutschland und Österreich."
+  title="Digitale Vereinslösung — MADXP Standorte in Deutschland & Österreich"
+  description="MADXP installiert schlüsselfertige digitale Anzeigelösungen in Sporthallen. Handball, Basketball, Volleyball und mehr. Finden Sie Ihren Standort in Deutschland und Österreich."
   canonicalUrl={canonicalUrl}
   extraJsonLd={breadcrumb}
   locale="de"
 >
   <!-- Hero -->
-  <section class="bg-neo-dark text-white py-20 px-6">
+  <section class="bg-madxp-ink text-white py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-black mb-6">
-        Neopro in ganz<br />
-        <span class="text-neo-green">Deutschland & Österreich</span>
+        MADXP in ganz<br />
+        <span class="text-madxp-blue">Deutschland & Österreich</span>
       </h1>
       <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-        Wir begleiten Sportvereine in Deutschland und Österreich mit einer schlüsselfertigen digitalen Anzeigelösung. Finden Sie Ihren Standort und erfahren Sie, wie Neopro Ihren Verein professionalisiert.
+        Wir begleiten Sportvereine in Deutschland und Österreich mit einer schlüsselfertigen digitalen Anzeigelösung. Finden Sie Ihren Standort und erfahren Sie, wie MADXP Ihren Verein professionalisiert.
       </p>
     </div>
   </section>
@@ -39,7 +39,7 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <section class="py-10 px-6 bg-gray-50">
     <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
       {sports.map((sport) => (
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neo-dark border border-gray-200">
+        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-madxp-ink border border-gray-200">
           {sport.name}
         </span>
       ))}
@@ -49,14 +49,14 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <!-- Deutschland -->
   <section class="py-16 px-6 bg-white">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8">
+      <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-8">
         🇩🇪 Deutschland
       </h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
         {deCities.map((city) => (
           <a
-            href={`/de/implantations/${city.slug}`}
-            class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-neo-green transition-all font-medium text-neo-dark"
+            href={`/de/implantations/${city.slug}/`}
+            class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-madxp-blue transition-all font-medium text-madxp-ink"
           >
             {city.name}
           </a>
@@ -69,14 +69,14 @@ const breadcrumb = buildBreadcrumbJsonLd([
   {atCities.length > 0 && (
     <section class="py-16 px-6 bg-gray-50">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8">
+        <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-8">
           🇦🇹 Österreich
         </h2>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
           {atCities.map((city) => (
             <a
-              href={`/de/implantations/${city.slug}`}
-              class="block px-5 py-4 bg-white rounded-xl hover:bg-neo-green transition-all font-medium text-neo-dark"
+              href={`/de/implantations/${city.slug}/`}
+              class="block px-5 py-4 bg-white rounded-xl hover:bg-madxp-blue transition-all font-medium text-madxp-ink"
             >
               {city.name}
             </a>
@@ -87,17 +87,17 @@ const breadcrumb = buildBreadcrumbJsonLd([
   )}
 
   <!-- CTA -->
-  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+  <section class="py-16 px-6 bg-madxp-ink text-white text-center">
     <div class="max-w-2xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-black mb-4">
         Ihre Stadt ist nicht dabei?
       </h2>
       <p class="text-gray-300 mb-8">
-        Neopro ist in ganz Deutschland und Österreich verfügbar. Kontaktieren Sie uns für ein kostenloses Angebot.
+        MADXP ist in ganz Deutschland und Österreich verfügbar. Kontaktieren Sie uns für ein kostenloses Angebot.
       </p>
       <a
-        href="/de/angebot"
-        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        href="/de/angebot/"
+        class="inline-block bg-madxp-blue text-madxp-ink font-bold px-8 py-4 rounded-xl hover:bg-madxp-blue-deep transition-colors"
       >
         Kostenloses Angebot anfordern
       </a>

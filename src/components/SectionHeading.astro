@@ -12,9 +12,9 @@ const { title, italicWord, subtitle, centered = true } = Astro.props;
 <div class:list={[centered && 'text-center']}>
   <h2 class="text-[40px] md:text-[48px] font-bold mb-4">
     {title}{' '}
-    <span class="font-playfair italic text-neo-green-dark">{italicWord}</span>
+    <span class="font-display text-madxp-blue-deep">{italicWord}</span>
   </h2>
   {subtitle && (
-    <p class="text-neo-gray text-[16px] max-w-[600px] mx-auto">{subtitle}</p>
+    <p class="text-madxp-gray text-[16px] max-w-[600px] mx-auto">{subtitle}</p>
   )}
 </div>

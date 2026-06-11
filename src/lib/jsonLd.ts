@@ -20,7 +20,7 @@ export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string 
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'Organization'],
     name: options.name,
-    alternateName: 'Neopro Communication',
+    alternateName: 'MADXP',
     description: options.description,
     slogan: 'La régie sport digitale pour clubs',
     email: options.email,
@@ -74,9 +74,9 @@ export function buildLocalBusinessJsonLd(options: LocalBusinessOptions): string 
 
   schema.logo = {
     '@type': 'ImageObject',
-    url: `${options.url}/NeoPro_Core_Assets_Logo_NShape_Stacked_BLK.png`,
-    width: 567,
-    height: 567,
+    url: `${options.url}/madxp-logo.png`,
+    width: 4241,
+    height: 1224,
   };
 
   if (options.image) {
@@ -182,8 +182,8 @@ export function buildArticleJsonLd(options: ArticleOptions): string {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Neopro',
-      url: 'https://www.neopro-communication.fr',
+      name: 'MADXP',
+      url: 'https://madxp.kalonpartners.bzh',
     },
     ...(options.image && { image: options.image }),
   });

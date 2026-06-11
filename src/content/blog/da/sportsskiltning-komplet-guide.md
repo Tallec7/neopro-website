@@ -2,7 +2,7 @@
 title: "Sportsskiltning: den komplette guide til klubber (pro, semi-pro og regionale)"
 description: "Hvad er sportsskiltning? Hvad bruges det til? Hvad koster det? Den komplette guide til at forstå, hvordan digital sportsskiltning forvandler kampoplevelsen, skaber værdi for sponsorer og professionaliserer en klub — uanset niveau."
 date: 2026-04-08
-author: Neopro
+author: MADXP
 tags: ["sportsskiltning", "digital skiltning", "guide", "klubber"]
 ---
 
@@ -24,7 +24,7 @@ I en professionel klub varetages disse funktioner ofte af et dedikeret hold med 
 
 Traditionel sportsskiltning kræver **professionelt udstyr, tekniske kompetencer og uddannede frivillige**. Det er, hvad man ser i professionelle klubber.
 
-**Digital sportsskiltning** er den moderne udvikling: alt er integreret i én løsning, der kan styres fra en smartphone. Det er, hvad Neopro tilbyder: en LED-skærm, en plug & play-boks, en fjernbetjeningsapp og færdige videoskabeloner. Én frivillig er nok til at køre skiltningen under kampen.
+**Digital sportsskiltning** er den moderne udvikling: alt er integreret i én løsning, der kan styres fra en smartphone. Det er, hvad MADXP tilbyder: en LED-skærm, en plug & play-boks, en fjernbetjeningsapp og færdige videoskabeloner. Én frivillig er nok til at køre skiltningen under kampen.
 
 Den afgørende forskel: med digital sportsskiltning **behøver du ikke være professionel for at have professionel skiltning**.
 
@@ -58,13 +58,13 @@ Det er den store misforståelse at bekæmpe: **sportsskiltning er ikke forbehold
 - **Semi-professionelle klubber og nationalt niveau**: de vil nærme sig det professionelle niveau mht. kampoplevelse uden de tilhørende omkostninger.
 - **Regionale klubber og amatørklubber**: de vil skille sig ud lokalt, tilbyde et rigtigt show til deres publikum og forvandle skærmen til en indtægtskilde.
 
-Neopro er designet til at tilpasse sig alle tre profiler, med kalibrerede tilbud (fra 79 til 299 €/måned) og altid finansierbare af sponsorer.
+MADXP er designet til at tilpasse sig alle tre profiler, med kalibrerede tilbud (fra 79 til 299 €/måned) og altid finansierbare af sponsorer.
 
 ## Hvad koster sportsskiltning?
 
 Traditionel sportsskiltning (professionelt udstyr + teknisk hold) koster typisk **mellem 30.000 og 150.000 €** afhængigt af udstyret — det er derfor, den historisk set har været forbeholdt professionelle klubber.
 
-En **nøglefærdig digital sportsskiltningsløsning** som Neopro starter **fra 79 €/måned** med Play-formlen (uden udstyr, 100% SaaS). Tilbuddene med skærm og boks går fra 149 til 299 €/måned. Investeringen tjener sig ind fra den første eller anden sponsor, der underskrives takket være det nye reklamerum.
+En **nøglefærdig digital sportsskiltningsløsning** som MADXP starter **fra 79 €/måned** med Play-formlen (uden udstyr, 100% SaaS). Tilbuddene med skærm og boks går fra 149 til 299 €/måned. Investeringen tjener sig ind fra den første eller anden sponsor, der underskrives takket være det nye reklamerum.
 
 ## Hvad du skal tjekke, før du vælger sportsskiltning
 
@@ -80,6 +80,6 @@ Hvis du sammenligner flere løsninger, er her de vigtigste spørgsmål at stille
 
 Sportsskiltning er ikke længere et privilegium for professionelle klubber. Med ankomsten af **nøglefærdige digitale sportsskiltningsløsninger** kan alle klubber i dag udstyre sig for at professionalisere deres kampoplevelse, skabe værdi for sponsorer og generere nye indtægter. Adgangsbilletten er blevet overkommelig (fra 79 €/måned), og den tekniske kompleksitet er forsvundet.
 
-Hos Neopro er det præcis, hvad vi bygger: **digital sportsskiltning til alle klubber**, fra professionelt niveau til regionsmesterskab.
+Hos MADXP er det præcis, hvad vi bygger: **digital sportsskiltning til alle klubber**, fra professionelt niveau til regionsmesterskab.
 
-[Oplev Neopro sportsskiltning i detaljer](/da/regie-sport) eller [anmod om et tilpasset tilbud](/da/tilbud) til din klub.
+[Oplev MADXP sportsskiltning i detaljer](/da/regie-sport/) eller [anmod om et tilpasset tilbud](/da/tilbud/) til din klub.

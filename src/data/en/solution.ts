@@ -45,7 +45,7 @@ export const colorPanels: ColorPanel[] = [
       'Weekly video assistance & updates',
       'Full autonomy option: admin access with visual/video integration',
     ],
-    bgColor: 'bg-[#3d3036]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Turnkey solution',
@@ -55,7 +55,7 @@ export const colorPanels: ColorPanel[] = [
       'Intuitive and simple app',
       'Compatible with all HDMI screens',
     ],
-    bgColor: 'bg-[#423e33]',
+    bgColor: 'bg-[#0a0b0d]',
   },
   {
     title: 'Professional video production',
@@ -63,7 +63,7 @@ export const colorPanels: ColorPanel[] = [
       'Complete media day package (photo+video)',
       'Broadcast-quality video templates, customizable to your club colors',
     ],
-    bgColor: 'bg-[#2f3935]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Benefits for your club',
@@ -74,7 +74,7 @@ export const colorPanels: ColorPanel[] = [
       'Quantified visibility for your sponsors',
       'Better sponsor retention',
     ],
-    bgColor: 'bg-[#334244]',
+    bgColor: 'bg-[#06263f]',
   },
 ];
 

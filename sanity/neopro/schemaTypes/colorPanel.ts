@@ -27,10 +27,10 @@ export default defineType({
         list: [
           { title: 'Brun rosé', value: 'bg-[#3d3036]' },
           { title: 'Olive chaud', value: 'bg-[#423e33]' },
-          { title: 'Vert sombre', value: 'bg-[#2f3935]' },
+          { title: 'Vert sombre', value: 'bg-[#06263f]' },
           { title: 'Bleu-gris', value: 'bg-[#334244]' },
-          { title: 'Noir (neo-dark)', value: 'bg-neo-dark' },
-          { title: 'Vert foncé (neo-dark-bg)', value: 'bg-neo-dark-bg' },
+          { title: 'Noir (madxp-ink)', value: 'bg-madxp-ink' },
+          { title: 'Vert foncé (madxp-night)', value: 'bg-madxp-night' },
         ],
         layout: 'radio',
       },

@@ -14,34 +14,34 @@ const locale = 'it';
 const t = useTranslations(locale);
 
 const borderColorMap: Record<string, string> = {
-  yellow: 'border-[#fdbe00]', green: 'border-[#51b28b]', pink: 'border-[#fe6aa6]', black: 'border-gray-200',
+  yellow: 'border-[#d9870b]', green: 'border-[#093a60]', pink: 'border-[#0e578e]', black: 'border-gray-200',
 };
 const priceColorMap: Record<string, string> = {
-  yellow: 'text-[#fdbe00]', green: 'text-[#51b28b]', pink: 'text-[#fe6aa6]', black: 'text-[#101828]',
+  yellow: 'text-[#d9870b]', green: 'text-[#093a60]', pink: 'text-[#0e578e]', black: 'text-[#0a0b0d]',
 };
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const offerJsonLd = buildAggregateOfferJsonLd(
   plans.map((plan) => ({
-    name: `Neopro ${plan.name}`,
+    name: `MADXP ${plan.name}`,
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
-    url: `${siteUrl}/it/preventivo?offre=${plan.slug}`,
+    url: `${siteUrl}/it/preventivo/?offre=${plan.slug}`,
   })),
-  'Neopro',
+  'MADXP',
   siteUrl,
 );
 ---
 
 <BaseLayout title={t('offres.title')} description={t('offres.description')} extraJsonLd={offerJsonLd} locale={locale}>
   <section class="relative h-[500px] md:h-[743px] overflow-hidden">
-    <img src="/images/image_offre_accueil.jpg" alt="Palazzetto con schermo digitale Neopro e offerte partner" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
+    <img src="/images/image_offre_accueil.jpg" alt="Palazzetto con schermo digitale MADXP e offerte partner" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+    <div class="absolute inset-0 bg-[rgba(6,38,63,0.6)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{t('offres.hero.label')}</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">{t('offres.hero.line1')}</span><br />
+        <span class="font-display">{t('offres.hero.line1')}</span><br />
         <span class="font-black">{t('offres.hero.line2')}</span>
       </h1>
       <div><Button href="#contact" variant="green" arrow>{t('offres.hero.cta')}</Button></div>
@@ -50,28 +50,28 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[60px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">Le nostre offerte</h2>
-      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Schermo digitale chiavi in mano — <strong>Essential</strong>, <strong>Autonomia</strong> o <strong>Premium</strong>.</p>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[20px]">Le nostre offerte</h2>
+      <p class="text-[18px] text-madxp-gray mb-[40px] max-w-[700px]">Schermo digitale chiavi in mano — <strong>Essential</strong>, <strong>Autonomia</strong> o <strong>Premium</strong>.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'} ${offre.popular ? 'lg:scale-[1.03] shadow-xl' : ''}`}>
             {offre.popular && (
-              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">Consigliato</span>
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0e578e] text-[#06263f] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">Consigliato</span>
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
-              <p class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}>
-                {offre.priceAnnual.toLocaleString('it-IT')} €<span class="text-[16px] font-normal text-neo-gray">/anno</span>
+              <p class="font-display text-[16px] text-madxp-gray mt-[2px]">« {offre.pitch} »</p>
+              <p class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-madxp-blue-deep'}`}>
+                {offre.priceAnnual.toLocaleString('it-IT')} €<span class="text-[16px] font-normal text-madxp-gray">/anno</span>
               </p>
             </div>
             <div class="border-t border-gray-200 mb-[16px]"></div>
             <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
-                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#0a0b0d]' : 'text-[#c0c5cc] italic'}`}>
                   {f.included ? (
-                    <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                    <svg class="w-5 h-5 shrink-0 text-madxp-blue-deep mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
                   ) : (
                     <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
                   )}
@@ -79,7 +79,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 </li>
               ))}
             </ul>
-            <Button href={`/it/preventivo?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>Scegli questa offerta</Button>
+            <Button href={`/it/preventivo/?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>Scegli questa offerta</Button>
           </div>
         ))}
       </div>

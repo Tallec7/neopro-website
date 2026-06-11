@@ -2,7 +2,7 @@
 title: "5 façons de mieux valoriser vos sponsors en club amateur"
 description: "Allez au-delà des panneaux statiques : écrans digitaux, réseaux sociaux, naming, vidéos et reporting. Fidélisez vos partenaires et attirez-en de nouveaux."
 date: 2026-03-25
-author: Neopro
+author: MADXP
 tags: ["sponsors", "partenaires", "club amateur", "valorisation"]
 ---
 
@@ -73,6 +73,6 @@ Un partenaire qui reçoit un bilan de visibilité en fin de saison est un parten
 | Vidéos pro | Variable | Très élevé |
 | Reporting | Gratuit | Élevé |
 
-La combinaison gagnante : un **écran digital + des vidéos de qualité + un reporting clair**. C'est exactement ce que propose [Neopro](/solution) aux clubs amateurs.
+La combinaison gagnante : un **écran digital + des vidéos de qualité + un reporting clair**. C'est exactement ce que propose [MADXP](/solution/) aux clubs amateurs.
 
-Pour aller plus loin : découvrez comment créer une [expérience match-day complète](/blog/experience-match-day-clubs-sport) ou consultez notre guide sur l'[affichage dynamique en sport](/blog/affichage-dynamique-sport-guide-complet). Et si vous êtes annonceur local, découvrez comment [toucher cette audience captive](/annonceurs).
+Pour aller plus loin : découvrez comment créer une [expérience match-day complète](/blog/experience-match-day-clubs-sport/) ou consultez notre guide sur l'[affichage dynamique en sport](/blog/affichage-dynamique-sport-guide-complet/). Et si vous êtes annonceur local, découvrez comment [toucher cette audience captive](/annonceurs/).

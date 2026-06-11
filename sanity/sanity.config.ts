@@ -4,7 +4,7 @@ import { schemaTypes } from './schemas';
 
 export default defineConfig({
   name: 'neopro',
-  title: 'Neopro CMS',
+  title: 'MADXP CMS',
   projectId: process.env.SANITY_STUDIO_PROJECT_ID || '',
   dataset: 'production',
   plugins: [structureTool()],

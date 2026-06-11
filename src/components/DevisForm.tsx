@@ -95,10 +95,10 @@ const packagesByLocale: Record<Locale, string[]> = {
 const nbEquipes = ['1', '2', '3', '4', '5+'];
 
 const inputClass =
-  'w-full h-[50px] bg-white border border-[#d1d5dc] rounded-[10px] px-5 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors';
+  'w-full h-[50px] bg-white border border-[#d1d5dc] rounded-[10px] px-5 text-[#0a0b0d] outline-none focus:border-[#0e578e] transition-colors';
 const selectClass =
-  'w-full h-[50px] bg-white border border-[#d1d5dc] rounded-[10px] px-4 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M1%201.5L6%206.5L11%201.5%22%20stroke%3D%22%234a5565%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E")] bg-no-repeat bg-[right_1rem_center]';
-const labelClass = 'text-[16px] font-medium text-[#101828] block mb-2';
+  'w-full h-[50px] bg-white border border-[#d1d5dc] rounded-[10px] px-4 text-[#0a0b0d] outline-none focus:border-[#0e578e] transition-colors appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M1%201.5L6%206.5L11%201.5%22%20stroke%3D%22%234a5565%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E")] bg-no-repeat bg-[right_1rem_center]';
+const labelClass = 'text-[16px] font-medium text-[#0a0b0d] block mb-2';
 
 interface Props {
   locale?: Locale;
@@ -175,8 +175,8 @@ export default function DevisForm({ locale = 'fr' }: Props) {
     return (
       <section className="min-h-screen pt-32 pb-20 px-5">
         <div className="max-w-[700px] mx-auto text-center">
-          <div className="bg-[#81e3bc]/20 border border-[#81e3bc] rounded-[20px] p-12">
-            <p className="text-[#101828] text-[28px] font-bold mb-4">
+          <div className="bg-[#0e578e]/20 border border-[#0e578e] rounded-[20px] p-12">
+            <p className="text-[#0a0b0d] text-[28px] font-bold mb-4">
               {t(locale, 'devisForm.success.title')}
             </p>
             <p className="text-[#4a5565] text-[16px] mb-8">
@@ -184,7 +184,7 @@ export default function DevisForm({ locale = 'fr' }: Props) {
             </p>
             <a
               href={homeUrl}
-              className="inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#101828] text-white hover:bg-[#1d2939] transition-colors"
+              className="inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] bg-[#0a0b0d] text-white hover:bg-[#1d2939] transition-colors"
             >
               {t(locale, 'devisForm.success.cta')}
             </a>
@@ -205,7 +205,7 @@ export default function DevisForm({ locale = 'fr' }: Props) {
         {/* Title */}
         <div className="mb-[50px]">
           <h1 className="text-[32px] md:text-[60px] font-bold mb-2">
-            <span className="font-['Playfair_Display'] italic">{t(locale, 'devisForm.heading')}</span> {t(locale, 'devisForm.headingSuffix')}
+            <span className="font-display">{t(locale, 'devisForm.heading')}</span> {t(locale, 'devisForm.headingSuffix')}
           </h1>
           <p className="text-[#4a5565] text-[18px]">
             {t(locale, 'devisForm.subtitle')}
@@ -357,7 +357,7 @@ export default function DevisForm({ locale = 'fr' }: Props) {
               onChange={(e) => setMessage(e.target.value)}
               placeholder={t(locale, 'devisForm.messagePlaceholder')}
               rows={4}
-              className="w-full bg-white border border-[#d1d5dc] rounded-[10px] px-5 py-4 text-[#101828] outline-none focus:border-[#81e3bc] transition-colors resize-y"
+              className="w-full bg-white border border-[#d1d5dc] rounded-[10px] px-5 py-4 text-[#0a0b0d] outline-none focus:border-[#0e578e] transition-colors resize-y"
             />
           </div>
 
@@ -366,7 +366,7 @@ export default function DevisForm({ locale = 'fr' }: Props) {
             <button
               type="submit"
               disabled={!canSubmit() || submitStatus === 'sending'}
-              className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[12px] font-medium text-[18px] bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] transition-colors ${
+              className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[12px] font-medium text-[18px] bg-[#0e578e] text-[#0a0b0d] hover:bg-[#4a8bbf] transition-colors ${
                 !canSubmit() || submitStatus === 'sending'
                   ? 'opacity-50 cursor-not-allowed'
                   : 'cursor-pointer'

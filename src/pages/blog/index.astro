@@ -6,17 +6,17 @@ const posts = (await getCollection('blog', ({ id }) => !id.includes('/'))).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 
-const title = 'Blog Neopro — Régie sport digitale, sponsors & expérience match-day';
+const title = 'Blog MADXP — Régie sport digitale, sponsors & expérience match-day';
 const description = "Conseils pratiques pour les clubs de sport : régie sport digitale, écrans LED, valorisation des sponsors et animation de matchs.";
 ---
 
 <BaseLayout title={title} description={description} noAlternates>
   <!-- Hero -->
-  <section class="bg-neo-dark-bg px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
+  <section class="bg-madxp-night px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[900px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">BLOG</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[20px]">
-        <span class="font-playfair italic">Ressources pour</span><br />
+        <span class="font-display">Ressources pour</span><br />
         <span class="font-black">votre club</span>
       </h1>
       <p class="text-[18px] text-[rgba(255,255,255,0.7)] max-w-[600px]">
@@ -31,9 +31,9 @@ const description = "Conseils pratiques pour les clubs de sport : régie sport d
       <div class="flex flex-col gap-[40px]">
         {posts.map((post) => (
           <article class="group">
-            <a href={`/blog/${post.id}`} class="block">
+            <a href={`/blog/${post.id}/`} class="block">
               <div class="flex flex-col gap-[12px]">
-                <div class="flex items-center gap-[12px] text-[14px] text-neo-gray">
+                <div class="flex items-center gap-[12px] text-[14px] text-madxp-gray">
                   <time datetime={post.data.date.toISOString().slice(0, 10)}>
                     {post.data.date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </time>
@@ -44,13 +44,13 @@ const description = "Conseils pratiques pour les clubs de sport : régie sport d
                     </>
                   )}
                 </div>
-                <h2 class="text-[24px] md:text-[28px] font-bold text-[#101828] group-hover:text-neo-green-dark transition-colors">
+                <h2 class="text-[24px] md:text-[28px] font-bold text-[#0a0b0d] group-hover:text-madxp-blue-deep transition-colors">
                   {post.data.title}
                 </h2>
-                <p class="text-[16px] text-neo-gray leading-relaxed">
+                <p class="text-[16px] text-madxp-gray leading-relaxed">
                   {post.data.description}
                 </p>
-                <span class="text-neo-green-dark font-medium text-[16px] group-hover:underline">
+                <span class="text-madxp-blue-deep font-medium text-[16px] group-hover:underline">
                   Lire l'article →
                 </span>
               </div>

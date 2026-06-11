@@ -2,7 +2,7 @@
 title: "DOOH local : l'alternative aux réseaux sociaux pour les PME"
 description: "Découvrez pourquoi le DOOH local en gymnase est une alternative efficace à Facebook et Google Ads pour les PME qui veulent toucher une audience locale."
 date: 2026-04-29
-author: Neopro
+author: MADXP
 tags: ["DOOH", "publicité locale", "PME", "réseaux sociaux", "alternative"]
 ---
 
@@ -90,13 +90,13 @@ Le DOOH en gymnase fonctionne particulièrement bien pour les entreprises dont l
 
 Si votre zone de chalandise est locale et que votre clientèle est constituée de familles, le DOOH en gymnase est fait pour vous.
 
-Découvrez les avantages concrets pour les annonceurs locaux sur notre [page dédiée aux annonceurs](/annonceurs).
+Découvrez les avantages concrets pour les annonceurs locaux sur notre [page dédiée aux annonceurs](/annonceurs/).
 
 ## Comment démarrer avec le DOOH local
 
 La mise en route est simple :
 
-1. **Identifiez un gymnase équipé** dans votre zone. De plus en plus de clubs s'équipent d'écrans LED grâce à des solutions comme [Neopro](/solution).
+1. **Identifiez un gymnase équipé** dans votre zone. De plus en plus de clubs s'équipent d'écrans LED grâce à des solutions comme [MADXP](/solution/).
 2. **Choisissez votre forfait** : nombre de diffusions, durée du spot, période.
 3. **Fournissez votre visuel** : une image ou une courte vidéo. Pas besoin de production coûteuse — un visuel clair avec votre offre et vos coordonnées suffit.
 4. **Lancez la diffusion** : votre spot tourne dès le prochain match.
@@ -109,13 +109,13 @@ Les réseaux sociaux restent un canal utile, mais ils ne doivent plus être votr
 
 Pour les PME qui veulent toucher efficacement les habitants de leur secteur, c'est aujourd'hui l'un des meilleurs rapports performance-prix du marché publicitaire local.
 
-[Demandez une démo](/demo) pour découvrir comment diffuser votre publicité dans les gymnases de votre région.
+[Demandez une démo](/demo/) pour découvrir comment diffuser votre publicité dans les gymnases de votre région.
 
 ---
 
 ## À lire aussi
 
-- [Publicité en gymnase : un nouveau canal pour les commerces locaux](/blog/publicite-gymnase-nouveau-canal-commerces-locaux)
-- [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur)
-- [Régie digitale sport amateur : les avantages concrets](/blog/regie-digitale-sport-amateur-avantages)
-- [L'expérience match day dans les clubs de sport](/blog/experience-match-day-clubs-sport)
+- [Publicité en gymnase : un nouveau canal pour les commerces locaux](/blog/publicite-gymnase-nouveau-canal-commerces-locaux/)
+- [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur/)
+- [Régie digitale sport amateur : les avantages concrets](/blog/regie-digitale-sport-amateur-avantages/)
+- [L'expérience match day dans les clubs de sport](/blog/experience-match-day-clubs-sport/)

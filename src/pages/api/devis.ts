@@ -52,7 +52,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // ── Envoi emails via Resend ───────────────────────────────────
   const resendApiKey = import.meta.env.RESEND_API_KEY;
-  const contactEmail = import.meta.env.CONTACT_EMAIL || 'contact@neopro-communication.fr';
+  const contactEmail = import.meta.env.CONTACT_EMAIL || 'contact@kalonpartners.bzh';
 
   if (!resendApiKey) {
     console.error('[devis] RESEND_API_KEY manquante');
@@ -90,7 +90,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // ── Template HTML partagé ─────────────────────────────────────
   const recapHtml = `
-    <table style="width: 100%; border-collapse: collapse; background: #2f3935; border-radius: 12px; overflow: hidden;">
+    <table style="width: 100%; border-collapse: collapse; background: #06263f; border-radius: 12px; overflow: hidden;">
       <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
         <td style="padding: 10px 16px; color: rgba(255,255,255,0.7);">Formule</td>
         <td style="padding: 10px 16px; color: #fff; font-weight: bold; text-align: right;">${formuleName}</td>
@@ -98,7 +98,7 @@ export const POST: APIRoute = async ({ request }) => {
       ${videoLine}
       <tr>
         <td style="padding: 16px; color: #fff; font-size: 18px; font-weight: bold;">Total TTC</td>
-        <td style="padding: 16px; color: #81e3bc; font-size: 24px; font-weight: bold; text-align: right;">${totalFormatted}</td>
+        <td style="padding: 16px; color: #0e578e; font-size: 24px; font-weight: bold; text-align: right;">${totalFormatted}</td>
       </tr>
     </table>
   `;
@@ -106,13 +106,13 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     // ── Email 1 : récapitulatif au client ─────────────────────
     await resend.emails.send({
-      from: 'Neopro <noreply@neopro-communication.fr>',
+      from: 'MADXP <noreply@kalonpartners.bzh>',
       to: email,
-      subject: `Votre devis Neopro — ${formuleName}`,
+      subject: `Votre devis MADXP — ${formuleName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: #2f3935; padding: 30px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #81e3bc; margin: 0; font-size: 24px;">Votre devis Neopro</h1>
+          <div style="background: #06263f; padding: 30px; border-radius: 12px 12px 0 0;">
+            <h1 style="color: #0e578e; margin: 0; font-size: 24px;">Votre devis MADXP</h1>
             <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">${prenom ? `Merci ${prenom} !` : 'Merci !'}</p>
           </div>
           <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
@@ -125,7 +125,7 @@ export const POST: APIRoute = async ({ request }) => {
           <div style="background: #f8f9fa; padding: 20px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
             <p style="color: #6b7280; font-size: 13px; margin: 0;">
               Une question ? Contactez-nous a
-              <a href="mailto:${contactEmail}" style="color: #51b28b;">${contactEmail}</a>
+              <a href="mailto:${contactEmail}" style="color: #093a60;">${contactEmail}</a>
             </p>
           </div>
         </div>
@@ -134,18 +134,18 @@ export const POST: APIRoute = async ({ request }) => {
 
     // ── Email 2 : notification à l'équipe ─────────────────────
     await resend.emails.send({
-      from: 'Neopro <noreply@neopro-communication.fr>',
+      from: 'MADXP <noreply@kalonpartners.bzh>',
       to: contactEmail,
       replyTo: email,
       subject: `Nouveau devis — ${nom && prenom ? `${prenom} ${nom}` : email} (${formuleName})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: #2f3935; padding: 30px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #81e3bc; margin: 0; font-size: 24px;">Nouvelle demande de devis</h1>
+          <div style="background: #06263f; padding: 30px; border-radius: 12px 12px 0 0;">
+            <h1 style="color: #0e578e; margin: 0; font-size: 24px;">Nouvelle demande de devis</h1>
             <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">Depuis le formulaire du site</p>
           </div>
           <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
-            <h3 style="color: #101828; margin: 0 0 16px;">Coordonnees</h3>
+            <h3 style="color: #0a0b0d; margin: 0 0 16px;">Coordonnees</h3>
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
               ${nom ? `<tr>
                 <td style="padding: 6px 0; color: #6b7280; width: 120px;">Nom</td>
@@ -157,14 +157,14 @@ export const POST: APIRoute = async ({ request }) => {
               </tr>` : ''}
               <tr>
                 <td style="padding: 6px 0; color: #6b7280;">Email</td>
-                <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #51b28b;">${email}</a></td>
+                <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #093a60;">${email}</a></td>
               </tr>
               ${club ? `<tr>
                 <td style="padding: 6px 0; color: #6b7280;">Club</td>
                 <td style="padding: 6px 0; font-weight: bold;">${club}</td>
               </tr>` : ''}
             </table>
-            <h3 style="color: #101828; margin: 0 0 16px;">Recapitulatif</h3>
+            <h3 style="color: #0a0b0d; margin: 0 0 16px;">Recapitulatif</h3>
             ${recapHtml}
             <div style="margin-top: 20px; padding: 12px; background: #fffbeb; border-radius: 8px;">
               <p style="color: #92400e; font-size: 13px; margin: 0;">

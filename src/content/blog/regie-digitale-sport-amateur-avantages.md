@@ -2,7 +2,7 @@
 title: "Régie digitale en sport amateur : 7 avantages concrets pour votre club"
 description: "Découvrez comment une régie digitale transforme l'expérience match, fidélise les sponsors et professionnalise l'image de votre club de sport amateur."
 date: 2026-03-18
-author: Neopro
+author: MADXP
 tags: ["régie digitale", "sport amateur", "avantages", "clubs"]
 ---
 
@@ -10,7 +10,7 @@ Le terme **"régie digitale"** peut sembler réservé aux clubs professionnels. 
 
 ## 1. Professionnaliser l'expérience match
 
-C'est l'effet "waouh" garanti. Quand les spectateurs arrivent dans votre gymnase et voient un **écran qui diffuse des animations professionnelles**, la perception change instantanément. C'est toute l'[expérience match-day](/blog/experience-match-day-clubs-sport) qui monte d'un cran.
+C'est l'effet "waouh" garanti. Quand les spectateurs arrivent dans votre gymnase et voient un **écran qui diffuse des animations professionnelles**, la perception change instantanément. C'est toute l'[expérience match-day](/blog/experience-match-day-clubs-sport/) qui monte d'un cran.
 
 Les joueurs aussi sont impactés : voir leurs célébrations ou leurs présentations à l'écran crée un sentiment de fierté et d'appartenance. Comme dans les clubs pro.
 
@@ -22,7 +22,7 @@ Vos panneaux bord terrain sont tous vendus ? Avec un écran digital, vous créez
 - Messages personnalisés par partenaire
 - Diffusion possible aussi pendant les entraînements et tournois
 
-C'est une nouvelle source de revenus, tout simplement. Et c'est aussi un canal pour les [annonceurs locaux](/annonceurs) qui cherchent une audience captive.
+C'est une nouvelle source de revenus, tout simplement. Et c'est aussi un canal pour les [annonceurs locaux](/annonceurs/) qui cherchent une audience captive.
 
 ## 3. Faciliter la gestion jour de match
 
@@ -73,4 +73,4 @@ C'est ce niveau de professionnalisme qui transforme un sponsor ponctuel en **par
 
 Les solutions de régie digitale pour clubs amateurs démarrent à **1 500 €/an HT**. C'est un investissement qui se rentabilise dès que vous obtenez un ou deux sponsors supplémentaires grâce à l'écran.
 
-[Consultez les offres Neopro](/offres) pour choisir la formule adaptée à votre club, ou [demandez une présentation gratuite](/demo). Pour en savoir plus sur l'[affichage dynamique sportif](/blog/affichage-dynamique-sport-guide-complet), consultez notre guide complet.
+[Consultez les offres MADXP](/offres/) pour choisir la formule adaptée à votre club, ou [demandez une présentation gratuite](/demo/). Pour en savoir plus sur l'[affichage dynamique sportif](/blog/affichage-dynamique-sport-guide-complet/), consultez notre guide complet.

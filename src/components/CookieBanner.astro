@@ -13,11 +13,11 @@ const t = useTranslations(locale);
   role="dialog"
   aria-label="Gestion des cookies"
 >
-  <div class="bg-[#101828] border-t border-[rgba(255,255,255,0.1)] px-5 py-4 md:px-10 md:py-5">
+  <div class="bg-[#0a0b0d] border-t border-[rgba(255,255,255,0.1)] px-5 py-4 md:px-10 md:py-5">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
       <p class="text-[14px] md:text-[15px] text-[rgba(255,255,255,0.8)] leading-relaxed flex-1">
         {t('cookie.text')}
-        <a href={localePath('/politique-de-confidentialite', locale)} class="text-[#81e3bc] underline hover:no-underline">{t('cookie.learn')}</a>
+        <a href={localePath('/politique-de-confidentialite', locale)} class="text-[#0e578e] underline hover:no-underline">{t('cookie.learn')}</a>
       </p>
       <div class="flex gap-3 shrink-0">
         <button
@@ -28,7 +28,7 @@ const t = useTranslations(locale);
         </button>
         <button
           id="cookie-accept"
-          class="px-5 py-2 text-[14px] font-medium text-[#101828] bg-[#81e3bc] rounded-full hover:bg-[#51b28b] transition-colors cursor-pointer"
+          class="px-5 py-2 text-[14px] font-medium text-[#0a0b0d] bg-[#0e578e] rounded-full hover:bg-[#093a60] transition-colors cursor-pointer"
         >
           {t('cookie.accept')}
         </button>
@@ -39,7 +39,7 @@ const t = useTranslations(locale);
 
 <script is:inline>
   (function () {
-    var COOKIE_KEY = 'neopro_cookie_consent';
+    var COOKIE_KEY = 'madxp_cookie_consent';
     var banner = document.getElementById('cookie-banner');
     var consent = localStorage.getItem(COOKIE_KEY);
 

@@ -6,9 +6,6 @@ import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
 import { buildAggregateOfferJsonLd, buildFAQPageJsonLd } from '@/lib/jsonLd';
 
-// ── Images ───────────────────────────────────────────────────────
-import heroImg from '@/assets/images/hero-offres.webp';
-
 // ── Données ──────────────────────────────────────────────────────
 import { plans, playPlan, comparisonTable, videoPackages, additionalOptions, chainSteps } from '@/data/offres-v2';
 import { testimonials } from '@/data/temoignages';
@@ -16,83 +13,83 @@ import { clubs } from '@/data/clubs';
 
 // ── Helpers ──────────────────────────────────────────────────────
 const borderColorMap: Record<string, string> = {
-  yellow: 'border-[#fdbe00]',
-  green: 'border-[#51b28b]',
-  pink: 'border-[#fe6aa6]',
+  yellow: 'border-[#d9870b]',
+  green: 'border-[#093a60]',
+  pink: 'border-[#0e578e]',
   black: 'border-gray-200',
 };
 
 const priceColorMap: Record<string, string> = {
-  yellow: 'text-[#fdbe00]',
-  green: 'text-[#51b28b]',
-  pink: 'text-[#fe6aa6]',
-  black: 'text-[#101828]',
+  yellow: 'text-[#d9870b]',
+  green: 'text-[#093a60]',
+  pink: 'text-[#0e578e]',
+  black: 'text-[#0a0b0d]',
 };
 
 // ── SEO ──────────────────────────────────────────────────────────
 const title = 'Offres Régie sport digitale — À partir de 99 €/mois';
-const description = "Découvrez les offres Neopro, la régie sport digitale clé en main pour clubs : Play (99 €/mois sans matériel), Club (189 €/mois), Pro (249 €/mois) et Premium (349 €/mois). Finançable par vos partenaires.";
+const description = "Découvrez les offres MADXP, la régie sport digitale clé en main pour clubs : Play (99 €/mois sans matériel), Club (189 €/mois), Pro (249 €/mois) et Premium (349 €/mois). Finançable par vos partenaires.";
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const allPlans = [playPlan, ...plans];
 const faqJsonLd = buildFAQPageJsonLd([
   {
-    question: 'Combien coûte Neopro ?',
-    answer: "Les offres Neopro démarrent à 99 €/an (Play, sans matériel) puis 189 €/an (Club), 249 €/an (Pro) et 349 €/an (Premium) — engagement 9 mois minimum. Tous les tarifs s'entendent hors taxes et boîtier fourni sur les offres Club et supérieures.",
+    question: 'Combien coûte MADXP ?',
+    answer: "Les offres MADXP démarrent à 99 €/an (Play, sans matériel) puis 189 €/an (Club), 249 €/an (Pro) et 349 €/an (Premium) — engagement 9 mois minimum. Tous les tarifs s'entendent hors taxes et boîtier fourni sur les offres Club et supérieures.",
   },
   {
     question: 'Faut-il acheter le matériel (écrans, boîtier) ?',
-    answer: "Non, le boîtier Neopro est prêté avec les offres Club, Pro et Premium. Vous pouvez utiliser vos propres écrans — le boîtier se branche en HDMI sur n'importe quelle télévision ou écran. Si vous avez besoin d'écrans, Neopro peut vous accompagner sur le choix et l'installation.",
+    answer: "Non, le boîtier MADXP est prêté avec les offres Club, Pro et Premium. Vous pouvez utiliser vos propres écrans — le boîtier se branche en HDMI sur n'importe quelle télévision ou écran. Si vous avez besoin d'écrans, MADXP peut vous accompagner sur le choix et l'installation.",
   },
   {
-    question: 'Comment financer Neopro grâce à mes partenaires ?',
-    answer: "La solution Neopro est conçue pour être financée par vos sponsors. En affichant leurs logos et vidéos sur votre écran, vous leur offrez une visibilité ciblée — un argument commercial solide. Nous mettons à disposition un document partenaires clé en main pour faciliter vos démarches.",
+    question: 'Comment financer MADXP grâce à mes partenaires ?',
+    answer: "La solution MADXP est conçue pour être financée par vos sponsors. En affichant leurs logos et vidéos sur votre écran, vous leur offrez une visibilité ciblée — un argument commercial solide. Nous mettons à disposition un document partenaires clé en main pour faciliter vos démarches.",
   },
   {
-    question: "Neopro fonctionne-t-il sans connexion internet ni wifi ?",
-    answer: "Oui. Le boîtier Neopro intègre une connexion 4G incluse dans l'abonnement — pas besoin du wifi de votre salle. La mise à jour des contenus s'effectue à distance depuis notre plateforme, même dans des gymnases sans infrastructure réseau.",
+    question: "MADXP fonctionne-t-il sans connexion internet ni wifi ?",
+    answer: "Oui. Le boîtier MADXP intègre une connexion 4G incluse dans l'abonnement — pas besoin du wifi de votre salle. La mise à jour des contenus s'effectue à distance depuis notre plateforme, même dans des gymnases sans infrastructure réseau.",
   },
   {
     question: 'Pour quels sports et quels niveaux de clubs ?',
-    answer: "Neopro s'adapte à tous les sports en salle : handball, basketball, volleyball, football, futsal, badminton, hockey, rugby à 5, etc. La solution est pensée aussi bien pour les clubs professionnels que pour les associations amateures de championnat régional ou départemental.",
+    answer: "MADXP s'adapte à tous les sports en salle : handball, basketball, volleyball, football, futsal, badminton, hockey, rugby à 5, etc. La solution est pensée aussi bien pour les clubs professionnels que pour les associations amateures de championnat régional ou départemental.",
   },
   {
     question: "Y a-t-il un engagement de durée ?",
-    answer: "Les offres Neopro sont souscrites avec un engagement minimum de 9 mois. En facturation annuelle, vous bénéficiez du tarif réduit. En facturation mensuelle, l'engagement 9 mois reste requis mais vous offre plus de flexibilité de trésorerie.",
+    answer: "Les offres MADXP sont souscrites avec un engagement minimum de 9 mois. En facturation annuelle, vous bénéficiez du tarif réduit. En facturation mensuelle, l'engagement 9 mois reste requis mais vous offre plus de flexibilité de trésorerie.",
   },
 ]);
 
 const offerJsonLd = buildAggregateOfferJsonLd(
   allPlans.map((plan) => ({
-    name: `Neopro ${plan.name}`,
+    name: `MADXP ${plan.name}`,
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
-    url: `${siteUrl}/devis?offre=${plan.slug}`,
+    url: `${siteUrl}/devis/?offre=${plan.slug}`,
   })),
-  'Neopro',
+  'MADXP',
   siteUrl,
 );
 ---
 
 <BaseLayout title={title} description={description} extraJsonLd={[offerJsonLd, faqJsonLd]}>
-  <!-- Hero -->
-  <section class="relative h-[743px] overflow-hidden">
-    <img
-      src="/images/image_offre_accueil.jpg"
-      alt="Vue d'un gymnase équipé d'un écran digital Neopro avec les offres partenaires affichées"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-    />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LES OFFRES</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">Adaptées à</span><br />
-        <span class="font-black">vos besoins</span>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">Les offres</p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
+        Adaptées à <span class="text-madxp-light">vos besoins</span>
       </h1>
-      <div>
-        <Button href="/demo" variant="green" arrow>Demander une démo gratuite</Button>
+      <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[560px]">
+        Location ou achat, SaaS ou boîtier. Finançable par vos partenaires, clé en main.
+      </p>
+      <div class="mt-9">
+        <Button href="/demo/" variant="white" arrow>Demander une démo gratuite</Button>
       </div>
     </div>
   </section>
@@ -100,29 +97,29 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Offres -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[30px] md:pb-[40px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">Nos offres</h2>
-      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Commencez sans matériel avec <strong>Play</strong>, ou passez directement au boîtier avec <strong>Club</strong>, <strong>Pro</strong> ou <strong>Premium</strong>.</p>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[20px]">Nos offres</h2>
+      <p class="text-[18px] text-madxp-gray mb-[40px] max-w-[700px]">Commencez sans matériel avec <strong>Play</strong>, ou passez directement au boîtier avec <strong>Club</strong>, <strong>Pro</strong> ou <strong>Premium</strong>.</p>
 
       <!-- PLAY bandeau -->
       <div class="relative bg-white border border-gray-200 rounded-[20px] p-[30px] md:p-[40px] mb-[50px] flex flex-col md:flex-row gap-[30px] items-start md:items-center shadow-sm">
-        <span class="absolute -top-3 left-[30px] bg-[#81e3bc] text-[#2f3935] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
+        <span class="absolute -top-3 left-[30px] bg-[#0e578e] text-[#06263f] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
           Sans matériel · SaaS
         </span>
         <div class="flex-1">
-          <h3 class="text-[28px] md:text-[32px] font-bold text-[#101828]">{playPlan.name}</h3>
-          <p class="font-playfair italic text-[20px] text-neo-gray mt-[4px]">« {playPlan.pitch} »</p>
-          <p class="text-[15px] text-[#101828] mt-[16px] max-w-[520px]">Accès au player web, vidéos illimitées, télécommande cloud. Idéal pour démarrer en quelques minutes, sans installation.</p>
+          <h3 class="text-[28px] md:text-[32px] font-bold text-[#0a0b0d]">{playPlan.name}</h3>
+          <p class="font-display text-[20px] text-madxp-gray mt-[4px]">« {playPlan.pitch} »</p>
+          <p class="text-[15px] text-[#0a0b0d] mt-[16px] max-w-[520px]">Accès au player web, vidéos illimitées, télécommande cloud. Idéal pour démarrer en quelques minutes, sans installation.</p>
         </div>
         <div class="shrink-0 flex flex-col items-start md:items-end gap-[14px]">
           <div class="md:text-right">
             <p
-              class="text-[32px] font-bold text-[#101828]"
+              class="text-[32px] font-bold text-[#0a0b0d]"
               data-price-annual={playPlan.priceAnnual}
               data-price-monthly={playPlan.priceMonthly}
-            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span></p>
+            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-madxp-gray js-suffix">/an</span></p>
             <p class="text-[13px] text-[#4a5565] js-secondary hidden">Engagement 9 mois minimum</p>
           </div>
-          <Button href="/demo" variant="green" arrow>Démarrer avec Play</Button>
+          <Button href="/demo/" variant="green" arrow>Démarrer avec Play</Button>
         </div>
       </div>
 
@@ -132,7 +129,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="annual" aria-pressed="true">Annuel</button>
           <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="monthly" aria-pressed="false">Mensuel</button>
         </div>
-        <p class="text-[13px] text-neo-green-dark font-medium">Annuel = tarif réduit · Mensuel = engagement 9 mois</p>
+        <p class="text-[13px] text-madxp-blue-deep font-medium">Annuel = tarif réduit · Mensuel = engagement 9 mois</p>
       </div>
 
       <!-- 3 cartes Club / Pro / Premium -->
@@ -142,60 +139,60 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'} ${offre.popular ? 'lg:scale-[1.03] shadow-xl' : ''}`}
           >
             {offre.popular && (
-              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0e578e] text-[#06263f] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
                 Recommandée
               </span>
             )}
             {(offre.slug === 'pro' || offre.slug === 'premium') && (
-              <span class="absolute top-[14px] right-[14px] bg-[#fdbe00] text-[#2f3935] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
+              <span class="absolute top-[14px] right-[14px] bg-[#d9870b] text-[#06263f] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
                 ★ Promo 31 mai
               </span>
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
+              <p class="font-display text-[16px] text-madxp-gray mt-[2px]">« {offre.pitch} »</p>
               {offre.slug === 'pro' ? (
                 <>
-                  <p class="text-[14px] text-neo-gray line-through mt-[12px] mb-[-4px]">
+                  <p class="text-[14px] text-madxp-gray line-through mt-[12px] mb-[-4px]">
                     <span data-price-annual={offre.priceAnnual} data-price-monthly={offre.priceMonthly}><span class="js-price">{offre.priceAnnual.toLocaleString('fr-FR')} €</span><span class="js-suffix">/an</span></span>
                   </p>
                   <p
-                    class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                    class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-madxp-blue-deep'}`}
                     data-price-annual={Math.round(offre.priceAnnual * 0.8)}
                     data-price-monthly={Math.round(offre.priceMonthly * 0.8)}
                   >
-                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span>
-                    <span class="text-[12px] font-bold text-[#51b28b] bg-[#e6f5ee] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
+                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-madxp-gray js-suffix">/an</span>
+                    <span class="text-[12px] font-bold text-[#093a60] bg-[#e4edf4] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
                   </p>
-                  <p class="text-[12px] text-[#51b28b] font-semibold mt-[4px]">Offre valable jusqu'au 31 mai</p>
+                  <p class="text-[12px] text-[#093a60] font-semibold mt-[4px]">Offre valable jusqu'au 31 mai</p>
                 </>
               ) : (
                 <p
-                  class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                  class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-madxp-blue-deep'}`}
                   data-price-annual={offre.priceAnnual}
                   data-price-monthly={offre.priceMonthly}
                 >
-                  <span class="js-price">{offre.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/an</span>
+                  <span class="js-price">{offre.priceAnnual.toLocaleString('fr-FR')} €</span><span class="text-[16px] font-normal text-madxp-gray js-suffix">/an</span>
                 </p>
               )}
               {offre.slug === 'premium' && (
-                <p class="text-[12px] text-[#fe6aa6] font-semibold mt-[6px] leading-snug">
+                <p class="text-[12px] text-[#0e578e] font-semibold mt-[6px] leading-snug">
                   ★ Shooting photo/vidéo + production offerts pour 1 équipe (jusqu'au 31 mai)
                 </p>
               )}
-              <p class="text-[13px] text-neo-gray mt-[4px] js-secondary hidden">Engagement 9 mois minimum</p>
+              <p class="text-[13px] text-madxp-gray mt-[4px] js-secondary hidden">Engagement 9 mois minimum</p>
             </div>
             <div class="border-t border-gray-200 mb-[16px]"></div>
             <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
                 f.label.startsWith('Tout le pack') ? (
-                  <li class="-mt-[10px] text-[13px] font-semibold uppercase tracking-wider text-neo-gray">
+                  <li class="-mt-[10px] text-[13px] font-semibold uppercase tracking-wider text-madxp-gray">
                     {f.label.replace(/ :$/, '')}
                   </li>
                 ) : (
-                  <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                  <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#0a0b0d]' : 'text-[#c0c5cc] italic'}`}>
                     {f.included ? (
-                      <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                      <svg class="w-5 h-5 shrink-0 text-madxp-blue-deep mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
                     ) : (
                       <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
                     )}
@@ -208,7 +205,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               Engagement 9 mois · Boîtier prêté inclus
             </p>
-            <Button href="/demo" variant={offre.buttonVariant} arrow>
+            <Button href="/demo/" variant={offre.buttonVariant} arrow>
               Choisir cette offre
             </Button>
           </div>
@@ -219,10 +216,10 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       <details class="mt-[40px] bg-white rounded-[20px] group border border-gray-200">
         <summary class="cursor-pointer list-none px-[30px] py-[24px] flex items-center justify-between gap-[20px] hover:bg-[#fafafa] transition-colors rounded-[20px]">
           <div class="flex-1">
-            <p class="text-[18px] md:text-[22px] font-bold text-[#101828]">Comparer toutes les fonctionnalités</p>
-            <p class="text-[13px] text-neo-gray mt-[2px]">Vue détaillée des 4 offres ligne par ligne</p>
+            <p class="text-[18px] md:text-[22px] font-bold text-[#0a0b0d]">Comparer toutes les fonctionnalités</p>
+            <p class="text-[13px] text-madxp-gray mt-[2px]">Vue détaillée des 4 offres ligne par ligne</p>
           </div>
-          <span class="shrink-0 inline-flex items-center gap-2 bg-[#f5f5f5] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-medium text-[#101828]">
+          <span class="shrink-0 inline-flex items-center gap-2 bg-[#f5f5f5] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-medium text-[#0a0b0d]">
             <span class="group-open:hidden">Voir le tableau</span>
             <span class="hidden group-open:inline">Masquer</span>
             <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
@@ -232,29 +229,29 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           <table class="w-full border-collapse min-w-[640px]">
             <thead>
               <tr class="border-b-2 border-gray-200">
-                <th class="text-left py-[14px] pr-[10px] text-[14px] font-bold text-[#101828] w-[40%]"></th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#101828]">Play</th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#c49800]">Club</th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-neo-green-dark relative">
+                <th class="text-left py-[14px] pr-[10px] text-[14px] font-bold text-[#0a0b0d] w-[40%]"></th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#0a0b0d]">Play</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#d9870b]">Club</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-madxp-blue-deep relative">
                   Pro
-                  <span class="absolute -top-[2px] left-1/2 -translate-x-1/2 text-[9px] bg-[#81e3bc] text-[#2f3935] font-bold px-2 py-[1px] rounded-full uppercase tracking-wider whitespace-nowrap">★</span>
+                  <span class="absolute -top-[2px] left-1/2 -translate-x-1/2 text-[9px] bg-[#0e578e] text-[#06263f] font-bold px-2 py-[1px] rounded-full uppercase tracking-wider whitespace-nowrap">★</span>
                 </th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#fe6aa6]">Premium</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#0e578e]">Premium</th>
               </tr>
             </thead>
             <tbody>
               {comparisonTable.map((cat) => (
                 <>
                   <tr>
-                    <td colspan="5" class="pt-[24px] pb-[8px] text-[12px] font-bold uppercase tracking-wider text-neo-gray">{cat.title}</td>
+                    <td colspan="5" class="pt-[24px] pb-[8px] text-[12px] font-bold uppercase tracking-wider text-madxp-gray">{cat.title}</td>
                   </tr>
                   {cat.rows.map((row) => (
                     <tr class="border-b border-gray-100">
-                      <td class="py-[12px] pr-[10px] text-[14px] text-[#101828]">{row.label}</td>
+                      <td class="py-[12px] pr-[10px] text-[14px] text-[#0a0b0d]">{row.label}</td>
                       {row.values.map((v) => (
                         <td class="text-center py-[12px] px-[8px]">
                           {v === true ? (
-                            <svg class="w-5 h-5 inline text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            <svg class="w-5 h-5 inline text-madxp-blue-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                           ) : v === false ? (
                             <span class="text-[#c0c5cc] text-[18px]">—</span>
                           ) : (
@@ -278,11 +275,11 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[40px] max-w-[760px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[12px]">EN COMPLÉMENT</p>
-        <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#101828] mb-[12px]">
-          <span class="font-playfair italic">Compléter</span> votre offre
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[12px]">EN COMPLÉMENT</p>
+        <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#0a0b0d] mb-[12px]">
+          <span class="font-display">Compléter</span> votre offre
         </h2>
-        <p class="text-[16px] md:text-[18px] text-neo-gray">À combiner avec n'importe quelle offre — chiffrage personnalisé sur demande.</p>
+        <p class="text-[16px] md:text-[18px] text-madxp-gray">À combiner avec n'importe quelle offre — chiffrage personnalisé sur demande.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px]">
@@ -290,23 +287,23 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <!-- Colonne 1 : Production de contenu (3 packs vidéo) -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
-            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#79e8fa] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">🎬</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Production de contenu</h3>
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#4a8bbf] text-[#06263f] flex items-center justify-center font-bold text-[18px]">🎬</span>
+            <h3 class="text-[20px] font-bold text-[#0a0b0d]">Production de contenu</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">On shoote vos joueurs et on les intègre à nos templates premium.</p>
+          <p class="text-[13px] text-madxp-gray italic mb-[18px]">On shoote vos joueurs et on les intègre à nos templates premium.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {videoPackages.map((pkg) => (
-              <li class="border-l-2 border-[#79e8fa] pl-[12px]">
-                <p class="text-[14px] font-bold text-[#101828] flex items-center gap-2">
+              <li class="border-l-2 border-[#4a8bbf] pl-[12px]">
+                <p class="text-[14px] font-bold text-[#0a0b0d] flex items-center gap-2">
                   {pkg.name}
-                  {pkg.popular && <span class="text-[10px] bg-[#79e8fa] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">★ Top</span>}
-                  {pkg.name === 'Classique' && <span class="text-[10px] bg-[#81e3bc] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Inclus</span>}
+                  {pkg.popular && <span class="text-[10px] bg-[#4a8bbf] text-[#06263f] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">★ Top</span>}
+                  {pkg.name === 'Classique' && <span class="text-[10px] bg-[#0e578e] text-[#06263f] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Inclus</span>}
                 </p>
-                <p class="text-[12px] text-neo-gray mb-[6px]">{pkg.description}</p>
+                <p class="text-[12px] text-madxp-gray mb-[6px]">{pkg.description}</p>
                 <ul class="flex flex-col gap-[3px]">
                   {pkg.features.map((f) => (
                     <li class="text-[12px] text-[#4a5565] flex items-start gap-[6px]">
-                      <span class="text-[#1ec5e0] mt-[1px]">·</span>{f}
+                      <span class="text-[#4a8bbf] mt-[1px]">·</span>{f}
                     </li>
                   ))}
                 </ul>
@@ -318,17 +315,17 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <!-- Colonne 2 : Écrans & installation -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
-            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fdbe00] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">📺</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Écrans & installation</h3>
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#d9870b] text-[#06263f] flex items-center justify-center font-bold text-[18px]">📺</span>
+            <h3 class="text-[20px] font-bold text-[#0a0b0d]">Écrans & installation</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">On vous aide à choisir et installer les écrans qui vont avec.</p>
+          <p class="text-[13px] text-madxp-gray italic mb-[18px]">On vous aide à choisir et installer les écrans qui vont avec.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {chainSteps[3].services.map((opt) => (
               <li class="flex items-start gap-[10px]">
-                <svg class="w-4 h-4 shrink-0 text-[#fdbe00] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 shrink-0 text-[#d9870b] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                 <div>
-                  <p class="text-[14px] text-[#101828] leading-snug">{opt.label}</p>
-                  {opt.hint && <p class="text-[12px] text-neo-gray mt-[1px]">{opt.hint}</p>}
+                  <p class="text-[14px] text-[#0a0b0d] leading-snug">{opt.label}</p>
+                  {opt.hint && <p class="text-[12px] text-madxp-gray mt-[1px]">{opt.hint}</p>}
                 </div>
               </li>
             ))}
@@ -338,21 +335,21 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <!-- Colonne 3 : Options à la carte -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
-            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fe6aa6] text-white flex items-center justify-center font-bold text-[18px]">+</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Options à la carte</h3>
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#0e578e] text-white flex items-center justify-center font-bold text-[18px]">+</span>
+            <h3 class="text-[20px] font-bold text-[#0a0b0d]">Options à la carte</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">Pour personnaliser et aller plus loin avec votre offre.</p>
+          <p class="text-[13px] text-madxp-gray italic mb-[18px]">Pour personnaliser et aller plus loin avec votre offre.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {additionalOptions.map((cat) => (
               <li>
-                <p class="text-[11px] font-bold uppercase tracking-wider text-neo-gray mb-[6px]">{cat.title}</p>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-madxp-gray mb-[6px]">{cat.title}</p>
                 <ul class="flex flex-col gap-[6px]">
                   {cat.options.map((opt) => (
                     <li class="flex items-start gap-[8px]">
-                      <svg class="w-4 h-4 shrink-0 text-[#fe6aa6] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                      <svg class="w-4 h-4 shrink-0 text-[#0e578e] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                       <div>
-                        <p class="text-[13px] text-[#101828] leading-snug">{opt.label}</p>
-                        <p class="text-[11px] text-neo-gray">{opt.availability}</p>
+                        <p class="text-[13px] text-[#0a0b0d] leading-snug">{opt.label}</p>
+                        <p class="text-[11px] text-madxp-gray">{opt.availability}</p>
                       </div>
                     </li>
                   ))}
@@ -365,7 +362,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       </div>
 
       <div class="text-center mt-[30px]">
-        <Button href="/demo" variant="black" arrow>Construire mon offre sur mesure</Button>
+        <Button href="/demo/" variant="black" arrow>Construire mon offre sur mesure</Button>
       </div>
     </div>
   </section>
@@ -373,9 +370,9 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Finançable par vos partenaires -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
-      <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
+      <div class="bg-[rgba(14,87,142,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
         <div class="flex-1">
-          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[20px]">
             Finançable par vos partenaires
           </h2>
           <p class="text-[18px] text-[#4a5565]">Notre solution a pour but d'être financée par vos partenaires.<br />Pour cela, nous vous avons préparé un document explicatif prêt à leur être partagé.</p>
@@ -387,11 +384,11 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               name="email"
               placeholder="Votre email"
               required
-              class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
+              class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-madxp-blue-deep transition-colors"
             />
             <button
               type="submit"
-              class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
+              class="h-[48px] px-6 bg-[#06263f] text-white text-[16px] font-medium rounded-full hover:bg-[#0a0b0d] transition-colors whitespace-nowrap"
             >
               Recevoir le document
             </button>
@@ -405,12 +402,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Flotte (opérateurs / ligues / fédérations) -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[80px]">
     <div class="max-w-[1320px] mx-auto">
-      <div class="relative bg-[#2f3935] text-white rounded-[20px] overflow-hidden p-[36px] md:p-[50px]">
+      <div class="relative bg-[#06263f] text-white rounded-[20px] overflow-hidden p-[36px] md:p-[50px]">
         <div class="relative flex flex-col lg:flex-row gap-[32px] items-start lg:items-center justify-between">
           <div class="flex-1 max-w-[640px]">
-            <p class="text-[13px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[12px]">FLOTTE · OFFRE DÉDIÉE</p>
+            <p class="text-[13px] tracking-[2px] text-[#0e578e] uppercase font-bold mb-[12px]">FLOTTE · OFFRE DÉDIÉE</p>
             <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold mb-[14px]">
-              <span class="font-playfair italic">Vous gérez</span> plusieurs clubs ?
+              <span class="font-display">Vous gérez</span> plusieurs clubs ?
             </h2>
             <p class="text-[15px] md:text-[16px] text-[#d9d9d9] mb-[20px]">Ligues, fédérations, opérateurs et réseaux de clubs : déploiement groupé, dashboard centralisé, tarif dégressif.</p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-[20px] gap-y-[8px] mb-[24px]">
@@ -423,17 +420,17 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 'Interlocuteur dédié',
               ].map((item) => (
                 <li class="flex items-start gap-[8px] text-[14px] text-[#d9d9d9]">
-                  <svg class="w-4 h-4 shrink-0 text-[#81e3bc] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                  <svg class="w-4 h-4 shrink-0 text-[#0e578e] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                   {item}
                 </li>
               ))}
             </ul>
-            <Button href="/demo" variant="green" arrow>Demander une démo flotte</Button>
+            <Button href="/demo/" variant="green" arrow>Demander une démo flotte</Button>
           </div>
-          <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#1a201d] rounded-[16px] px-[40px] py-[36px] border border-[#81e3bc]/20">
-            <p class="text-[64px] font-black text-[#81e3bc] leading-none">5+</p>
+          <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#0a0b0d] rounded-[16px] px-[40px] py-[36px] border border-[#0e578e]/20">
+            <p class="text-[64px] font-black text-[#0e578e] leading-none">5+</p>
             <p class="text-[13px] text-[#d9d9d9] uppercase tracking-wider mt-[8px]">clubs / sites</p>
-            <p class="text-[12px] text-neo-gray mt-[12px] text-center max-w-[140px]">à partir desquels la flotte devient pertinente</p>
+            <p class="text-[12px] text-madxp-gray mt-[12px] text-center max-w-[140px]">à partir desquels la flotte devient pertinente</p>
           </div>
         </div>
       </div>
@@ -443,21 +440,21 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- FAQ -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-gray-50">
     <div class="max-w-[800px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] font-bold text-[#101828] mb-[10px]">Questions fréquentes</h2>
-      <p class="text-[16px] text-neo-gray mb-[40px]">Tout ce qu'il faut savoir avant de se lancer.</p>
+      <h2 class="text-[28px] md:text-[36px] font-bold text-[#0a0b0d] mb-[10px]">Questions fréquentes</h2>
+      <p class="text-[16px] text-madxp-gray mb-[40px]">Tout ce qu'il faut savoir avant de se lancer.</p>
       <div class="flex flex-col gap-[12px]">
         {[
           {
-            q: 'Combien coûte Neopro ?',
+            q: 'Combien coûte MADXP ?',
             a: "Les offres démarrent à 99 €/an (Play, sans matériel), puis 189 €/an (Club), 249 €/an (Pro) et 349 €/an (Premium). Engagement 9 mois minimum, boîtier prêté inclus sur Club et supérieures.",
           },
           {
             q: 'Faut-il acheter des écrans ou un boîtier ?',
-            a: "Non. Le boîtier Neopro est prêté avec votre abonnement (offres Club+). Il se branche en HDMI sur n'importe quelle télévision ou écran existant — aucun achat nécessaire pour démarrer.",
+            a: "Non. Le boîtier MADXP est prêté avec votre abonnement (offres Club+). Il se branche en HDMI sur n'importe quelle télévision ou écran existant — aucun achat nécessaire pour démarrer.",
           },
           {
-            q: 'Comment financer Neopro grâce à mes partenaires ?',
-            a: "Neopro est conçu pour être rentabilisé par vos sponsors. En leur offrant une visibilité ciblée sur vos écrans (logos, vidéos, temps de passage), vous disposez d'un argument commercial concret. Nous fournissons un document partenaires clé en main pour faciliter vos démarches.",
+            q: 'Comment financer MADXP grâce à mes partenaires ?',
+            a: "MADXP est conçu pour être rentabilisé par vos sponsors. En leur offrant une visibilité ciblée sur vos écrans (logos, vidéos, temps de passage), vous disposez d'un argument commercial concret. Nous fournissons un document partenaires clé en main pour faciliter vos démarches.",
           },
           {
             q: 'La solution fonctionne-t-elle sans wifi ?',
@@ -465,7 +462,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           },
           {
             q: 'Pour quels sports et niveaux de clubs ?',
-            a: "Neopro s'adapte à tous les sports en salle : handball, basketball, volleyball, futsal, badminton, hockey, rugby... et à tous les niveaux, du club professionnel à l'association de championnat régional.",
+            a: "MADXP s'adapte à tous les sports en salle : handball, basketball, volleyball, futsal, badminton, hockey, rugby... et à tous les niveaux, du club professionnel à l'association de championnat régional.",
           },
           {
             q: "Y a-t-il un engagement de durée ?",
@@ -473,11 +470,11 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           },
         ].map((item) => (
           <details class="bg-white rounded-[16px] border border-gray-200 group">
-            <summary class="flex items-center justify-between gap-4 px-[24px] py-[20px] cursor-pointer list-none font-bold text-[16px] text-[#101828]">
+            <summary class="flex items-center justify-between gap-4 px-[24px] py-[20px] cursor-pointer list-none font-bold text-[16px] text-[#0a0b0d]">
               {item.q}
-              <span class="shrink-0 text-neo-green-dark text-[20px] group-open:rotate-45 transition-transform">+</span>
+              <span class="shrink-0 text-madxp-blue-deep text-[20px] group-open:rotate-45 transition-transform">+</span>
             </summary>
-            <p class="px-[24px] pb-[20px] text-[15px] text-neo-gray leading-relaxed">{item.a}</p>
+            <p class="px-[24px] pb-[20px] text-[15px] text-madxp-gray leading-relaxed">{item.a}</p>
           </details>
         ))}
       </div>
@@ -498,7 +495,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 
 <style>
   .js-toggle-btn[aria-pressed="true"] {
-    background-color: #101828;
+    background-color: #0a0b0d;
     color: #ffffff;
   }
   .js-toggle-btn[aria-pressed="false"] {
@@ -566,7 +563,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 
         if (res.ok) {
           msg.textContent = 'Document envoyé ! Vérifiez votre boîte mail.';
-          msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
+          msg.className = 'text-[14px] mt-2 w-full text-madxp-blue-deep';
           emailInput.value = '';
         } else {
           msg.textContent = 'Une erreur est survenue.';

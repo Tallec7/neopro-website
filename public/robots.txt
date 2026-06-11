@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+Sitemap: https://madxp.kalonpartners.bzh/sitemap-index.xml
+Sitemap: https://madxp.kalonpartners.bzh/sitemap-images.xml

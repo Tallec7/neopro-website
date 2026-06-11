@@ -45,7 +45,7 @@ export const colorPanels: ColorPanel[] = [
       'Wöchentliche Videobetreuung & Updates',
       'Volle Autonomie-Option: Admin-Zugang mit visueller/Video-Integration',
     ],
-    bgColor: 'bg-[#3d3036]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Schlüsselfertige Lösung',
@@ -55,7 +55,7 @@ export const colorPanels: ColorPanel[] = [
       'Intuitive und einfache App',
       'Kompatibel mit allen HDMI-Bildschirmen',
     ],
-    bgColor: 'bg-[#423e33]',
+    bgColor: 'bg-[#0a0b0d]',
   },
   {
     title: 'Professionelle Videoproduktion',
@@ -63,7 +63,7 @@ export const colorPanels: ColorPanel[] = [
       'Komplettes Media-Day-Paket (Foto+Video)',
       'Broadcast-Qualität Videovorlagen, anpassbar an Ihre Vereinsfarben',
     ],
-    bgColor: 'bg-[#2f3935]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Vorteile für Ihren Verein',
@@ -74,7 +74,7 @@ export const colorPanels: ColorPanel[] = [
       'Quantifizierte Sichtbarkeit für Ihre Sponsoren',
       'Bessere Sponsorenbindung',
     ],
-    bgColor: 'bg-[#334244]',
+    bgColor: 'bg-[#06263f]',
   },
 ];
 

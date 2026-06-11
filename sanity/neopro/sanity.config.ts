@@ -16,7 +16,7 @@ const singletonTypes = new Set([
 
 export default defineConfig({
   name: 'default',
-  title: 'Neopro',
+  title: 'MADXP',
 
   projectId: '2r4zw7v3',
   dataset: 'production',

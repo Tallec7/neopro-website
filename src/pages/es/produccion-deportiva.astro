@@ -12,7 +12,7 @@ import {
 const locale = 'es';
 const t = useTranslations(locale);
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const canonicalUrl = `${siteUrl}/es/produccion-deportiva`;
 
 const breadcrumb = buildBreadcrumbJsonLd([
@@ -24,7 +24,7 @@ const service = buildServiceJsonLd({
   name: t('regie.title'),
   description: t('regie.description'),
   url: canonicalUrl,
-  providerName: 'Neopro',
+  providerName: 'MADXP',
   providerUrl: siteUrl,
   areaServed: ['France', 'Belgium', 'Switzerland'],
   serviceType: t('regie.hero.tag'),
@@ -62,15 +62,15 @@ const niveaux = [
   locale={locale}
 >
   <!-- Hero -->
-  <section class="relative bg-[#2f3935] text-white overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#2f3935] via-[#2f3935] to-[#3d4a45]"></div>
+  <section class="relative bg-[#06263f] text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#06263f] via-[#06263f] to-[#06263f]"></div>
     <div class="relative max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[100px] md:py-[140px]">
-      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#0e578e] uppercase font-bold mb-[20px]">
         {t('regie.hero.tag')}
       </p>
       <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
-        <span class="font-playfair italic font-normal">{t('regie.hero.h1a')}</span>{t('regie.hero.h1b')}<br />
-        {t('regie.hero.h1c')}<span class="text-[#81e3bc]">{t('regie.hero.h1d')}</span>{t('regie.hero.h1e')}
+        <span class="font-display font-normal">{t('regie.hero.h1a')}</span>{t('regie.hero.h1b')}<br />
+        {t('regie.hero.h1c')}<span class="text-[#0e578e]">{t('regie.hero.h1d')}</span>{t('regie.hero.h1e')}
       </h1>
       <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[40px]">
         {t('regie.hero.sub')}
@@ -85,8 +85,8 @@ const niveaux = [
   <!-- What is -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[900px] mx-auto">
-      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[30px]">
-        <span class="font-playfair italic">{t('regie.what.h2a')}</span>{t('regie.what.h2b')}
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] mb-[30px]">
+        <span class="font-display">{t('regie.what.h2a')}</span>{t('regie.what.h2b')}
       </h2>
       <div class="prose prose-lg max-w-none text-[#4a5565] text-[18px] leading-[1.7]">
         <p>{t('regie.what.p1')}</p>
@@ -100,18 +100,18 @@ const niveaux = [
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
     <div class="max-w-[1200px] mx-auto">
       <div class="max-w-[760px] mb-[60px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">
           {t('regie.features.tag')}
         </p>
-        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
-          <span class="font-playfair italic">{t('regie.features.h2a')}</span>{t('regie.features.h2b')}
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] leading-[1.1]">
+          <span class="font-display">{t('regie.features.h2a')}</span>{t('regie.features.h2b')}
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
         {features.map((feat) => (
-          <div class="bg-white rounded-[20px] p-[30px] border border-gray-200 hover:border-neo-green-dark transition-colors">
-            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{feat.title}</h3>
-            <p class="text-[16px] text-neo-gray leading-[1.6]">{feat.description}</p>
+          <div class="bg-white rounded-[20px] p-[30px] border border-gray-200 hover:border-madxp-blue-deep transition-colors">
+            <h3 class="text-[22px] font-bold text-[#0a0b0d] mb-[14px]">{feat.title}</h3>
+            <p class="text-[16px] text-madxp-gray leading-[1.6]">{feat.description}</p>
           </div>
         ))}
       </div>
@@ -122,21 +122,21 @@ const niveaux = [
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[1200px] mx-auto">
       <div class="max-w-[760px] mb-[60px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">
           {t('regie.who.tag')}
         </p>
-        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]">
-          <span class="font-playfair italic">{t('regie.who.h2a')}</span>{t('regie.who.h2b')}
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] leading-[1.1]">
+          <span class="font-display">{t('regie.who.h2a')}</span>{t('regie.who.h2b')}
         </h2>
-        <p class="text-[18px] text-neo-gray mt-[20px]">
+        <p class="text-[18px] text-madxp-gray mt-[20px]">
           {t('regie.who.sub')}
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {niveaux.map((niveau) => (
           <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px]">
-            <h3 class="text-[24px] font-bold text-[#101828] mb-[16px]">{niveau.label}</h3>
-            <p class="text-[16px] text-neo-gray leading-[1.6]">{niveau.description}</p>
+            <h3 class="text-[24px] font-bold text-[#0a0b0d] mb-[16px]">{niveau.label}</h3>
+            <p class="text-[16px] text-madxp-gray leading-[1.6]">{niveau.description}</p>
           </div>
         ))}
       </div>
@@ -144,10 +144,10 @@ const niveaux = [
   </section>
 
   <!-- CTA -->
-  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#2f3935] text-white">
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#06263f] text-white">
     <div class="max-w-[900px] mx-auto text-center">
       <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px] leading-[1.1]">
-        <span class="font-playfair italic font-normal">{t('regie.cta.h2a')}</span><br />
+        <span class="font-display font-normal">{t('regie.cta.h2a')}</span><br />
         <span class="font-black">{t('regie.cta.h2b')}</span>
       </h2>
       <p class="text-[18px] text-white/70 max-w-[640px] mx-auto mb-[40px]">
@@ -163,12 +163,12 @@ const niveaux = [
   <!-- FAQ -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[900px] mx-auto">
-      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]">
-        <span class="font-playfair italic">{t('regie.faq.title.a')}</span>{t('regie.faq.title.b')}
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] mb-[40px]">
+        <span class="font-display">{t('regie.faq.title.a')}</span>{t('regie.faq.title.b')}
       </h2>
       <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200">
         <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#0a0b0d] list-none [&::-webkit-details-marker]:hidden">
             {t('regie.faq.q1')}
             <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
@@ -177,7 +177,7 @@ const niveaux = [
           </div>
         </details>
         <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#0a0b0d] list-none [&::-webkit-details-marker]:hidden">
             {t('regie.faq.q2')}
             <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
@@ -186,7 +186,7 @@ const niveaux = [
           </div>
         </details>
         <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#0a0b0d] list-none [&::-webkit-details-marker]:hidden">
             {t('regie.faq.q3')}
             <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
@@ -195,7 +195,7 @@ const niveaux = [
           </div>
         </details>
         <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#0a0b0d] list-none [&::-webkit-details-marker]:hidden">
             {t('regie.faq.q4')}
             <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
@@ -204,14 +204,14 @@ const niveaux = [
           </div>
         </details>
         <details class="group">
-          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#0a0b0d] list-none [&::-webkit-details-marker]:hidden">
             {t('regie.faq.q5')}
             <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
           <div class="pb-[24px] text-[16px] text-[#4a5565] leading-[1.7]">
             <p>
               {t('regie.faq.a5')}
-              <a href={localeRoutePath('/offres', locale)} class="text-neo-green-dark font-semibold hover:underline">{t('regie.faq.link')}</a>.
+              <a href={localeRoutePath('/offres', locale)} class="text-madxp-blue-deep font-semibold hover:underline">{t('regie.faq.link')}</a>.
             </p>
           </div>
         </details>

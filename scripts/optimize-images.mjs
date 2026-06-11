@@ -1,5 +1,5 @@
 /**
- * Script d'optimisation des images pour Neopro
+ * Script d'optimisation des images pour MADXP
  * Convertit les PNG en WebP et redimensionne selon le type
  *
  * Usage : node scripts/optimize-images.mjs
@@ -83,7 +83,7 @@ async function optimizeImage(sourcePath, filename) {
 }
 
 async function main() {
-  console.log('🖼️  Optimisation des images Neopro\n');
+  console.log('🖼️  Optimisation des images MADXP\n');
 
   // Créer le dossier de sortie
   await mkdir(OUTPUT_DIR, { recursive: true });

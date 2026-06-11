@@ -17,7 +17,7 @@ const { Content } = await render(post);
 
 const title = post.data.title;
 const description = post.data.description;
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const slug = post.id.replace('de/', '');
 const articleUrl = `${siteUrl}/de/blog/${slug}`;
 const dateISO = post.data.date.toISOString().slice(0, 10);
@@ -50,28 +50,28 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
   <article class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[760px] mx-auto">
       <!-- Breadcrumb -->
-      <nav class="text-[14px] text-neo-gray mb-[40px]">
-        <a href="/de/blog" class="hover:text-neo-green-dark transition-colors">Blog</a>
+      <nav class="text-[14px] text-madxp-gray mb-[40px]">
+        <a href="/de/blog/" class="hover:text-madxp-blue-deep transition-colors">Blog</a>
         <span class="mx-2">›</span>
-        <span class="text-[#101828]">{post.data.title}</span>
+        <span class="text-[#0a0b0d]">{post.data.title}</span>
       </nav>
 
       <!-- Header -->
       <header class="mb-[40px]">
-        <div class="flex items-center gap-[12px] text-[14px] text-neo-gray mb-[16px]">
+        <div class="flex items-center gap-[12px] text-[14px] text-madxp-gray mb-[16px]">
           <time datetime={post.data.date.toISOString().slice(0, 10)}>
             {post.data.date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
           <span>·</span>
           <span>{post.data.author}</span>
         </div>
-        <h1 class="text-[32px] md:text-[42px] lg:text-[48px] font-bold text-[#101828] leading-[1.2]">
+        <h1 class="text-[32px] md:text-[42px] lg:text-[48px] font-bold text-[#0a0b0d] leading-[1.2]">
           {post.data.title}
         </h1>
         {post.data.tags.length > 0 && (
           <div class="flex flex-wrap gap-[8px] mt-[20px]">
             {post.data.tags.map((tag) => (
-              <span class="text-[13px] bg-[rgba(129,227,188,0.3)] text-[#2f3935] px-3 py-1 rounded-full">
+              <span class="text-[13px] bg-[rgba(14,87,142,0.3)] text-[#06263f] px-3 py-1 rounded-full">
                 {tag}
               </span>
             ))}
@@ -80,22 +80,22 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
       </header>
 
       <!-- Content -->
-      <div class="prose prose-lg max-w-none prose-headings:text-[#101828] prose-headings:font-bold prose-p:text-[#4a5565] prose-a:text-neo-green-dark prose-a:no-underline hover:prose-a:underline prose-strong:text-[#101828] prose-li:text-[#4a5565] prose-table:text-[15px] prose-th:bg-[#f5f5f5] prose-th:text-[#101828] prose-td:border-gray-200">
+      <div class="prose prose-lg max-w-none prose-headings:text-[#0a0b0d] prose-headings:font-bold prose-p:text-[#4a5565] prose-a:text-madxp-blue-deep prose-a:no-underline hover:prose-a:underline prose-strong:text-[#0a0b0d] prose-li:text-[#4a5565] prose-table:text-[15px] prose-th:bg-[#f5f5f5] prose-th:text-[#0a0b0d] prose-td:border-gray-200">
         <Content />
       </div>
 
       <!-- CTA -->
-      <div class="mt-[60px] bg-[rgba(129,227,188,0.2)] rounded-[20px] p-[30px] md:p-[40px] flex flex-col md:flex-row items-center gap-[20px] justify-between">
+      <div class="mt-[60px] bg-[rgba(14,87,142,0.2)] rounded-[20px] p-[30px] md:p-[40px] flex flex-col md:flex-row items-center gap-[20px] justify-between">
         <div>
-          <p class="text-[20px] font-bold text-[#101828]">Bereit, Ihren Verein auszustatten?</p>
-          <p class="text-[16px] text-neo-gray mt-1">Entdecken Sie unsere Angebote ab 1.500 €/Jahr.</p>
+          <p class="text-[20px] font-bold text-[#0a0b0d]">Bereit, Ihren Verein auszustatten?</p>
+          <p class="text-[16px] text-madxp-gray mt-1">Entdecken Sie unsere Angebote ab 1.500 €/Jahr.</p>
         </div>
-        <Button href="/de/angebot" variant="green" arrow>Angebot anfordern</Button>
+        <Button href="/de/angebot/" variant="green" arrow>Angebot anfordern</Button>
       </div>
 
       <!-- Back -->
       <div class="mt-[40px]">
-        <a href="/de/blog" class="text-neo-green-dark font-medium hover:underline">← Zurück zum Blog</a>
+        <a href="/de/blog/" class="text-madxp-blue-deep font-medium hover:underline">← Zurück zum Blog</a>
       </div>
     </div>
   </article>

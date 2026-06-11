@@ -159,7 +159,7 @@ export const additionalOptions: OptionCategory[] = [
   },
 ];
 
-// ── Neopro Chain (full-stack complementary services) ──────────
+// ── MADXP Chain (full-stack complementary services) ──────────
 
 export const chainSteps: ChainStep[] = [
   {

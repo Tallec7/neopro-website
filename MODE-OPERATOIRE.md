@@ -1,4 +1,4 @@
-# Mode operatoire — Gestion du site Neopro
+# Mode operatoire — Gestion du site MADXP
 
 ## Architecture du systeme
 
@@ -19,7 +19,7 @@ Tu (Figma/contenu)
 | Outil | Role | URL |
 |-------|------|-----|
 | **GitHub** | Stocker le code source | https://github.com/Tallec7/neopro-website |
-| **Hostinger** | Heberger le site en ligne | https://www.neopro-communication.fr |
+| **Hostinger** | Heberger le site en ligne | https://madxp.kalonpartners.bzh |
 | **Dev local** | Developper + tester avant de deployer | http://localhost:4321 |
 | **Figma (reference)** | Maquettes de reference (export dans `Neopro2/`) | Dossier local du projet |
 
@@ -243,7 +243,7 @@ Ouvre le fichier TSX dans `Neopro2/src/imports/` et lis les classes Tailwind. Ce
 | `leading-[70px]` | Hauteur de ligne : 70px | `line-height: 70px` |
 | `font-['Playfair_Display:Italic']` | Police Playfair Display Italic | `font-playfair italic` (deja configuree) |
 | `font-['Outfit:Medium']` | Police Outfit Medium | `font-outfit font-medium` |
-| `bg-[#81e3bc]` | Couleur de fond : vert Neopro | `bg-neo-green` (token du design system) |
+| `bg-[#81e3bc]` | Couleur de fond : vert MADXP | `bg-neo-green` (token du design system) |
 | `bg-[#2f3935]` | Fond sombre | `bg-neo-dark-bg` |
 | `text-[#F4E96D]` | Texte jaune accent | `text-neo-yellow` |
 | `rounded-[65px]` | Border-radius : 65px | `rounded-full` ou `rounded-[65px]` |
@@ -396,7 +396,7 @@ C'est la methode la plus rapide. Claude lit l'export et fait la traduction.
 - [ ] `npm run build` — le build passe
 - [ ] Verifier les pages modifiees sur localhost:4321
 - [ ] `git add` + `git commit` + `git push`
-- [ ] Verifier sur https://www.neopro-communication.fr
+- [ ] Verifier sur https://madxp.kalonpartners.bzh
 
 ---
 
@@ -472,7 +472,7 @@ neopro-astro/
 → `.astro` = HTML statique genere au build (0 JS envoye au navigateur). `.tsx` = React, utilise quand il faut de l'interactivite (formulaires, carrousels). On minimise le React pour la performance.
 
 **Q: Le site est a quelle adresse ?**
-→ Production : https://www.neopro-communication.fr (heberge sur Hostinger)
+→ Production : https://madxp.kalonpartners.bzh (heberge sur Hostinger)
 
 **Q: C'est quoi le dossier Neopro2/ ?**
 → C'est l'export Figma Make. Il contient du React/Vite qu'on ne deploie **jamais**. C'est juste une **reference visuelle** pour savoir a quoi doit ressembler le site. Claude Code l'utilise pour comparer et aligner le vrai code (dans `src/`). Voir le Scenario 5 pour le workflow complet d'extraction des specs.

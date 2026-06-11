@@ -2,7 +2,7 @@
 title: "Pantalla LED en gimnasio: la guía completa para clubes amateur"
 description: "Cómo elegir, instalar y financiar una pantalla LED en tu gimnasio. Tamaño, resolución, presupuesto y retorno de inversión gracias a los patrocinadores."
 date: 2026-04-01
-author: Neopro
+author: MADXP
 tags: ["pantalla LED", "gimnasio", "instalación", "guía"]
 ---
 
@@ -37,7 +37,7 @@ El presupuesto depende de la pantalla elegida:
 - **Pantalla profesional 75"**: 1.000 a 2.000 €
 - **Pantalla profesional 85"**: 2.000 a 3.500 €
 
-A esto se añade la **solución de señalización digital** para gestionar el contenido. En Neopro, las suscripciones empiezan desde **1.500 €/año sin IVA** e incluyen todo el software, la aplicación de control remoto y las plantillas de vídeo.
+A esto se añade la **solución de señalización digital** para gestionar el contenido. En MADXP, las suscripciones empiezan desde **1.500 €/año sin IVA** e incluyen todo el software, la aplicación de control remoto y las plantillas de vídeo.
 
 ## ¿Cómo financiar la instalación?
 
@@ -49,9 +49,9 @@ La buena noticia: **la pantalla puede ser financiada por tus patrocinadores**. E
 
 ## La instalación en la práctica
 
-Con una solución como Neopro, la instalación se realiza **en menos de 5 minutos**:
+Con una solución como MADXP, la instalación se realiza **en menos de 5 minutos**:
 
-1. Conectar el dispositivo Neopro a la pantalla (cable HDMI)
+1. Conectar el dispositivo MADXP a la pantalla (cable HDMI)
 2. Conectarse al dispositivo desde tu teléfono (no necesitas wifi en el gimnasio)
 3. Gestionar el contenido con la aplicación de control remoto
 
@@ -61,4 +61,4 @@ Sin obras, sin cableado de red, sin necesidad de técnico.
 
 Una pantalla LED en un gimnasio es una inversión que se amortiza rápidamente gracias a los patrocinadores. Lo más importante es elegir una **solución de señalización adaptada** que te permita gestionar el contenido fácilmente, incluso sin conocimientos técnicos.
 
-[Descubre los planes de Neopro](/es/precios) para encontrar la fórmula adaptada a tu club.
+[Descubre los planes de MADXP](/es/precios/) para encontrar la fórmula adaptada a tu club.

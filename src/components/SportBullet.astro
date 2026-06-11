@@ -5,11 +5,13 @@ interface Props {
 
 const { variant } = Astro.props;
 
+// Palette MadXP : ancrage bleu + statuts sémantiques sanctionnés (amber, green).
+// Les noms de variantes restent stables pour ne pas casser les appels existants.
 const colors: Record<string, { circle: string; fill: string }> = {
-  pink: { circle: '#FE6AA6', fill: '#FF9EC6' },
-  yellow: { circle: '#FDBE00', fill: '#FFEC85' },
-  green: { circle: '#51B28B', fill: '#81E3BC' },
-  blue: { circle: '#1EC5E0', fill: '#79E8FA' },
+  pink: { circle: '#093a60', fill: '#0e578e' },   // bleu primaire
+  yellow: { circle: '#b8740a', fill: '#d9870b' }, // amber
+  green: { circle: '#155e3f', fill: '#1e7a52' },  // success
+  blue: { circle: '#0e578e', fill: '#4a8bbf' },   // bleu clair
 };
 
 const { circle, fill } = colors[variant];

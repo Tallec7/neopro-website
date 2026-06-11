@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506 144" width="506" height="144">
+  <defs>
+    
+  </defs>
+  
+  <text x="0" y="144" font-family="Anton, sans-serif" font-weight="400" font-size="200" fill="#0A0B0D">MAD</text>
+  <polygon points="276,0 506,0 506,144 301,144" fill="#0E578E"></polygon>
+  <text x="320" y="144" font-family="Anton, sans-serif" font-weight="400" font-size="200" fill="#F2EEE6" clip-path="polygon(276 0, 506 0, 506 144, 301 144)">XP</text>
+</svg>

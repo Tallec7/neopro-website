@@ -14,12 +14,12 @@ const t = useTranslations(locale);
 
 <BaseLayout title={t('about.title')} description={t('about.description')} locale={locale}>
   <section class="relative h-[500px] md:h-[600px] overflow-hidden">
-    <Image src={quiSommesNousImg} alt="Het Neopro-team" class="absolute inset-0 w-full h-full object-cover" loading="eager" widths={[640, 1024, 1440, 1920]} sizes="100vw" />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.55)]"></div>
+    <Image src={quiSommesNousImg} alt="Het MADXP-team" class="absolute inset-0 w-full h-full object-cover" loading="eager" widths={[640, 1024, 1440, 1920]} sizes="100vw" />
+    <div class="absolute inset-0 bg-[rgba(6,38,63,0.55)]"></div>
     <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
       <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">OVER ONS</p>
       <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[20px]">
-        <span class="font-playfair italic">Neopro, </span><br />
+        <span class="font-display">MADXP, </span><br />
         <span class="font-black">de digitale sportregie voor clubs.</span>
       </h1>
       <p class="text-white/80 text-[16px] md:text-[18px] max-w-[720px]">
@@ -33,7 +33,7 @@ const t = useTranslations(locale);
       {aboutParagraphs.map((p) => (
         <p class="text-[18px] text-[#4a5565] leading-[1.7]">{p}</p>
       ))}
-      <div class="mt-[20px]"><Button href="/nl/oplossing" variant="black" arrow>Ontdek de oplossing</Button></div>
+      <div class="mt-[20px]"><Button href="/nl/oplossing/" variant="black" arrow>Ontdek de oplossing</Button></div>
     </div>
   </section>
 

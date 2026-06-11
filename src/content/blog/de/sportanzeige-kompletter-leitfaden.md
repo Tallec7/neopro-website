@@ -2,7 +2,7 @@
 title: "Sportanzeige: Der komplette Leitfaden für Vereine (Profi, Semi-Profi und Regional)"
 description: "Was ist eine Sportanzeige? Wozu dient sie? Was kostet sie? Der komplette Leitfaden, um zu verstehen, wie eine digitale Sportanzeige das Spielerlebnis transformiert, Sponsoren aufwertet und einen Verein professionalisiert — unabhängig von seinem Niveau."
 date: 2026-04-08
-author: Neopro
+author: MADXP
 tags: ["Sportanzeige", "digitale Anzeige", "Leitfaden", "Vereine"]
 ---
 
@@ -24,7 +24,7 @@ In einem Profiverein werden diese Funktionen oft von einem eigenen Team mit prof
 
 Die traditionelle Sportanzeige erfordert **Profi-Equipment, technische Fähigkeiten und geschulte Ehrenamtliche**. Das sieht man in den Profivereinen.
 
-Die **digitale Sportanzeige** ist die moderne Weiterentwicklung: Alles ist in einer einzigen Lösung integriert und vom Smartphone aus steuerbar. Genau das bietet Neopro: einen LED-Bildschirm, ein Plug-&-Play-Gerät, eine Fernbedienungs-App und gebrauchsfertige Videovorlagen. Ein einziger Ehrenamtlicher genügt, um die Anzeige während des Spiels zu betreiben.
+Die **digitale Sportanzeige** ist die moderne Weiterentwicklung: Alles ist in einer einzigen Lösung integriert und vom Smartphone aus steuerbar. Genau das bietet MADXP: einen LED-Bildschirm, ein Plug-&-Play-Gerät, eine Fernbedienungs-App und gebrauchsfertige Videovorlagen. Ein einziger Ehrenamtlicher genügt, um die Anzeige während des Spiels zu betreiben.
 
 Der entscheidende Unterschied: Mit einer digitalen Sportanzeige **brauchen Sie kein Profi zu sein, um eine professionelle Anzeige zu haben**.
 
@@ -58,13 +58,13 @@ Das ist das große Vorurteil, das es zu überwinden gilt: **Die Sportanzeige ist
 - **Semi-Profi-Vereine und Nationalliga**: Sie möchten sich in Sachen Spielerlebnis dem Profiniveau annähern, ohne die damit verbundenen Kosten.
 - **Regional- und Amateurvereine**: Sie möchten sich von der lokalen Konkurrenz abheben, ihrem Publikum eine echte Show bieten und den Bildschirm in eine Einnahmequelle verwandeln.
 
-Neopro ist auf diese drei Profile zugeschnitten, mit kalibrierten Angeboten (von 79 bis 299 €/Monat) und immer durch Sponsoren finanzierbar.
+MADXP ist auf diese drei Profile zugeschnitten, mit kalibrierten Angeboten (von 79 bis 299 €/Monat) und immer durch Sponsoren finanzierbar.
 
 ## Was kostet eine Sportanzeige?
 
 Eine traditionelle Sportanzeige (Profi-Equipment + Technikteam) kostet in der Regel **zwischen 30.000 und 150.000 €** je nach Ausstattung — deshalb war sie historisch den Profivereinen vorbehalten.
 
-Eine **schlüsselfertige digitale Sportanzeige** wie Neopro startet **ab 79 €/Monat** mit dem Play-Tarif (ohne Hardware, 100% SaaS). Die Angebote mit Bildschirm und Gerät reichen von 149 bis 299 €/Monat. Die Investition amortisiert sich ab dem ersten oder zweiten gewonnenen Sponsor dank des neu geschaffenen Werbeplatzes.
+Eine **schlüsselfertige digitale Sportanzeige** wie MADXP startet **ab 79 €/Monat** mit dem Play-Tarif (ohne Hardware, 100% SaaS). Die Angebote mit Bildschirm und Gerät reichen von 149 bis 299 €/Monat. Die Investition amortisiert sich ab dem ersten oder zweiten gewonnenen Sponsor dank des neu geschaffenen Werbeplatzes.
 
 ## Was Sie vor der Wahl einer Sportanzeige prüfen sollten
 
@@ -80,6 +80,6 @@ Wenn Sie mehrere Lösungen vergleichen, hier die entscheidenden Fragen:
 
 Die Sportanzeige ist kein Privileg der Profivereine mehr. Mit dem Aufkommen **schlüsselfertiger digitaler Sportanzeigen** können sich heute alle Vereine ausstatten, um ihr Spielerlebnis zu professionalisieren, ihre Sponsoren aufzuwerten und neue Einnahmen zu generieren. Die Einstiegshürde ist erschwinglich geworden (ab 79 €/Monat), und die technische Komplexität ist verschwunden.
 
-Bei Neopro bauen wir genau das: **die digitale Sportanzeige für alle Vereine**, vom Profiniveau bis zur Regionalmeisterschaft.
+Bei MADXP bauen wir genau das: **die digitale Sportanzeige für alle Vereine**, vom Profiniveau bis zur Regionalmeisterschaft.
 
-[Entdecken Sie die Neopro-Sportanzeige im Detail](/de/regie-sport) oder [fordern Sie ein individuelles Angebot an](/de/angebot) für Ihren Verein.
+[Entdecken Sie die MADXP-Sportanzeige im Detail](/de/regie-sport/) oder [fordern Sie ein individuelles Angebot an](/de/angebot/) für Ihren Verein.

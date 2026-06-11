@@ -2,7 +2,7 @@
 title: "Comment financer un écran LED dans un gymnase municipal"
 description: "5 montages financiers pour installer un écran LED dans votre gymnase : autorisation simple, subventions DETR/ANS/CPER, modèle Gymnase connecté, déploiement territorial et partenariat solidaire."
 date: 2026-04-22
-author: Neopro
+author: MADXP
 tags: ["écran LED", "financement", "gymnase municipal", "subvention", "collectivité", "DETR", "ANS"]
 ---
 
@@ -28,7 +28,7 @@ Avant de parler financement, posons les ordres de grandeur.
 | Logiciel de régie et mise en service | inclus dans l'abonnement |
 | **Total équipement** | **2 000 € – 25 000 €** selon la configuration |
 
-La fourchette est large parce que les solutions ne se valent pas. Chez Neopro, le modèle de **régie digitale clé en main** (logiciel, contenu, gestion commerciale des sponsors) transforme cette dépense en investissement qui s'autofinance en 12 à 24 mois.
+La fourchette est large parce que les solutions ne se valent pas. Chez MADXP, le modèle de **régie digitale clé en main** (logiciel, contenu, gestion commerciale des sponsors) transforme cette dépense en investissement qui s'autofinance en 12 à 24 mois.
 
 Voyons maintenant les 5 montages disponibles.
 
@@ -41,7 +41,7 @@ Le point d'entrée le plus rapide. La collectivité n'investit rien : elle autor
 **Comment ça fonctionne :**
 
 - Une **délibération du conseil municipal** ou une **convention d'usage** suffit.
-- L'opérateur (Neopro) installe l'écran à ses frais, gère les sponsors et reverse une redevance au club ou à la commune.
+- L'opérateur (MADXP) installe l'écran à ses frais, gère les sponsors et reverse une redevance au club ou à la commune.
 - La mairie récupère des **créneaux de communication gratuits** pour ses annonces municipales.
 
 **Idéal pour :** les communes qui veulent tester sans risque, ou celles dont le budget d'investissement est saturé. C'est aussi la voie la plus rapide — une convention peut se signer en quelques semaines.
@@ -76,7 +76,7 @@ C'est le montage le plus complet et le plus reproductible. Une collectivité inv
 | Poste | Montant |
 |---|---|
 | Investissement initial (mairie) | 2 000 € – 25 000 € |
-| Abonnement annuel régie Neopro | ~2 000 €/an |
+| Abonnement annuel régie MADXP | ~2 000 €/an |
 | Revenus annuels des sponsors | 1 500 € – 3 000 €/an par club |
 
 **Ce que la collectivité y gagne :**
@@ -96,7 +96,7 @@ Ce modèle est particulièrement adapté aux **communes de 5 000 à 30 000 habit
 
 Réservé aux intercommunalités, aux agglomérations et aux conseils départementaux qui souhaitent équiper plusieurs gymnases simultanément.
 
-**Le principe :** un accord-cadre avec Neopro couvre l'ensemble des gymnases du territoire. La collectivité bénéficie de tarifs dégressifs, d'une gestion centralisée et d'un réseau media sportif territorial.
+**Le principe :** un accord-cadre avec MADXP couvre l'ensemble des gymnases du territoire. La collectivité bénéficie de tarifs dégressifs, d'une gestion centralisée et d'un réseau media sportif territorial.
 
 **Ce que ça représente :**
 
@@ -140,7 +140,7 @@ Quel que soit le format retenu, votre dossier doit convaincre les décideurs. Vo
 
 **Pour un élu ou un service des sports :**
 
-1. **Devis détaillé** : matériel, installation, mise en service. Demandez un devis formalisé à Neopro — il est gratuit et sert de base au dossier de subvention.
+1. **Devis détaillé** : matériel, installation, mise en service. Demandez un devis formalisé à MADXP — il est gratuit et sert de base au dossier de subvention.
 2. **Plan de financement** : qui paie quoi, sur quelle durée, avec quelles subventions.
 3. **Prévisionnel de revenus** : nombre de clubs, nombre de sponsors potentiels, revenus annuels estimés. Soyez conservateur.
 4. **Convention d'utilisation** : qui gère l'écran, quels créneaux pour la mairie, quels créneaux pour les clubs.
@@ -159,14 +159,14 @@ Les clubs qui franchissent le pas constatent en moyenne une **augmentation de 40
 
 Et la mairie y gagne elle aussi : un gymnase équipé d'un écran digital attire des tournois régionaux, des compétitions officielles, des événements de plus grande envergure — tout ce qui fait vivre le territoire.
 
-**Prochaine étape :** [demandez une démo gratuite](/demo) et nous préparons avec vous le montage financier adapté à votre situation.
+**Prochaine étape :** [demandez une démo gratuite](/demo/) et nous préparons avec vous le montage financier adapté à votre situation.
 
 ---
 
 ## À lire aussi
 
-- [Guide complet des écrans LED en gymnase](/blog/ecran-led-gymnase-guide-complet)
-- [Régie sport : le guide complet](/blog/regie-sport-guide-complet)
-- [Affichage dynamique sport : le guide complet](/blog/affichage-dynamique-sport-guide-complet)
-- [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur)
-- [Sponsoring club amateur : le guide 2026](/blog/sponsoring-club-amateur-guide-2026)
+- [Guide complet des écrans LED en gymnase](/blog/ecran-led-gymnase-guide-complet/)
+- [Régie sport : le guide complet](/blog/regie-sport-guide-complet/)
+- [Affichage dynamique sport : le guide complet](/blog/affichage-dynamique-sport-guide-complet/)
+- [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur/)
+- [Sponsoring club amateur : le guide 2026](/blog/sponsoring-club-amateur-guide-2026/)

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import node from '@astrojs/node';
 
 export default defineConfig({
-  site: 'https://www.neopro-communication.fr',
+  site: 'https://madxp.kalonpartners.bzh',
   output: 'static',
   trailingSlash: 'always',
   adapter: node({ mode: 'standalone' }),

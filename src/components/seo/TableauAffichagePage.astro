@@ -15,7 +15,7 @@ const { locale, slug } = Astro.props;
 const t = useTranslations(locale);
 const p = 'seo_tableau';
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const pathPrefix = locale === 'fr' ? '' : `/${locale}`;
 const canonicalUrl = `${siteUrl}${pathPrefix}/${slug}`;
 
@@ -31,7 +31,7 @@ const service = buildServiceJsonLd({
   name: t(`${p}.title` as any),
   description: t(`${p}.description` as any),
   url: canonicalUrl,
-  providerName: 'Neopro',
+  providerName: 'MADXP',
   providerUrl: siteUrl,
   areaServed: locale === 'fr' ? ['France', 'Belgique', 'Suisse'] :
               locale === 'en' ? ['France', 'Belgium', 'Switzerland'] :
@@ -88,10 +88,10 @@ const features = [
   locale={locale}
 >
   <!-- Hero -->
-  <section class="relative bg-[#101828] text-white overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#101828] via-[#101828] to-[#1a2332]"></div>
+  <section class="relative bg-[#0a0b0d] text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0a0b0d] via-[#0a0b0d] to-[#1a2332]"></div>
     <div class="relative max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[100px] md:py-[140px]">
-      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[20px]">
+      <p class="text-[14px] md:text-[16px] tracking-[2px] text-[#0e578e] uppercase font-bold mb-[20px]">
         {t(`${p}.hero.tag` as any)}
       </p>
       <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]" set:html={t(`${p}.hero.h1` as any)} />
@@ -109,15 +109,15 @@ const features = [
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[1200px] mx-auto">
       <div class="max-w-[760px] mb-[60px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">
           {t(`${p}.why.tag` as any)}
         </p>
-        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]" set:html={t(`${p}.why.h2` as any)} />
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] leading-[1.1]" set:html={t(`${p}.why.h2` as any)} />
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
         {avantages.map((item) => (
           <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] border border-gray-200">
-            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{item.title}</h3>
+            <h3 class="text-[22px] font-bold text-[#0a0b0d] mb-[14px]">{item.title}</h3>
             <p class="text-[16px] text-[#4a5565] leading-[1.6]">{item.description}</p>
           </div>
         ))}
@@ -129,26 +129,26 @@ const features = [
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
     <div class="max-w-[1000px] mx-auto">
       <div class="max-w-[760px] mb-[60px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">
           {t(`${p}.comp.tag` as any)}
         </p>
-        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]" set:html={t(`${p}.comp.h2` as any)} />
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] leading-[1.1]" set:html={t(`${p}.comp.h2` as any)} />
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="border-b-2 border-[#101828]">
-              <th class="py-[16px] pr-[20px] text-[16px] font-bold text-[#101828]">{t(`${p}.comp.th1` as any)}</th>
-              <th class="py-[16px] pr-[20px] text-[16px] font-bold text-[#101828]">{t(`${p}.comp.th2` as any)}</th>
-              <th class="py-[16px] text-[16px] font-bold text-[#81e3bc]">Neopro</th>
+            <tr class="border-b-2 border-[#0a0b0d]">
+              <th class="py-[16px] pr-[20px] text-[16px] font-bold text-[#0a0b0d]">{t(`${p}.comp.th1` as any)}</th>
+              <th class="py-[16px] pr-[20px] text-[16px] font-bold text-[#0a0b0d]">{t(`${p}.comp.th2` as any)}</th>
+              <th class="py-[16px] text-[16px] font-bold text-[#0e578e]">MADXP</th>
             </tr>
           </thead>
           <tbody>
             {comparaison.map((row) => (
               <tr class="border-b border-gray-200">
-                <td class="py-[14px] pr-[20px] text-[15px] font-semibold text-[#101828]">{row.critere}</td>
+                <td class="py-[14px] pr-[20px] text-[15px] font-semibold text-[#0a0b0d]">{row.critere}</td>
                 <td class="py-[14px] pr-[20px] text-[15px] text-[#4a5565]">{row.classique}</td>
-                <td class="py-[14px] text-[15px] text-[#101828] font-medium">{row.neopro}</td>
+                <td class="py-[14px] text-[15px] text-[#0a0b0d] font-medium">{row.neopro}</td>
               </tr>
             ))}
           </tbody>
@@ -161,16 +161,16 @@ const features = [
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[1200px] mx-auto">
       <div class="max-w-[760px] mb-[60px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">
           {t(`${p}.feat.tag` as any)}
         </p>
-        <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] leading-[1.1]" set:html={t(`${p}.feat.h2` as any)} />
+        <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] leading-[1.1]" set:html={t(`${p}.feat.h2` as any)} />
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
         {features.map((feat) => (
-          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] border border-gray-200 hover:border-neo-green-dark transition-colors">
+          <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] border border-gray-200 hover:border-madxp-blue-deep transition-colors">
             <span class="text-[32px] mb-[16px] block">{feat.icon}</span>
-            <h3 class="text-[22px] font-bold text-[#101828] mb-[14px]">{feat.title}</h3>
+            <h3 class="text-[22px] font-bold text-[#0a0b0d] mb-[14px]">{feat.title}</h3>
             <p class="text-[16px] text-[#4a5565] leading-[1.6]">{feat.description}</p>
           </div>
         ))}
@@ -179,7 +179,7 @@ const features = [
   </section>
 
   <!-- Sports compatibles -->
-  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#101828] text-white">
+  <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#0a0b0d] text-white">
     <div class="max-w-[900px] mx-auto text-center">
       <h2 class="text-[32px] md:text-[48px] font-bold mb-[20px]" set:html={t(`${p}.sports.h2` as any)} />
       <p class="text-[18px] text-white/70 max-w-[600px] mx-auto mb-[40px] leading-relaxed">
@@ -201,13 +201,13 @@ const features = [
   <!-- FAQ -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
     <div class="max-w-[800px] mx-auto">
-      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[40px]" set:html={t(`${p}.faq.title` as any)} />
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] mb-[40px]" set:html={t(`${p}.faq.title` as any)} />
       <div class="space-y-[16px]">
         {[1, 2, 3, 4, 5].map((i) => (
           <details class="bg-white rounded-[16px] border border-gray-200 p-[24px] group">
-            <summary class="text-[18px] font-bold text-[#101828] cursor-pointer list-none flex justify-between items-center">
+            <summary class="text-[18px] font-bold text-[#0a0b0d] cursor-pointer list-none flex justify-between items-center">
               {t(`${p}.faq.q${i}` as any)}
-              <span class="text-[#81e3bc] text-[24px] group-open:rotate-45 transition-transform">+</span>
+              <span class="text-[#0e578e] text-[24px] group-open:rotate-45 transition-transform">+</span>
             </summary>
             <p class="mt-[16px] text-[16px] text-[#4a5565] leading-[1.6]">
               {t(`${p}.faq.a${i}` as any)}
@@ -223,13 +223,13 @@ const features = [
     <div class="max-w-[900px] mx-auto">
       <p class="text-[14px] text-[#4a5565] leading-[1.8]">
         {t(`${p}.links.label` as any)}
-        <a href={localeRoutePath('/ecran-led-gymnase', locale)} class="text-neo-green-dark underline">{t(`${p}.links.ecran` as any)}</a> &middot;
-        <a href={localeRoutePath('/tableau-de-score-electronique', locale)} class="text-neo-green-dark underline">{t(`${p}.links.score` as any)}</a> &middot;
-        <a href={localePath('/solution', locale)} class="text-neo-green-dark underline">{t(`${p}.links.solution` as any)}</a> &middot;
-        <a href={localeRoutePath('/offres', locale)} class="text-neo-green-dark underline">{t(`${p}.links.offres` as any)}</a> &middot;
-        <a href={localeRoutePath('/basketball', locale)} class="text-neo-green-dark underline">Basketball</a> &middot;
-        <a href={localeRoutePath('/handball', locale)} class="text-neo-green-dark underline">Handball</a> &middot;
-        <a href={localeRoutePath('/volleyball', locale)} class="text-neo-green-dark underline">Volleyball</a>
+        <a href={localeRoutePath('/ecran-led-gymnase', locale)} class="text-madxp-blue-deep underline">{t(`${p}.links.ecran` as any)}</a> &middot;
+        <a href={localeRoutePath('/tableau-de-score-electronique', locale)} class="text-madxp-blue-deep underline">{t(`${p}.links.score` as any)}</a> &middot;
+        <a href={localePath('/solution', locale)} class="text-madxp-blue-deep underline">{t(`${p}.links.solution` as any)}</a> &middot;
+        <a href={localeRoutePath('/offres', locale)} class="text-madxp-blue-deep underline">{t(`${p}.links.offres` as any)}</a> &middot;
+        <a href={localeRoutePath('/basketball', locale)} class="text-madxp-blue-deep underline">Basketball</a> &middot;
+        <a href={localeRoutePath('/handball', locale)} class="text-madxp-blue-deep underline">Handball</a> &middot;
+        <a href={localeRoutePath('/volleyball', locale)} class="text-madxp-blue-deep underline">Volleyball</a>
       </p>
     </div>
   </section>
@@ -237,8 +237,8 @@ const features = [
   <!-- Contact -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-[#f5f5f5]">
     <div class="max-w-[700px] mx-auto">
-      <h2 class="text-[32px] md:text-[48px] font-bold text-[#101828] mb-[16px] text-center">
-        <span class="font-playfair italic font-normal">{t(`${p}.contact.h2` as any)}</span>
+      <h2 class="text-[32px] md:text-[48px] font-bold text-[#0a0b0d] mb-[16px] text-center">
+        <span class="font-display font-normal">{t(`${p}.contact.h2` as any)}</span>
       </h2>
       <p class="text-[18px] text-[#4a5565] text-center mb-[40px]">
         {t(`${p}.contact.sub` as any)}

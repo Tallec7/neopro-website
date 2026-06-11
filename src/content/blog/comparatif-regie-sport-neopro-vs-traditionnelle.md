@@ -2,7 +2,7 @@
 title: "Comparatif régie sport : solution digitale vs régie traditionnelle"
 description: "Tableau comparatif complet entre régie sport digitale et traditionnelle : coût, installation, flexibilité, reporting. Quel modèle choisir pour votre club ?"
 date: 2026-05-06
-author: Neopro
+author: MADXP
 tags: ["comparatif", "régie sport", "régie digitale", "régie traditionnelle"]
 ---
 
@@ -32,7 +32,7 @@ La régie digitale utilise des **écrans LED et un logiciel de gestion** pour di
 - Un système de reporting (nombre de diffusions, durée d'exposition).
 - La possibilité de diffuser des contenus variés : vidéos, animations, scores, informations club.
 
-Pour un panorama complet du sujet, consultez notre [guide de la régie sport](/blog/regie-sport-guide-complet).
+Pour un panorama complet du sujet, consultez notre [guide de la régie sport](/blog/regie-sport-guide-complet/).
 
 ## Le comparatif détaillé
 
@@ -81,7 +81,7 @@ C'est l'un des avantages les plus sous-estimés de la régie digitale : elle **l
 
 La régie digitale permet de diffuser **plus de sponsors** sur le même espace physique grâce à la rotation. Un seul écran peut afficher 30 sponsors différents en une soirée, là où il faudrait 30 panneaux PVC. C'est un multiplicateur de revenus direct.
 
-Découvrez les [avantages concrets de la régie digitale pour le sport amateur](/blog/regie-digitale-sport-amateur-avantages).
+Découvrez les [avantages concrets de la régie digitale pour le sport amateur](/blog/regie-digitale-sport-amateur-avantages/).
 
 ### Reporting et mesure
 
@@ -112,7 +112,7 @@ La régie traditionnelle reste pertinente si le budget est vraiment contraint. M
 
 ### Club intermédiaire (100 à 500 licenciés, gymnase dédié)
 
-C'est le profil idéal pour la régie digitale. Le volume de spectateurs justifie l'investissement, et les revenus sponsors permettent un amortissement en 1 à 2 saisons. Les [offres Neopro](/offres) sont conçues pour ce segment.
+C'est le profil idéal pour la régie digitale. Le volume de spectateurs justifie l'investissement, et les revenus sponsors permettent un amortissement en 1 à 2 saisons. Les [offres MADXP](/offres/) sont conçues pour ce segment.
 
 ### Gros club amateur (500+ licenciés, plusieurs équipes en compétition)
 
@@ -122,7 +122,7 @@ La régie digitale est un choix évident. Le potentiel de revenus est élevé, l
 
 Il y a 10 ans, la régie digitale était réservée aux clubs professionnels avec des budgets à six chiffres. Aujourd'hui, la baisse du coût des écrans LED, les solutions logicielles clé en main et les modèles de financement innovants (leasing, sponsoring anticipé) rendent le digital **accessible aux clubs amateurs**.
 
-La solution [Neopro](/solution) a été conçue spécifiquement pour cette démocratisation : un logiciel simple, un accompagnement à l'installation et un modèle économique qui permet à l'écran de s'autofinancer grâce aux revenus publicitaires.
+La solution [MADXP](/solution/) a été conçue spécifiquement pour cette démocratisation : un logiciel simple, un accompagnement à l'installation et un modèle économique qui permet à l'écran de s'autofinancer grâce aux revenus publicitaires.
 
 Le résultat : des clubs amateurs qui génèrent des revenus comparables à ce que faisaient les clubs semi-pros il y a 5 ans. C'est une **révolution silencieuse** dans le financement du sport amateur.
 
@@ -132,13 +132,13 @@ La régie traditionnelle a rendu de grands services au sport amateur pendant des
 
 La régie digitale n'est plus un luxe. C'est un **outil de développement** qui transforme la relation avec les sponsors, libère du temps bénévole et modernise l'image du club.
 
-Si vous hésitez encore, [demandez une démo](/demo) pour voir la différence par vous-même. Et si vous êtes déjà convaincu, découvrez nos [offres adaptées à chaque taille de club](/offres).
+Si vous hésitez encore, [demandez une démo](/demo/) pour voir la différence par vous-même. Et si vous êtes déjà convaincu, découvrez nos [offres adaptées à chaque taille de club](/offres/).
 
 ---
 
 ## À lire aussi
 
-- [Régie sport : le guide complet](/blog/regie-sport-guide-complet)
-- [Régie digitale sport amateur : les avantages concrets](/blog/regie-digitale-sport-amateur-avantages)
-- [Guide complet des écrans LED en gymnase](/blog/ecran-led-gymnase-guide-complet)
-- [L'expérience match day dans les clubs de sport](/blog/experience-match-day-clubs-sport)
+- [Régie sport : le guide complet](/blog/regie-sport-guide-complet/)
+- [Régie digitale sport amateur : les avantages concrets](/blog/regie-digitale-sport-amateur-avantages/)
+- [Guide complet des écrans LED en gymnase](/blog/ecran-led-gymnase-guide-complet/)
+- [L'expérience match day dans les clubs de sport](/blog/experience-match-day-clubs-sport/)

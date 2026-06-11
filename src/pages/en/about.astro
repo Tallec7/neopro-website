@@ -35,13 +35,13 @@ const faqJsonLd = buildFAQPageJsonLd(
 
 <BaseLayout title={t('about.title')} description={t('about.description')} extraJsonLd={faqJsonLd} locale={locale}>
   <!-- Hero AMBITION -->
-  <section class="bg-neo-dark-bg">
+  <section class="bg-madxp-night">
     <div class="flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-start px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
       <!-- Left: AMBITION + text -->
       <div class="flex flex-col gap-[60px] items-start">
         <div class="relative">
           <div
-            class="text-[48px] md:text-[80px] lg:text-[138px] font-[900] leading-[1] text-[#51b28b] select-none"
+            class="text-[48px] md:text-[80px] lg:text-[138px] font-[900] leading-[1] text-[#093a60] select-none"
             aria-hidden="true"
           >
             <p>AMBITION</p>
@@ -51,7 +51,7 @@ const faqJsonLd = buildFAQPageJsonLd(
             <p>AMBITION</p>
           </div>
           <h1 class="absolute left-[70%] top-[96px] md:top-[160px] lg:top-[280px] text-[28px] md:text-[40px] lg:text-[60px] leading-[1.1] whitespace-nowrap">
-            <span class="font-playfair italic text-white">Show your</span>
+            <span class="font-display text-white">Show your</span>
           </h1>
         </div>
 
@@ -70,7 +70,7 @@ const faqJsonLd = buildFAQPageJsonLd(
         <div class="w-full max-w-[548px] lg:sticky lg:top-[120px]">
           <Image
             src={quiSommesNousImg}
-            alt="The Neopro team during a gym installation"
+            alt="The MADXP team during a gym installation"
             class="w-full aspect-[548/685] rounded-[20px] object-cover"
             loading="eager"
             widths={[548, 1096]}
@@ -83,9 +83,9 @@ const faqJsonLd = buildFAQPageJsonLd(
 
   <!-- Funded by your sponsors -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
-    <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between max-w-[1320px]">
+    <div class="bg-[rgba(14,87,142,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between max-w-[1320px]">
       <div class="max-w-[832px] flex flex-col gap-[30px]">
-        <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d]">
           {t('about.financable.title')}
         </h2>
         <p class="text-[#4a5565] text-[18px]">{t('about.financable.text')}</p>
@@ -94,7 +94,7 @@ const faqJsonLd = buildFAQPageJsonLd(
         <a
           href="/documents/financable-partenaires.pdf"
           download
-          class="inline-flex items-center gap-2 h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
+          class="inline-flex items-center gap-2 h-[48px] px-6 bg-[#06263f] text-white text-[16px] font-medium rounded-full hover:bg-[#0a0b0d] transition-colors whitespace-nowrap"
         >
           {t('about.financable.cta')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -106,11 +106,11 @@ const faqJsonLd = buildFAQPageJsonLd(
   <!-- FAQ -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-white">
     <div class="max-w-[900px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[40px]">{t('about.faq.title')}</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[40px]">{t('about.faq.title')}</h2>
       <div class="flex flex-col divide-y divide-gray-200 border-t border-b border-gray-200">
         {faqItems.map((item) => (
           <details class="group">
-            <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#101828] list-none [&::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer py-[24px] text-[18px] font-semibold text-[#0a0b0d] list-none [&::-webkit-details-marker]:hidden">
               {item.question}
               <svg class="w-5 h-5 shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </summary>

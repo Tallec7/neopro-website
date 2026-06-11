@@ -2,7 +2,7 @@
 title: "Publicité en gymnase : le nouveau canal pour les commerces locaux"
 description: "Découvrez pourquoi la publicité en gymnase sportif est le canal hyper-local que les PME et commerces de proximité attendaient. Audience captive, zéro adblocker, ciblage 20 km."
 date: 2026-04-09
-author: Neopro
+author: MADXP
 tags: ["publicité locale", "gymnase", "annonceurs", "DOOH", "PME", "affichage dynamique"]
 ---
 
@@ -61,7 +61,7 @@ Votre marque est associée à un moment de plaisir et de convivialité — pas �
 
 ## Combien ça coûte (et pourquoi c'est accessible)
 
-Les campagnes publicitaires en gymnase avec Neopro démarrent à **90 euros/mois par gymnase** (soit 450 euros/mois pour 5 gymnases).
+Les campagnes publicitaires en gymnase avec MADXP démarrent à **90 euros/mois par gymnase** (soit 450 euros/mois pour 5 gymnases).
 
 Pour un commerce local, c'est :
 - Moins cher qu'une campagne Google Ads locale (150-300 euros/mois en moyenne)
@@ -92,4 +92,4 @@ La publicité en gymnase, c'est le retour du local dans la publicité. Un canal 
 
 ---
 
-*Neopro est la régie sport digitale qui équipe les gymnases en écrans LED et en affichage dynamique. [Découvrez nos offres annonceurs](/annonceurs) ou [contactez-nous](/demo) pour en savoir plus.*
+*MADXP est la régie sport digitale qui équipe les gymnases en écrans LED et en affichage dynamique. [Découvrez nos offres annonceurs](/annonceurs/) ou [contactez-nous](/demo/) pour en savoir plus.*

@@ -74,21 +74,21 @@ export default function AdvertiserContactForm({ locale = 'fr' }: Props) {
   };
 
   const inputClasses =
-    'w-full h-[50px] border border-[#d1d5dc] rounded-lg px-4 text-black outline-none focus:border-[#fe6aa6] transition-colors text-[16px]';
+    'w-full h-[50px] border border-[#d1d5dc] rounded-lg px-4 text-black outline-none focus:border-[#0e578e] transition-colors text-[16px]';
   const selectClasses =
-    'w-full h-[50px] border border-[#d1d5dc] rounded-lg px-4 text-black outline-none focus:border-[#fe6aa6] transition-colors text-[16px] bg-white appearance-none';
+    'w-full h-[50px] border border-[#d1d5dc] rounded-lg px-4 text-black outline-none focus:border-[#0e578e] transition-colors text-[16px] bg-white appearance-none';
   const labelClasses = 'font-medium text-[16px] text-black leading-[24px]';
 
   return (
-    <section className="bg-[#101828] py-16 md:py-[96px] px-5">
+    <section className="bg-[#0a0b0d] py-16 md:py-[96px] px-5">
       <div className="max-w-[896px] mx-auto flex flex-col items-center gap-[45px] px-4 md:px-[32px]">
         <div className="text-center text-white">
-          <p className="text-[14px] tracking-[2px] text-[#fe6aa6] uppercase font-bold mb-[16px]">
+          <p className="text-[14px] tracking-[2px] text-[#0e578e] uppercase font-bold mb-[16px]">
             {t(locale, 'ads.contact.tag')}
           </p>
           <h2 className="text-[36px] md:text-[48px] font-bold leading-tight mb-[15px]">
             {t(locale, 'ads.contact.h2a')}
-            <span className="font-['Playfair_Display'] italic font-normal">{t(locale, 'ads.contact.h2b')}</span>
+            <span className="font-display font-normal">{t(locale, 'ads.contact.h2b')}</span>
           </h2>
           <p className="text-[16px] text-white/70 leading-[24px]">
             {t(locale, 'ads.contact.sub')}
@@ -98,7 +98,7 @@ export default function AdvertiserContactForm({ locale = 'fr' }: Props) {
         {status === 'success' ? (
           <div className="bg-white rounded-[10px] shadow-lg w-full p-[30px]">
             <div className="text-center py-8">
-              <p className="text-[#fe6aa6] text-[18px] font-bold mb-2">{t(locale, 'ads.contact.success.title')}</p>
+              <p className="text-[#0e578e] text-[18px] font-bold mb-2">{t(locale, 'ads.contact.success.title')}</p>
               <p className="text-[#4a5565]">{t(locale, 'ads.contact.success.desc')}</p>
             </div>
           </div>
@@ -165,14 +165,14 @@ export default function AdvertiserContactForm({ locale = 'fr' }: Props) {
 
               <div className="flex flex-col gap-[8px]">
                 <label className={labelClasses}>{t(locale, 'ads.contact.message')}</label>
-                <textarea name="message" rows={3} value={formData.message} onChange={handleChange} placeholder={t(locale, 'ads.contact.placeholder.message')} className="w-full border border-[#d1d5dc] rounded-lg px-4 py-3 text-black outline-none focus:border-[#fe6aa6] transition-colors text-[16px] resize-none" />
+                <textarea name="message" rows={3} value={formData.message} onChange={handleChange} placeholder={t(locale, 'ads.contact.placeholder.message')} className="w-full border border-[#d1d5dc] rounded-lg px-4 py-3 text-black outline-none focus:border-[#0e578e] transition-colors text-[16px] resize-none" />
               </div>
 
               <div className="flex justify-end">
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 bg-[#fe6aa6] text-white hover:bg-[#e85a96] ${
+                  className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 bg-[#0e578e] text-white hover:bg-[#e85a96] ${
                     status === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
                   }`}
                 >

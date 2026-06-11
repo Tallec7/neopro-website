@@ -21,7 +21,7 @@ function ClubLogo({ club }: { club: Club }) {
   );
 }
 
-export default function ClubCarousel({ clubs, title = 'Les clubs Neopro' }: Props) {
+export default function ClubCarousel({ clubs, title = 'Les clubs MADXP' }: Props) {
   const validClubs = clubs.filter((c) => c.logoUrl);
 
   if (validClubs.length === 0) return null;
@@ -31,7 +31,7 @@ export default function ClubCarousel({ clubs, title = 'Les clubs Neopro' }: Prop
 
   return (
     <section className="py-24 overflow-hidden bg-white">
-      <h2 className="text-[36px] md:text-[48px] font-bold text-[#101828] text-center mb-[60px] px-5">
+      <h2 className="text-[36px] md:text-[48px] font-bold text-[#0a0b0d] text-center mb-[60px] px-5">
         {title}
       </h2>
       <div className="overflow-hidden">

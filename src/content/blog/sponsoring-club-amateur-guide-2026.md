@@ -2,7 +2,7 @@
 title: "Sponsoring club amateur : le guide complet 2026"
 description: "Comment trouver des sponsors quand on est un club amateur ? Découvrez les 5 étapes clés pour décrocher et fidéliser vos partenaires sportifs en 2026."
 date: 2026-04-15
-author: Neopro
+author: MADXP
 tags: ["sponsoring", "club amateur", "partenaires", "guide"]
 ---
 
@@ -60,7 +60,7 @@ C'est **la clé de voûte** de votre stratégie en 2026. Les contreparties tradi
 
 Avec un **écran digital en gymnase**, vous pouvez proposer à vos sponsors un reporting précis : nombre de diffusions, durée d'exposition, créneaux horaires. C'est exactement ce qu'ils attendent pour justifier leur investissement en interne.
 
-Découvrez comment les annonceurs perçoivent ces contreparties sur notre page [annonceurs](/annonceurs).
+Découvrez comment les annonceurs perçoivent ces contreparties sur notre page [annonceurs](/annonceurs/).
 
 ## Étape 4 : Réussir le rendez-vous et signer
 
@@ -82,7 +82,7 @@ Trouver un sponsor coûte du temps et de l'énergie. Le garder est beaucoup plus
 
 ### Les actions de fidélisation
 
-- **Reporting trimestriel** : envoyez un bilan avec les chiffres de diffusion, les photos, les résultats sportifs. Les solutions digitales comme celles proposées par [Neopro](/solution) automatisent ce reporting.
+- **Reporting trimestriel** : envoyez un bilan avec les chiffres de diffusion, les photos, les résultats sportifs. Les solutions digitales comme celles proposées par [MADXP](/solution/) automatisent ce reporting.
 - **Invitations VIP** : réservez des places aux matchs importants, organisez un pot de remerciement en fin de saison.
 - **Visibilité bonus** : mentionnez vos sponsors sur vos réseaux sociaux, dans votre newsletter, lors des événements.
 - **Renouvellement anticipé** : contactez vos sponsors 2 mois avant la fin de saison pour discuter du renouvellement. Ne les laissez pas partir au concurrent.
@@ -91,13 +91,13 @@ Un sponsor fidélisé 3 ans dépense en moyenne **2,5 fois plus** qu'un sponsor 
 
 ## Le sponsoring digital change la donne pour les clubs amateurs
 
-Le passage au digital n'est pas réservé aux clubs professionnels. Des solutions comme la [régie digitale sportive](/solution) permettent aux clubs amateurs de proposer des contreparties premium à leurs sponsors sans investissement technique lourd.
+Le passage au digital n'est pas réservé aux clubs professionnels. Des solutions comme la [régie digitale sportive](/solution/) permettent aux clubs amateurs de proposer des contreparties premium à leurs sponsors sans investissement technique lourd.
 
 Le principe est simple : un écran LED installé dans votre gymnase diffuse les spots de vos sponsors pendant les matchs et les entraînements. Vous récupérez un reporting automatique et vos sponsors reçoivent des preuves concrètes de leur visibilité.
 
 C'est un cercle vertueux : des contreparties plus attractives → des sponsors plus nombreux → un budget plus important → un club plus ambitieux.
 
-Découvrez nos [offres adaptées aux clubs amateurs](/offres) et lancez votre démarche sponsoring avec les bons outils.
+Découvrez nos [offres adaptées aux clubs amateurs](/offres/) et lancez votre démarche sponsoring avec les bons outils.
 
 ## Conclusion
 
@@ -109,7 +109,7 @@ Ne laissez plus vos bénévoles démarcher à l'aveugle. Structurez votre approc
 
 ## À lire aussi
 
-- [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur)
-- [Régie digitale sport amateur : les avantages concrets](/blog/regie-digitale-sport-amateur-avantages)
-- [Publicité en gymnase : un nouveau canal pour les commerces locaux](/blog/publicite-gymnase-nouveau-canal-commerces-locaux)
-- [L'expérience match day dans les clubs de sport](/blog/experience-match-day-clubs-sport)
+- [Comment valoriser vos sponsors en club de sport amateur](/blog/valoriser-sponsors-club-sport-amateur/)
+- [Régie digitale sport amateur : les avantages concrets](/blog/regie-digitale-sport-amateur-avantages/)
+- [Publicité en gymnase : un nouveau canal pour les commerces locaux](/blog/publicite-gymnase-nouveau-canal-commerces-locaux/)
+- [L'expérience match day dans les clubs de sport](/blog/experience-match-day-clubs-sport/)

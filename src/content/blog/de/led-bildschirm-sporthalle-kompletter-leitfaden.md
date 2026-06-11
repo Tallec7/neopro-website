@@ -2,7 +2,7 @@
 title: "LED-Bildschirm in der Sporthalle: Der komplette Leitfaden für Amateurvereine"
 description: "Wie Sie einen LED-Bildschirm in Ihrer Sporthalle auswählen, installieren und finanzieren. Größe, Auflösung, Budget und Return on Investment durch Sponsoren."
 date: 2026-04-01
-author: Neopro
+author: MADXP
 tags: ["LED-Bildschirm", "Sporthalle", "Installation", "Leitfaden"]
 ---
 
@@ -37,7 +37,7 @@ Das Budget hängt vom gewählten Bildschirm ab:
 - **Profi-Bildschirm 75"**: 1.000 bis 2.000 €
 - **Profi-Bildschirm 85"**: 2.000 bis 3.500 €
 
-Hinzu kommt die **digitale Anzeigelösung** zur Steuerung der Inhalte. Bei Neopro beginnen die Abonnements ab **1.500 €/Jahr zzgl. MwSt.** und umfassen die gesamte Software, die Fernbedienungs-App und die Videovorlagen.
+Hinzu kommt die **digitale Anzeigelösung** zur Steuerung der Inhalte. Bei MADXP beginnen die Abonnements ab **1.500 €/Jahr zzgl. MwSt.** und umfassen die gesamte Software, die Fernbedienungs-App und die Videovorlagen.
 
 ## Wie finanzieren Sie die Installation?
 
@@ -49,9 +49,9 @@ Die gute Nachricht: **Der Bildschirm kann von Ihren Partnern finanziert werden**
 
 ## Die praktische Installation
 
-Mit einer Lösung wie Neopro erfolgt die Installation **in weniger als 5 Minuten**:
+Mit einer Lösung wie MADXP erfolgt die Installation **in weniger als 5 Minuten**:
 
-1. Das Neopro-Gerät an den Bildschirm anschließen (HDMI-Kabel)
+1. Das MADXP-Gerät an den Bildschirm anschließen (HDMI-Kabel)
 2. Sich vom Smartphone mit dem Gerät verbinden (kein WLAN in der Sporthalle erforderlich)
 3. Die Inhalte mit der Fernbedienungs-App steuern
 
@@ -61,4 +61,4 @@ Keine Bauarbeiten, keine Netzwerkverkabelung, kein Techniker erforderlich.
 
 Ein LED-Bildschirm in der Sporthalle ist eine Investition, die sich dank der Partner schnell amortisiert. Am wichtigsten ist die Wahl einer **geeigneten Anzeigelösung**, mit der Sie die Inhalte einfach steuern können, auch ohne technische Kenntnisse.
 
-[Entdecken Sie die Neopro-Angebote](/de/angebote), um die passende Formel für Ihren Verein zu finden.
+[Entdecken Sie die MADXP-Angebote](/de/angebote/), um die passende Formel für Ihren Verein zu finden.

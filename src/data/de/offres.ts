@@ -165,7 +165,7 @@ export const additionalOptions: OptionCategory[] = [
   },
 ];
 
-// ── Neopro-Kette (Full-Stack-Servicekette) ──────────────────
+// ── MADXP-Kette (Full-Stack-Servicekette) ──────────────────
 
 export const chainSteps: ChainStep[] = [
   {

@@ -1,22 +1,208 @@
 ---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import ClubCarousel from '@/components/ClubCarousel.tsx';
+import ContactForm from '@/components/ContactForm.tsx';
+
+// ── Données ──────────────────────────────────────────────────────
+import { clubs } from '@/data/clubs';
+
+// ── SEO ──────────────────────────────────────────────────────────
+import {
+  buildLocalBusinessJsonLd,
+  buildWebSiteJsonLd,
+  buildBreadcrumbJsonLd,
+} from '@/lib/jsonLd';
+
+const title = 'Régie sport digitale pour clubs — Écrans, vidéos & sponsors | MADXP';
+const description = "MADXP est la régie sport digitale clé en main pour clubs : écrans, appli télécommande et contenus vidéo pour valoriser vos sponsors et animer vos matchs. Du club pro au club régional. Dès 79 €/mois.";
+
+const siteUrl = 'https://madxp.kalonpartners.bzh';
+
+const localBusiness = buildLocalBusinessJsonLd({
+  name: 'MADXP',
+  description,
+  email: 'contact@kalonpartners.bzh',
+  url: siteUrl,
+  sameAs: [
+    'https://www.linkedin.com/company/neopro-communication',
+    'https://www.instagram.com/neopro.communication',
+  ],
+});
+
+const webSite = buildWebSiteJsonLd({
+  name: 'MADXP',
+  url: siteUrl,
+  alternateName: 'MADXP',
+});
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'Accueil', url: siteUrl },
+]);
 ---
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex,nofollow" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Site fermé</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; background: #101828; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
-      main { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; }
-      h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 700; margin: 0; letter-spacing: -0.02em; }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>Site fermé</h1>
-    </main>
-  </body>
-</html>
+
+<BaseLayout title={title} description={description} extraJsonLd={[localBusiness, webSite, breadcrumb]}>
+  <!-- ============ HERO — typo + couleur, sans photo ============ -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <!-- Blocs obliques décoratifs (écho de la coupe du logo) -->
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[55%] bg-madxp-blue/25 [clip-path:polygon(28%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[42%] bg-madxp-blue/30 [clip-path:polygon(34%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[34vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+
+    <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-[60px] pt-28 md:pt-[180px] pb-20 md:pb-[130px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6 md:mb-8">
+        Match-Day · Ad · Experience · Media
+      </p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[92px] max-w-[16ch]">
+        On fait de votre écran<br /><span class="text-madxp-light">un média interactif.</span>
+      </h1>
+      <p class="mt-8 text-[18px] md:text-[24px] leading-relaxed text-madxp-bone/80 max-w-[620px]">
+        La qualité d'une production pro, en main d'un bénévole. Écrans, appli télécommande et contenus vidéo — du club amateur au club professionnel.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 md:gap-6">
+        <Button href="/solution/" variant="white" arrow>Découvrez la solution</Button>
+        <Button href="/offres/" variant="outline-light" arrow>Voir les offres</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BIENVENUE + tableau de score (remplace la vidéo) ============ -->
+  <section class="relative bg-madxp-night overflow-hidden">
+    <div class="flex flex-col items-center justify-center px-5 pt-16 md:pt-24">
+      <h2 class="text-madxp-blue-deep text-[48px] md:text-[128px] leading-[1] text-center mb-6 md:mb-10 uppercase">
+        <span class="font-display font-normal">Bienvenue </span><span class="font-display text-madxp-bone/90">au club.</span>
+      </h2>
+      <p class="text-madxp-bone text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal mb-10 md:mb-16">
+        MADXP est la régie sport digitale adaptée à tous les clubs — du club amateur au club professionnel — pour professionnaliser l'expérience match et créer un nouvel espace publicitaire pour vos partenaires.
+      </p>
+    </div>
+
+    <!-- Maquette « écran de match » 100 % CSS -->
+    <div class="px-5 pb-16 md:pb-24">
+      <div class="max-w-[1100px] mx-auto rounded-[20px] overflow-hidden bg-madxp-ink ring-1 ring-white/10 shadow-2xl">
+        <div class="flex items-center justify-between px-5 md:px-8 py-4 border-b border-white/10">
+          <span class="font-mono text-[12px] md:text-[14px] tracking-[0.18em] text-madxp-bone/60 uppercase">Gymnase · Match-Day</span>
+          <span class="inline-flex items-center gap-2 font-mono text-[12px] md:text-[14px] tracking-[0.18em] text-madxp-bone uppercase">
+            <span class="w-2 h-2 rounded-full bg-madxp-red animate-pulse"></span> Live
+          </span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 md:px-12 py-10 md:py-16">
+          <div class="text-center">
+            <p class="font-mono text-[11px] md:text-[13px] tracking-[0.2em] text-madxp-light uppercase mb-2">Domicile</p>
+            <p class="font-display text-[64px] md:text-[120px] leading-none text-madxp-bone">24</p>
+          </div>
+          <div class="text-center">
+            <p class="font-mono text-[26px] md:text-[40px] text-madxp-bone/40">·</p>
+            <p class="font-mono text-[12px] md:text-[15px] tracking-[0.2em] text-madxp-bone/60 mt-2">28:14</p>
+          </div>
+          <div class="text-center">
+            <p class="font-mono text-[11px] md:text-[13px] tracking-[0.2em] text-madxp-light uppercase mb-2">Visiteur</p>
+            <p class="font-display text-[64px] md:text-[120px] leading-none text-madxp-bone">21</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 px-5 md:px-8 py-4 bg-madxp-blue">
+          <span class="font-mono text-[11px] md:text-[13px] tracking-[0.2em] text-madxp-bone/80 uppercase shrink-0">Sponsors</span>
+          <div class="flex-1 flex gap-2 md:gap-3">
+            <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15"></span>
+            <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15"></span>
+            <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15 hidden sm:block"></span>
+            <span class="flex-1 h-7 md:h-9 rounded bg-madxp-bone/15 hidden md:block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ La régie sport digitale + télécommande (remplace la photo) ============ -->
+  <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
+    <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
+      <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
+        <div>
+          <p class="font-mono uppercase tracking-[0.2em] text-[13px] text-madxp-blue mb-4">La solution</p>
+          <h2 class="font-display uppercase text-[36px] md:text-[56px] text-madxp-ink leading-[0.95]">
+            La régie sport digitale de votre club
+          </h2>
+          <p class="text-madxp-gray text-[18px] leading-[28px] mt-5">
+            Un écran dans le gymnase, une appli télécommande, des contenus vidéo. Vous allumez, ça tourne.
+          </p>
+        </div>
+        <Button href="/solution/" variant="black" arrow>Découvrez la solution</Button>
+      </div>
+      <!-- Maquette télécommande 100 % CSS -->
+      <div class="w-full md:w-[420px] flex-shrink-0">
+        <div class="mx-auto w-[260px] md:w-[300px] rounded-[34px] bg-madxp-ink ring-1 ring-black/10 shadow-2xl p-5 md:p-6">
+          <div class="flex items-center justify-between mb-6">
+            <span class="font-mono text-[11px] tracking-[0.2em] text-madxp-bone/60 uppercase">Régie</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-madxp-red"></span>
+          </div>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center justify-between rounded-xl bg-madxp-blue px-4 py-3">
+              <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone uppercase">Score</span>
+              <span class="font-display text-[22px] text-madxp-bone">+1</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+              <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone/80 uppercase">Spot sponsor</span>
+              <span class="font-mono text-[12px] text-madxp-light uppercase">Play</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+              <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone/80 uppercase">Replay</span>
+              <span class="font-mono text-[12px] text-madxp-light uppercase">↺</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+              <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone/80 uppercase">Chrono</span>
+              <span class="font-mono text-[12px] text-madxp-light">28:14</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Des offres + carte tarif (remplace la photo) ============ -->
+  <section class="py-16 md:py-[96px] px-5 md:px-[60px] bg-madxp-surface">
+    <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
+      <!-- Carte offre 100 % CSS -->
+      <div class="w-full md:w-[420px] flex-shrink-0 order-2 md:order-1">
+        <div class="rounded-[20px] bg-madxp-blue text-madxp-bone p-8 md:p-10 shadow-2xl">
+          <p class="font-mono text-[12px] tracking-[0.2em] uppercase text-madxp-bone/70 mb-3">À partir de</p>
+          <p class="font-display leading-none">
+            <span class="text-[72px] md:text-[88px]">79</span><span class="text-[28px] md:text-[34px]"> €</span>
+            <span class="font-mono text-[13px] tracking-[0.16em] uppercase align-middle">/ mois</span>
+          </p>
+          <p class="text-madxp-bone/80 text-[16px] mt-2 mb-7">Finançable par vos partenaires. Sans engagement long.</p>
+          <ul class="flex flex-col gap-3">
+            {['Écran + logiciel de régie', 'Appli télécommande', 'Contenus vidéo & sponsors', 'Installation clé en main'].map((item) => (
+              <li class="flex items-center gap-3 text-[16px]">
+                <span class="w-5 h-5 shrink-0 rounded-full bg-madxp-bone/20 flex items-center justify-center text-[12px]">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start order-1 md:order-2">
+        <div>
+          <p class="font-mono uppercase tracking-[0.2em] text-[13px] text-madxp-blue mb-4">Les offres</p>
+          <h2 class="font-display uppercase text-[36px] md:text-[56px] text-madxp-ink leading-[0.95]">
+            Des offres adaptées à vos besoins
+          </h2>
+          <p class="text-madxp-gray text-[18px] leading-[28px] mt-5">
+            Location ou achat, SaaS ou boîtier. Finançable par vos partenaires. Clé en main.
+          </p>
+        </div>
+        <Button href="/offres/" variant="black" arrow>Découvrez les offres</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Les clubs MADXP (carousel) -->
+  <ClubCarousel clubs={clubs} client:visible />
+
+  <!-- Contact -->
+  <div id="contact">
+    <ContactForm client:visible />
+  </div>
+
+</BaseLayout>

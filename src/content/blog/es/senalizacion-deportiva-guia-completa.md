@@ -2,7 +2,7 @@
 title: "Señalización deportiva: la guía completa para clubes (pro, semi-pro y regionales)"
 description: "¿Qué es la señalización deportiva? ¿Para qué sirve? ¿Cuánto cuesta? La guía completa para entender cómo la señalización deportiva digital transforma la experiencia del partido, valoriza a los patrocinadores y profesionaliza un club — sea cual sea su nivel."
 date: 2026-04-08
-author: Neopro
+author: MADXP
 tags: ["señalización deportiva", "señalización digital", "guía", "clubes"]
 ---
 
@@ -24,7 +24,7 @@ En un club profesional, estas funciones suelen ser gestionadas por un equipo ded
 
 La señalización deportiva tradicional requiere **material profesional, competencias técnicas y voluntarios formados**. Es lo que se ve en los clubes profesionales.
 
-La **señalización deportiva digital** es la evolución moderna: todo está integrado en una solución única controlable desde un smartphone. Es lo que propone Neopro: una pantalla LED, un dispositivo plug & play, una app de control remoto y contenidos de vídeo listos para usar. Un solo voluntario basta para gestionar la señalización durante el partido.
+La **señalización deportiva digital** es la evolución moderna: todo está integrado en una solución única controlable desde un smartphone. Es lo que propone MADXP: una pantalla LED, un dispositivo plug & play, una app de control remoto y contenidos de vídeo listos para usar. Un solo voluntario basta para gestionar la señalización durante el partido.
 
 La diferencia clave: con una señalización deportiva digital, **ya no necesitas ser profesional para tener una señalización de profesional**.
 
@@ -58,13 +58,13 @@ Es la gran idea preconcebida a combatir: **la señalización deportiva no está 
 - **Clubes semi-profesionales y de división nacional**: quieren acercarse al nivel profesional en experiencia de partido, sin los costes asociados.
 - **Clubes regionales y amateur**: quieren diferenciarse de la competencia local, ofrecer un verdadero espectáculo a su público y convertir la pantalla en fuente de ingresos.
 
-Neopro está diseñado para adaptarse a estos tres perfiles, con planes calibrados (de 79 a 299 €/mes) y siempre financiables por los patrocinadores.
+MADXP está diseñado para adaptarse a estos tres perfiles, con planes calibrados (de 79 a 299 €/mes) y siempre financiables por los patrocinadores.
 
 ## ¿Cuánto cuesta una señalización deportiva?
 
 Una señalización deportiva tradicional (material profesional + equipo técnico) cuesta generalmente **entre 30.000 y 150.000 €** según el equipamiento — por eso ha estado históricamente reservada a los clubes profesionales.
 
-Una **señalización deportiva digital llave en mano** como Neopro empieza **desde 79 €/mes** con la fórmula Play (sin material, 100% SaaS). Los planes con pantalla y dispositivo van de 149 a 299 €/mes. La inversión se amortiza desde el primer o segundo patrocinador conseguido gracias al nuevo espacio publicitario creado.
+Una **señalización deportiva digital llave en mano** como MADXP empieza **desde 79 €/mes** con la fórmula Play (sin material, 100% SaaS). Los planes con pantalla y dispositivo van de 149 a 299 €/mes. La inversión se amortiza desde el primer o segundo patrocinador conseguido gracias al nuevo espacio publicitario creado.
 
 ## Qué verificar antes de elegir una señalización deportiva
 
@@ -80,6 +80,6 @@ Si comparas varias soluciones, estas son las preguntas clave:
 
 La señalización deportiva ya no es un privilegio de los clubes profesionales. Con la llegada de las **señalizaciones deportivas digitales llave en mano**, todos los clubes pueden hoy equiparse para profesionalizar su experiencia de partido, valorizar a sus patrocinadores y generar nuevos ingresos. El precio de entrada se ha vuelto asequible (desde 79 €/mes), y la complejidad técnica ha desaparecido.
 
-En Neopro, es exactamente lo que construimos: **la señalización deportiva digital para todos los clubes**, del nivel profesional al campeonato regional.
+En MADXP, es exactamente lo que construimos: **la señalización deportiva digital para todos los clubes**, del nivel profesional al campeonato regional.
 
-[Descubre la señalización deportiva Neopro en detalle](/es/regie-sport) o [solicita un presupuesto personalizado](/es/presupuesto) para tu club.
+[Descubre la señalización deportiva MADXP en detalle](/es/regie-sport/) o [solicita un presupuesto personalizado](/es/presupuesto/) para tu club.

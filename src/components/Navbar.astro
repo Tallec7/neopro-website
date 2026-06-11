@@ -13,7 +13,7 @@ const aboutSlug: Record<Locale, string> = { fr: '/qui-sommes-nous', en: '/about'
 const flags: Record<Locale, string> = { fr: '🇫🇷', en: '🇬🇧', es: '🇪🇸', de: '🇩🇪', da: '🇩🇰', it: '🇮🇹', pl: '🇵🇱', nl: '🇳🇱', pt: '🇵🇹' };
 
 const localesWithBlog: Locale[] = ['fr', 'en', 'es', 'de', 'da'];
-const blogHref = localesWithBlog.includes(locale) ? localePath('/blog', locale) : '/blog';
+const blogHref = localesWithBlog.includes(locale) ? localePath('/blog', locale) : '/blog/';
 
 const navLinks = [
   { label: t('nav.solution'), href: localeRoutePath('/solution', locale) },
@@ -33,15 +33,15 @@ const currentPath = Astro.url.pathname;
     <!-- Logo + Nav links -->
     <div class="flex items-center gap-[40px]">
       <a href={localePath('/', locale)} class="flex-shrink-0">
-        <Logo class="h-[24px] w-auto" />
+        <Logo size={32} />
       </a>
       <div class="hidden md:flex items-center gap-[32px]">
         {navLinks.map((link) => (
           <a
             href={link.href}
             class:list={[
-              'text-[16px] transition-colors hover:text-neo-green-dark',
-              currentPath === link.href ? 'text-neo-green-dark' : 'text-neo-dark',
+              'text-[16px] transition-colors hover:text-madxp-blue-deep',
+              currentPath === link.href ? 'text-madxp-blue-deep' : 'text-madxp-ink',
             ]}
           >
             {link.label}
@@ -55,13 +55,13 @@ const currentPath = Astro.url.pathname;
       <Button href={localeRoutePath('/devis', locale)} variant="black">
         {t('nav.demo')}
       </Button>
-      <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors">
+      <a href="https://madxp.kalonpartners.bzh/login" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-madxp-ink hover:text-madxp-blue-deep transition-colors">
         {t('nav.club')}
       </a>
       <div class="relative" data-lang-switcher>
         <button
           type="button"
-          class="flex items-center gap-1.5 text-[14px] font-medium text-neo-dark hover:text-neo-green-dark transition-colors cursor-pointer"
+          class="flex items-center gap-1.5 text-[14px] font-medium text-madxp-ink hover:text-madxp-blue-deep transition-colors cursor-pointer"
           aria-expanded="false"
           aria-label="Langue"
         >
@@ -71,7 +71,7 @@ const currentPath = Astro.url.pathname;
         </button>
         <div class="hidden absolute right-0 top-full mt-2 bg-white rounded-[8px] shadow-lg border border-gray-100 py-1 min-w-[80px]" data-lang-dropdown>
           {otherLocales.map((l) => (
-            <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="flex items-center gap-2 px-3 py-1.5 text-[14px] font-medium text-neo-gray hover:text-neo-green-dark hover:bg-gray-50 transition-colors">
+            <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="flex items-center gap-2 px-3 py-1.5 text-[14px] font-medium text-madxp-gray hover:text-madxp-blue-deep hover:bg-gray-50 transition-colors">
               <span class="text-[16px] leading-none">{flags[l]}</span>
               <span>{l.toUpperCase()}</span>
             </a>
@@ -87,9 +87,9 @@ const currentPath = Astro.url.pathname;
       aria-label="Menu"
       aria-expanded="false"
     >
-      <span class="block w-6 h-0.5 bg-neo-dark transition-transform origin-center" />
-      <span class="block w-6 h-0.5 bg-neo-dark transition-opacity" />
-      <span class="block w-6 h-0.5 bg-neo-dark transition-transform origin-center" />
+      <span class="block w-6 h-0.5 bg-madxp-ink transition-transform origin-center" />
+      <span class="block w-6 h-0.5 bg-madxp-ink transition-opacity" />
+      <span class="block w-6 h-0.5 bg-madxp-ink transition-transform origin-center" />
     </button>
   </div>
 
@@ -98,7 +98,7 @@ const currentPath = Astro.url.pathname;
     {navLinks.map((link) => (
       <a
         href={link.href}
-        class="text-[16px] text-neo-dark hover:text-neo-green-dark block py-1"
+        class="text-[16px] text-madxp-ink hover:text-madxp-blue-deep block py-1"
       >
         {link.label}
       </a>
@@ -107,12 +107,12 @@ const currentPath = Astro.url.pathname;
       <Button href={localeRoutePath('/devis', locale)} variant="black">
         {t('nav.demo')}
       </Button>
-      <a href="https://neopro-admin.kalonpartners.bzh" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-neo-dark hover:text-neo-green-dark">
+      <a href="https://madxp.kalonpartners.bzh/login" target="_blank" rel="noopener noreferrer" class="text-[16px] font-medium text-madxp-ink hover:text-madxp-blue-deep">
         {t('nav.club')}
       </a>
       <div class="flex flex-wrap gap-2">
         {otherLocales.map((l) => (
-          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="flex items-center gap-1.5 text-[14px] font-medium text-neo-gray hover:text-neo-green-dark transition-colors px-3 py-1 border border-gray-200 rounded-full">
+          <a href={getLocaleUrl(Astro.url.pathname, locale, l)} class="flex items-center gap-1.5 text-[14px] font-medium text-madxp-gray hover:text-madxp-blue-deep transition-colors px-3 py-1 border border-gray-200 rounded-full">
             <span class="text-[16px] leading-none">{flags[l]}</span>
             <span>{l.toUpperCase()}</span>
           </a>

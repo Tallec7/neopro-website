@@ -1,37 +1,37 @@
 import type { APIRoute } from 'astro';
 
-const SITE = 'https://www.neopro-communication.fr';
+const SITE = 'https://madxp.kalonpartners.bzh';
 
 // Images principales du site avec leurs pages et descriptions
 const imageEntries = [
   {
     page: '/',
     images: [
-      { loc: '/og-default.jpg', title: 'Neopro — Régie sport digitale pour clubs' },
+      { loc: '/og-default.jpg', title: 'MADXP — Régie sport digitale pour clubs' },
     ],
   },
   {
     page: '/regie-sport',
     images: [
-      { loc: '/og-default.jpg', title: 'Régie sport digitale Neopro — écrans et régie clé en main pour clubs' },
+      { loc: '/og-default.jpg', title: 'Régie sport digitale MADXP — écrans et régie clé en main pour clubs' },
     ],
   },
   {
     page: '/solution',
     images: [
-      { loc: '/_astro/hero-solution', title: 'Joueurs de handball devant un écran digital Neopro' },
+      { loc: '/_astro/hero-solution', title: 'Joueurs de handball devant un écran digital MADXP' },
     ],
   },
   {
     page: '/offres',
     images: [
-      { loc: '/_astro/hero-offres', title: 'Gymnase équipé d\'un écran digital Neopro avec les offres partenaires' },
+      { loc: '/_astro/hero-offres', title: 'Gymnase équipé d\'un écran digital MADXP avec les offres partenaires' },
     ],
   },
   {
     page: '/qui-sommes-nous',
     images: [
-      { loc: '/_astro/qui-sommes-nous', title: 'L\'équipe Neopro lors d\'une installation dans un gymnase' },
+      { loc: '/_astro/qui-sommes-nous', title: 'L\'équipe MADXP lors d\'une installation dans un gymnase' },
     ],
   },
 ];

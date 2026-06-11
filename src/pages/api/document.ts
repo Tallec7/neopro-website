@@ -39,7 +39,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const resendApiKey = import.meta.env.RESEND_API_KEY;
-  const contactEmail = import.meta.env.CONTACT_EMAIL || 'contact@neopro-communication.fr';
+  const contactEmail = import.meta.env.CONTACT_EMAIL || 'contact@kalonpartners.bzh';
 
   if (!resendApiKey) {
     console.error('[document] RESEND_API_KEY manquante');
@@ -61,13 +61,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Email au demandeur avec le PDF en pièce jointe
     await resend.emails.send({
-      from: 'Neopro <noreply@neopro-communication.fr>',
+      from: 'MADXP <noreply@kalonpartners.bzh>',
       to: email,
-      subject: 'Neopro — Document explicatif partenaires',
+      subject: 'MADXP — Document explicatif partenaires',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: #2f3935; padding: 30px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #81e3bc; margin: 0; font-size: 24px;">Votre document Neopro</h1>
+          <div style="background: #06263f; padding: 30px; border-radius: 12px 12px 0 0;">
+            <h1 style="color: #0e578e; margin: 0; font-size: 24px;">Votre document MADXP</h1>
             <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">Finançable par vos partenaires</p>
           </div>
           <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
@@ -83,14 +83,14 @@ export const POST: APIRoute = async ({ request }) => {
           <div style="background: #f8f9fa; padding: 20px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
             <p style="color: #6b7280; font-size: 13px; margin: 0;">
               Une question ? Contactez-nous à
-              <a href="mailto:${contactEmail}" style="color: #51b28b;">${contactEmail}</a>
+              <a href="mailto:${contactEmail}" style="color: #093a60;">${contactEmail}</a>
             </p>
           </div>
         </div>
       `,
       attachments: [
         {
-          filename: 'Neopro-Document-Partenaires.pdf',
+          filename: 'MADXP-Document-Partenaires.pdf',
           content: pdfBuffer,
         },
       ],
@@ -98,14 +98,14 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Notification à l'équipe
     await resend.emails.send({
-      from: 'Neopro <noreply@neopro-communication.fr>',
+      from: 'MADXP <noreply@kalonpartners.bzh>',
       to: contactEmail,
       replyTo: email,
       subject: `Document demandé par ${email}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: #2f3935; padding: 30px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #81e3bc; margin: 0; font-size: 24px;">Nouveau téléchargement</h1>
+          <div style="background: #06263f; padding: 30px; border-radius: 12px 12px 0 0;">
+            <h1 style="color: #0e578e; margin: 0; font-size: 24px;">Nouveau téléchargement</h1>
             <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">Document explicatif partenaires</p>
           </div>
           <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'green' | 'black' | 'white' | 'yellow' | 'pink' | 'outline';
+  variant?: 'green' | 'black' | 'white' | 'yellow' | 'pink' | 'outline' | 'outline-light';
   href?: string;
   arrow?: boolean;
   class?: string;
@@ -18,12 +18,13 @@ const {
 } = Astro.props;
 
 const variants: Record<string, string> = {
-  green: 'bg-neo-green text-neo-dark hover:bg-neo-green-dark',
-  black: 'bg-neo-dark text-white hover:bg-[#1d2939]',
-  white: 'bg-white text-black hover:bg-gray-100',
-  yellow: 'bg-neo-yellow text-neo-dark hover:bg-[#ffe566]',
-  pink: 'bg-neo-pink text-neo-dark hover:bg-[#f08db5]',
-  outline: 'border border-neo-dark text-neo-dark hover:bg-neo-dark hover:text-white',
+  green: 'bg-madxp-blue text-madxp-bone hover:bg-madxp-blue-deep',
+  black: 'bg-madxp-ink text-white hover:bg-madxp-night',
+  white: 'bg-madxp-bone text-madxp-ink hover:bg-white',
+  yellow: 'bg-madxp-amber text-madxp-ink hover:bg-[#b8740a]',
+  pink: 'bg-madxp-red text-madxp-bone hover:bg-[#9c2f25]',
+  outline: 'border border-madxp-ink text-madxp-ink hover:bg-madxp-ink hover:text-madxp-bone',
+  'outline-light': 'border border-madxp-bone text-madxp-bone hover:bg-madxp-bone hover:text-madxp-ink',
 };
 
 const baseClasses = `inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 ${variants[variant]} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'} ${className}`;

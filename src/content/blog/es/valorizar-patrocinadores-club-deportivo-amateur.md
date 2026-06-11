@@ -2,7 +2,7 @@
 title: "5 formas de valorizar mejor a tus patrocinadores en un club amateur"
 description: "Ve más allá de los paneles estáticos: pantallas digitales, redes sociales, naming, vídeos y reporting. Fideliza a tus patrocinadores y atrae nuevos."
 date: 2026-03-25
-author: Neopro
+author: MADXP
 tags: ["patrocinadores", "partners", "club amateur", "valorización"]
 ---
 
@@ -73,4 +73,4 @@ Un patrocinador que recibe un balance de visibilidad a final de temporada es un 
 | Vídeos profesionales | Variable | Muy alto |
 | Reporting | Gratuito | Alto |
 
-La combinación ganadora: una **pantalla digital + vídeos de calidad + un reporting claro**. Esto es exactamente lo que ofrece [Neopro](/es/solution) a los clubes amateur.
+La combinación ganadora: una **pantalla digital + vídeos de calidad + un reporting claro**. Esto es exactamente lo que ofrece [MADXP](/es/solution/) a los clubes amateur.

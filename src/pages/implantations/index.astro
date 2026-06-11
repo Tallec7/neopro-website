@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { cities, sports } from '@/data/implantations';
 import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const canonicalUrl = `${siteUrl}/implantations`;
 
 const frCities = cities.filter((c) => c.country === 'FR');
@@ -17,20 +17,20 @@ const breadcrumb = buildBreadcrumbJsonLd([
 ---
 
 <BaseLayout
-  title="Régie sport digitale — Implantations Neopro en France, Belgique, Suisse"
-  description="Neopro, la régie sport digitale clé en main, installe des écrans et des solutions de régie digitale dans les clubs de sport partout en France, en Belgique francophone et en Suisse romande. Trouvez votre ville."
+  title="Régie sport digitale — Implantations MADXP en France, Belgique, Suisse"
+  description="MADXP, la régie sport digitale clé en main, installe des écrans et des solutions de régie digitale dans les clubs de sport partout en France, en Belgique francophone et en Suisse romande. Trouvez votre ville."
   canonicalUrl={canonicalUrl}
   extraJsonLd={breadcrumb}
 >
   <!-- Hero -->
-  <section class="bg-neo-dark text-white py-20 px-6">
+  <section class="bg-madxp-ink text-white py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-black mb-6">
-        Neopro partout en<br />
-        <span class="text-neo-green">France et pays francophones</span>
+        MADXP partout en<br />
+        <span class="text-madxp-blue">France et pays francophones</span>
       </h1>
       <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-        Neopro, la régie sport digitale clé en main, accompagne les clubs de sport — du niveau
+        MADXP, la régie sport digitale clé en main, accompagne les clubs de sport — du niveau
         professionnel au championnat régional — dans toute la France métropolitaine, en Belgique
         francophone et en Suisse romande. Trouvez votre ville ci-dessous.
       </p>
@@ -38,15 +38,15 @@ const breadcrumb = buildBreadcrumbJsonLd([
   </section>
 
   <!-- Sports couverts -->
-  <section class="py-10 px-6 bg-neo-dark-bg">
+  <section class="py-10 px-6 bg-madxp-night">
     <div class="max-w-5xl mx-auto">
-      <p class="text-center text-neo-gray text-sm mb-4">Sports couverts — cliquez pour découvrir la solution</p>
+      <p class="text-center text-madxp-gray text-sm mb-4">Sports couverts — cliquez pour découvrir la solution</p>
       <div class="flex flex-wrap justify-center gap-3">
         {
           sports.map((sport) => (
             <a
-              href={`/${sport.slug}`}
-              class="bg-neo-dark text-neo-green border border-neo-green/30 px-4 py-2 rounded-full text-sm font-semibold capitalize hover:bg-neo-green hover:text-neo-dark transition-colors"
+              href={`/${sport.slug}/`}
+              class="bg-madxp-ink text-madxp-blue border border-madxp-blue/30 px-4 py-2 rounded-full text-sm font-semibold capitalize hover:bg-madxp-blue hover:text-madxp-ink transition-colors"
             >
               {sport.name}
             </a>
@@ -59,15 +59,15 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <!-- France -->
   <section class="py-16 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-2xl font-black text-neo-dark mb-8">
-        France <span class="text-neo-gray font-normal text-lg">({frCities.length} villes)</span>
+      <h2 class="text-2xl font-black text-madxp-ink mb-8">
+        France <span class="text-madxp-gray font-normal text-lg">({frCities.length} villes)</span>
       </h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         {
           frCities.map((city) => (
             <a
-              href={`/implantations/${city.slug}`}
-              class="block p-3 bg-gray-50 rounded-lg text-neo-dark text-sm font-medium hover:bg-neo-green hover:text-neo-dark transition-all text-center"
+              href={`/implantations/${city.slug}/`}
+              class="block p-3 bg-gray-50 rounded-lg text-madxp-ink text-sm font-medium hover:bg-madxp-blue hover:text-madxp-ink transition-all text-center"
             >
               {city.name}
             </a>
@@ -80,13 +80,13 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <!-- Belgique -->
   <section class="py-8 px-6 bg-gray-50">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xl font-black text-neo-dark mb-6">Belgique francophone</h2>
+      <h2 class="text-xl font-black text-madxp-ink mb-6">Belgique francophone</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {
           beCities.map((city) => (
             <a
-              href={`/implantations/${city.slug}`}
-              class="block p-3 bg-white rounded-lg text-neo-dark text-sm font-medium hover:bg-neo-green hover:text-neo-dark transition-all text-center"
+              href={`/implantations/${city.slug}/`}
+              class="block p-3 bg-white rounded-lg text-madxp-ink text-sm font-medium hover:bg-madxp-blue hover:text-madxp-ink transition-all text-center"
             >
               {city.name}
             </a>
@@ -99,13 +99,13 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <!-- Suisse -->
   <section class="py-8 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-xl font-black text-neo-dark mb-6">Suisse romande</h2>
+      <h2 class="text-xl font-black text-madxp-ink mb-6">Suisse romande</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {
           chCities.map((city) => (
             <a
-              href={`/implantations/${city.slug}`}
-              class="block p-3 bg-gray-50 rounded-lg text-neo-dark text-sm font-medium hover:bg-neo-green hover:text-neo-dark transition-all text-center"
+              href={`/implantations/${city.slug}/`}
+              class="block p-3 bg-gray-50 rounded-lg text-madxp-ink text-sm font-medium hover:bg-madxp-blue hover:text-madxp-ink transition-all text-center"
             >
               {city.name}
             </a>
@@ -116,16 +116,16 @@ const breadcrumb = buildBreadcrumbJsonLd([
   </section>
 
   <!-- CTA -->
-  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+  <section class="py-16 px-6 bg-madxp-ink text-white text-center">
     <div class="max-w-2xl mx-auto">
       <h2 class="text-2xl font-black mb-4">Votre ville n'est pas listée ?</h2>
       <p class="text-gray-300 mb-8">
-        Neopro intervient partout en France et dans les pays francophones. Contactez-nous pour
+        MADXP intervient partout en France et dans les pays francophones. Contactez-nous pour
         vérifier la disponibilité dans votre secteur.
       </p>
       <a
-        href="/demo"
-        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        href="/demo/"
+        class="inline-block bg-madxp-blue text-madxp-ink font-bold px-8 py-4 rounded-xl hover:bg-madxp-blue-deep transition-colors"
       >
         Demander une démo gratuite
       </a>
