@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
+import HeroCard from '@/components/HeroCard.astro';
 import SportBullet from '@/components/SportBullet.astro';
 import ContactForm from '@/components/ContactForm.tsx';
 
@@ -76,7 +77,7 @@ const service = buildServiceJsonLd({
 });
 ---
 
-<BaseLayout title={title} description={description} extraJsonLd={[breadcrumb, service, faqJsonLd]}>
+<BaseLayout title={title} description={description} ogImage="https://madxp.kalonpartners.bzh/og-solution.jpg" extraJsonLd={[breadcrumb, service, faqJsonLd]}>
   <!-- Hero — typo + couleur, sans photo -->
   <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -84,17 +85,20 @@ const service = buildServiceJsonLd({
       <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
       <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
     </div>
-    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
-      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">La solution</p>
-      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
-        La régie sport de <span class="text-madxp-light">votre club</span>
-      </h1>
-      <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[620px]">
-        Une régie digitale clé en main pensée pour les clubs de sport — du niveau professionnel au championnat régional.
-      </p>
-      <div class="mt-9">
-        <Button href="/demo/" variant="white" arrow>Découvrir la solution</Button>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px] grid lg:grid-cols-[1fr_minmax(0,420px)] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">La solution</p>
+        <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[76px] max-w-[14ch]">
+          La régie sport de <span class="text-madxp-light">votre club</span>
+        </h1>
+        <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[620px]">
+          Une régie digitale clé en main pensée pour les clubs de sport — du niveau professionnel au championnat régional.
+        </p>
+        <div class="mt-9">
+          <Button href="/demo/" variant="white" arrow>Découvrir la solution</Button>
+        </div>
       </div>
+      <HeroCard label="La solution" title="Branchez. Pilotez." sub="Un boîtier HDMI, une appli, vos contenus sur l'écran du gymnase." class="w-full max-w-[420px] lg:justify-self-end" />
     </div>
   </section>
 

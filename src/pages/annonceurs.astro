@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
+import HeroCard from '@/components/HeroCard.astro';
 import AdvertiserContactForm from '@/components/AdvertiserContactForm.tsx';
 import {
   buildBreadcrumbJsonLd,
@@ -68,29 +69,33 @@ const description = "MADXP opère le premier réseau d'écrans publicitaires en 
   title={title}
   description={description}
   canonicalUrl={canonicalUrl}
+  ogImage="https://madxp.kalonpartners.bzh/og-annonceurs.jpg"
   extraJsonLd={[breadcrumb, service, faq]}
 >
-  <!-- Hero -->
-  <section class="bg-[#06263f] text-white">
-    <div class="max-w-[1200px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[80px] md:py-[120px]">
-      <p class="text-[14px] tracking-[2px] text-[#0e578e] uppercase font-bold mb-[20px]">
-        Régie publicitaire sport
-      </p>
-      <h1 class="text-[36px] md:text-[56px] lg:text-[72px] leading-[1.05] font-black mb-[30px] max-w-[960px]">
-        Un inventaire publicitaire<br />
-        <span class="text-[#0e578e]">que personne</span><br />
-        <span class="font-display font-normal">ne peut vous offrir.</span>
-      </h1>
-      <p class="text-[18px] md:text-[22px] text-white/80 max-w-[760px] leading-relaxed mb-[16px]">
-        MADXP opère le premier réseau d'écrans en gymnases sportifs.
-        Une audience captive, locale et récurrente — jamais exploitée
-        par la publicité jusqu'ici.
-      </p>
-      <p class="text-[16px] text-white/50 max-w-[760px] mb-[40px]">
-        16 millions de licenciés sportifs. 8 000 gymnases en France.
-        Zéro inventaire publicitaire. Jusqu'à maintenant.
-      </p>
-      <Button href="#contact" variant="pink" arrow>Demander un rendez-vous</Button>
+  <!-- Hero — typo + couleur + carte, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[150px] pb-[60px] md:pb-[100px] grid lg:grid-cols-[1fr_minmax(0,400px)] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">Régie publicitaire sport</p>
+        <h1 class="font-display uppercase leading-[0.92] text-[40px] md:text-[64px] max-w-[15ch]">
+          Un inventaire <span class="text-madxp-light">que personne</span> ne peut vous offrir.
+        </h1>
+        <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[640px] leading-relaxed">
+          MADXP opère le premier réseau d'écrans en gymnases sportifs. Une audience captive, locale et récurrente — jamais exploitée par la publicité jusqu'ici.
+        </p>
+        <p class="mt-4 text-[16px] text-madxp-bone/50 max-w-[640px]">
+          16 millions de licenciés sportifs. 8 000 gymnases en France. Zéro inventaire publicitaire. Jusqu'à maintenant.
+        </p>
+        <div class="mt-9">
+          <Button href="#contact" variant="pink" arrow>Demander un rendez-vous</Button>
+        </div>
+      </div>
+      <HeroCard label="Annonceurs" title="Votre marque en jeu." sub="Spots & logos sur les écrans des gymnases, devant une audience captive." class="w-full max-w-[400px] lg:justify-self-end" />
     </div>
   </section>
 

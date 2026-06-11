@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
+import HeroCard from '@/components/HeroCard.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import TestimonialCarousel from '@/components/TestimonialCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
@@ -72,7 +73,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 );
 ---
 
-<BaseLayout title={title} description={description} extraJsonLd={[offerJsonLd, faqJsonLd]}>
+<BaseLayout title={title} description={description} ogImage="https://madxp.kalonpartners.bzh/og-offres.jpg" extraJsonLd={[offerJsonLd, faqJsonLd]}>
   <!-- Hero — typo + couleur, sans photo -->
   <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
     <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -80,17 +81,20 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
       <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
     </div>
-    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
-      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">Les offres</p>
-      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
-        Adaptées à <span class="text-madxp-light">vos besoins</span>
-      </h1>
-      <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[560px]">
-        Location ou achat, SaaS ou boîtier. Finançable par vos partenaires, clé en main.
-      </p>
-      <div class="mt-9">
-        <Button href="/demo/" variant="white" arrow>Demander une démo gratuite</Button>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px] grid lg:grid-cols-[1fr_minmax(0,420px)] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">Les offres</p>
+        <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[76px] max-w-[14ch]">
+          Adaptées à <span class="text-madxp-light">vos besoins</span>
+        </h1>
+        <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[560px]">
+          Location ou achat, SaaS ou boîtier. Finançable par vos partenaires, clé en main.
+        </p>
+        <div class="mt-9">
+          <Button href="/demo/" variant="white" arrow>Demander une démo gratuite</Button>
+        </div>
       </div>
+      <HeroCard label="Les offres" title="Dès 79 €/mois." sub="Play, Club, Pro ou Premium — finançable par vos partenaires." class="w-full max-w-[420px] lg:justify-self-end" />
     </div>
   </section>
 

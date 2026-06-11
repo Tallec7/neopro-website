@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
+import HeroCard from '@/components/HeroCard.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
 
@@ -51,20 +52,23 @@ const breadcrumb = buildBreadcrumbJsonLd([
       <span class="absolute right-[3%] bottom-[-6%] font-display text-[34vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
     </div>
 
-    <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-[60px] pt-28 md:pt-[180px] pb-20 md:pb-[130px]">
-      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6 md:mb-8">
-        Match-Day · Ad · Experience · Media
-      </p>
-      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[92px] max-w-[16ch]">
-        On fait de votre écran<br /><span class="text-madxp-light">un média interactif.</span>
-      </h1>
-      <p class="mt-8 text-[18px] md:text-[24px] leading-relaxed text-madxp-bone/80 max-w-[620px]">
-        La qualité d'une production pro, en main d'un bénévole. Écrans, appli télécommande et contenus vidéo — du club amateur au club professionnel.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4 md:gap-6">
-        <Button href="/solution/" variant="white" arrow>Découvrez la solution</Button>
-        <Button href="/offres/" variant="outline-light" arrow>Voir les offres</Button>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-[60px] pt-28 md:pt-[170px] pb-20 md:pb-[120px] grid lg:grid-cols-[1fr_minmax(0,420px)] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6 md:mb-8">
+          Match-Day · Ad · Experience · Media
+        </p>
+        <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[80px] max-w-[16ch]">
+          On fait de votre écran<br /><span class="text-madxp-light">un média interactif.</span>
+        </h1>
+        <p class="mt-8 text-[18px] md:text-[22px] leading-relaxed text-madxp-bone/80 max-w-[620px]">
+          La qualité d'une production pro, en main d'un bénévole. Écrans, appli télécommande et contenus vidéo — du club amateur au club professionnel.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4 md:gap-6">
+          <Button href="/solution/" variant="white" arrow>Découvrez la solution</Button>
+          <Button href="/offres/" variant="outline-light" arrow>Voir les offres</Button>
+        </div>
       </div>
+      <HeroCard label="Match-Day" title="Tu allumes. Ça tourne." sub="Régie, sponsors, scores, vidéo — pilotés depuis une appli." class="w-full max-w-[420px] lg:justify-self-end" />
     </div>
   </section>
 
