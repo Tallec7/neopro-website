@@ -16,52 +16,50 @@ const locale = 'da';
 const t = useTranslations(locale);
 
 const borderColorMap: Record<string, string> = {
-  yellow: 'border-[#fdbe00]',
-  green: 'border-[#51b28b]',
-  pink: 'border-[#fe6aa6]',
+  yellow: 'border-[#d9870b]',
+  green: 'border-[#093a60]',
+  pink: 'border-[#0e578e]',
   black: 'border-gray-200',
 };
 
 const priceColorMap: Record<string, string> = {
-  yellow: 'text-[#fdbe00]',
-  green: 'text-[#51b28b]',
-  pink: 'text-[#fe6aa6]',
-  black: 'text-[#101828]',
+  yellow: 'text-[#d9870b]',
+  green: 'text-[#093a60]',
+  pink: 'text-[#0e578e]',
+  black: 'text-[#0a0b0d]',
 };
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const allPlans = [playPlan, ...plans];
 const offerJsonLd = buildAggregateOfferJsonLd(
   allPlans.map((plan) => ({
-    name: `Neopro ${plan.name}`,
+    name: `MADXP ${plan.name}`,
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
-    url: `${siteUrl}/da/tilbud?offre=${plan.slug}`,
+    url: `${siteUrl}/da/tilbud/?offre=${plan.slug}`,
   })),
-  'Neopro',
+  'MADXP',
   siteUrl,
 );
 ---
 
 <BaseLayout title={t('offres.title')} description={t('offres.description')} extraJsonLd={offerJsonLd} locale={locale}>
-  <!-- Hero -->
-  <section class="relative h-[743px] overflow-hidden">
-    <img
-      src="/images/image_offre_accueil.jpg"
-      alt="Sportshal udstyret med en Neopro digitalskærm der viser partnertilbud"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-    />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{t('offres.hero.label')}</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">{t('offres.hero.line1')}</span><br />
-        <span class="font-black">{t('offres.hero.line2')}</span>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">{t('offres.hero.label')}</p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
+        <span class="font-display">{t('offres.hero.line1')}</span><br />
+        <span class="font-black text-madxp-light">{t('offres.hero.line2')}</span>
       </h1>
-      <div>
-        <Button href="#contact" variant="green" arrow>{t('offres.hero.cta')}</Button>
+      <div class="mt-9">
+        <Button href="#contact" variant="white" arrow>{t('offres.hero.cta')}</Button>
       </div>
     </div>
   </section>
@@ -69,29 +67,29 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Tilbud -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[30px] md:pb-[40px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">{t('offres.plans.title')}</h2>
-      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Start uden hardware med <strong>Play</strong>, eller gå direkte til boksen med <strong>Club</strong>, <strong>Pro</strong> eller <strong>Premium</strong>.</p>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[20px]">{t('offres.plans.title')}</h2>
+      <p class="text-[18px] text-madxp-gray mb-[40px] max-w-[700px]">Start uden hardware med <strong>Play</strong>, eller gå direkte til boksen med <strong>Club</strong>, <strong>Pro</strong> eller <strong>Premium</strong>.</p>
 
       <!-- PLAY banner -->
       <div class="relative bg-white border border-gray-200 rounded-[20px] p-[30px] md:p-[40px] mb-[50px] flex flex-col md:flex-row gap-[30px] items-start md:items-center shadow-sm">
-        <span class="absolute -top-3 left-[30px] bg-[#81e3bc] text-[#2f3935] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
+        <span class="absolute -top-3 left-[30px] bg-[#0e578e] text-[#06263f] text-[13px] font-bold px-4 py-1 rounded-[40px] whitespace-nowrap uppercase tracking-wider">
           Uden hardware · SaaS
         </span>
         <div class="flex-1">
-          <h3 class="text-[28px] md:text-[32px] font-bold text-[#101828]">{playPlan.name}</h3>
-          <p class="font-playfair italic text-[20px] text-neo-gray mt-[4px]">« {playPlan.pitch} »</p>
-          <p class="text-[15px] text-[#101828] mt-[16px] max-w-[520px]">Adgang til webafspilleren, ubegrænsede videoer, cloud-fjernbetjening. Ideel til at komme i gang på få minutter, uden installation.</p>
+          <h3 class="text-[28px] md:text-[32px] font-bold text-[#0a0b0d]">{playPlan.name}</h3>
+          <p class="font-display text-[20px] text-madxp-gray mt-[4px]">« {playPlan.pitch} »</p>
+          <p class="text-[15px] text-[#0a0b0d] mt-[16px] max-w-[520px]">Adgang til webafspilleren, ubegrænsede videoer, cloud-fjernbetjening. Ideel til at komme i gang på få minutter, uden installation.</p>
         </div>
         <div class="shrink-0 flex flex-col items-start md:items-end gap-[14px]">
           <div class="md:text-right">
             <p
-              class="text-[32px] font-bold text-[#101828]"
+              class="text-[32px] font-bold text-[#0a0b0d]"
               data-price-annual={playPlan.priceAnnual}
               data-price-monthly={playPlan.priceMonthly}
-            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/år</span></p>
+            ><span class="js-price">{playPlan.priceAnnual.toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-madxp-gray js-suffix">/år</span></p>
             <p class="text-[13px] text-[#4a5565] js-secondary hidden">Binding 9 måneder minimum</p>
           </div>
-          <Button href={`/da/tilbud?offre=${playPlan.slug}`} variant="green" arrow>Start med Play</Button>
+          <Button href={`/da/tilbud/?offre=${playPlan.slug}`} variant="green" arrow>Start med Play</Button>
         </div>
       </div>
 
@@ -101,7 +99,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="annual" aria-pressed="true">Årlig</button>
           <button type="button" class="js-toggle-btn px-8 py-[10px] rounded-full text-[16px] font-semibold transition-colors" data-period="monthly" aria-pressed="false">Månedlig</button>
         </div>
-        <p class="text-[13px] text-neo-green-dark font-medium">Årlig = reduceret pris · Månedlig = 9 måneders binding</p>
+        <p class="text-[13px] text-madxp-blue-deep font-medium">Årlig = reduceret pris · Månedlig = 9 måneders binding</p>
       </div>
 
       <!-- 3 kort Club / Pro / Premium -->
@@ -111,60 +109,60 @@ const offerJsonLd = buildAggregateOfferJsonLd(
             class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'} ${offre.popular ? 'lg:scale-[1.03] shadow-xl' : ''}`}
           >
             {offre.popular && (
-              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0e578e] text-[#06263f] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">
                 {t('offres.plans.popular')}
               </span>
             )}
             {(offre.slug === 'pro' || offre.slug === 'premium') && (
-              <span class="absolute top-[14px] right-[14px] bg-[#fdbe00] text-[#2f3935] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
+              <span class="absolute top-[14px] right-[14px] bg-[#d9870b] text-[#06263f] text-[10px] font-black px-2 py-[3px] rounded-full uppercase tracking-wider whitespace-nowrap shadow-sm">
                 ★ Kampagne 31. maj
               </span>
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
+              <p class="font-display text-[16px] text-madxp-gray mt-[2px]">« {offre.pitch} »</p>
               {offre.slug === 'pro' ? (
                 <>
-                  <p class="text-[14px] text-neo-gray line-through mt-[12px] mb-[-4px]">
+                  <p class="text-[14px] text-madxp-gray line-through mt-[12px] mb-[-4px]">
                     <span data-price-annual={offre.priceAnnual} data-price-monthly={offre.priceMonthly}><span class="js-price">{offre.priceAnnual.toLocaleString('da-DK')} €</span><span class="js-suffix">/år</span></span>
                   </p>
                   <p
-                    class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                    class={`text-[28px] font-bold mt-[2px] ${priceColorMap[offre.buttonVariant] || 'text-madxp-blue-deep'}`}
                     data-price-annual={Math.round(offre.priceAnnual * 0.8)}
                     data-price-monthly={Math.round(offre.priceMonthly * 0.8)}
                   >
-                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/år</span>
-                    <span class="text-[12px] font-bold text-[#51b28b] bg-[#e6f5ee] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
+                    <span class="js-price">{Math.round(offre.priceAnnual * 0.8).toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-madxp-gray js-suffix">/år</span>
+                    <span class="text-[12px] font-bold text-[#093a60] bg-[#e4edf4] px-2 py-[2px] rounded-full ml-2 align-middle">-20%</span>
                   </p>
-                  <p class="text-[12px] text-[#51b28b] font-semibold mt-[4px]">Tilbud gælder til 31. maj</p>
+                  <p class="text-[12px] text-[#093a60] font-semibold mt-[4px]">Tilbud gælder til 31. maj</p>
                 </>
               ) : (
                 <p
-                  class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}
+                  class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-madxp-blue-deep'}`}
                   data-price-annual={offre.priceAnnual}
                   data-price-monthly={offre.priceMonthly}
                 >
-                  <span class="js-price">{offre.priceAnnual.toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-neo-gray js-suffix">/år</span>
+                  <span class="js-price">{offre.priceAnnual.toLocaleString('da-DK')} €</span><span class="text-[16px] font-normal text-madxp-gray js-suffix">/år</span>
                 </p>
               )}
               {offre.slug === 'premium' && (
-                <p class="text-[12px] text-[#fe6aa6] font-semibold mt-[6px] leading-snug">
+                <p class="text-[12px] text-[#0e578e] font-semibold mt-[6px] leading-snug">
                   ★ Foto-/videooptagelse + produktion gratis for 1 hold (til 31. maj)
                 </p>
               )}
-              <p class="text-[13px] text-neo-gray mt-[4px] js-secondary hidden">Binding 9 måneder minimum</p>
+              <p class="text-[13px] text-madxp-gray mt-[4px] js-secondary hidden">Binding 9 måneder minimum</p>
             </div>
             <div class="border-t border-gray-200 mb-[16px]"></div>
             <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
                 f.label.startsWith('Alt i') ? (
-                  <li class="-mt-[10px] text-[13px] font-semibold uppercase tracking-wider text-neo-gray">
+                  <li class="-mt-[10px] text-[13px] font-semibold uppercase tracking-wider text-madxp-gray">
                     {f.label.replace(/ :$/, '').replace(/:$/, '')}
                   </li>
                 ) : (
-                  <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                  <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#0a0b0d]' : 'text-[#c0c5cc] italic'}`}>
                     {f.included ? (
-                      <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                      <svg class="w-5 h-5 shrink-0 text-madxp-blue-deep mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
                     ) : (
                       <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
                     )}
@@ -177,7 +175,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               9 måneders binding · Boks udlånt inkluderet
             </p>
-            <Button href={`/da/tilbud?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
+            <Button href={`/da/tilbud/?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>
               {t('offres.plans.cta')}
             </Button>
           </div>
@@ -188,10 +186,10 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       <details class="mt-[40px] bg-white rounded-[20px] group border border-gray-200">
         <summary class="cursor-pointer list-none px-[30px] py-[24px] flex items-center justify-between gap-[20px] hover:bg-[#fafafa] transition-colors rounded-[20px]">
           <div class="flex-1">
-            <p class="text-[18px] md:text-[22px] font-bold text-[#101828]">Sammenlign alle funktioner</p>
-            <p class="text-[13px] text-neo-gray mt-[2px]">Detaljeret oversigt over de 4 tilbud linje for linje</p>
+            <p class="text-[18px] md:text-[22px] font-bold text-[#0a0b0d]">Sammenlign alle funktioner</p>
+            <p class="text-[13px] text-madxp-gray mt-[2px]">Detaljeret oversigt over de 4 tilbud linje for linje</p>
           </div>
-          <span class="shrink-0 inline-flex items-center gap-2 bg-[#f5f5f5] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-medium text-[#101828]">
+          <span class="shrink-0 inline-flex items-center gap-2 bg-[#f5f5f5] border border-gray-200 rounded-full px-4 py-2 text-[14px] font-medium text-[#0a0b0d]">
             <span class="group-open:hidden">Vis tabel</span>
             <span class="hidden group-open:inline">Skjul</span>
             <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
@@ -201,29 +199,29 @@ const offerJsonLd = buildAggregateOfferJsonLd(
           <table class="w-full border-collapse min-w-[640px]">
             <thead>
               <tr class="border-b-2 border-gray-200">
-                <th class="text-left py-[14px] pr-[10px] text-[14px] font-bold text-[#101828] w-[40%]"></th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#101828]">Play</th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#c49800]">Club</th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-neo-green-dark relative">
+                <th class="text-left py-[14px] pr-[10px] text-[14px] font-bold text-[#0a0b0d] w-[40%]"></th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#0a0b0d]">Play</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#d9870b]">Club</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-madxp-blue-deep relative">
                   Pro
-                  <span class="absolute -top-[2px] left-1/2 -translate-x-1/2 text-[9px] bg-[#81e3bc] text-[#2f3935] font-bold px-2 py-[1px] rounded-full uppercase tracking-wider whitespace-nowrap">★</span>
+                  <span class="absolute -top-[2px] left-1/2 -translate-x-1/2 text-[9px] bg-[#0e578e] text-[#06263f] font-bold px-2 py-[1px] rounded-full uppercase tracking-wider whitespace-nowrap">★</span>
                 </th>
-                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#fe6aa6]">Premium</th>
+                <th class="text-center py-[14px] px-[8px] text-[15px] font-bold text-[#0e578e]">Premium</th>
               </tr>
             </thead>
             <tbody>
               {comparisonTable.map((cat) => (
                 <>
                   <tr>
-                    <td colspan="5" class="pt-[24px] pb-[8px] text-[12px] font-bold uppercase tracking-wider text-neo-gray">{cat.title}</td>
+                    <td colspan="5" class="pt-[24px] pb-[8px] text-[12px] font-bold uppercase tracking-wider text-madxp-gray">{cat.title}</td>
                   </tr>
                   {cat.rows.map((row) => (
                     <tr class="border-b border-gray-100">
-                      <td class="py-[12px] pr-[10px] text-[14px] text-[#101828]">{row.label}</td>
+                      <td class="py-[12px] pr-[10px] text-[14px] text-[#0a0b0d]">{row.label}</td>
                       {row.values.map((v) => (
                         <td class="text-center py-[12px] px-[8px]">
                           {v === true ? (
-                            <svg class="w-5 h-5 inline text-neo-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            <svg class="w-5 h-5 inline text-madxp-blue-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                           ) : v === false ? (
                             <span class="text-[#c0c5cc] text-[18px]">—</span>
                           ) : (
@@ -247,11 +245,11 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[40px] md:pt-[60px] pb-[40px] md:pb-[60px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[40px] max-w-[760px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[12px]">SOM SUPPLEMENT</p>
-        <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#101828] mb-[12px]">
-          <span class="font-playfair italic">Supplér</span> jeres tilbud
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[12px]">SOM SUPPLEMENT</p>
+        <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold text-[#0a0b0d] mb-[12px]">
+          <span class="font-display">Supplér</span> jeres tilbud
         </h2>
-        <p class="text-[16px] md:text-[18px] text-neo-gray">Kan kombineres med ethvert tilbud — personligt tilbud på forespørgsel.</p>
+        <p class="text-[16px] md:text-[18px] text-madxp-gray">Kan kombineres med ethvert tilbud — personligt tilbud på forespørgsel.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px]">
@@ -259,23 +257,23 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <!-- Kolonne 1: Indholdsproduktion (3 videopakker) -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
-            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#79e8fa] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">🎬</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Indholdsproduktion</h3>
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#4a8bbf] text-[#06263f] flex items-center justify-center font-bold text-[18px]">🎬</span>
+            <h3 class="text-[20px] font-bold text-[#0a0b0d]">Indholdsproduktion</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">Vi filmer jeres spillere og integrerer dem i vores premium-skabeloner.</p>
+          <p class="text-[13px] text-madxp-gray italic mb-[18px]">Vi filmer jeres spillere og integrerer dem i vores premium-skabeloner.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {videoPackages.map((pkg) => (
-              <li class="border-l-2 border-[#79e8fa] pl-[12px]">
-                <p class="text-[14px] font-bold text-[#101828] flex items-center gap-2">
+              <li class="border-l-2 border-[#4a8bbf] pl-[12px]">
+                <p class="text-[14px] font-bold text-[#0a0b0d] flex items-center gap-2">
                   {pkg.name}
-                  {pkg.popular && <span class="text-[10px] bg-[#79e8fa] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">★ Top</span>}
-                  {pkg.name === 'Standard' && <span class="text-[10px] bg-[#81e3bc] text-[#2f3935] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Inkl.</span>}
+                  {pkg.popular && <span class="text-[10px] bg-[#4a8bbf] text-[#06263f] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">★ Top</span>}
+                  {pkg.name === 'Standard' && <span class="text-[10px] bg-[#0e578e] text-[#06263f] px-2 py-[1px] rounded-full font-bold uppercase tracking-wider">Inkl.</span>}
                 </p>
-                <p class="text-[12px] text-neo-gray mb-[6px]">{pkg.description}</p>
+                <p class="text-[12px] text-madxp-gray mb-[6px]">{pkg.description}</p>
                 <ul class="flex flex-col gap-[3px]">
                   {pkg.features.map((f) => (
                     <li class="text-[12px] text-[#4a5565] flex items-start gap-[6px]">
-                      <span class="text-[#1ec5e0] mt-[1px]">·</span>{f}
+                      <span class="text-[#4a8bbf] mt-[1px]">·</span>{f}
                     </li>
                   ))}
                 </ul>
@@ -287,17 +285,17 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <!-- Kolonne 2: Skærme & installation -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
-            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fdbe00] text-[#2f3935] flex items-center justify-center font-bold text-[18px]">📺</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Skærme & installation</h3>
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#d9870b] text-[#06263f] flex items-center justify-center font-bold text-[18px]">📺</span>
+            <h3 class="text-[20px] font-bold text-[#0a0b0d]">Skærme & installation</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">Vi hjælper jer med at vælge og installere de rigtige skærme.</p>
+          <p class="text-[13px] text-madxp-gray italic mb-[18px]">Vi hjælper jer med at vælge og installere de rigtige skærme.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {chainSteps[3].services.map((opt) => (
               <li class="flex items-start gap-[10px]">
-                <svg class="w-4 h-4 shrink-0 text-[#fdbe00] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                <svg class="w-4 h-4 shrink-0 text-[#d9870b] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                 <div>
-                  <p class="text-[14px] text-[#101828] leading-snug">{opt.label}</p>
-                  {opt.hint && <p class="text-[12px] text-neo-gray mt-[1px]">{opt.hint}</p>}
+                  <p class="text-[14px] text-[#0a0b0d] leading-snug">{opt.label}</p>
+                  {opt.hint && <p class="text-[12px] text-madxp-gray mt-[1px]">{opt.hint}</p>}
                 </div>
               </li>
             ))}
@@ -307,21 +305,21 @@ const offerJsonLd = buildAggregateOfferJsonLd(
         <!-- Kolonne 3: Tilvalg à la carte -->
         <div class="bg-white border border-gray-200 rounded-[20px] p-[26px] flex flex-col">
           <div class="flex items-center gap-[12px] mb-[16px]">
-            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#fe6aa6] text-white flex items-center justify-center font-bold text-[18px]">+</span>
-            <h3 class="text-[20px] font-bold text-[#101828]">Tilvalg à la carte</h3>
+            <span class="shrink-0 w-[44px] h-[44px] rounded-full bg-[#0e578e] text-white flex items-center justify-center font-bold text-[18px]">+</span>
+            <h3 class="text-[20px] font-bold text-[#0a0b0d]">Tilvalg à la carte</h3>
           </div>
-          <p class="text-[13px] text-neo-gray italic mb-[18px]">For at tilpasse og gå videre med jeres tilbud.</p>
+          <p class="text-[13px] text-madxp-gray italic mb-[18px]">For at tilpasse og gå videre med jeres tilbud.</p>
           <ul class="flex flex-col gap-[14px] flex-1">
             {additionalOptions.map((cat) => (
               <li>
-                <p class="text-[11px] font-bold uppercase tracking-wider text-neo-gray mb-[6px]">{cat.title}</p>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-madxp-gray mb-[6px]">{cat.title}</p>
                 <ul class="flex flex-col gap-[6px]">
                   {cat.options.map((opt) => (
                     <li class="flex items-start gap-[8px]">
-                      <svg class="w-4 h-4 shrink-0 text-[#fe6aa6] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                      <svg class="w-4 h-4 shrink-0 text-[#0e578e] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                       <div>
-                        <p class="text-[13px] text-[#101828] leading-snug">{opt.label}</p>
-                        <p class="text-[11px] text-neo-gray">{opt.availability}</p>
+                        <p class="text-[13px] text-[#0a0b0d] leading-snug">{opt.label}</p>
+                        <p class="text-[11px] text-madxp-gray">{opt.availability}</p>
                       </div>
                     </li>
                   ))}
@@ -334,7 +332,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
       </div>
 
       <div class="text-center mt-[30px]">
-        <Button href="/da/tilbud?offre=options" variant="black" arrow>Sammensæt mit skræddersyede tilbud</Button>
+        <Button href="/da/tilbud/?offre=options" variant="black" arrow>Sammensæt mit skræddersyede tilbud</Button>
       </div>
     </div>
   </section>
@@ -342,9 +340,9 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Finansieret af jeres partnere -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1320px] mx-auto">
-      <div class="bg-[rgba(129,227,188,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
+      <div class="bg-[rgba(14,87,142,0.4)] rounded-[20px] px-[20px] md:px-[40px] lg:px-[60px] py-[40px] md:py-[74px] flex flex-col md:flex-row items-center gap-[30px] justify-between">
         <div class="flex-1">
-          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[20px]">
             {t('offres.financable.title')}
           </h2>
           <p class="text-[18px] text-[#4a5565]">{t('offres.financable.text')}</p>
@@ -356,11 +354,11 @@ const offerJsonLd = buildAggregateOfferJsonLd(
               name="email"
               placeholder={t('offres.financable.placeholder')}
               required
-              class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-neo-green-dark transition-colors"
+              class="h-[48px] px-4 rounded-full border border-gray-300 text-[16px] w-full sm:w-[260px] outline-none focus:border-madxp-blue-deep transition-colors"
             />
             <button
               type="submit"
-              class="h-[48px] px-6 bg-[#2f3935] text-white text-[16px] font-medium rounded-full hover:bg-[#101828] transition-colors whitespace-nowrap"
+              class="h-[48px] px-6 bg-[#06263f] text-white text-[16px] font-medium rounded-full hover:bg-[#0a0b0d] transition-colors whitespace-nowrap"
             >
               {t('offres.financable.cta')}
             </button>
@@ -374,12 +372,12 @@ const offerJsonLd = buildAggregateOfferJsonLd(
   <!-- Flåde (operatører / ligaer / forbund) -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[80px]">
     <div class="max-w-[1320px] mx-auto">
-      <div class="relative bg-[#2f3935] text-white rounded-[20px] overflow-hidden p-[36px] md:p-[50px]">
+      <div class="relative bg-[#06263f] text-white rounded-[20px] overflow-hidden p-[36px] md:p-[50px]">
         <div class="relative flex flex-col lg:flex-row gap-[32px] items-start lg:items-center justify-between">
           <div class="flex-1 max-w-[640px]">
-            <p class="text-[13px] tracking-[2px] text-[#81e3bc] uppercase font-bold mb-[12px]">FLÅDE · DEDIKERET TILBUD</p>
+            <p class="text-[13px] tracking-[2px] text-[#0e578e] uppercase font-bold mb-[12px]">FLÅDE · DEDIKERET TILBUD</p>
             <h2 class="text-[26px] md:text-[34px] lg:text-[40px] font-bold mb-[14px]">
-              <span class="font-playfair italic">Administrerer I</span> flere klubber?
+              <span class="font-display">Administrerer I</span> flere klubber?
             </h2>
             <p class="text-[15px] md:text-[16px] text-[#d9d9d9] mb-[20px]">Ligaer, forbund, operatører og klubnetværk: samlet udrulning, centralt dashboard, degressiv prissætning.</p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-[20px] gap-y-[8px] mb-[24px]">
@@ -392,17 +390,17 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 'Dedikeret kontaktperson',
               ].map((item) => (
                 <li class="flex items-start gap-[8px] text-[14px] text-[#d9d9d9]">
-                  <svg class="w-4 h-4 shrink-0 text-[#81e3bc] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                  <svg class="w-4 h-4 shrink-0 text-[#0e578e] mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                   {item}
                 </li>
               ))}
             </ul>
-            <Button href="/da/tilbud?offre=flotte" variant="green" arrow>Anmod om et flådetilbud</Button>
+            <Button href="/da/tilbud/?offre=flotte" variant="green" arrow>Anmod om et flådetilbud</Button>
           </div>
-          <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#1a201d] rounded-[16px] px-[40px] py-[36px] border border-[#81e3bc]/20">
-            <p class="text-[64px] font-black text-[#81e3bc] leading-none">5+</p>
+          <div class="hidden lg:flex shrink-0 flex-col items-center justify-center bg-[#0a0b0d] rounded-[16px] px-[40px] py-[36px] border border-[#0e578e]/20">
+            <p class="text-[64px] font-black text-[#0e578e] leading-none">5+</p>
             <p class="text-[13px] text-[#d9d9d9] uppercase tracking-wider mt-[8px]">klubber / steder</p>
-            <p class="text-[12px] text-neo-gray mt-[12px] text-center max-w-[140px]">fra hvor flåden bliver relevant</p>
+            <p class="text-[12px] text-madxp-gray mt-[12px] text-center max-w-[140px]">fra hvor flåden bliver relevant</p>
           </div>
         </div>
       </div>
@@ -423,7 +421,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 
 <style>
   .js-toggle-btn[aria-pressed="true"] {
-    background-color: #101828;
+    background-color: #0a0b0d;
     color: #ffffff;
   }
   .js-toggle-btn[aria-pressed="false"] {
@@ -490,7 +488,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
 
         if (res.ok) {
           msg.textContent = 'Dokument sendt! Tjek jeres indbakke.';
-          msg.className = 'text-[14px] mt-2 w-full text-neo-green-dark';
+          msg.className = 'text-[14px] mt-2 w-full text-madxp-blue-deep';
           emailInput.value = '';
         } else {
           msg.textContent = 'Der opstod en fejl.';

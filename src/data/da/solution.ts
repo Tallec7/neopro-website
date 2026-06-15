@@ -45,7 +45,7 @@ export const colorPanels: ColorPanel[] = [
       'Ugentlig videoassistance & opdateringer',
       'Fuld autonomi-mulighed: admin-adgang med visuel/video-integration',
     ],
-    bgColor: 'bg-[#3d3036]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Nøglefærdig løsning',
@@ -55,7 +55,7 @@ export const colorPanels: ColorPanel[] = [
       'Intuitiv og enkel app',
       'Kompatibel med alle HDMI-skærme',
     ],
-    bgColor: 'bg-[#423e33]',
+    bgColor: 'bg-[#0a0b0d]',
   },
   {
     title: 'Professionel videoproduktion',
@@ -63,7 +63,7 @@ export const colorPanels: ColorPanel[] = [
       'Komplet media day-pakke (foto+video)',
       'Broadcast-kvalitet videoskabeloner, tilpasset jeres klubfarver',
     ],
-    bgColor: 'bg-[#2f3935]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Fordele for jeres klub',
@@ -74,7 +74,7 @@ export const colorPanels: ColorPanel[] = [
       'Kvantificeret synlighed for jeres sponsorer',
       'Bedre sponsorfastholdelse',
     ],
-    bgColor: 'bg-[#334244]',
+    bgColor: 'bg-[#06263f]',
   },
 ];
 

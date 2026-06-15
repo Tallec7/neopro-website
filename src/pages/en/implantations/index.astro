@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { cities, sports } from '@/data/en/implantations';
 import { buildBreadcrumbJsonLd } from '@/lib/jsonLd';
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const canonicalUrl = `${siteUrl}/en/implantations`;
 
 const gbCities = cities.filter((c) => c.country === 'GB');
@@ -17,21 +17,21 @@ const breadcrumb = buildBreadcrumbJsonLd([
 ---
 
 <BaseLayout
-  title="Digital Sports Signage — Neopro Locations in UK, USA & Canada"
-  description="Neopro provides turnkey digital signage solutions for sports clubs in gyms and sports halls. Handball, basketball, volleyball and more. Find your location in the UK, USA and Canada."
+  title="Digital Sports Signage — MADXP Locations in UK, USA & Canada"
+  description="MADXP provides turnkey digital signage solutions for sports clubs in gyms and sports halls. Handball, basketball, volleyball and more. Find your location in the UK, USA and Canada."
   canonicalUrl={canonicalUrl}
   extraJsonLd={breadcrumb}
   locale="en"
 >
   <!-- Hero -->
-  <section class="bg-neo-dark text-white py-20 px-6">
+  <section class="bg-madxp-ink text-white py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-3xl md:text-5xl font-black mb-6">
-        Neopro across the<br />
-        <span class="text-neo-green">UK, USA & Canada</span>
+        MADXP across the<br />
+        <span class="text-madxp-blue">UK, USA & Canada</span>
       </h1>
       <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-        We support sports clubs across the United Kingdom, United States, and Canada with a turnkey digital signage solution. Find your city and discover how Neopro can professionalise your club.
+        We support sports clubs across the United Kingdom, United States, and Canada with a turnkey digital signage solution. Find your city and discover how MADXP can professionalise your club.
       </p>
     </div>
   </section>
@@ -40,7 +40,7 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <section class="py-10 px-6 bg-gray-50">
     <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-3">
       {sports.map((sport) => (
-        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-neo-dark border border-gray-200">
+        <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-madxp-ink border border-gray-200">
           {sport.name}
         </span>
       ))}
@@ -50,14 +50,14 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <!-- United Kingdom -->
   <section class="py-16 px-6 bg-white">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8">
+      <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-8">
         🇬🇧 United Kingdom
       </h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
         {gbCities.map((city) => (
           <a
-            href={`/en/implantations/${city.slug}`}
-            class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-neo-green transition-all font-medium text-neo-dark"
+            href={`/en/implantations/${city.slug}/`}
+            class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-madxp-blue transition-all font-medium text-madxp-ink"
           >
             {city.name}
           </a>
@@ -69,14 +69,14 @@ const breadcrumb = buildBreadcrumbJsonLd([
   <!-- United States -->
   <section class="py-16 px-6 bg-gray-50">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8">
+      <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-8">
         🇺🇸 United States
       </h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
         {usCities.map((city) => (
           <a
-            href={`/en/implantations/${city.slug}`}
-            class="block px-5 py-4 bg-white rounded-xl hover:bg-neo-green transition-all font-medium text-neo-dark"
+            href={`/en/implantations/${city.slug}/`}
+            class="block px-5 py-4 bg-white rounded-xl hover:bg-madxp-blue transition-all font-medium text-madxp-ink"
           >
             {city.name}
           </a>
@@ -89,14 +89,14 @@ const breadcrumb = buildBreadcrumbJsonLd([
   {caCities.length > 0 && (
     <section class="py-16 px-6 bg-white">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8">
+        <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-8">
           🇨🇦 Canada
         </h2>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
           {caCities.map((city) => (
             <a
-              href={`/en/implantations/${city.slug}`}
-              class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-neo-green transition-all font-medium text-neo-dark"
+              href={`/en/implantations/${city.slug}/`}
+              class="block px-5 py-4 bg-gray-50 rounded-xl hover:bg-madxp-blue transition-all font-medium text-madxp-ink"
             >
               {city.name}
             </a>
@@ -107,17 +107,17 @@ const breadcrumb = buildBreadcrumbJsonLd([
   )}
 
   <!-- CTA -->
-  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+  <section class="py-16 px-6 bg-madxp-ink text-white text-center">
     <div class="max-w-2xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-black mb-4">
         Your city is not listed?
       </h2>
       <p class="text-gray-300 mb-8">
-        Neopro is available across the UK, USA and Canada. Contact us for a free quote.
+        MADXP is available across the UK, USA and Canada. Contact us for a free quote.
       </p>
       <a
-        href="/en/devis"
-        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        href="/en/devis/"
+        class="inline-block bg-madxp-blue text-madxp-ink font-bold px-8 py-4 rounded-xl hover:bg-madxp-blue-deep transition-colors"
       >
         Get a free quote
       </a>

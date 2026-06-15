@@ -2,7 +2,7 @@
 title: "Écran LED en gymnase : le guide complet pour les clubs amateurs"
 description: "Comment choisir, installer et financer un écran LED dans votre gymnase. Taille, résolution, budget et retour sur investissement grâce aux sponsors."
 date: 2026-04-01
-author: Neopro
+author: MADXP
 tags: ["écran LED", "gymnase", "installation", "guide"]
 ---
 
@@ -37,7 +37,7 @@ Le budget dépend de l'écran choisi :
 - **Écran pro 75"** : 1 000 à 2 000 €
 - **Écran pro 85"** : 2 000 à 3 500 €
 
-À cela s'ajoute la **solution de régie digitale** pour piloter le contenu. Chez Neopro, les abonnements démarrent à **1 500 €/an HT** et incluent tout le logiciel, l'application télécommande et les templates vidéo.
+À cela s'ajoute la **solution de régie digitale** pour piloter le contenu. Chez MADXP, les abonnements démarrent à **1 500 €/an HT** et incluent tout le logiciel, l'application télécommande et les templates vidéo.
 
 ## Comment financer l'installation ?
 
@@ -49,9 +49,9 @@ La bonne nouvelle : **l'écran peut être financé par vos partenaires**. Voici 
 
 ## L'installation concrète
 
-Avec une solution comme Neopro, l'installation se fait **en moins de 5 minutes** :
+Avec une solution comme MADXP, l'installation se fait **en moins de 5 minutes** :
 
-1. Brancher le boîtier Neopro à l'écran (câble HDMI)
+1. Brancher le boîtier MADXP à l'écran (câble HDMI)
 2. Se connecter au boîtier depuis votre téléphone (pas besoin de wifi dans le gymnase)
 3. Piloter le contenu avec l'application télécommande
 
@@ -61,4 +61,4 @@ Pas de travaux, pas de câblage réseau, pas de technicien nécessaire.
 
 Un écran LED dans un gymnase est un investissement qui se rentabilise rapidement grâce aux partenaires. Le plus important est de choisir une **solution de régie adaptée** qui vous permette de piloter le contenu facilement, même sans compétences techniques.
 
-[Découvrez les offres Neopro](/offres) pour trouver la formule adaptée à votre club. Pour comprendre tout le potentiel de l'[affichage dynamique sportif](/blog/affichage-dynamique-sport-guide-complet), consultez notre guide dédié. Et pour transformer votre installation en véritable [expérience match-day](/blog/experience-match-day-clubs-sport), c'est par ici.
+[Découvrez les offres MADXP](/offres/) pour trouver la formule adaptée à votre club. Pour comprendre tout le potentiel de l'[affichage dynamique sportif](/blog/affichage-dynamique-sport-guide-complet/), consultez notre guide dédié. Et pour transformer votre installation en véritable [expérience match-day](/blog/experience-match-day-clubs-sport/), c'est par ici.

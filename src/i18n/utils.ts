@@ -22,13 +22,29 @@ export function useTranslations(locale: Locale) {
 }
 
 /**
+ * Garantit un slash final sur la partie chemin (le site est en
+ * trailingSlash: 'always'). Préserve un éventuel ?query / #hash et
+ * ne touche pas aux chemins de fichiers (ex: /doc.pdf).
+ */
+function withTrailingSlash(p: string): string {
+  const m = p.match(/^([^?#]*)([?#].*)?$/);
+  let pathPart = m?.[1] ?? p;
+  const rest = m?.[2] ?? '';
+  if (pathPart === '') pathPart = '/';
+  const lastSeg = pathPart.split('/').pop() ?? '';
+  const isFile = lastSeg.includes('.');
+  if (!pathPart.endsWith('/') && !isFile) pathPart += '/';
+  return pathPart + rest;
+}
+
+/**
  * Prefix a path with the locale (skip prefix for default locale).
- * localePath('/solution', 'en') → '/en/solution'
- * localePath('/solution', 'fr') → '/solution'
+ * localePath('/solution', 'en') → '/en/solution/'
+ * localePath('/solution', 'fr') → '/solution/'
  */
 export function localePath(path: string, locale: Locale): string {
-  if (locale === defaultLocale) return path;
-  return `/${locale}${path}`;
+  const base = locale === defaultLocale ? path : `/${locale}${path}`;
+  return withTrailingSlash(base);
 }
 
 /**

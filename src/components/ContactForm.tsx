@@ -53,16 +53,16 @@ export default function ContactForm({ locale = 'fr' }: Props) {
   };
 
   const inputClasses =
-    'w-full h-[50px] border border-[#d1d5dc] px-4 text-black outline-none focus:border-[#81e3bc] transition-colors text-[16px]';
+    'w-full h-[50px] border border-[#d1d5dc] px-4 text-black outline-none focus:border-[#0e578e] transition-colors text-[16px]';
 
   return (
-    <section className="bg-[#2f3935] py-16 md:py-[96px] px-5">
+    <section className="bg-[#06263f] py-16 md:py-[96px] px-5">
       <div className="max-w-[896px] mx-auto flex flex-col items-center gap-[45px] px-4 md:px-[32px]">
         {/* Title */}
         <div className="text-center text-white">
           <h2 className="text-[36px] md:text-[48px] font-bold leading-tight mb-[15px]">
             {t(locale, 'contact.title')}{' '}
-            <span className="font-['Playfair_Display'] italic font-normal">{t(locale, 'contact.titleItalic')}</span>
+            <span className="font-display font-normal">{t(locale, 'contact.titleItalic')}</span>
           </h2>
           <p className="text-[16px] leading-[24px]">
             {t(locale, 'contact.subtitle')}
@@ -73,7 +73,7 @@ export default function ContactForm({ locale = 'fr' }: Props) {
         {status === 'success' ? (
           <div className="bg-white rounded-[10px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_1px_2px_0px_rgba(0,0,0,0.1)] w-full p-[30px]">
             <div className="text-center py-8">
-              <p className="text-[#81e3bc] text-[18px] font-bold mb-2">{t(locale, 'contact.success.title')}</p>
+              <p className="text-[#0e578e] text-[18px] font-bold mb-2">{t(locale, 'contact.success.title')}</p>
               <p className="text-[#4a5565]">{t(locale, 'contact.success.text')}</p>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function ContactForm({ locale = 'fr' }: Props) {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full h-[146px] border border-[#d1d5dc] px-4 py-3 text-black outline-none focus:border-[#81e3bc] transition-colors text-[16px] resize-none"
+                  className="w-full h-[146px] border border-[#d1d5dc] px-4 py-3 text-black outline-none focus:border-[#0e578e] transition-colors text-[16px] resize-none"
                 />
               </div>
 
@@ -194,15 +194,15 @@ export default function ContactForm({ locale = 'fr' }: Props) {
                   required
                   checked={formData.consent}
                   onChange={handleChange}
-                  className="mt-1 h-4 w-4 accent-[#81e3bc] cursor-pointer"
+                  className="mt-1 h-4 w-4 accent-[#0e578e] cursor-pointer"
                 />
                 <label className="text-[14px] text-[#4a5565] leading-[20px]">
                   {t(locale, 'contact.consent')}{' '}
                   <a
-                    href="/politique-de-confidentialite"
+                    href="/politique-de-confidentialite/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline text-[#51b28b] hover:text-[#81e3bc]"
+                    className="underline text-[#093a60] hover:text-[#0e578e]"
                   >
                     {t(locale, 'contact.privacyLink')}
                   </a>
@@ -213,7 +213,7 @@ export default function ContactForm({ locale = 'fr' }: Props) {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 bg-[#81e3bc] text-[#101828] hover:bg-[#6dd4a8] ${
+                className={`inline-flex items-center gap-2 rounded-full px-[30px] py-[10px] font-medium text-[18px] leading-[28px] transition-colors duration-200 bg-[#0e578e] text-[#0a0b0d] hover:bg-[#4a8bbf] ${
                   status === 'sending' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
                 }`}
               >

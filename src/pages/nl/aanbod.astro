@@ -13,64 +13,70 @@ const locale = 'nl';
 const t = useTranslations(locale);
 
 const borderColorMap: Record<string, string> = {
-  yellow: 'border-[#fdbe00]', green: 'border-[#51b28b]', pink: 'border-[#fe6aa6]', black: 'border-gray-200',
+  yellow: 'border-[#d9870b]', green: 'border-[#093a60]', pink: 'border-[#0e578e]', black: 'border-gray-200',
 };
 const priceColorMap: Record<string, string> = {
-  yellow: 'text-[#fdbe00]', green: 'text-[#51b28b]', pink: 'text-[#fe6aa6]', black: 'text-[#101828]',
+  yellow: 'text-[#d9870b]', green: 'text-[#093a60]', pink: 'text-[#0e578e]', black: 'text-[#0a0b0d]',
 };
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const offerJsonLd = buildAggregateOfferJsonLd(
   plans.map((plan) => ({
-    name: `Neopro ${plan.name}`,
+    name: `MADXP ${plan.name}`,
     description: plan.features.filter(f => f.included).map(f => f.label).join('. '),
     price: plan.priceAnnual,
     priceCurrency: 'EUR',
-    url: `${siteUrl}/nl/offerte-aanvragen?offre=${plan.slug}`,
+    url: `${siteUrl}/nl/offerte-aanvragen/?offre=${plan.slug}`,
   })),
-  'Neopro',
+  'MADXP',
   siteUrl,
 );
 ---
 
 <BaseLayout title={t('offres.title')} description={t('offres.description')} extraJsonLd={offerJsonLd} locale={locale}>
-  <section class="relative h-[500px] md:h-[743px] overflow-hidden">
-    <img src="/images/image_offre_accueil.jpg" alt="Sporthal met Neopro digitaal scherm en partneraanbod" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.6)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{t('offres.hero.label')}</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">{t('offres.hero.line1')}</span><br />
-        <span class="font-black">{t('offres.hero.line2')}</span>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">{t('offres.hero.label')}</p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
+        <span class="font-display">{t('offres.hero.line1')}</span> <span class="text-madxp-light">{t('offres.hero.line2')}</span>
       </h1>
-      <div><Button href="#contact" variant="green" arrow>{t('offres.hero.cta')}</Button></div>
+      <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[560px]">
+        Huur of koop, SaaS of box. Gefinancierd door je partners, sleutel-op-de-deur.
+      </p>
+      <div class="mt-9"><Button href="#contact" variant="white" arrow>{t('offres.hero.cta')}</Button></div>
     </div>
   </section>
 
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[60px]">
     <div class="max-w-[1320px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[20px]">Ons aanbod</h2>
-      <p class="text-[18px] text-neo-gray mb-[40px] max-w-[700px]">Sleutel-op-de-deur digitaal scherm — <strong>Essential</strong>, <strong>Autonomy</strong> of <strong>Premium</strong>.</p>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[20px]">Ons aanbod</h2>
+      <p class="text-[18px] text-madxp-gray mb-[40px] max-w-[700px]">Sleutel-op-de-deur digitaal scherm — <strong>Essential</strong>, <strong>Autonomy</strong> of <strong>Premium</strong>.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {plans.map((offre) => (
           <div class={`relative bg-white rounded-[20px] p-[30px] flex flex-col border-4 ${borderColorMap[offre.buttonVariant] || 'border-gray-200'} ${offre.popular ? 'lg:scale-[1.03] shadow-xl' : ''}`}>
             {offre.popular && (
-              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#81e3bc] text-[#2f3935] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">Aanbevolen</span>
+              <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0e578e] text-[#06263f] text-[16px] font-bold px-5 py-1 rounded-[40px] whitespace-nowrap">Aanbevolen</span>
             )}
             <div class="mb-[20px]">
               <h3 class="text-[28px] font-bold">{offre.name}</h3>
-              <p class="font-playfair italic text-[16px] text-neo-gray mt-[2px]">« {offre.pitch} »</p>
-              <p class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-neo-green-dark'}`}>
-                {offre.priceAnnual.toLocaleString('nl-NL')} €<span class="text-[16px] font-normal text-neo-gray">/jaar</span>
+              <p class="font-display text-[16px] text-madxp-gray mt-[2px]">« {offre.pitch} »</p>
+              <p class={`text-[28px] font-bold mt-[12px] ${priceColorMap[offre.buttonVariant] || 'text-madxp-blue-deep'}`}>
+                {offre.priceAnnual.toLocaleString('nl-NL')} €<span class="text-[16px] font-normal text-madxp-gray">/jaar</span>
               </p>
             </div>
             <div class="border-t border-gray-200 mb-[16px]"></div>
             <ul class="flex flex-col gap-[12px] mb-[30px] flex-1">
               {offre.features.map((f) => (
-                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#101828]' : 'text-[#c0c5cc] italic'}`}>
+                <li class={`flex items-start gap-[10px] text-[15px] ${f.included ? 'text-[#0a0b0d]' : 'text-[#c0c5cc] italic'}`}>
                   {f.included ? (
-                    <svg class="w-5 h-5 shrink-0 text-neo-green-dark mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                    <svg class="w-5 h-5 shrink-0 text-madxp-blue-deep mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
                   ) : (
                     <span class="w-5 h-5 shrink-0 flex items-center justify-center text-[#c0c5cc] mt-[2px]">—</span>
                   )}
@@ -78,7 +84,7 @@ const offerJsonLd = buildAggregateOfferJsonLd(
                 </li>
               ))}
             </ul>
-            <Button href={`/nl/offerte-aanvragen?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>Kies dit aanbod</Button>
+            <Button href={`/nl/offerte-aanvragen/?offre=${offre.slug}`} variant={offre.buttonVariant} arrow>Kies dit aanbod</Button>
           </div>
         ))}
       </div>

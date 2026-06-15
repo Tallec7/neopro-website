@@ -1,6 +1,6 @@
 {
-  "name": "Neopro",
-  "short_name": "Neopro",
+  "name": "MADXP",
+  "short_name": "MADXP",
   "icons": [
     {
       "src": "/favicon-32x32.png",
@@ -25,7 +25,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#101828",
-  "background_color": "#101828",
+  "theme_color": "#0e578e",
+  "background_color": "#0a0b0d",
   "display": "standalone"
 }

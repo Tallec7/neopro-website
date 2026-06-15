@@ -1,14 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
+import HeroCard from '@/components/HeroCard.astro';
 import SportBullet from '@/components/SportBullet.astro';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
 
-// ── Images ───────────────────────────────────────────────────────
-import heroImg from '@/assets/images/hero-solution.webp';
-
-// ── Données ��───────────────────────────��─────────────────────────
+// ── Données ───────────────────────────────────────────────────────
 import { solutionPanels, features, colorPanels, steps } from '@/data/solution';
 import { chainSteps } from '@/data/offres-v2';
 
@@ -21,7 +18,7 @@ const formatPanelTitle = (title: string) => {
   if (spaceIdx === -1) return `<span class="font-bold">${title}</span>`;
   const first = title.substring(0, spaceIdx);
   const rest = title.substring(spaceIdx + 1);
-  return `<span class="font-playfair italic font-normal">${first}</span> <span class="font-black">${rest}</span>`;
+  return `<span class="font-display font-normal">${first}</span> <span class="font-black">${rest}</span>`;
 };
 
 // ── SEO ──────────────────────────────────────────────────────────
@@ -31,10 +28,10 @@ import {
   buildFAQPageJsonLd,
 } from '@/lib/jsonLd';
 
-const title = 'La solution Neopro — Régie sport digitale clé en main pour clubs';
-const description = "La solution Neopro : une régie sport digitale clé en main pour clubs. Boîtier plug & play, appli télécommande et contenus vidéo pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.";
+const title = 'La solution MADXP — Régie sport digitale clé en main pour clubs';
+const description = "La solution MADXP : une régie sport digitale clé en main pour clubs. Boîtier plug & play, appli télécommande et contenus vidéo pro pour valoriser vos sponsors et animer vos matchs. Sans wifi, sans fil.";
 
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const canonicalUrl = `${siteUrl}/solution`;
 
 const breadcrumb = buildBreadcrumbJsonLd([
@@ -44,8 +41,8 @@ const breadcrumb = buildBreadcrumbJsonLd([
 
 const faqJsonLd = buildFAQPageJsonLd([
   {
-    question: 'Comment fonctionne Neopro exactement ?',
-    answer: "Neopro est une régie sport digitale clé en main : un boîtier plug & play se branche en HDMI sur votre écran ou télévision. Via l'application télécommande, vous programmez vos contenus (logos partenaires, vidéos, scores) et les diffusez à distance. Aucune compétence technique requise.",
+    question: 'Comment fonctionne MADXP exactement ?',
+    answer: "MADXP est une régie sport digitale clé en main : un boîtier plug & play se branche en HDMI sur votre écran ou télévision. Via l'application télécommande, vous programmez vos contenus (logos partenaires, vidéos, scores) et les diffusez à distance. Aucune compétence technique requise.",
   },
   {
     question: "Combien de temps prend l'installation ?",
@@ -53,57 +50,55 @@ const faqJsonLd = buildFAQPageJsonLd([
   },
   {
     question: 'Faut-il un accès wifi dans la salle ?',
-    answer: "Non. Le boîtier Neopro embarque une connexion 4G incluse dans l'abonnement. Vous n'avez pas besoin du réseau de votre salle pour que les écrans fonctionnent et se mettent à jour.",
+    answer: "Non. Le boîtier MADXP embarque une connexion 4G incluse dans l'abonnement. Vous n'avez pas besoin du réseau de votre salle pour que les écrans fonctionnent et se mettent à jour.",
   },
   {
     question: 'Qui gère les contenus diffusés sur les écrans ?',
-    answer: "Vous gardez la main via l'application télécommande Neopro. Vous choisissez ce qui s'affiche (partenaires, scores, actualités club) et quand. Neopro peut également produire vos contenus vidéo professionnels (shootings joueurs, templates animés) en option.",
+    answer: "Vous gardez la main via l'application télécommande MADXP. Vous choisissez ce qui s'affiche (partenaires, scores, actualités club) et quand. MADXP peut également produire vos contenus vidéo professionnels (shootings joueurs, templates animés) en option.",
   },
   {
-    question: 'Neopro est-il adapté aux petits clubs ?',
+    question: 'MADXP est-il adapté aux petits clubs ?',
     answer: "Oui. La solution est pensée pour tous les niveaux, du club professionnel à l'association amateur de championnat régional. L'offre Play (sans matériel) permet même de démarrer sans aucune installation physique.",
   },
   {
-    question: 'Sur quels écrans puis-je utiliser Neopro ?',
-    answer: "Sur n'importe quel écran disposant d'une entrée HDMI : téléviseur, écran PC, écran d'affichage dynamique, écran LED. Si vous avez besoin d'écrans, Neopro peut vous conseiller et vous aider à les sourcer et les installer.",
+    question: 'Sur quels écrans puis-je utiliser MADXP ?',
+    answer: "Sur n'importe quel écran disposant d'une entrée HDMI : téléviseur, écran PC, écran d'affichage dynamique, écran LED. Si vous avez besoin d'écrans, MADXP peut vous conseiller et vous aider à les sourcer et les installer.",
   },
 ]);
 
 const service = buildServiceJsonLd({
-  name: 'Neopro — Régie sport digitale',
+  name: 'MADXP — Régie sport digitale',
   description,
   url: canonicalUrl,
-  providerName: 'Neopro',
+  providerName: 'MADXP',
   providerUrl: siteUrl,
   areaServed: ['France', 'Belgique', 'Suisse'],
   serviceType: 'Régie sport digitale',
 });
 ---
 
-<BaseLayout title={title} description={description} extraJsonLd={[breadcrumb, service, faqJsonLd]}>
-  <!-- Hero -->
-  <section class="relative h-[743px] overflow-hidden">
-    <Image
-      src={heroImg}
-      alt="Joueurs de handball devant un écran digital Neopro affichant les célébrations d'avant-match"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      widths={[640, 1024, 1440, 1920]}
-      sizes="100vw"
-    />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.5)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">LA SOLUTION</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">La régie sport de</span><br />
-        <span class="font-black">votre club</span>
-      </h1>
-      <p class="text-white/80 text-[16px] md:text-[18px] max-w-[620px] mb-[24px]">
-        Une régie digitale clé en main pensée pour les clubs de sport — du niveau professionnel au championnat régional.
-      </p>
+<BaseLayout title={title} description={description} ogImage="https://madxp.kalonpartners.bzh/og-solution.jpg" extraJsonLd={[breadcrumb, service, faqJsonLd]}>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px] grid lg:grid-cols-[1fr_minmax(0,420px)] gap-12 lg:gap-16 items-center">
       <div>
-        <Button href="/demo" variant="green" arrow>Découvrir la solution</Button>
+        <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">La solution</p>
+        <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[76px] max-w-[14ch]">
+          La régie sport de <span class="text-madxp-light">votre club</span>
+        </h1>
+        <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[620px]">
+          Une régie digitale clé en main pensée pour les clubs de sport — du niveau professionnel au championnat régional.
+        </p>
+        <div class="mt-9">
+          <Button href="/demo/" variant="white" arrow>Découvrir la solution</Button>
+        </div>
       </div>
+      <HeroCard label="La solution" title="Branchez. Pilotez." sub="Un boîtier HDMI, une appli, vos contenus sur l'écran du gymnase." class="w-full max-w-[420px] lg:justify-self-end" />
     </div>
   </section>
 
@@ -119,18 +114,19 @@ const service = buildServiceJsonLd({
           <div class="flex flex-col md:flex-row gap-[60px] py-[60px] md:py-[120px] px-[30px] md:px-[60px]">
             <div class="flex-1 flex flex-col justify-center gap-[30px]">
               <h2 class="text-[28px] md:text-[36px] lg:text-[48px]" set:html={formatPanelTitle(panel.title)} />
-              <p class="text-neo-gray text-[18px]">{panel.description}</p>
+              <p class="text-madxp-gray text-[18px]">{panel.description}</p>
             </div>
-            <div class="flex-1 rounded-[20px] overflow-hidden bg-[#1a1f1c] aspect-video">
-              <video
-                class="w-full h-full object-cover"
-                autoplay
-                muted
-                loop
-                playsinline
-              >
-                <source src={panel.videoUrl || `/videos/solution-panel-${i + 1}.mp4`} type="video/mp4" />
-              </video>
+            <!-- Maquette « écran gymnase » CSS (sans vidéo) -->
+            <div class="flex-1 relative rounded-[20px] overflow-hidden bg-madxp-ink aspect-video flex items-center justify-center p-8">
+              <div class="pointer-events-none absolute -right-[12%] top-0 h-full w-[46%] bg-madxp-blue/25 [clip-path:polygon(38%_0,100%_0,100%_100%,0_100%)]"></div>
+              <span class="absolute top-4 left-5 font-mono text-[11px] tracking-[0.2em] text-madxp-bone/50 uppercase">MadXP · écran gymnase</span>
+              <span class="absolute top-4 right-5 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-madxp-bone/80 uppercase"><span class="w-1.5 h-1.5 rounded-full bg-madxp-red animate-pulse"></span> Live</span>
+              <p class="relative font-display uppercase text-[32px] md:text-[52px] leading-[0.95] text-center text-madxp-bone max-w-[85%]" set:html={formatPanelTitle(panel.title)} />
+              <span class="absolute bottom-4 left-5 right-5 flex gap-2">
+                <span class="flex-1 h-5 rounded bg-madxp-bone/12"></span>
+                <span class="flex-1 h-5 rounded bg-madxp-bone/12"></span>
+                <span class="flex-1 h-5 rounded bg-madxp-bone/12"></span>
+              </span>
             </div>
           </div>
         </div>
@@ -145,7 +141,7 @@ const service = buildServiceJsonLd({
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {steps.map((step, i) => (
           <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style={`--step: ${i}`}>
-            <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">{step.number}</span>
+            <span class="text-[64px] md:text-[80px] font-black text-[#0a0b0d] leading-none">{step.number}</span>
             <h3 class="text-[20px] md:text-[24px] font-bold">{step.title}</h3>
             <p class="text-[16px] text-[#4a5565]">{step.description}</p>
           </div>
@@ -185,7 +181,7 @@ const service = buildServiceJsonLd({
   <!-- Panneaux couleurs sticky -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">Plus qu'une solution d'affichage : une vraie régie sport</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[60px]">Plus qu'une solution d'affichage : une vraie régie sport</h2>
       <div class="flex flex-col gap-[20px]">
         {colorPanels.map((panel, i) => (
           <div
@@ -209,37 +205,37 @@ const service = buildServiceJsonLd({
     </div>
   </section>
 
-  <!-- La chaîne Neopro (services complémentaires full-stack) -->
+  <!-- La chaîne MADXP (services complémentaires full-stack) -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[30px] md:pb-[40px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[50px] max-w-[760px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">SERVICES COMPLÉMENTAIRES</p>
-        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#101828] mb-[16px]">
-          <span class="font-playfair italic">La chaîne</span> Neopro, de A à Z
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">SERVICES COMPLÉMENTAIRES</p>
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#0a0b0d] mb-[16px]">
+          <span class="font-display">La chaîne</span> MADXP, de A à Z
         </h2>
-        <p class="text-[18px] text-neo-gray">Du shooting de vos joueurs à l'écran allumé en bord de terrain, on couvre toute la chaîne. Vous prenez ce dont vous avez besoin.</p>
+        <p class="text-[18px] text-madxp-gray">Du shooting de vos joueurs à l'écran allumé en bord de terrain, on couvre toute la chaîne. Vous prenez ce dont vous avez besoin.</p>
       </div>
 
       <div class="relative">
-        <div class="hidden lg:block absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-gradient-to-r from-[#81e3bc] via-[#1ec5e0] to-[#fe6aa6] opacity-40"></div>
+        <div class="hidden lg:block absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-gradient-to-r from-[#0e578e] via-[#4a8bbf] to-[#0e578e] opacity-40"></div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] relative">
           {chainSteps.map((s) => (
-            <div class="relative bg-white border border-gray-200 rounded-[20px] p-[24px] flex flex-col hover:border-neo-green-dark transition-colors">
+            <div class="relative bg-white border border-gray-200 rounded-[20px] p-[24px] flex flex-col hover:border-madxp-blue-deep transition-colors">
               <div class="flex items-center gap-[14px] mb-[14px]">
-                <span class="shrink-0 w-[52px] h-[52px] rounded-full bg-[#81e3bc] text-[#2f3935] flex items-center justify-center font-bold text-[16px] shadow-sm">
+                <span class="shrink-0 w-[52px] h-[52px] rounded-full bg-[#0e578e] text-[#06263f] flex items-center justify-center font-bold text-[16px] shadow-sm">
                   {s.step}
                 </span>
-                <h3 class="text-[22px] font-bold text-[#101828]">{s.title}</h3>
+                <h3 class="text-[22px] font-bold text-[#0a0b0d]">{s.title}</h3>
               </div>
-              <p class="text-[14px] text-neo-gray italic mb-[18px] min-h-[40px]">{s.tagline}</p>
+              <p class="text-[14px] text-madxp-gray italic mb-[18px] min-h-[40px]">{s.tagline}</p>
               <ul class="flex flex-col gap-[12px] flex-1">
                 {s.services.map((opt) => (
                   <li class="flex items-start gap-[10px]">
-                    <svg class="w-4 h-4 shrink-0 text-neo-green-dark mt-[4px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                    <svg class="w-4 h-4 shrink-0 text-madxp-blue-deep mt-[4px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                     <div>
-                      <p class="text-[14px] text-[#101828] leading-snug">{opt.label}</p>
-                      {opt.hint && <p class="text-[12px] text-neo-gray mt-[2px]">{opt.hint}</p>}
+                      <p class="text-[14px] text-[#0a0b0d] leading-snug">{opt.label}</p>
+                      {opt.hint && <p class="text-[12px] text-madxp-gray mt-[2px]">{opt.hint}</p>}
                     </div>
                   </li>
                 ))}
@@ -249,7 +245,7 @@ const service = buildServiceJsonLd({
         </div>
       </div>
 
-      <p class="text-center text-[14px] text-neo-gray mt-[30px]">
+      <p class="text-center text-[14px] text-madxp-gray mt-[30px]">
         Tous ces services sont disponibles en option ou en upsell — chiffrage personnalisé sur demande.
       </p>
     </div>
@@ -259,23 +255,34 @@ const service = buildServiceJsonLd({
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
       <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-[120px]">
-        <div class="w-full lg:w-[550px] flex-shrink-0 aspect-square rounded-[20px] overflow-hidden bg-[#f5f5f5]">
-          <img
-            src="/images/image_offre.jpg"
-            alt="Écran Neopro en situation dans un gymnase — découvrez les offres"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+        <!-- Carte offre CSS (sans photo) -->
+        <div class="w-full lg:w-[550px] flex-shrink-0 aspect-square rounded-[20px] bg-madxp-blue text-madxp-bone p-8 md:p-12 flex flex-col justify-between">
+          <p class="font-mono text-[12px] tracking-[0.2em] uppercase text-madxp-bone/70">À partir de</p>
+          <div>
+            <p class="font-display leading-none">
+              <span class="text-[88px] md:text-[120px]">79</span><span class="text-[34px]"> €</span>
+              <span class="font-mono text-[14px] tracking-[0.16em] uppercase align-middle">/ mois</span>
+            </p>
+            <p class="text-madxp-bone/80 text-[16px] mt-3">Finançable par vos partenaires. Sans engagement long.</p>
+          </div>
+          <ul class="flex flex-col gap-3">
+            {['Écran + logiciel de régie', 'Appli télécommande', 'Contenus vidéo & sponsors', 'Installation clé en main'].map((item) => (
+              <li class="flex items-center gap-3 text-[16px]">
+                <span class="w-5 h-5 shrink-0 rounded-full bg-madxp-bone/20 flex items-center justify-center text-[12px]">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
         <div class="flex-1 flex flex-col gap-[20px] items-start">
-          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d]">
             Des offres adaptées à vos besoins
           </h2>
           <p class="text-[18px] text-[#4a5565]">
             Finançable par vos partenaires. Clé en main.
           </p>
           <div class="mt-[20px]">
-            <Button href="/offres" variant="black" arrow>
+            <Button href="/offres/" variant="black" arrow>
               Découvrez les offres
             </Button>
           </div>
@@ -287,12 +294,12 @@ const service = buildServiceJsonLd({
   <!-- FAQ -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px] bg-gray-50">
     <div class="max-w-[800px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] font-bold text-[#101828] mb-[10px]">Questions fréquentes</h2>
-      <p class="text-[16px] text-neo-gray mb-[40px]">Tout ce qu'il faut savoir sur la solution Neopro.</p>
+      <h2 class="text-[28px] md:text-[36px] font-bold text-[#0a0b0d] mb-[10px]">Questions fréquentes</h2>
+      <p class="text-[16px] text-madxp-gray mb-[40px]">Tout ce qu'il faut savoir sur la solution MADXP.</p>
       <div class="flex flex-col gap-[12px]">
         {[
           {
-            q: 'Comment fonctionne Neopro exactement ?',
+            q: 'Comment fonctionne MADXP exactement ?',
             a: "Un boîtier plug & play se branche en HDMI sur votre écran ou télévision. Via l'application télécommande, vous programmez vos contenus (logos partenaires, vidéos, scores) et les diffusez à distance. Aucune compétence technique requise.",
           },
           {
@@ -305,23 +312,23 @@ const service = buildServiceJsonLd({
           },
           {
             q: 'Qui gère les contenus diffusés sur les écrans ?',
-            a: "Vous gardez la main via l'application télécommande. Vous choisissez ce qui s'affiche (partenaires, scores, actualités club) et quand. En option, Neopro peut produire vos contenus vidéo pro (shootings joueurs, templates animés).",
+            a: "Vous gardez la main via l'application télécommande. Vous choisissez ce qui s'affiche (partenaires, scores, actualités club) et quand. En option, MADXP peut produire vos contenus vidéo pro (shootings joueurs, templates animés).",
           },
           {
-            q: 'Neopro est-il adapté aux petits clubs ?',
+            q: 'MADXP est-il adapté aux petits clubs ?',
             a: "Oui. La solution est pensée pour tous les niveaux — du club pro à l'association de championnat régional. L'offre Play (sans matériel) permet même de démarrer sans installation physique.",
           },
           {
-            q: 'Sur quels écrans puis-je utiliser Neopro ?',
-            a: "Sur n'importe quel écran avec entrée HDMI : téléviseur, écran PC, écran LED. Si vous avez besoin d'écrans, Neopro peut vous conseiller, sourcer et installer le matériel adapté.",
+            q: 'Sur quels écrans puis-je utiliser MADXP ?',
+            a: "Sur n'importe quel écran avec entrée HDMI : téléviseur, écran PC, écran LED. Si vous avez besoin d'écrans, MADXP peut vous conseiller, sourcer et installer le matériel adapté.",
           },
         ].map((item) => (
           <details class="bg-white rounded-[16px] border border-gray-200 group">
-            <summary class="flex items-center justify-between gap-4 px-[24px] py-[20px] cursor-pointer list-none font-bold text-[16px] text-[#101828]">
+            <summary class="flex items-center justify-between gap-4 px-[24px] py-[20px] cursor-pointer list-none font-bold text-[16px] text-[#0a0b0d]">
               {item.q}
-              <span class="shrink-0 text-neo-green-dark text-[20px] group-open:rotate-45 transition-transform">+</span>
+              <span class="shrink-0 text-madxp-blue-deep text-[20px] group-open:rotate-45 transition-transform">+</span>
             </summary>
-            <p class="px-[24px] pb-[20px] text-[15px] text-neo-gray leading-relaxed">{item.a}</p>
+            <p class="px-[24px] pb-[20px] text-[15px] text-madxp-gray leading-relaxed">{item.a}</p>
           </details>
         ))}
       </div>

@@ -13,10 +13,10 @@ const year = new Date().getFullYear();
 
 // Pages avec versions localisées existantes (sinon fallback FR)
 const localesWithFullPages: Locale[] = ['fr', 'en', 'es', 'de', 'da'];
-const blogPath = localesWithFullPages.includes(locale) ? localePath('/blog', locale) : '/blog';
-const implantationsPath = localesWithFullPages.includes(locale) ? localePath('/implantations', locale) : '/implantations';
-const regiePath = localesWithFullPages.includes(locale) ? localeRoutePath('/regie-sport', locale) : '/regie-sport';
-const annonceursPath = localesWithFullPages.includes(locale) ? localeRoutePath('/annonceurs', locale) : '/annonceurs';
+const blogPath = localesWithFullPages.includes(locale) ? localePath('/blog', locale) : '/blog/';
+const implantationsPath = localesWithFullPages.includes(locale) ? localePath('/implantations', locale) : '/implantations/';
+const regiePath = localesWithFullPages.includes(locale) ? localeRoutePath('/regie-sport', locale) : '/regie-sport/';
+const annonceursPath = localesWithFullPages.includes(locale) ? localeRoutePath('/annonceurs', locale) : '/annonceurs/';
 
 const colProduit = [
   { label: t('nav.solution'), href: localeRoutePath('/solution', locale) },
@@ -29,35 +29,35 @@ const colProduit = [
 const colRessources = [
   { label: t('nav.blog'), href: blogPath },
   { label: t('nav.about'), href: localeRoutePath('/qui-sommes-nous', locale) },
-  { label: t('nav.club'), href: 'https://neopro-admin.kalonpartners.bzh', external: true },
+  { label: t('nav.club'), href: 'https://madxp.kalonpartners.bzh/login', external: true },
 ];
 
 // Pages légales — uniquement en FR pour toutes les locales
 const colLegal = [
-  { label: t('footer.mentions'), href: '/mentions-legales' },
-  { label: t('footer.privacy'), href: '/politique-de-confidentialite' },
+  { label: t('footer.mentions'), href: '/mentions-legales/' },
+  { label: t('footer.privacy'), href: '/politique-de-confidentialite/' },
 ];
 ---
 
-<footer class="bg-neo-dark-bg text-white">
+<footer class="bg-madxp-night text-white">
   <div class="max-w-[1200px] mx-auto px-6 md:px-[120px] pt-[60px] md:pt-[80px] pb-[60px] md:pb-[96px]">
     <!-- Row 1: Logo + Social icons -->
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
       <a href={localePath('/', locale)}>
-        <Logo variant="white" class="h-[34px] w-auto" />
+        <Logo variant="white" size={46} />
       </a>
       <div class="flex gap-[10px]">
-        <a href="https://www.instagram.com/neopro_fr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-neo-green hover:text-neo-green-dark transition-colors">
+        <a href="https://www.instagram.com/neopro_fr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-madxp-blue hover:text-madxp-blue-deep transition-colors">
           <SocialIcons platform="instagram" size={25} />
         </a>
-        <a href="https://www.linkedin.com/company/neopro-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-neo-green hover:text-neo-green-dark transition-colors">
+        <a href="https://www.linkedin.com/company/neopro-communication/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-madxp-blue hover:text-madxp-blue-deep transition-colors">
           <SocialIcons platform="linkedin" size={22} />
         </a>
       </div>
     </div>
 
     <!-- Divider — green line -->
-    <div class="h-[2px] bg-neo-green my-8" />
+    <div class="h-[2px] bg-madxp-blue my-8" />
 
     <!-- Row 2: Nav columns + CTAs -->
     <div class="flex flex-col md:flex-row justify-between items-start gap-8">
@@ -65,13 +65,13 @@ const colLegal = [
       <div class="flex flex-wrap gap-x-12 gap-y-6">
         <!-- Col Produit -->
         <div>
-          <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-3">
+          <h4 class="text-[13px] font-semibold uppercase tracking-wider text-madxp-blue mb-3">
             {t('footer.col.produit')}
           </h4>
           <ul class="flex flex-col gap-2 text-[15px]">
             {colProduit.map((link) => (
               <li>
-                <a href={link.href} class="text-white hover:text-neo-green transition-colors">
+                <a href={link.href} class="text-white hover:text-madxp-blue transition-colors">
                   {link.label}
                 </a>
               </li>
@@ -80,7 +80,7 @@ const colLegal = [
         </div>
         <!-- Col Ressources -->
         <div>
-          <h4 class="text-[13px] font-semibold uppercase tracking-wider text-neo-green mb-3">
+          <h4 class="text-[13px] font-semibold uppercase tracking-wider text-madxp-blue mb-3">
             {t('footer.col.ressources')}
           </h4>
           <ul class="flex flex-col gap-2 text-[15px]">
@@ -88,7 +88,7 @@ const colLegal = [
               <li>
                 <a
                   href={link.href}
-                  class="text-white hover:text-neo-green transition-colors"
+                  class="text-white hover:text-madxp-blue transition-colors"
                   {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
                   {link.label}

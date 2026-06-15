@@ -2,7 +2,7 @@
 title: "5 Ways to Better Showcase Your Sponsors in an Amateur Club"
 description: "Go beyond static banners: digital screens, social media, naming, videos and reporting. Retain your partners and attract new ones."
 date: 2026-03-25
-author: Neopro
+author: MADXP
 tags: ["sponsors", "partners", "amateur club", "visibility"]
 ---
 
@@ -73,4 +73,4 @@ A partner who receives a visibility report at the end of the season is a partner
 | Professional videos | Variable | Very high |
 | Reporting | Free | High |
 
-The winning combination: a **digital screen + quality videos + clear reporting**. That's exactly what [Neopro](/en/solution) offers amateur clubs.
+The winning combination: a **digital screen + quality videos + clear reporting**. That's exactly what [MADXP](/en/solution/) offers amateur clubs.

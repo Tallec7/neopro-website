@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Script de seed — Remplit Sanity avec le contenu initial du site Neopro.
+ * Script de seed — Remplit Sanity avec le contenu initial du site MADXP.
  *
  * Usage : node seed.mjs
  *
@@ -33,8 +33,8 @@ async function createDoc(doc) {
 await createDoc({
   _id: 'siteSettings',
   _type: 'siteSettings',
-  siteName: 'Neopro',
-  email: 'contact@neopro-communication.fr',
+  siteName: 'MADXP',
+  email: 'contact@kalonpartners.bzh',
   phone: '',
   address: 'Nantes, France',
   socialLinks: {
@@ -49,7 +49,7 @@ await createDoc({
   ],
   ctaPrimary: { label: 'Obtenez un devis', href: '/devis' },
   ctaSecondary: { label: 'Planifier une demo', href: '#contact' },
-  footerDescription: 'Neopro — Regie digitale pour clubs de sport amateurs.',
+  footerDescription: 'MADXP — Regie digitale pour clubs de sport amateurs.',
   footerLinks: [
     { _key: 'foot1', label: 'La solution', href: '/solution' },
     { _key: 'foot2', label: 'Les offres', href: '/offres' },
@@ -70,9 +70,9 @@ const pages = [
       ctaHref: '/solution',
     },
     seo: {
-      metaTitle: 'Neopro — Regie digitale pour clubs de sport amateurs',
+      metaTitle: 'MADXP — Regie digitale pour clubs de sport amateurs',
       metaDescription:
-        "Neopro transforme l'ecran de votre club en un media interactif professionnel. Spots partenaires, animations de match, pilotage depuis un smartphone.",
+        "MADXP transforme l'ecran de votre club en un media interactif professionnel. Spots partenaires, animations de match, pilotage depuis un smartphone.",
     },
   },
   {
@@ -86,9 +86,9 @@ const pages = [
       ctaHref: '',
     },
     seo: {
-      metaTitle: 'La solution de regie digitale — Neopro',
+      metaTitle: 'La solution de regie digitale — MADXP',
       metaDescription:
-        'Decouvrez la solution Neopro : regie digitale cle en main pour clubs amateurs. Sans wifi, sans fil, pilotable depuis un smartphone.',
+        'Decouvrez la solution MADXP : regie digitale cle en main pour clubs amateurs. Sans wifi, sans fil, pilotable depuis un smartphone.',
     },
   },
   {
@@ -102,9 +102,9 @@ const pages = [
       ctaHref: '',
     },
     seo: {
-      metaTitle: 'Les offres — Neopro',
+      metaTitle: 'Les offres — MADXP',
       metaDescription:
-        'Decouvrez les offres Neopro : Standard, Autonomie, Premium. Des solutions de regie digitale financables par vos partenaires.',
+        'Decouvrez les offres MADXP : Standard, Autonomie, Premium. Des solutions de regie digitale financables par vos partenaires.',
     },
   },
   {
@@ -113,9 +113,9 @@ const pages = [
     title: 'Devis',
     hero: { title: '', subtitle: '', ctaLabel: '', ctaHref: '' },
     seo: {
-      metaTitle: 'Obtenez votre devis — Neopro',
+      metaTitle: 'Obtenez votre devis — MADXP',
       metaDescription:
-        'Obtenez une estimation personnalisee pour votre solution de regie digitale Neopro. Standard, Autonomie ou Premium.',
+        'Obtenez une estimation personnalisee pour votre solution de regie digitale MADXP. Standard, Autonomie ou Premium.',
     },
   },
   {
@@ -129,9 +129,9 @@ const pages = [
       ctaHref: '',
     },
     seo: {
-      metaTitle: 'Qui sommes-nous ? — Neopro',
+      metaTitle: 'Qui sommes-nous ? — MADXP',
       metaDescription:
-        'Decouvrez l\'equipe derriere Neopro, la solution de regie digitale pour clubs de sport amateurs.',
+        'Decouvrez l\'equipe derriere MADXP, la solution de regie digitale pour clubs de sport amateurs.',
     },
   },
 ];
@@ -260,7 +260,7 @@ for (const pkg of videoPkgs) {
 const testimonials = [
   {
     _id: 'testimonial-1',
-    quote: "Le jour ou on a utilise Neopro pour la premiere fois, ca en a surpris plus d'un.",
+    quote: "Le jour ou on a utilise MADXP pour la premiere fois, ca en a surpris plus d'un.",
     clubName: 'RACC Handball Nantes',
     division: 'NM3',
     order: 1,
@@ -396,7 +396,7 @@ const colorPanels = [
       'Offre de media day complete (photo+video)',
       'Des templates video de qualite Broadcast, personnalisable aux couleurs de votre club',
     ],
-    bgColor: 'bg-[#2f3935]',
+    bgColor: 'bg-[#06263f]',
     order: 3,
   },
   {

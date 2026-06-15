@@ -2,7 +2,7 @@
 title: "5 måder at skabe mere værdi for dine sponsorer i en amatørklub"
 description: "Gå ud over statiske bannere: digitale skærme, sociale medier, naming, videoer og rapportering. Fasthold dine partnere og tiltræk nye."
 date: 2026-03-25
-author: Neopro
+author: MADXP
 tags: ["sponsorer", "partnere", "amatørklub", "værdiskabelse"]
 ---
 
@@ -73,4 +73,4 @@ En partner, der modtager en synlighedsrapport ved sæsonens slutning, er en part
 | Professionelle videoer | Varierende | Meget høj |
 | Rapportering | Gratis | Høj |
 
-Den vindende kombination: en **digital skærm + kvalitetsvideoer + tydelig rapportering**. Det er præcis, hvad [Neopro](/da/solution) tilbyder amatørklubber.
+Den vindende kombination: en **digital skærm + kvalitetsvideoer + tydelig rapportering**. Det er præcis, hvad [MADXP](/da/solution/) tilbyder amatørklubber.

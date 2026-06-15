@@ -2,7 +2,7 @@
 title: "Expérience match-day : comment transformer chaque match en événement"
 description: "L'expérience match-day est ce qui différencie un match ordinaire d'un vrai spectacle. Découvrez comment les clubs de sport amateur peuvent professionnaliser leur jour de match avec une régie sport digitale."
 date: 2026-04-08
-author: Neopro
+author: MADXP
 tags: ["expérience match-day", "match-day", "régie sport", "clubs", "animation match", "affichage dynamique"]
 ---
 
@@ -27,11 +27,11 @@ C'est cette orchestration complète qui crée l'**ambiance** et donne envie aux 
 
 Un spectateur qui vit une expérience match-day de qualité revient. C'est aussi simple que ça. L'ambiance compte autant que le résultat — surtout en sport amateur où le spectacle est d'abord convivial.
 
-Avec un [affichage dynamique](/blog/affichage-dynamique-sport-guide-complet) piloté depuis un smartphone, même un club régional peut offrir une atmosphère digne d'un match de première division.
+Avec un [affichage dynamique](/blog/affichage-dynamique-sport-guide-complet/) piloté depuis un smartphone, même un club régional peut offrir une atmosphère digne d'un match de première division.
 
 ### 2. Valoriser les sponsors
 
-Un sponsor dont le logo est affiché sur une bâche statique n'a aucune donnée sur sa visibilité. Un sponsor dont le **spot vidéo tourne sur un écran LED** pendant le match, avec un [reporting automatique](/solution) (nombre de diffusions, durée d'exposition, audience), a des raisons concrètes de renouveler.
+Un sponsor dont le logo est affiché sur une bâche statique n'a aucune donnée sur sa visibilité. Un sponsor dont le **spot vidéo tourne sur un écran LED** pendant le match, avec un [reporting automatique](/solution/) (nombre de diffusions, durée d'exposition, audience), a des raisons concrètes de renouveler.
 
 L'expérience match-day transforme la relation sponsor : on passe d'un logo figé à un **espace publicitaire dynamique et mesurable**.
 
@@ -58,7 +58,7 @@ La bonne nouvelle : vous n'avez pas besoin d'une équipe technique ni d'un budge
 
 ### Étape 1 : Un écran et un boîtier
 
-Un écran LED professionnel installé dans votre gymnase, connecté à un boîtier plug & play. Pas besoin de wifi — le boîtier crée son propre réseau local. C'est le socle technique de toute [régie sport digitale](/regie-sport).
+Un écran LED professionnel installé dans votre gymnase, connecté à un boîtier plug & play. Pas besoin de wifi — le boîtier crée son propre réseau local. C'est le socle technique de toute [régie sport digitale](/regie-sport/).
 
 ### Étape 2 : Des contenus personnalisés
 
@@ -74,9 +74,9 @@ Après chaque match, les données de diffusion sont automatiquement collectées.
 
 ## L'expérience match-day comme levier de financement
 
-C'est le cercle vertueux : une meilleure expérience match-day attire plus de spectateurs, ce qui valorise davantage l'espace publicitaire, ce qui permet de mieux vendre les espaces aux [annonceurs locaux](/annonceurs), ce qui finance la solution.
+C'est le cercle vertueux : une meilleure expérience match-day attire plus de spectateurs, ce qui valorise davantage l'espace publicitaire, ce qui permet de mieux vendre les espaces aux [annonceurs locaux](/annonceurs/), ce qui finance la solution.
 
-Concrètement, les [offres Neopro](/offres) sont pensées pour être **intégralement financées par les sponsors**. Le club ne paie pas : il se fait payer.
+Concrètement, les [offres MADXP](/offres/) sont pensées pour être **intégralement financées par les sponsors**. Le club ne paie pas : il se fait payer.
 
 ## Ce que vivent les clubs qui ont sauté le pas
 
@@ -89,4 +89,4 @@ Les retours des clubs déjà équipés sont unanimes :
 
 ---
 
-*L'expérience match-day n'est plus réservée aux clubs pro. Avec une [régie sport digitale](/demo) comme Neopro, tout club peut transformer ses matchs en événements — dès 79 €/mois, financé par les sponsors.*
+*L'expérience match-day n'est plus réservée aux clubs pro. Avec une [régie sport digitale](/demo/) comme MADXP, tout club peut transformer ses matchs en événements — dès 79 €/mois, financé par les sponsors.*

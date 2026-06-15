@@ -208,7 +208,7 @@ export const additionalOptions: OptionCategory[] = [
   },
 ];
 
-// ── Chaîne Neopro (services complémentaires full-stack) ───────────
+// ── Chaîne MADXP (services complémentaires full-stack) ───────────
 
 export interface ChainService {
   label: string;

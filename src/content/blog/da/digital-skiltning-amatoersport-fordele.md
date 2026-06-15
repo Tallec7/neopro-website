@@ -2,7 +2,7 @@
 title: "Digital skiltning i amatørsport: 7 konkrete fordele for din klub"
 description: "Opdag hvordan digital skiltning forvandler kampoplevelsen, fastholder sponsorer og professionaliserer din amatørsportsklubs image."
 date: 2026-03-18
-author: Neopro
+author: MADXP
 tags: ["digital skiltning", "amatørsport", "fordele", "klubber"]
 ---
 
@@ -73,4 +73,4 @@ Det er dette niveau af professionalisme, der forvandler en enkeltstående sponso
 
 Digitale skiltningsløsninger til amatørklubber starter fra **1.500 €/år ekskl. moms**. Det er en investering, der tjener sig ind, så snart du får en eller to ekstra sponsorer takket være skærmen.
 
-[Se Neopro-tilbuddene](/da/priser) for at vælge den formel, der passer til din klub, eller [anmod om et tilpasset tilbud](/da/tilbud).
+[Se MADXP-tilbuddene](/da/priser/) for at vælge den formel, der passer til din klub, eller [anmod om et tilpasset tilbud](/da/tilbud/).

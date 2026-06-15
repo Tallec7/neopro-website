@@ -2,7 +2,7 @@
 title: "LED-skærm i sportshallen: den komplette guide til amatørklubber"
 description: "Sådan vælger, installerer og finansierer du en LED-skærm i din sportshal. Størrelse, opløsning, budget og afkast takket være sponsorer."
 date: 2026-04-01
-author: Neopro
+author: MADXP
 tags: ["LED-skærm", "sportshal", "installation", "guide"]
 ---
 
@@ -37,7 +37,7 @@ Budgettet afhænger af den valgte skærm:
 - **Professionel skærm 75"**: 1.000 til 2.000 €
 - **Professionel skærm 85"**: 2.000 til 3.500 €
 
-Dertil kommer den **digitale skiltningsløsning** til at styre indholdet. Hos Neopro starter abonnementerne fra **1.500 €/år ekskl. moms** og inkluderer al software, fjernbetjeningsappen og videoskabeloner.
+Dertil kommer den **digitale skiltningsløsning** til at styre indholdet. Hos MADXP starter abonnementerne fra **1.500 €/år ekskl. moms** og inkluderer al software, fjernbetjeningsappen og videoskabeloner.
 
 ## Hvordan finansierer du installationen?
 
@@ -49,9 +49,9 @@ Den gode nyhed: **skærmen kan finansieres af dine partnere**. Her er de tre mes
 
 ## Den praktiske installation
 
-Med en løsning som Neopro tager installationen **under 5 minutter**:
+Med en løsning som MADXP tager installationen **under 5 minutter**:
 
-1. Tilslut Neopro-boksen til skærmen (HDMI-kabel)
+1. Tilslut MADXP-boksen til skærmen (HDMI-kabel)
 2. Forbind til boksen fra din telefon (ingen wifi nødvendig i hallen)
 3. Styr indholdet med fjernbetjeningsappen
 
@@ -61,4 +61,4 @@ Ingen byggearbejde, ingen netværkskabler, ingen tekniker nødvendig.
 
 En LED-skærm i en sportshal er en investering, der hurtigt tjener sig ind takket være partnerne. Det vigtigste er at vælge en **tilpasset digital skiltningsløsning**, der giver dig mulighed for nemt at styre indholdet, selv uden tekniske kompetencer.
 
-[Oplev Neopro-tilbuddene](/da/priser) og find den formel, der passer til din klub.
+[Oplev MADXP-tilbuddene](/da/priser/) og find den formel, der passer til din klub.

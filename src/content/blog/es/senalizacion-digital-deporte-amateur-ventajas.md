@@ -2,7 +2,7 @@
 title: "Señalización digital en deporte amateur: 7 ventajas concretas para tu club"
 description: "Descubre cómo la señalización digital transforma la experiencia del partido, fideliza a los patrocinadores y profesionaliza la imagen de tu club deportivo amateur."
 date: 2026-03-18
-author: Neopro
+author: MADXP
 tags: ["señalización digital", "deporte amateur", "ventajas", "clubes"]
 ---
 
@@ -73,4 +73,4 @@ Es este nivel de profesionalismo el que transforma a un patrocinador puntual en 
 
 Las soluciones de señalización digital para clubes amateur empiezan desde **1.500 €/año sin IVA**. Es una inversión que se amortiza en cuanto consigues uno o dos patrocinadores adicionales gracias a la pantalla.
 
-[Consulta los planes de Neopro](/es/precios) para elegir la fórmula adaptada a tu club, o [solicita un presupuesto personalizado](/es/presupuesto).
+[Consulta los planes de MADXP](/es/precios/) para elegir la fórmula adaptada a tu club, o [solicita un presupuesto personalizado](/es/presupuesto/).

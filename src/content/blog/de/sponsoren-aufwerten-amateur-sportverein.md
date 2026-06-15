@@ -2,7 +2,7 @@
 title: "5 Wege, Ihre Sponsoren im Amateurverein besser aufzuwerten"
 description: "Gehen Sie über statische Werbetafeln hinaus: Digitalbildschirme, soziale Medien, Naming, Videos und Reporting. Binden Sie Ihre Partner und gewinnen Sie neue."
 date: 2026-03-25
-author: Neopro
+author: MADXP
 tags: ["Sponsoren", "Partner", "Amateurverein", "Aufwertung"]
 ---
 
@@ -73,4 +73,4 @@ Ein Partner, der am Ende der Saison einen Sichtbarkeitsbericht erhält, ist ein 
 | Profi-Videos | Variabel | Sehr hoch |
 | Reporting | Kostenlos | Hoch |
 
-Die Gewinnkombination: ein **Digitalbildschirm + qualitativ hochwertige Videos + ein klares Reporting**. Genau das bietet [Neopro](/de/solution) Amateursportvereinen.
+Die Gewinnkombination: ein **Digitalbildschirm + qualitativ hochwertige Videos + ein klares Reporting**. Genau das bietet [MADXP](/de/solution/) Amateursportvereinen.

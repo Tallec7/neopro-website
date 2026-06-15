@@ -1,21 +1,36 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Design Tokens */
+/* ==========================================================================
+   MadXP — Design Tokens (Design System V1.0 · by Kalon Partners)
+   ========================================================================== */
 @theme {
-  --color-neo-green: #81e3bc;
-  --color-neo-green-dark: #51b28b;
-  --color-neo-dark: #101828;
-  --color-neo-dark-bg: #2f3935;
-  --color-neo-gray: #4a5565;
-  --color-neo-gray-light: #a0a8a3;
-  --color-neo-yellow: #ffec85;
-  --color-neo-pink: #ff9ec6;
-  --color-neo-sky: #79e8fa;
-  --color-neo-white: #ffffff;
+  /* Bleu MadXP — primaire + rampe interface */
+  --color-madxp-blue: #0e578e;       /* Primary */
+  --color-madxp-blue-deep: #093a60;  /* Deep — texte sur clair, profondeur */
+  --color-madxp-night: #06263f;      /* Night — fonds sombres bleutés */
+  --color-madxp-light: #4a8bbf;      /* Light — décoratif uniquement */
+  --color-madxp-tint: #e4edf4;       /* Tint — surfaces froides */
 
-  --font-outfit: 'Outfit', sans-serif;
-  --font-playfair: 'Playfair Display', serif;
+  /* Neutres cœur */
+  --color-madxp-ink: #0a0b0d;        /* Encre — texte, fonds sombres */
+  --color-madxp-ink-soft: #16181c;   /* Encre douce */
+  --color-madxp-bone: #f2eee6;       /* Os — fond clair par défaut (warm) */
+  --color-madxp-paper: #faf7f1;      /* Papier — surface claire */
+  --color-madxp-surface: #f0ece2;    /* Surface — cartes claires */
+  --color-madxp-white: #ffffff;
+  --color-madxp-gray: #4a5565;       /* Gris neutre — texte secondaire */
+  --color-madxp-gray-light: #a0a8a3; /* Gris clair — bordures, méta */
+
+  /* Statuts sémantiques (usage strict) */
+  --color-madxp-green: #1e7a52;      /* Success */
+  --color-madxp-amber: #d9870b;      /* Warning */
+  --color-madxp-red: #b83a2e;        /* Error */
+
+  /* Typographie */
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
 /* Base styles */
@@ -26,10 +41,17 @@
   }
 
   body {
-    font-family: var(--font-outfit);
+    font-family: var(--font-body);
     font-weight: 400;
-    color: var(--color-neo-dark);
+    color: var(--color-madxp-ink);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Anton est une display capitales : pas d'italique synthétique disgracieux */
+  .font-display {
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.005em;
   }
 }

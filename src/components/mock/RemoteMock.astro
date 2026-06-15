@@ -1,0 +1,31 @@
+---
+// Maquette « télécommande / régie » 100 % CSS — sans photo. Libellés neutres.
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+---
+<div class:list={['w-full md:w-[420px] flex-shrink-0', className]}>
+  <div class="mx-auto w-[260px] md:w-[300px] rounded-[34px] bg-madxp-ink ring-1 ring-black/10 shadow-2xl p-5 md:p-6">
+    <div class="flex items-center justify-between mb-6">
+      <span class="font-mono text-[11px] tracking-[0.2em] text-madxp-bone/60 uppercase">Remote</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-madxp-red"></span>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex items-center justify-between rounded-xl bg-madxp-blue px-4 py-3">
+        <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone uppercase">Score</span>
+        <span class="font-display text-[22px] text-madxp-bone">+1</span>
+      </div>
+      <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+        <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone/80 uppercase">Sponsor spot</span>
+        <span class="font-mono text-[12px] text-madxp-light uppercase">Play</span>
+      </div>
+      <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+        <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone/80 uppercase">Replay</span>
+        <span class="font-mono text-[12px] text-madxp-light uppercase">↺</span>
+      </div>
+      <div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3">
+        <span class="font-mono text-[12px] tracking-[0.14em] text-madxp-bone/80 uppercase">Timer</span>
+        <span class="font-mono text-[12px] text-madxp-light">28:14</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,11 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import SportBullet from '@/components/SportBullet.astro';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
+import OfferCard from '@/components/mock/OfferCard.astro';
 import { useTranslations } from '@/i18n/utils';
-
-// ── Images ───────────────────────────────────────────────────────
-import heroImg from '@/assets/images/hero-solution.webp';
 
 // ── EN Data ─────────────────────────────────────────────────────
 import { solutionPanels, colorPanels, steps } from '@/data/en/solution';
@@ -20,7 +17,7 @@ const formatPanelTitle = (title: string) => {
   if (spaceIdx === -1) return `<span class="font-bold">${title}</span>`;
   const first = title.substring(0, spaceIdx);
   const rest = title.substring(spaceIdx + 1);
-  return `<span class="font-playfair italic font-normal">${first}</span> <span class="font-black">${rest}</span>`;
+  return `<span class="font-display font-normal">${first}</span> <span class="font-black">${rest}</span>`;
 };
 
 const locale = 'en';
@@ -28,28 +25,23 @@ const t = useTranslations(locale);
 ---
 
 <BaseLayout title={t('solution.title')} description={t('solution.description')} locale={locale}>
-  <!-- Hero -->
-  <section class="relative h-[743px] overflow-hidden">
-    <Image
-      src={heroImg}
-      alt="Handball players in front of a Neopro digital screen showing pre-match celebrations"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      widths={[640, 1024, 1440, 1920]}
-      sizes="100vw"
-    />
-    <div class="absolute inset-0 bg-[rgba(47,57,53,0.5)]"></div>
-    <div class="relative z-10 h-full flex flex-col justify-end px-[20px] md:px-[40px] lg:px-[60px] pb-[60px] md:pb-[80px]">
-      <p class="text-[16px] tracking-[2px] text-[#d9d9d9] uppercase mb-[20px]">{t('solution.hero.label')}</p>
-      <h1 class="text-[36px] md:text-[50px] lg:text-[70px] leading-[1.1] text-white mb-[30px]">
-        <span class="font-playfair italic">{t('solution.hero.line1')}</span><br />
-        <span class="font-black">{t('solution.hero.line2')}</span>
+  <!-- Hero — typo + couleur, sans photo -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[50%] bg-madxp-blue/25 [clip-path:polygon(30%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[38%] bg-madxp-blue/30 [clip-path:polygon(36%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[30vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+    <div class="relative z-10 max-w-[1320px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] pt-28 md:pt-[170px] pb-[60px] md:pb-[110px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6">Match-Day · Ad · Experience · Media</p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[84px] max-w-[14ch]">
+        {t('solution.hero.line1')} <span class="text-madxp-light">{t('solution.hero.line2')}</span>
       </h1>
-      <p class="text-white/80 text-[16px] md:text-[18px] max-w-[620px] mb-[24px]">
+      <p class="mt-6 text-[18px] md:text-[22px] text-madxp-bone/80 max-w-[620px]">
         A turnkey digital signage solution designed for sports clubs — from professional level to regional championships.
       </p>
-      <div>
-        <Button href="#contact" variant="green" arrow>{t('solution.hero.cta')}</Button>
+      <div class="mt-9">
+        <Button href="#contact" variant="white" arrow>{t('solution.hero.cta')}</Button>
       </div>
     </div>
   </section>
@@ -66,12 +58,19 @@ const t = useTranslations(locale);
           <div class="flex flex-col md:flex-row gap-[60px] py-[60px] md:py-[120px] px-[30px] md:px-[60px]">
             <div class="flex-1 flex flex-col justify-center gap-[30px]">
               <h2 class="text-[28px] md:text-[36px] lg:text-[48px]" set:html={formatPanelTitle(panel.title)} />
-              <p class="text-neo-gray text-[18px]">{panel.description}</p>
+              <p class="text-madxp-gray text-[18px]">{panel.description}</p>
             </div>
-            <div class="flex-1 rounded-[20px] overflow-hidden bg-[#1a1f1c] aspect-video">
-              <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                <source src={panel.videoUrl || `/videos/solution-panel-${i + 1}.mp4`} type="video/mp4" />
-              </video>
+            <!-- Maquette « écran gymnase » CSS (sans vidéo) -->
+            <div class="flex-1 relative rounded-[20px] overflow-hidden bg-madxp-ink aspect-video flex items-center justify-center p-8">
+              <div class="pointer-events-none absolute -right-[12%] top-0 h-full w-[46%] bg-madxp-blue/25 [clip-path:polygon(38%_0,100%_0,100%_100%,0_100%)]"></div>
+              <span class="absolute top-4 left-5 font-mono text-[11px] tracking-[0.2em] text-madxp-bone/50 uppercase">MadXP · gym screen</span>
+              <span class="absolute top-4 right-5 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-madxp-bone/80 uppercase"><span class="w-1.5 h-1.5 rounded-full bg-madxp-red animate-pulse"></span> Live</span>
+              <p class="relative font-display uppercase text-[32px] md:text-[52px] leading-[0.95] text-center text-madxp-bone max-w-[85%]" set:html={formatPanelTitle(panel.title)} />
+              <span class="absolute bottom-4 left-5 right-5 flex gap-2">
+                <span class="flex-1 h-5 rounded bg-madxp-bone/12"></span>
+                <span class="flex-1 h-5 rounded bg-madxp-bone/12"></span>
+                <span class="flex-1 h-5 rounded bg-madxp-bone/12"></span>
+              </span>
             </div>
           </div>
         </div>
@@ -86,7 +85,7 @@ const t = useTranslations(locale);
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {steps.map((step, i) => (
           <div class="bg-[#f5f5f5] rounded-[20px] p-[30px] md:p-[40px] flex flex-col items-center text-center gap-[20px] fade-in-step" style={`--step: ${i}`}>
-            <span class="text-[64px] md:text-[80px] font-black text-[#101828] leading-none">{step.number}</span>
+            <span class="text-[64px] md:text-[80px] font-black text-[#0a0b0d] leading-none">{step.number}</span>
             <h3 class="text-[20px] md:text-[24px] font-bold">{step.title}</h3>
             <p class="text-[16px] text-[#4a5565]">{step.description}</p>
           </div>
@@ -126,7 +125,7 @@ const t = useTranslations(locale);
   <!-- Color panels -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828] mb-[60px]">{t('solution.more.title')}</h2>
+      <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d] mb-[60px]">{t('solution.more.title')}</h2>
       <div class="flex flex-col gap-[20px]">
         {colorPanels.map((panel, i) => (
           <div
@@ -150,37 +149,37 @@ const t = useTranslations(locale);
     </div>
   </section>
 
-  <!-- The Neopro Chain (full-stack complementary services) -->
+  <!-- The MADXP Chain (full-stack complementary services) -->
   <section class="px-[20px] md:px-[40px] lg:px-[60px] pt-[60px] md:pt-[96px] pb-[30px] md:pb-[40px]">
     <div class="max-w-[1320px] mx-auto">
       <div class="mb-[50px] max-w-[760px]">
-        <p class="text-[14px] tracking-[2px] text-neo-green-dark uppercase font-bold mb-[16px]">COMPLEMENTARY SERVICES</p>
-        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#101828] mb-[16px]">
-          <span class="font-playfair italic">The Neopro</span> chain, from A to Z
+        <p class="text-[14px] tracking-[2px] text-madxp-blue-deep uppercase font-bold mb-[16px]">COMPLEMENTARY SERVICES</p>
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#0a0b0d] mb-[16px]">
+          <span class="font-display">The MADXP</span> chain, from A to Z
         </h2>
-        <p class="text-[18px] text-neo-gray">From shooting your players to the screen lit up courtside, we cover the entire chain. Pick what you need.</p>
+        <p class="text-[18px] text-madxp-gray">From shooting your players to the screen lit up courtside, we cover the entire chain. Pick what you need.</p>
       </div>
 
       <div class="relative">
-        <div class="hidden lg:block absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-gradient-to-r from-[#81e3bc] via-[#1ec5e0] to-[#fe6aa6] opacity-40"></div>
+        <div class="hidden lg:block absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-gradient-to-r from-[#0e578e] via-[#4a8bbf] to-[#0e578e] opacity-40"></div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px] relative">
           {chainSteps.map((s) => (
-            <div class="relative bg-white border border-gray-200 rounded-[20px] p-[24px] flex flex-col hover:border-neo-green-dark transition-colors">
+            <div class="relative bg-white border border-gray-200 rounded-[20px] p-[24px] flex flex-col hover:border-madxp-blue-deep transition-colors">
               <div class="flex items-center gap-[14px] mb-[14px]">
-                <span class="shrink-0 w-[52px] h-[52px] rounded-full bg-[#81e3bc] text-[#2f3935] flex items-center justify-center font-bold text-[16px] shadow-sm">
+                <span class="shrink-0 w-[52px] h-[52px] rounded-full bg-[#0e578e] text-[#06263f] flex items-center justify-center font-bold text-[16px] shadow-sm">
                   {s.step}
                 </span>
-                <h3 class="text-[22px] font-bold text-[#101828]">{s.title}</h3>
+                <h3 class="text-[22px] font-bold text-[#0a0b0d]">{s.title}</h3>
               </div>
-              <p class="text-[14px] text-neo-gray italic mb-[18px] min-h-[40px]">{s.tagline}</p>
+              <p class="text-[14px] text-madxp-gray italic mb-[18px] min-h-[40px]">{s.tagline}</p>
               <ul class="flex flex-col gap-[12px] flex-1">
                 {s.services.map((opt) => (
                   <li class="flex items-start gap-[10px]">
-                    <svg class="w-4 h-4 shrink-0 text-neo-green-dark mt-[4px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                    <svg class="w-4 h-4 shrink-0 text-madxp-blue-deep mt-[4px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
                     <div>
-                      <p class="text-[14px] text-[#101828] leading-snug">{opt.label}</p>
-                      {opt.hint && <p class="text-[12px] text-neo-gray mt-[2px]">{opt.hint}</p>}
+                      <p class="text-[14px] text-[#0a0b0d] leading-snug">{opt.label}</p>
+                      {opt.hint && <p class="text-[12px] text-madxp-gray mt-[2px]">{opt.hint}</p>}
                     </div>
                   </li>
                 ))}
@@ -190,7 +189,7 @@ const t = useTranslations(locale);
         </div>
       </div>
 
-      <p class="text-center text-[14px] text-neo-gray mt-[30px]">
+      <p class="text-center text-[14px] text-madxp-gray mt-[30px]">
         All these services are available as options or upsells — custom pricing on quote.
       </p>
     </div>
@@ -200,23 +199,25 @@ const t = useTranslations(locale);
   <section class="px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[96px]">
     <div class="max-w-[1200px] mx-auto">
       <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-[120px]">
-        <div class="w-full lg:w-[550px] flex-shrink-0 aspect-square rounded-[20px] overflow-hidden bg-[#f5f5f5]">
-          <img
-            src="/images/image_offre.jpg"
-            alt="Neopro screen in a gym — discover the plans"
-            class="w-full h-full object-cover"
-            loading="lazy"
+        <div class="w-full lg:w-[550px] flex-shrink-0">
+          <OfferCard
+            square
+            fromLabel="From"
+            price="79"
+            period="/ month"
+            note="Fundable by your sponsors. No long-term commitment."
+            features={['Screen + signage software', 'Remote control app', 'Video & sponsor content', 'Turnkey installation']}
           />
         </div>
         <div class="flex-1 flex flex-col gap-[20px] items-start">
-          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#101828]">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#0a0b0d]">
             {t('solution.offres.title')}
           </h2>
           <p class="text-[18px] text-[#4a5565]">
             {t('solution.offres.text')}
           </p>
           <div class="mt-[20px]">
-            <Button href="/en/pricing" variant="black" arrow>
+            <Button href="/en/pricing/" variant="black" arrow>
 
               {t('solution.offres.cta')}
             </Button>

@@ -2,7 +2,7 @@
 title: "Sports Signage: The Complete Guide for Clubs (Pro, Semi-Pro and Regional)"
 description: "What is sports signage? What is it for? How much does it cost? The complete guide to understanding how digital sports signage transforms the match experience, showcases sponsors and professionalizes a club — whatever its level."
 date: 2026-04-08
-author: Neopro
+author: MADXP
 tags: ["sports signage", "digital signage", "guide", "clubs"]
 ---
 
@@ -24,7 +24,7 @@ In a professional club, these functions are often managed by a dedicated team wi
 
 Traditional sports signage requires **professional equipment, technical skills and trained volunteers**. That's what you see in pro clubs.
 
-**Digital sports signage** is the modern evolution: everything is integrated into a single solution controllable from a smartphone. This is what Neopro offers: an LED screen, a plug & play box, a remote control app and ready-to-use video content. A single volunteer is enough to run the signage during the match.
+**Digital sports signage** is the modern evolution: everything is integrated into a single solution controllable from a smartphone. This is what MADXP offers: an LED screen, a plug & play box, a remote control app and ready-to-use video content. A single volunteer is enough to run the signage during the match.
 
 The key difference: with digital sports signage, **you no longer need to be pro to have pro-level signage**.
 
@@ -58,13 +58,13 @@ This is the big misconception to overcome: **sports signage is not reserved for 
 - **Semi-pro and national-level clubs**: they want to reach pro-level match experience without the associated costs.
 - **Regional and amateur clubs**: they want to stand out from local competition, deliver a real show to their audience and turn the screen into a revenue source.
 
-Neopro is designed to adapt to all three profiles, with calibrated plans (from 79 to 299 EUR/month) that are always fundable through sponsors.
+MADXP is designed to adapt to all three profiles, with calibrated plans (from 79 to 299 EUR/month) that are always fundable through sponsors.
 
 ## How much does sports signage cost?
 
 Traditional sports signage (professional equipment + technical team) typically costs **between 30,000 and 150,000 EUR** depending on the setup — which is why it has historically been reserved for pro clubs.
 
-A **turnkey digital sports signage** solution like Neopro starts **at 79 EUR/month** with the Play plan (no hardware, 100% SaaS). Plans with screen and box range from 149 to 299 EUR/month. The investment pays for itself from the first or second sponsor signed thanks to the new advertising space created.
+A **turnkey digital sports signage** solution like MADXP starts **at 79 EUR/month** with the Play plan (no hardware, 100% SaaS). Plans with screen and box range from 149 to 299 EUR/month. The investment pays for itself from the first or second sponsor signed thanks to the new advertising space created.
 
 ## What to check before choosing a sports signage solution
 
@@ -80,6 +80,6 @@ If you're comparing several solutions, here are the key questions to ask:
 
 Sports signage is no longer a privilege of professional clubs. With the arrival of **turnkey digital sports signage solutions**, all clubs can now get equipped to professionalize their match experience, showcase their sponsors and generate new revenue. The entry price has become affordable (from 79 EUR/month), and the technical complexity has disappeared.
 
-At Neopro, that's exactly what we're building: **digital sports signage for all clubs**, from professional level to regional championships.
+At MADXP, that's exactly what we're building: **digital sports signage for all clubs**, from professional level to regional championships.
 
-[Discover Neopro sports signage in detail](/en/regie-sport) or [request a personalized quote](/en/quote) for your club.
+[Discover MADXP sports signage in detail](/en/regie-sport/) or [request a personalized quote](/en/quote/) for your club.

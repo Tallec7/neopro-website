@@ -2,7 +2,7 @@
 title: "LED Screen in a Gym: The Complete Guide for Amateur Clubs"
 description: "How to choose, install and finance an LED screen in your gym. Size, resolution, budget and return on investment through sponsors."
 date: 2026-04-01
-author: Neopro
+author: MADXP
 tags: ["LED screen", "gym", "installation", "guide"]
 ---
 
@@ -37,7 +37,7 @@ The budget depends on the screen you choose:
 - **75" professional screen**: 1,000 to 2,000 EUR
 - **85" professional screen**: 2,000 to 3,500 EUR
 
-On top of this comes the **digital signage solution** to manage content. At Neopro, subscriptions start at **1,500 EUR/year excl. VAT** and include all the software, the remote control app and video templates.
+On top of this comes the **digital signage solution** to manage content. At MADXP, subscriptions start at **1,500 EUR/year excl. VAT** and include all the software, the remote control app and video templates.
 
 ## How to finance the installation?
 
@@ -49,9 +49,9 @@ The good news: **the screen can be funded by your partners**. Here are the three
 
 ## The actual installation
 
-With a solution like Neopro, installation takes **less than 5 minutes**:
+With a solution like MADXP, installation takes **less than 5 minutes**:
 
-1. Connect the Neopro box to the screen (HDMI cable)
+1. Connect the MADXP box to the screen (HDMI cable)
 2. Connect to the box from your phone (no wifi needed in the gym)
 3. Control content with the remote control app
 
@@ -61,4 +61,4 @@ No construction work, no network cabling, no technician required.
 
 An LED screen in a gym is an investment that pays for itself quickly through partners. The most important thing is to choose a **suitable signage solution** that lets you manage content easily, even without technical skills.
 
-[Discover Neopro plans](/en/pricing) to find the right package for your club.
+[Discover MADXP plans](/en/pricing/) to find the right package for your club.

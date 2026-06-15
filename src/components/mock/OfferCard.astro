@@ -1,0 +1,39 @@
+---
+// Carte « offre » 100 % CSS — sans photo. Texte pilotable (i18n) avec défauts FR.
+interface Props {
+  fromLabel?: string;
+  price?: string;
+  period?: string;
+  note?: string;
+  features?: string[];
+  square?: boolean;
+  class?: string;
+}
+const {
+  fromLabel = 'À partir de',
+  price = '79',
+  period = '/ mois',
+  note = 'Finançable par vos partenaires. Sans engagement long.',
+  features = ['Écran + logiciel de régie', 'Appli télécommande', 'Contenus vidéo & sponsors', 'Installation clé en main'],
+  square = false,
+  class: className = '',
+} = Astro.props;
+---
+<div class:list={['rounded-[20px] bg-madxp-blue text-madxp-bone p-8 md:p-10 shadow-2xl flex flex-col justify-between gap-7', square ? 'aspect-square' : '', className]}>
+  <div>
+    <p class="font-mono text-[12px] tracking-[0.2em] uppercase text-madxp-bone/70 mb-3">{fromLabel}</p>
+    <p class="font-display leading-none">
+      <span class="text-[72px] md:text-[96px]">{price}</span><span class="text-[28px] md:text-[34px]"> €</span>
+      <span class="font-mono text-[13px] tracking-[0.16em] uppercase align-middle">{period}</span>
+    </p>
+    <p class="text-madxp-bone/80 text-[16px] mt-3">{note}</p>
+  </div>
+  <ul class="flex flex-col gap-3">
+    {features.map((item) => (
+      <li class="flex items-center gap-3 text-[16px]">
+        <span class="w-5 h-5 shrink-0 rounded-full bg-madxp-bone/20 flex items-center justify-center text-[12px]">✓</span>
+        {item}
+      </li>
+    ))}
+  </ul>
+</div>

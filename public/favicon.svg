@@ -1,3 +1,6 @@
-<svg viewBox="0 0 568 568" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <image width="568" height="568" xlink:href="/NeoPro_Core_Assets_Logo_NShape_Stacked_BLK.png"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs></defs>
+  <rect width="64" height="64" fill="#0E578E"></rect>
+  <text x="32" y="44" font-family="Anton, sans-serif" font-weight="400" font-size="40" fill="#F2EEE6" text-anchor="middle">MX</text>
 </svg>

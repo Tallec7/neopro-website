@@ -2,7 +2,7 @@
 title: "Digitale Anzeige im Amateursport: 7 konkrete Vorteile für Ihren Verein"
 description: "Erfahren Sie, wie eine digitale Anzeige das Spielerlebnis transformiert, Sponsoren bindet und das Image Ihres Amateursportvereins professionalisiert."
 date: 2026-03-18
-author: Neopro
+author: MADXP
 tags: ["digitale Anzeige", "Amateursport", "Vorteile", "Vereine"]
 ---
 
@@ -73,4 +73,4 @@ Dieses Maß an Professionalität verwandelt einen einmaligen Sponsor in einen **
 
 Die Lösungen für digitale Anzeigen für Amateurvereine beginnen ab **1.500 €/Jahr zzgl. MwSt.**. Das ist eine Investition, die sich rentiert, sobald Sie dank des Bildschirms ein oder zwei zusätzliche Sponsoren gewinnen.
 
-[Sehen Sie sich die Neopro-Angebote an](/de/angebote), um die passende Formel für Ihren Verein zu wählen, oder [fordern Sie ein individuelles Angebot an](/de/angebot).
+[Sehen Sie sich die MADXP-Angebote an](/de/angebote/), um die passende Formel für Ihren Verein zu wählen, oder [fordern Sie ein individuelles Angebot an](/de/angebot/).

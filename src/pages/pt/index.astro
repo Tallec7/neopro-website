@@ -3,11 +3,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import ClubCarousel from '@/components/ClubCarousel.tsx';
 import ContactForm from '@/components/ContactForm.tsx';
-import { Image } from 'astro:assets';
+import MatchScreen from '@/components/mock/MatchScreen.astro';
+import RemoteMock from '@/components/mock/RemoteMock.astro';
+import OfferCard from '@/components/mock/OfferCard.astro';
 import { useTranslations } from '@/i18n/utils';
-
-import heroImg from '@/assets/images/hero-accueil-v2.webp';
-import imageTelephoneImg from '@/assets/images/image-telephone.png';
 
 import { clubs } from '@/data/clubs';
 
@@ -16,70 +15,79 @@ const t = useTranslations(locale);
 ---
 
 <BaseLayout title={t('home.title')} description={t('home.description')} locale={locale}>
-  <section class="relative h-[500px] md:h-[743px] bg-[#2f3935] overflow-hidden">
-    <Image src={heroImg} alt="Ecrã digital Neopro com conteúdos de patrocinadores num pavilhão desportivo" class="absolute inset-0 w-full h-full object-cover" loading="eager" widths={[768, 1280, 1920]} sizes="100vw" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#2f3935] to-[80%] to-[rgba(47,57,53,0.3)]"></div>
-    <div class="relative z-10 flex flex-col justify-end h-full text-white p-8 md:p-[60px] gap-8 md:gap-[40px]">
-      <h1 class="text-[36px] md:text-[70px] leading-[1]">
-        <span class="font-playfair italic font-normal">{t('home.hero.line1')}</span>
-        <br /><span class="font-black">{t('home.hero.line2')}</span>
-        <br /><span class="font-playfair italic font-normal">{t('home.hero.line3')}</span>
+  <!-- ============ HERO — typo + couleur, sans photo ============ -->
+  <section class="relative bg-madxp-night text-madxp-bone overflow-hidden">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -right-[8%] top-0 h-full w-[55%] bg-madxp-blue/25 [clip-path:polygon(28%_0,100%_0,100%_100%,0_100%)]"></div>
+      <div class="absolute -right-[2%] top-0 h-full w-[42%] bg-madxp-blue/30 [clip-path:polygon(34%_0,100%_0,100%_100%,0_100%)]"></div>
+      <span class="absolute right-[3%] bottom-[-6%] font-display text-[34vw] leading-none text-madxp-bone/[0.04] select-none">MX</span>
+    </div>
+
+    <div class="relative z-10 max-w-[1320px] mx-auto px-6 md:px-[60px] pt-28 md:pt-[170px] pb-20 md:pb-[130px]">
+      <p class="font-mono uppercase tracking-[0.22em] text-[12px] md:text-[15px] text-madxp-light mb-6 md:mb-8">
+        Match-Day · Ad · Experience · Media
+      </p>
+      <h1 class="font-display uppercase leading-[0.9] text-[44px] md:text-[92px] max-w-[16ch]">
+        <span>{t('home.hero.line1')}</span><br /><span class="text-madxp-light">{t('home.hero.line2')}</span>
       </h1>
-      <p class="text-white/80 text-[16px] md:text-[20px] max-w-[720px] leading-normal -mt-2">
+      <p class="mt-8 text-[18px] md:text-[24px] leading-relaxed text-madxp-bone/80 max-w-[620px]">
         Transformamos o seu ecrã num meio interativo. Ecrãs, sinalética digital e conteúdos vídeo para clubes desportivos — do nível profissional ao regional.
       </p>
-      <div class="flex flex-wrap gap-6 md:gap-[43px]">
-        <Button href="/pt/solucao" variant="white" arrow>{t('home.hero.cta')}</Button>
+      <div class="mt-10 flex flex-wrap gap-4 md:gap-6">
+        <Button href="/pt/solucao/" variant="white" arrow>{t('home.hero.cta')}</Button>
       </div>
     </div>
   </section>
 
-  <section class="relative bg-[#2f3935] overflow-hidden">
+  <!-- ============ BIENVENUE + tableau de score (remplace la vidéo) ============ -->
+  <section class="relative bg-madxp-night overflow-hidden">
     <div class="flex flex-col items-center justify-center px-5 pt-16 md:pt-24">
-      <h2 class="text-[#51b28b] text-[48px] md:text-[128px] leading-[1] text-center mb-6 md:mb-10">
-        <span class="font-playfair italic font-normal">{t('home.welcome.title1')}</span><span class="font-black">{t('home.welcome.title2')}</span>
+      <h2 class="text-madxp-blue-deep text-[48px] md:text-[128px] leading-[1] text-center mb-6 md:mb-10">
+        <span class="font-display font-normal">{t('home.welcome.title1')}</span><span class="font-display text-madxp-bone/90">{t('home.welcome.title2')}</span>
       </h2>
-      <p class="text-white text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal mb-10 md:mb-16">
+      <p class="text-madxp-bone text-[18px] md:text-[26px] text-center max-w-[1060px] leading-normal mb-10 md:mb-16">
         {t('home.welcome.text')}
       </p>
     </div>
+
     <div class="px-5 pb-16 md:pb-24">
-      <div class="max-w-[1320px] mx-auto">
-        <div class="relative rounded-[20px] overflow-hidden w-full aspect-[16/9] bg-[#1a1f1c] shadow-2xl">
-          <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="/og-default.jpg">
-            <source src="/videos/accueil-demo.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
+      <MatchScreen class="max-w-[1100px] mx-auto" />
     </div>
   </section>
 
+  <!-- ============ La régie sport digitale + télécommande (remplace la photo) ============ -->
   <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
       <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
         <div>
-          <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">{t('home.regie.title')}</h2>
-          <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">{t('home.regie.text')}</p>
+          <h2 class="font-display uppercase text-[36px] md:text-[56px] text-madxp-ink leading-[0.95]">{t('home.regie.title')}</h2>
+          <p class="text-madxp-gray text-[18px] leading-[28px] mt-5">{t('home.regie.text')}</p>
         </div>
-        <Button href="/pt/solucao" variant="black" arrow>{t('home.regie.cta')}</Button>
+        <Button href="/pt/solucao/" variant="black" arrow>{t('home.regie.cta')}</Button>
       </div>
-      <div class="w-full md:w-[550px] md:h-[550px] flex-shrink-0">
-        <Image src={imageTelephoneImg} alt="Aplicação-controlo remoto Neopro no smartphone para gerir o ecrã do pavilhão" class="w-full h-full rounded-[20px] object-cover" loading="lazy" widths={[600, 1200]} sizes="(max-width: 768px) 100vw, 550px" />
-      </div>
+      <RemoteMock />
     </div>
   </section>
 
-  <section class="py-16 md:py-[96px] px-5 md:px-[60px]">
+  <!-- ============ Des offres + carte tarif (remplace la photo) ============ -->
+  <section class="py-16 md:py-[96px] px-5 md:px-[60px] bg-madxp-surface">
     <div class="max-w-[1320px] mx-auto flex flex-col md:flex-row gap-12 md:gap-[120px] items-center">
-      <div class="relative w-full md:w-[550px] md:h-[550px] flex-shrink-0 rounded-[20px] overflow-hidden">
-        <img src="/images/image_offre.jpg" alt="Ofertas de sinalética digital Neopro para clubes amadores" class="w-full h-full object-cover" loading="lazy" />
+      <div class="w-full md:w-[420px] flex-shrink-0 order-2 md:order-1">
+        <OfferCard
+          square
+          fromLabel="A partir de"
+          price="79"
+          period="/ mês"
+          note="Financiável pelos seus parceiros. Sem compromisso longo."
+          features={['Ecrã + software de régie', 'Aplicação-controlo remoto', 'Conteúdos vídeo e patrocinadores', 'Instalação chave na mão']}
+        />
       </div>
-      <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start">
+      <div class="w-full md:flex-1 flex flex-col gap-[40px] items-start order-1 md:order-2">
         <div>
-          <h2 class="text-[36px] md:text-[48px] font-bold text-[#101828] leading-normal">{t('home.offres.title')}</h2>
-          <p class="text-[#4a5565] text-[18px] leading-[28px] mt-5">{t('home.offres.text')}</p>
+          <h2 class="font-display uppercase text-[36px] md:text-[56px] text-madxp-ink leading-[0.95]">{t('home.offres.title')}</h2>
+          <p class="text-madxp-gray text-[18px] leading-[28px] mt-5">{t('home.offres.text')}</p>
         </div>
-        <Button href="/pt/ofertas" variant="black" arrow>{t('home.offres.cta')}</Button>
+        <Button href="/pt/ofertas/" variant="black" arrow>{t('home.offres.cta')}</Button>
       </div>
     </div>
   </section>

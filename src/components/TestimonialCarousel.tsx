@@ -14,7 +14,7 @@ export default function TestimonialCarousel({ testimonials, sectionTitle = 'Ce q
   const [current, setCurrent] = useState(0);
 
   return (
-    <section className="py-24 px-5 bg-[#2f3935]">
+    <section className="py-24 px-5 bg-[#06263f]">
       <div className="max-w-[800px] mx-auto">
         <h2 className="text-white text-[16px] font-medium tracking-wider uppercase text-center mb-4">
           {sectionTitle}
@@ -30,7 +30,7 @@ export default function TestimonialCarousel({ testimonials, sectionTitle = 'Ce q
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <div className="text-center">
-                  <p className="text-[#81e3bc] font-medium text-[14px] uppercase">{t.clubName}</p>
+                  <p className="text-[#0e578e] font-medium text-[14px] uppercase">{t.clubName}</p>
                 </div>
               </div>
             ))}

@@ -15,7 +15,7 @@ export function getStaticPaths() {
 }
 
 const { city, sport } = Astro.props;
-const siteUrl = 'https://www.neopro-communication.fr';
+const siteUrl = 'https://madxp.kalonpartners.bzh';
 const canonicalUrl = `${siteUrl}/en/implantations/${city.slug}/${sport.slug}`;
 const countryLabel =
   city.country === 'GB'
@@ -33,44 +33,44 @@ const breadcrumb = buildBreadcrumbJsonLd([
 
 const faq = buildFAQPageJsonLd([
   {
-    question: `How much does Neopro cost for a ${sport.name} club ${city.at}?`,
+    question: `How much does MADXP cost for a ${sport.name} club ${city.at}?`,
     answer: `The price depends on your configuration (number of screens, ${sport.venue} size, chosen services). We offer packages for all clubs — from professional teams to community leagues — starting from a few hundred pounds/dollars per month. Request a free quote for your club ${city.at}.`,
   },
   {
-    question: `How does Neopro work in a ${sport.venue} for ${sport.name}?`,
-    answer: `Neopro installs LED screens in your ${sport.venue} and manages the display remotely via our platform. You choose the content (sponsors, scores, club news) and we handle the delivery. Installation typically takes less than a day.`,
+    question: `How does MADXP work in a ${sport.venue} for ${sport.name}?`,
+    answer: `MADXP installs LED screens in your ${sport.venue} and manages the display remotely via our platform. You choose the content (sponsors, scores, club news) and we handle the delivery. Installation typically takes less than a day.`,
   },
   {
-    question: `Is Neopro available for ${sport.name} clubs in ${city.region}?`,
-    answer: `Yes, Neopro is available across the UK, USA, and Canada. Our team comes ${city.at} and across the ${city.region} region for installation. Content updates and technical support are then handled remotely.`,
+    question: `Is MADXP available for ${sport.name} clubs in ${city.region}?`,
+    answer: `Yes, MADXP is available across the UK, USA, and Canada. Our team comes ${city.at} and across the ${city.region} region for installation. Content updates and technical support are then handled remotely.`,
   },
 ]);
 ---
 
 <BaseLayout
-  title={`${sport.name} Club Solution ${city.at} — Neopro`}
-  description={`Neopro equips ${sport.name} clubs ${city.at} with LED screens and a digital signage solution. Showcase sponsors, modernise your ${sport.venue}. Get a free quote.`}
+  title={`${sport.name} Club Solution ${city.at} — MADXP`}
+  description={`MADXP equips ${sport.name} clubs ${city.at} with LED screens and a digital signage solution. Showcase sponsors, modernise your ${sport.venue}. Get a free quote.`}
   canonicalUrl={canonicalUrl}
   extraJsonLd={[breadcrumb, faq]}
   noAlternates
   locale="en"
 >
   <!-- Hero -->
-  <section class="bg-neo-dark text-white py-20 px-6">
+  <section class="bg-madxp-ink text-white py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <p class="text-neo-green text-sm font-semibold uppercase tracking-widest mb-3">
+      <p class="text-madxp-blue text-sm font-semibold uppercase tracking-widest mb-3">
         {countryLabel} — {city.region}
       </p>
       <h1 class="text-3xl md:text-5xl font-black mb-6">
         Digital solution for {sport.name} clubs<br />
-        <span class="text-neo-green">{city.at}</span>
+        <span class="text-madxp-blue">{city.at}</span>
       </h1>
       <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
         {sport.description}
       </p>
       <a
-        href="/en/devis"
-        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors"
+        href="/en/devis/"
+        class="inline-block bg-madxp-blue text-madxp-ink font-bold px-8 py-4 rounded-xl hover:bg-madxp-blue-deep transition-colors"
       >
         Get a free quote for your club
       </a>
@@ -80,14 +80,14 @@ const faq = buildFAQPageJsonLd([
   <!-- Use cases -->
   <section class="py-16 px-6 bg-white">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-8 text-center">
-        What Neopro brings to your {sport.name} club
+      <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-8 text-center">
+        What MADXP brings to your {sport.name} club
       </h2>
       <ul class="grid md:grid-cols-2 gap-4">
         {sport.useCases.map((useCase) => (
           <li class="flex items-start gap-3 p-5 bg-gray-50 rounded-xl">
-            <span class="text-neo-green text-xl mt-0.5 flex-shrink-0">✓</span>
-            <span class="text-neo-dark">{useCase}</span>
+            <span class="text-madxp-blue text-xl mt-0.5 flex-shrink-0">✓</span>
+            <span class="text-madxp-ink">{useCase}</span>
           </li>
         ))}
       </ul>
@@ -95,26 +95,26 @@ const faq = buildFAQPageJsonLd([
   </section>
 
   <!-- How it works -->
-  <section class="py-16 px-6 bg-neo-dark-bg text-white">
+  <section class="py-16 px-6 bg-madxp-night text-white">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-black mb-10 text-center">How does it work?</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4">1</div>
+          <div class="w-12 h-12 bg-madxp-blue rounded-full flex items-center justify-center text-madxp-ink font-black text-xl mx-auto mb-4">1</div>
           <h3 class="font-bold mb-2">Free consultation</h3>
           <p class="text-gray-300 text-sm">
             We assess your {sport.venue} and your needs to recommend the right solution.
           </p>
         </div>
         <div class="text-center">
-          <div class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4">2</div>
+          <div class="w-12 h-12 bg-madxp-blue rounded-full flex items-center justify-center text-madxp-ink font-black text-xl mx-auto mb-4">2</div>
           <h3 class="font-bold mb-2">Quick installation</h3>
           <p class="text-gray-300 text-sm">
             Our technicians install the screens in a single day, without disrupting your schedule.
           </p>
         </div>
         <div class="text-center">
-          <div class="w-12 h-12 bg-neo-green rounded-full flex items-center justify-center text-neo-dark font-black text-xl mx-auto mb-4">3</div>
+          <div class="w-12 h-12 bg-madxp-blue rounded-full flex items-center justify-center text-madxp-ink font-black text-xl mx-auto mb-4">3</div>
           <h3 class="font-bold mb-2">Remote management</h3>
           <p class="text-gray-300 text-sm">
             Manage your content via our platform. We take care of the rest.
@@ -127,23 +127,23 @@ const faq = buildFAQPageJsonLd([
   <!-- Local section -->
   <section class="py-16 px-6 bg-white">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-6">
-        Neopro {city.at} and across {city.region}
+      <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-6">
+        MADXP {city.at} and across {city.region}
       </h2>
       {city.localInfo ? (
-        <p class="text-neo-gray text-lg leading-relaxed mb-4">{city.localInfo}</p>
+        <p class="text-madxp-gray text-lg leading-relaxed mb-4">{city.localInfo}</p>
       ) : null}
       {city.sportHighlights?.[sport.slug] ? (
-        <p class="text-neo-gray text-lg leading-relaxed mb-4">
+        <p class="text-madxp-gray text-lg leading-relaxed mb-4">
           {city.sportHighlights[sport.slug]}
         </p>
       ) : null}
-      <p class="text-neo-gray text-lg leading-relaxed mb-4">
-        Neopro supports {sport.name} clubs {city.at} and across the {city.region} region.
+      <p class="text-madxp-gray text-lg leading-relaxed mb-4">
+        MADXP supports {sport.name} clubs {city.at} and across the {city.region} region.
         Whether in the city centre or surrounding areas — our team handles on-site installation and provides ongoing remote technical support.
       </p>
-      <p class="text-neo-gray text-lg leading-relaxed">
-        Our solution is designed for all clubs — from professional teams to community leagues: no technical skills required, an intuitive interface, and responsive support. Join the clubs that have already modernised their {sport.venue} with Neopro.
+      <p class="text-madxp-gray text-lg leading-relaxed">
+        Our solution is designed for all clubs — from professional teams to community leagues: no technical skills required, an intuitive interface, and responsive support. Join the clubs that have already modernised their {sport.venue} with MADXP.
       </p>
     </div>
   </section>
@@ -151,36 +151,36 @@ const faq = buildFAQPageJsonLd([
   <!-- FAQ -->
   <section class="py-16 px-6 bg-gray-50">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-black text-neo-dark mb-10 text-center">
+      <h2 class="text-2xl md:text-3xl font-black text-madxp-ink mb-10 text-center">
         Frequently asked questions
       </h2>
       <div class="space-y-4">
         <details class="bg-white rounded-xl p-6 shadow-sm group">
-          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
-            How much does Neopro cost for a {sport.name} club {city.at}?
-            <span class="text-neo-green ml-4">+</span>
+          <summary class="font-bold text-madxp-ink cursor-pointer list-none flex justify-between items-center">
+            How much does MADXP cost for a {sport.name} club {city.at}?
+            <span class="text-madxp-blue ml-4">+</span>
           </summary>
-          <p class="mt-4 text-neo-gray leading-relaxed">
+          <p class="mt-4 text-madxp-gray leading-relaxed">
             The price depends on your configuration (number of screens, {sport.venue} size, chosen services). We offer packages for all clubs — starting from a few hundred pounds/dollars per month.
-            <a href="/en/devis" class="text-neo-green font-semibold hover:underline">Request a free quote</a> to get an accurate estimate.
+            <a href="/en/devis/" class="text-madxp-blue font-semibold hover:underline">Request a free quote</a> to get an accurate estimate.
           </p>
         </details>
         <details class="bg-white rounded-xl p-6 shadow-sm">
-          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
-            How does Neopro work in a {sport.venue} for {sport.name}?
-            <span class="text-neo-green ml-4">+</span>
+          <summary class="font-bold text-madxp-ink cursor-pointer list-none flex justify-between items-center">
+            How does MADXP work in a {sport.venue} for {sport.name}?
+            <span class="text-madxp-blue ml-4">+</span>
           </summary>
-          <p class="mt-4 text-neo-gray leading-relaxed">
-            Neopro installs LED screens in your {sport.venue} and manages the display remotely via our platform. You choose the content (sponsors, scores, club news) and we handle the delivery. Installation typically takes less than a day.
+          <p class="mt-4 text-madxp-gray leading-relaxed">
+            MADXP installs LED screens in your {sport.venue} and manages the display remotely via our platform. You choose the content (sponsors, scores, club news) and we handle the delivery. Installation typically takes less than a day.
           </p>
         </details>
         <details class="bg-white rounded-xl p-6 shadow-sm">
-          <summary class="font-bold text-neo-dark cursor-pointer list-none flex justify-between items-center">
-            Is Neopro available for {sport.name} clubs in {city.region}?
-            <span class="text-neo-green ml-4">+</span>
+          <summary class="font-bold text-madxp-ink cursor-pointer list-none flex justify-between items-center">
+            Is MADXP available for {sport.name} clubs in {city.region}?
+            <span class="text-madxp-blue ml-4">+</span>
           </summary>
-          <p class="mt-4 text-neo-gray leading-relaxed">
-            Yes, Neopro is available across the UK, USA, and Canada. Our team comes {city.at} and across the {city.region} region for installation. Content updates and technical support are then handled remotely.
+          <p class="mt-4 text-madxp-gray leading-relaxed">
+            Yes, MADXP is available across the UK, USA, and Canada. Our team comes {city.at} and across the {city.region} region for installation. Content updates and technical support are then handled remotely.
           </p>
         </details>
       </div>
@@ -188,7 +188,7 @@ const faq = buildFAQPageJsonLd([
   </section>
 
   <!-- CTA -->
-  <section class="py-16 px-6 bg-neo-dark text-white text-center">
+  <section class="py-16 px-6 bg-madxp-ink text-white text-center">
     <div class="max-w-2xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-black mb-4">
         Ready to modernise your {sport.name} club {city.at}?
@@ -197,8 +197,8 @@ const faq = buildFAQPageJsonLd([
         Get a personalised quote in minutes. Response within 48 hours.
       </p>
       <a
-        href="/en/devis"
-        class="inline-block bg-neo-green text-neo-dark font-bold px-8 py-4 rounded-xl hover:bg-neo-green-dark transition-colors text-lg"
+        href="/en/devis/"
+        class="inline-block bg-madxp-blue text-madxp-ink font-bold px-8 py-4 rounded-xl hover:bg-madxp-blue-deep transition-colors text-lg"
       >
         Get my free quote
       </a>
@@ -208,21 +208,21 @@ const faq = buildFAQPageJsonLd([
   <!-- Other sports -->
   <section class="py-12 px-6 bg-white border-t border-gray-100">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-lg font-bold text-neo-dark mb-4">
+      <h2 class="text-lg font-bold text-madxp-ink mb-4">
         Other sports {city.at}
       </h2>
       <div class="flex flex-wrap gap-3">
         {sports.filter((s) => s.slug !== sport.slug).map((s) => (
           <a
-            href={`/en/implantations/${city.slug}/${s.slug}`}
-            class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-neo-dark text-sm font-medium hover:border-neo-green hover:text-neo-green transition-colors"
+            href={`/en/implantations/${city.slug}/${s.slug}/`}
+            class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-madxp-ink text-sm font-medium hover:border-madxp-blue hover:text-madxp-blue transition-colors"
           >
             {s.name}
           </a>
         ))}
         <a
-          href={`/en/implantations/${city.slug}`}
-          class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-neo-gray text-sm hover:border-neo-green hover:text-neo-green transition-colors"
+          href={`/en/implantations/${city.slug}/`}
+          class="inline-block px-4 py-2 rounded-lg border border-gray-200 text-madxp-gray text-sm hover:border-madxp-blue hover:text-madxp-blue transition-colors"
         >
           All sports {city.at}
         </a>
@@ -231,15 +231,15 @@ const faq = buildFAQPageJsonLd([
   </section>
 
   <!-- Breadcrumb nav -->
-  <nav class="py-4 px-6 bg-gray-50 text-sm text-neo-gray" aria-label="Breadcrumb navigation">
+  <nav class="py-4 px-6 bg-gray-50 text-sm text-madxp-gray" aria-label="Breadcrumb navigation">
     <div class="max-w-4xl mx-auto flex flex-wrap gap-1 items-center">
-      <a href="/en/" class="hover:text-neo-dark">Home</a>
+      <a href="/en/" class="hover:text-madxp-ink">Home</a>
       <span>/</span>
-      <a href="/en/implantations" class="hover:text-neo-dark">Locations</a>
+      <a href="/en/implantations/" class="hover:text-madxp-ink">Locations</a>
       <span>/</span>
-      <a href={`/en/implantations/${city.slug}`} class="hover:text-neo-dark">{city.name}</a>
+      <a href={`/en/implantations/${city.slug}/`} class="hover:text-madxp-ink">{city.name}</a>
       <span>/</span>
-      <span class="text-neo-dark font-medium">{sport.name}</span>
+      <span class="text-madxp-ink font-medium">{sport.name}</span>
     </div>
   </nav>
 </BaseLayout>

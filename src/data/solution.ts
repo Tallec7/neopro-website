@@ -66,7 +66,7 @@ export const colorPanels: ColorPanel[] = [
       "Assistance & mise à jour de vidéos d'une semaine à l'autre",
       "Possibilité d'autonomie complète : accès admin avec intégration visuels/vidéos",
     ],
-    bgColor: 'bg-[#3d3036]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Solution clé en main',
@@ -76,7 +76,7 @@ export const colorPanels: ColorPanel[] = [
       'Application intuitive et simple',
       'Compatible avec tous les écrans HDMI',
     ],
-    bgColor: 'bg-[#423e33]',
+    bgColor: 'bg-[#0a0b0d]',
   },
   {
     title: 'Production vidéo professionnelle',
@@ -84,7 +84,7 @@ export const colorPanels: ColorPanel[] = [
       'Offre de média day complète (photo+vidéo)',
       'Des templates vidéo de qualité Broadcast, personnalisable aux couleurs de votre club',
     ],
-    bgColor: 'bg-[#2f3935]',
+    bgColor: 'bg-[#06263f]',
   },
   {
     title: 'Les retombées pour votre club',
@@ -95,7 +95,7 @@ export const colorPanels: ColorPanel[] = [
       'Visibilité quantifiée pour vos partenaires',
       'Meilleure fidélisation des partenaires',
     ],
-    bgColor: 'bg-[#334244]',
+    bgColor: 'bg-[#06263f]',
   },
 ];
 

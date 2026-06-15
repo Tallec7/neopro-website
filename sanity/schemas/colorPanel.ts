@@ -16,7 +16,7 @@ export default defineType({
       name: 'bgColor',
       title: 'Couleur de fond (classe Tailwind)',
       type: 'string',
-      description: 'Ex: bg-[#3d3036], bg-[#423e33], bg-[#2f3935], bg-[#334244]',
+      description: 'Ex: bg-[#3d3036], bg-[#423e33], bg-[#06263f], bg-[#334244]',
     }),
     defineField({ name: 'order', title: 'Ordre d\'affichage', type: 'number' }),
   ],
